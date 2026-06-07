@@ -205,7 +205,7 @@ Larger-scale validation on genome-scale Perturb-seq datasets (e.g., Replogle 202
 ## Data and Code Availability
 
 - Norman 2019: GSE133344. CLL: GSE111014. Sepsis: GSE167363. RA: GSE159117. IBD: GSE116222. PBMC: 10x Genomics 3k demo [Zheng *et al.*, 2017].
-- Python and R packages available for review at [anonymous GitHub review link]. Public release and Zenodo DOI upon acceptance.
+- Python and R packages at https://github.com/xutaoguo55/pgaa and as supplementary code accompanying this submission. Public release upon acceptance.
 - All random processes use `random_state=42` or equivalent fixed seeds.
 
 ## Author Contributions
