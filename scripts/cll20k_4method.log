@@ -1,0 +1,44 @@
+Loading CLL 20k...
+CLL 20k HVG: AnnData object with n_obs × n_vars = 20000 × 2000
+    obs: 'orig.ident', 'nCount_RNA', 'nFeature_RNA', 'percent.mt', 'n_counts', 'n_genes_by_counts', 'total_counts', 'total_counts_mt', 'pct_counts_mt'
+    var: 'n_cells', 'mt', 'n_cells_by_counts', 'mean_counts', 'pct_dropout_by_counts', 'total_counts', 'highly_variable', 'means', 'dispersions', 'dispersions_norm'
+    uns: 'log1p', 'hvg'
+TCL1A: hi=5000, lo=10611
+============================================================
+4-METHOD on CLL 20k — TCL1A target
+============================================================
+t-test:    BCR=4/13  AUROC=0.966  t=3s
+S1:        BCR=4/13  AUROC=0.958  t=2s
+  S₂: 200/1999, 0s, ~3s left
+  S₂: 400/1999, 0s, ~2s left
+  S₂: 600/1999, 0s, ~2s left
+  S₂: 800/1999, 1s, ~1s left
+  S₂: 1000/1999, 1s, ~1s left
+  S₂: 1200/1999, 1s, ~1s left
+  S₂: 1400/1999, 2s, ~0s left
+  S₂: 1600/1999, 2s, ~0s left
+  S₂: 1800/1999, 2s, ~0s left
+S2:        BCR=0/13  AUROC=0.655  t=6s
+
+Running S3 (subsample 4000, no perm)...
+S₃ (vectorized, no perm): 1999 genes × 15 partners, k=4, MI_subsample=4000
+  200/1999, 20s
+  400/1999, 38s
+  600/1999, 55s
+  800/1999, 72s
+  1000/1999, 90s
+  1200/1999, 109s
+  1400/1999, 127s
+  1600/1999, 145s
+  1800/1999, 162s
+S₃ done in 180s
+S3:        BCR=2/13  AUROC=0.694  t=181s
+  Top 10 S3: ['CD74', 'IGHV1-46', 'IGLV3-25', 'IGLV4-69', 'MS4A1', 'TYROBP', 'IGLC7', 'IGLC6', 'RPLP0', 'IGKV3-11']
+
+BCR in top-100:
+  t-test  : ['CD79A', 'CD79B', 'MS4A1', 'CD24']
+  S1      : ['CD79A', 'CD79B', 'MS4A1', 'CD24']
+  S2      : []
+  S3      : ['CD79A', 'MS4A1']
+
+✓ Saved 4 methods on CLL 20k
