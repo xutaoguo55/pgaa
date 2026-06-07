@@ -30,3 +30,7 @@ PROJECT_REVIEW.md
 REVIEWER_RESPONSE.md
 SUBMISSION_CHECKLIST.md
 COVER_LETTER*.md
+pgaa_r.Rcheck/
+pgaa_r/pgaa_r.Rcheck/
+*.log
+scripts/*_test_output.txt
