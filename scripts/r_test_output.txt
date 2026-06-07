@@ -1,0 +1,22 @@
+✅ T1 W>0.5: got 0.8052
+✅ T2 W<0.2: got 0.0184
+✅ T3 W>1.5: got 1.9924
+✅ T4 1 peak: got 1 peaks
+✅ T5 flat pers=0: got 0.0000
+✅ T6 bimodality dist>0.2: got 0.4203
+✅ T7 pi0 uniform ~1: got 0.910
+✅ T8 pi0 mixed <1: got 0.850
+✅ T9 combined z mean~0.5: got 0.4743
+✅ T10 prt_s1_test 19 genes: got 19
+✅ T11 gene_0003 sig: p=0.0099
+✅ T12 prt_s2_test 14 genes: got 14
+✅ T13 gene_0004 S2>0: got 0.1558
+✅ T14 S1 reproducibility: p_values match
+✅ T15 combined z length: 19
+✅ T16 residualize dims: 200x10
+✅ T17 S3 stub: 19 genes
+✅ T18 S4 stub: 19 genes
+
+==================================================
+✅ All 18 R tests PASSED
+==================================================

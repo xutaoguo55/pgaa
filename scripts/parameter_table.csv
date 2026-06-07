@@ -1,0 +1,10 @@
+Parameter,Value,Rationale,Sensitivity notes
+K-means clusters (k),5,"MacQueen 1967, Tibshirani 2001","Sensitivity: tested k∈{3,5,10} in pilot"
+HVG count,"2,000",Scanpy highly_variable_genes,Standard for scRNA-seq
+n_bins (persistence),20,Sensitivity sweep §3.5,"Critical: sweep {10,20,30,50} recommended"
+S1 permutations,"2,000",Good 2013,Min p = 1/2001 ≈ 0.0005
+S2 permutations,500,Good 2013,Min p = 1/501 ≈ 0.002; ranking only
+Control matching,3× matched,Norman 2019 original,"1,698 of 11,855 available"
+QC thresholds (CLL),"200-6000 genes, <20%MT, >500UMI",Standard,Dataset-specific
+Normalization,"10K CPM, log1p",Scanpy,Standard
+Random seed,42,NumPy/R,All modules

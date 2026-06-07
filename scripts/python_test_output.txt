@@ -1,0 +1,18 @@
+✅ T1 wasserstein: W=0.8308
+✅ T2 same dist: W=0.0355
+✅ T3 shifted: W=1.9553
+✅ T4 single peak: 1 peak, pers=0.9000
+✅ T5 flat: pers=0
+✅ T6 bimodality: dist=0.4203
+PRT-S1: 200 permutations (within-cluster shuffle) ...
+  perm 100/200, 0.1s
+✅ T7 prt_s1_test: 29 genes, gene_0002 p=0.0050
+✅ T8 s2_test: 19 genes, gene_0003 S2=0.2158
+PRT-S1: 100 permutations (within-cluster shuffle) ...
+PRT-S1: 100 permutations (within-cluster shuffle) ...
+✅ T9 reproducibility: W_observed match
+✅ T10 NaN handling: raises (as expected from np.quantile)
+
+==================================================
+✅ All 9 core tests PASSED
+==================================================

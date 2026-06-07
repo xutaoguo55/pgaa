@@ -1,0 +1,7 @@
+Perturbation,n_perturbed cells,n_sig (p<0.05),Storey π̂₀,Calibration verdict,Recommended use
+KLF1,1197,54,1.148,well-calibrated,S₂ + S₁
+CBL,663,173,0.715,acceptable,S₂ + S₁
+SLC4A1,1000,222,0.665,mild over-sensitive,S₁ preferred
+DUSP9,731,460,0.679,over-sensitive,S₁ only
+CEBPE,566,1063,0.246,severely over-sensitive,S₂ only with caution
+BAK1,687,1789,0.104,catastrophically over-sensitive,S₁ only

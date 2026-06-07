@@ -1,0 +1,11 @@
+Method,Null hypothesis,Test type,Covariate handling,Output,Language
+PGAA Wasserstein,Distributional shift,Permutation,Within-cluster shuffle,"p-value, rank, π̂₀",Python/R
+PGAA Persistence,Bimodality/topology,Permutation,Within-cluster shuffle,"p-value, rank, π̂₀",Python/R
+SCEPTRE,Mean shift,Permutation,Conditional resampling,p-value,R
+SCEPTRE 2024,Mean shift (robust),Permutation,Improved calibration,"p-value, FDR",R
+MAST,Mean shift (hurdle),Parametric,Cellular detection rate,"p-value, FDR",R
+DESeq2,Mean shift (NB),Parametric,Size factors,"p-value, FDR",R
+Wilcoxon,Mean shift,Non-parametric,None,p-value,R/Python
+pertpy,Multi-modal (framework),Multiple,Multiple,Multiple,Python
+Mixscape,Perturbation QC,Mixture model,Cell-level,Perturbation probability,R
+scMAGeCK,Screen-level,Regression,sgRNA aggregation,"Beta score, p-value",Python/R
