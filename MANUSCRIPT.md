@@ -1,9 +1,9 @@
 # PGAA: distribution-aware testing for single-cell perturbation screens
 
-**Authors**: Xiaolei Wei<sup>1†</sup>, Haiqing Zheng<sup>2†</sup>, Junwei Huang<sup>1†</sup>, Qi Wei<sup>1</sup>, Yongqiang Wei<sup>1</sup>, Ru Feng<sup>1</sup>, Xutao Guo<sup>1,3\*</sup>
+**Authors**: Xiaolei Wei<sup>2†</sup>, Haiqing Zheng<sup>1†</sup>, Junwei Huang<sup>2†</sup>, Qi Wei<sup>2</sup>, Yongqiang Wei<sup>2</sup>, Ru Feng<sup>2</sup>, Xutao Guo<sup>1,3\*</sup>
 
-<sup>1</sup> Department of Nosocomial Infection Management, Nanfang Hospital, Southern Medical University, Guangzhou, China  
-<sup>2</sup> Department of Hematology, Nanfang Hospital, Southern Medical University, Guangzhou, China  
+<sup>1</sup> Department of Hematology, Nanfang Hospital, Southern Medical University, Guangzhou, China  
+<sup>2</sup> Department of Nosocomial Infection Management, Nanfang Hospital, Southern Medical University, Guangzhou, China  
 <sup>3</sup> Clinical Medical Research Center of Hematological Diseases of Guangdong Province, Guangzhou, China  
 
 <sup>†</sup> These authors contributed equally to this work.  
@@ -11,7 +11,7 @@
 
 ## Abstract
 
-Perturb-seq screens test thousands of gene–gene relationships, but existing tools detect primarily mean expression shifts. CRISPRa and weak-effect perturbations can produce bimodal responses—only a subset of cells respond—leaving mean expression unchanged despite downstream biology. We present PGAA, a distribution-aware testing framework for Perturb-seq that combines a Wasserstein distance test with a persistent homology test for detecting bimodal expression patterns. On five observational datasets, the Wasserstein test recovers known pathway markers with 2.1–5.8× enrichment (AUROC 0.87). On Norman 2019 CEBPE CRISPRa, where the Wasserstein test and SCEPTRE show no signal for the known target ELANE (rank 1660 and 1761), the persistence test ranks ELANE at position 56—a 30-fold improvement. A 6-perturbation calibration study and a 63-condition simulation document each test's operating characteristics, including a hyperparameter sensitivity analysis that reveals strong dependence of the persistence test on histogram bin count. Python and R implementations are available at [GitHub URL], with benchmarks reproducible from public data (GSE133344, GSE111014, GSE167363, GSE159117, GSE116222).
+Perturb-seq screens test thousands of gene–gene relationships, but existing tools detect primarily mean expression shifts. CRISPRa and weak-effect perturbations can produce bimodal responses—only a subset of cells respond—leaving mean expression unchanged despite downstream biology. We present PGAA, a distribution-aware testing framework for Perturb-seq that combines a Wasserstein distance test with a persistent homology test for detecting bimodal expression patterns. On five observational datasets, the Wasserstein test recovers known pathway markers with 2.1–5.8× enrichment (AUROC 0.87). On Norman 2019 CEBPE CRISPRa, where the Wasserstein test and SCEPTRE show no signal for the known target ELANE (rank 1660 and 1761), the persistence test ranks ELANE at position 56—a 30-fold improvement. A 6-perturbation calibration study and a 63-condition simulation document each test's operating characteristics, including a hyperparameter sensitivity analysis that reveals strong dependence of the persistence test on histogram bin count. Python and R implementations are available at https://github.com/xutaoguo55/pgaa, with benchmarks reproducible from public data (GSE133344, GSE111014, GSE167363, GSE159117, GSE116222).
 
 **Keywords**: Perturb-seq, Wasserstein distance, persistent homology, single-cell RNA-seq, CRISPR screening, calibration
 
