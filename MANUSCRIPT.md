@@ -1,6 +1,6 @@
 # PGAA: distribution-aware testing for single-cell perturbation screens
 
-**Authors**: Xiaolei Wei<sup>2†</sup>, Haiqing Zheng<sup>1†</sup>, Junwei Huang<sup>2†</sup>, Qi Wei<sup>2</sup>, Yongqiang Wei<sup>2</sup>, Ru Feng<sup>2</sup>, Xutao Guo<sup>1,3\*</sup>
+**Authors**: Xiaolei Wei<sup>1†</sup>, Haiqing Zheng<sup>2†</sup>, Junwei Huang<sup>3†</sup>, Qi Wei<sup>1</sup>, Yongqiang Wei<sup>1</sup>, Ru Feng<sup>1</sup>, Xutao Guo<sup>1,3\*</sup>
 
 <sup>1</sup> Department of Hematology, Nanfang Hospital, Southern Medical University, Guangzhou, China  
 <sup>2</sup> Department of Nosocomial Infection Management, Nanfang Hospital, Southern Medical University, Guangzhou, China  
@@ -205,7 +205,7 @@ Larger-scale validation on genome-scale Perturb-seq datasets (e.g., Replogle 202
 ## Data and Code Availability
 
 - Norman 2019: GSE133344. CLL: GSE111014. Sepsis: GSE167363. RA: GSE159117. IBD: GSE116222. PBMC: 10x Genomics 3k demo [Zheng *et al.*, 2017].
-- Python and R packages at https://github.com/xutaoguo55/pgaa and as supplementary code accompanying this submission. Public release upon acceptance.
+- Supplementary software (Python and R packages) supplied with this submission. The corresponding GitHub repository (https://github.com/xutaoguo55/pgaa) will be made public upon acceptance or upon editor request during review.
 - All random processes use `random_state=42` or equivalent fixed seeds.
 
 ## Author Contributions
