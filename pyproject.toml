@@ -5,14 +5,14 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "pgaa"
 version = "0.1.0"
-description = "Predictive Gene Activation Analysis: causal perturbation effect estimation from observational scRNA-seq"
+description = "Distribution-aware testing for single-cell perturbation screens"
 readme = "README.md"
 requires-python = ">=3.9"
 license = {text = "MIT"}
 authors = [
     {name = "PGAA Team"}
 ]
-keywords = ["single-cell", "causal-inference", "perturbation", "transcriptomics", "double-machine-learning"]
+keywords = ["single-cell", "perturb-seq", "perturbation", "transcriptomics", "wasserstein", "persistent-homology"]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Science/Research",
@@ -41,8 +41,11 @@ gpu = ["cupy-cuda11x", "cuml", "cugraph"]
 dev = ["pytest>=7.0", "pytest-cov", "black", "flake8", "mypy"]
 
 [project.urls]
-Homepage = "https://github.com/pgaa-team/pgaa"
-Repository = "https://github.com/pgaa-team/pgaa"
+Homepage = "https://github.com/xutaoguo55/pgaa"
+Repository = "https://github.com/xutaoguo55/pgaa"
+
+[project.scripts]
+pgaa-run = "pgaa.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["."]

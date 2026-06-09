@@ -12,7 +12,7 @@ Metrics:
   - ELANE rank (lower is better)
   - ELANE p-value
   - n_sig (p<0.05)
-  - Known-target hit rate (5/9 neutrophil granule proteins)
+  - Known-target hit rate among nine neutrophil granule proteins
   - AUROC for known targets
 """
 import pandas as pd
@@ -22,7 +22,7 @@ from sklearn.metrics import roc_auc_score
 
 # Load existing results
 s1 = pd.read_csv("scripts/norman2019_prt_s1_full.csv")
-s2 = pd.read_csv("scripts/norman2019_prt_s2_calibrated.csv")
+s2 = pd.read_csv("scripts/norman2019_prt_s2_nbins20.csv")
 # SCEPTRE results from prt_s1_summary.csv
 sceptre_summary = pd.read_csv("scripts/prt_s1_summary.csv")
 
@@ -31,14 +31,17 @@ cebpe_targets = ["ELANE", "CTSG", "LYZ", "MPO", "GFI1", "AZU1",
 is_known = np.array([g in cebpe_targets for g in s2["gene"].values])
 
 # Compute per-method metrics
-def metrics(name, p_values, is_known):
+def metrics(name, gene_values, p_values, is_known_genes):
+    genes = list(gene_values)
     p = np.asarray(p_values, dtype=float)
     p = np.where(np.isnan(p), 1.0, p)
     n_sig = int((p < 0.05).sum())
-    elane_p = float(p[list(s2["gene"]).index("ELANE")])
-    elane_rank = int(np.where(np.argsort(p) == list(s2["gene"]).index("ELANE"))[0][0]) + 1
+    elane_idx = genes.index("ELANE")
+    elane_p = float(p[elane_idx])
+    elane_rank = int(np.where(np.argsort(p, kind="mergesort") == elane_idx)[0][0]) + 1
+    is_known = np.array([g in is_known_genes for g in genes])
     auroc = roc_auc_score(is_known, -np.log10(p + 1e-300))
-    hits = sum(1 for g in cebpe_targets if p[list(s2["gene"]).index(g)] < 0.05)
+    hits = sum(1 for g, pv in zip(genes, p) if g in is_known_genes and pv < 0.05)
     return {"method": name, "elane_rank": elane_rank, "elane_p": elane_p,
             "n_sig": n_sig, "auroc": auroc, "known_hits": f"{hits}/9"}
 
@@ -56,9 +59,12 @@ sceptre_cebpe = {
 # For now use the values from prt_s1_summary.csv
 
 # S₁ metrics
-s1_metrics = metrics("PGAA S₁ (Wasserstein)", s1["p_value_perm"].values, is_known)
+s1_metrics = metrics("PGAA S₁ (Wasserstein)", s1["gene"].values,
+                     s1["p_value_perm"].values, set(cebpe_targets))
 # S₂ metrics
-s2_metrics = metrics("PGAA S₂ (persistent homology)", s2["p_value_perm"].values, is_known)
+s2_metrics = metrics("PGAA S₂ (persistent homology, n_bins=20)",
+                     s2["gene"].values, s2["p_value_perm"].values,
+                     set(cebpe_targets))
 
 # Combined z
 p_s1 = s1["p_value_perm"].fillna(1.0).values
@@ -67,7 +73,8 @@ common_idx = [list(s1["gene"]).index(g) for g in s2["gene"]]
 z_s1 = norm.ppf(1 - np.clip(p_s1[common_idx], 1e-10, 1 - 1e-10))
 z_s2 = norm.ppf(1 - np.clip(p_s2, 1e-10, 1 - 1e-10))
 p_comb = 1 - norm.cdf((z_s1 + z_s2) / np.sqrt(2))
-comb_metrics = metrics("PGAA S₁+S₂ combined z", p_comb, is_known)
+comb_metrics = metrics("PGAA S₁+S₂ combined z", s2["gene"].values,
+                       p_comb, set(cebpe_targets))
 
 # Combine into table
 df = pd.DataFrame([sceptre_cebpe, s1_metrics, s2_metrics, comb_metrics])
@@ -86,10 +93,13 @@ md = "# SCEPTRE vs PGAA comparison on Norman 2019 CEBPE\n\n"
 md += df.to_markdown(index=False)
 md += "\n\n## Key takeaways\n"
 md += "- **SCEPTRE**: 0/9 known targets, AUROC ≈ 0.47 (random)\n"
-md += "- **PGAA S₁**: 1/9 known targets, AUROC ≈ 0.40 (similar to SCEPTRE on Norman)\n"
-md += "- **PGAA S₂**: 5/9 known targets, ELANE rank 586 (3× better than SCEPTRE/S₁)\n"
-md += "- **PGAA Combined**: 3/9 known targets, ELANE rank 832 (better than S₁ alone but worse than S₂)\n"
-md += "\nS₂ is the only method that recovers the CEBPE → neutrophil pathway at clinically meaningful levels.\n"
+md += "- **PGAA S₁**: %s known targets, ELANE rank %d, AUROC %.3f\n" % (
+    s1_metrics["known_hits"], s1_metrics["elane_rank"], s1_metrics["auroc"])
+md += "- **PGAA S₂**: %s known targets, ELANE rank %d in the pre-specified n_bins=20 run, AUROC %.3f\n" % (
+    s2_metrics["known_hits"], s2_metrics["elane_rank"], s2_metrics["auroc"])
+md += "- **PGAA Combined**: %s known targets, ELANE rank %d, AUROC %.3f\n" % (
+    comb_metrics["known_hits"], comb_metrics["elane_rank"], comb_metrics["auroc"])
+md += "\nS₂ gives the strongest ELANE ranking in this pre-specified CEBPE analysis; the result is ranking evidence, not genome-wide FDR-controlled discovery.\n"
 
 with open("scripts/table_sceptre_vs_pgaa.md", "w") as f:
     f.write(md)

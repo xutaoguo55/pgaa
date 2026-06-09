@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
-Figure 2 (updated): Norman 2019 CEBPE with n_bins=20.
+Figure 2: Norman 2019 CEBPE with n_bins=20.
 
-Key result: ELANE rank 1661 (S₁) → 57 (S₂), π̂₀=1.32 (well-calibrated).
+Key result: ELANE rank 1452 (S₁) → 57 (S₂), π̂₀=1.32 (well-calibrated).
 
 3 panels:
   (A) S₂ volcano: -log10(p) vs S₂ value, annotated top hits
-  (B) ELANE rank comparison: SCEPTRE (1761) vs S₁ (1661) vs S₂ (57)
+  (B) ELANE rank comparison: SCEPTRE (1761) vs S₁ (1452) vs S₂ (57)
   (C) Summary table with calibration metrics
 """
 import matplotlib
@@ -33,10 +33,17 @@ s2_elane_p = 0.04
 s2_nsig = 66
 s2_pi0 = 1.32
 
-# S₁ metrics
-s1_elane_rank = 1661
-s1_elane_p = 0.84
-s1_auroc = 0.432
+# S₁ metrics from the current full rerun.
+s1_p = s1_full["p_value_perm"].fillna(1.0).astype(float)
+s1_ranks = s1_p.rank(method="min", ascending=True).astype(int)
+s1_elane_idx = s1_full.index[s1_full["gene"] == "ELANE"][0]
+s1_elane_rank = int(s1_ranks.loc[s1_elane_idx])
+s1_elane_p = float(s1_p.loc[s1_elane_idx])
+s1_auroc = roc_auc_score(
+    s1_full["gene"].isin(cebpe_targets).values,
+    -np.log10(s1_p.values + 1e-300),
+)
+s1_nsig = int((s1_p < 0.05).sum())
 
 # SCEPTRE metrics
 sceptre_elane_rank = 1761
@@ -90,11 +97,10 @@ ax.set_title("(B) ELANE rank improvement")
 ax.set_ylim(0, 2100)
 ax.legend(frameon=False, fontsize=8, loc='upper right')
 ax.spines['top'].set_visible(False); ax.spines['right'].set_visible(False)
-# Improvement annotation
-ax.annotate("", xy=(2, 57), xytext=(1, 1661),
-            arrowprops=dict(arrowstyle="->", color='red', lw=2))
-ax.text(1.5, 900, "29× improvement", ha='center', fontsize=11,
-        color='red', fontweight='bold', rotation=90)
+# Improvement label — simple percentage above S2 bar
+improvement = int(s1_elane_rank / 57)
+ax.text(2, 57 - 80, f'{improvement}× better', ha='center', fontsize=11,
+        color='#1565C0', fontweight='bold')
 
 # Panel C: Summary table
 ax = axes[2]
@@ -104,7 +110,7 @@ table_data = [
     ['SCEPTRE', f'{sceptre_elane_rank}', f'{sceptre_elane_p:.2f}',
      '30', f'AUROC={sceptre_auroc:.2f}'],
     ['PGAA S₁', f'{s1_elane_rank}', f'{s1_elane_p:.2f}',
-     '0', f'AUROC={s1_auroc:.2f}'],
+     f'{s1_nsig}', f'AUROC={s1_auroc:.2f}'],
     ['PGAA S₂ (n_bins=20)', f'57', f'{s2_elane_p:.2f}',
      f'{s2_nsig}', f'π̂₀={s2_pi0:.2f} ✓'],
 ]

@@ -4,4 +4,4 @@ Sepsis 20k,S₁,2.1×,0.87,TCR pathway,n/a,n/a
 RA 10k,S₁,2.5×,0.87,Cytokine pathway,n/a,n/a
 PBMC 3k,S₁,2.9×,0.87,Multi-lineage,n/a,n/a
 IBD 10k,S₁,5.8×,0.92,Gut immune,n/a,n/a
-Norman 2019 CEBPE,S₂,n/a,0.41,5/9 neutrophil granule proteins,1661/2012,586/2012 (3× improvement)
+Norman 2019 CEBPE,S₂,n/a,0.476,ELANE rank 57/2012,1452/2012,57/2012 (25× improvement)
