@@ -135,7 +135,7 @@ Running persistent homology on six different perturbations from the Norman 2019 
 | CEBPE (CRISPRa) | 0.25 | 1063 | severely over-sensitive |
 | BAK1 | 0.10 | 1789 | over-sensitive |
 
-Table: **Table 1.** Persistence test calibration across six Norman 2019 perturbations.
+Table: Persistence test calibration across six Norman 2019 perturbations.
 
 KLF1 drives a clean erythroid program. CEBPE CRISPRa and BAK1 do not. The calibration spread reflects this biology, and the practical takeaway is simple: include a negative control perturbation and check pi0-hat. Importantly, the CEBPE pi0-hat of 0.25 reported here comes from a calibration run with n_bins = 50 and n_perms = 200; the main analysis in Section 3.2 uses n_bins = 20 and n_perms = 500, which yields pi0-hat approximately 1.0-1.3. The discrepancy illustrates how strongly calibration depends on both bin count and permutation depth, reinforcing the need for the pilot sweep recommended in Section 3.5.
 
@@ -162,7 +162,7 @@ The persistence test depends on the number of histogram bins, and the dependence
 | 100 | 468 | 0.005 | 1087 | 0.23 | 5/9 |
 | 150 | 446 | 0.005 | 1073 | 0.23 | 4/9 |
 
-Table: **Table 2.** Persistence test hyperparameter sensitivity on Norman 2019 CEBPE.
+Table: Persistence test hyperparameter sensitivity on Norman 2019 CEBPE.
 
 The n_bins = 30 row is striking: at this resolution, the histogram bins merge the two modes of the bimodal distribution, and ELANE's signal collapses (rank 1807). This is a sharp failure mode, not a gradual degradation. We recommend the default $n_{\text{bins}} = 20$ as a starting point, with a pilot sweep ($n_{\text{bins}} \in \{10, 20, 30, 50\}$) to verify that the chosen value does not fall into the n_bins = 30 failure mode where peak merging destroys the persistence signal. The sweep should be performed on a control or null perturbation, not the perturbation of interest, to avoid overfitting. At $n_{\text{bins}} = 20$, the $p$-values are well-calibrated (pi0-hat = 1.32 with $n_{\text{perms}} = 200$; 1.00 with $n_{\text{perms}} = 500$) and ELANE achieves its best rank.
 
@@ -172,7 +172,7 @@ The n_bins = 30 row is striking: at this resolution, the histogram bins merge th
 
 To test PGAA on a small independent Perturb-seq dataset with a complementary perturbation modality, we applied both tests to the Adamson et al. (2016) UPR CRISPRi screen (GSE90546). After QC, 5,680 K562 cells were retained across five well-characterized sgRNA perturbations targeting UPR genes (SPI1, ZNF326, BHLHE40, CREB1, DDIT3; 468-686 cells each) and a non-targeting control (1,759 cells). The gold standard was a curated UPR marker set covering IRE1, PERK, ATF6, ERAD, and chaperone branches, of which 13 markers were present in the 2,000-gene HVG subset.
 
-Across the five perturbations, the Wasserstein test achieved a mean AUROC of 0.786 (range 0.767-0.806, mean AUPRC 0.0191) for recovering known UPR genes. By comparison, Wilcoxon, t-test, and MAST achieved mean AUROCs of 0.529, 0.523, and 0.406 respectively in the same benchmark. The persistence test achieved a mean AUROC of 0.748 (range 0.658-0.833, mean AUPRC 0.0253). Descriptive 95% t intervals across the five pre-specified perturbations are reported in Supplementary Table S12; these intervals quantify between-perturbation variability and are not a substitute for a larger independent benchmark panel. For the BHLHE40 knockdown, the persistence test was the strongest method overall (AUROC 0.833, AUPRC 0.0594 vs. Wasserstein AUROC 0.788), consistent with a bimodal transcriptional response. Because only 13 of the 2,000 HVGs were UPR positives, the random AUPRC baseline was 0.0065; observed AUPRC values correspond to 2.9x and 3.9x enrichment over random expectation for the Wasserstein and persistence tests, respectively. These perturbations were selected a priori based on UPR annotation in the original study and a minimum cell-count threshold ($\ge 400$ cells), not based on PGAA performance (Supplementary Table S5).
+Across the five perturbations, the Wasserstein test achieved a mean AUROC of 0.786 (range 0.767-0.806, mean AUPRC 0.0191) for recovering known UPR genes. By comparison, Wilcoxon, t-test, and MAST achieved mean AUROCs of 0.529, 0.523, and 0.406 respectively in the same benchmark. The persistence test achieved a mean AUROC of 0.748 (range 0.658-0.833, mean AUPRC 0.0253). Descriptive 95% t intervals across the five pre-specified perturbations are reported in Supplementary Table S12; these intervals quantify between-perturbation variability and are not a substitute for a larger independent benchmark panel. For the BHLHE40 knockdown, the persistence test was the strongest method overall (AUROC 0.833, AUPRC 0.0594 vs. Wasserstein AUROC 0.788), consistent with a heterogeneous, potentially bimodal transcriptional response. Because only 13 of the 2,000 HVGs were UPR positives, the random AUPRC baseline was 0.0065; observed AUPRC values correspond to 2.9x and 3.9x enrichment over random expectation for the Wasserstein and persistence tests, respectively. These perturbations were selected a priori based on UPR annotation in the original study and a minimum cell-count threshold ($\ge 400$ cells), not based on PGAA performance (Supplementary Table S5).
 
 **[Figure 5]**
 
@@ -191,7 +191,7 @@ From the simulation and real-data results, a practical decision rule emerges:
 | Mixed signal | Combined z |
 | Unknown | Run the Wasserstein test first. If no signal, try the persistence test with pilot sweep. |
 
-Table: **Table 3.** Practical decision rule for statistic selection.
+Table: Practical decision rule for statistic selection.
 
 **[Figure 6]**
 

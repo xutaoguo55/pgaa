@@ -9,8 +9,8 @@ figures_png/figure_2.png	main_figure	yes	upload_if_separate_figures_required	Fig
 figures_png/figure_elane_histogram.png	inline_main_figure	yes	upload_if_separate_figures_required	Inline ELANE expression distribution inserted after Figure 2
 figures_png/figure_3.png	main_figure	yes	upload_if_separate_figures_required	Figure 3: S2 calibration across six perturbations
 figures_png/figure_4.png	main_figure	yes	upload_if_separate_figures_required	Figure 4: CLL 20k Wasserstein and persistence
-figures_png/figure_adamson_benchmark.png	main_figure	yes	upload_if_separate_figures_required	Figure 5: Adamson 2016 UPR benchmark
-figures_png/figure_5.png	main_figure	yes	upload_if_separate_figures_required	Figure 6: simulation ablation
+figures_png/figure_adamson_benchmark.png	main_figure	yes	upload_if_separate_figures_required	Figure 6: Adamson 2016 UPR benchmark
+figures_png/figure_5.png	main_figure	yes	upload_if_separate_figures_required	Figure 7: simulation ablation
 figures_png/figure_s2_calibration_qq.png	supplementary_figure	yes	upload_if_separate_figures_required	Supplementary Figure S1
 figures_png/figure_s2_bhlhe40.png	supplementary_figure	yes	upload_if_separate_figures_required	Supplementary Figure S2
 figures_png/figure_pgaa_workflow.png	supplementary_figure	yes	upload_if_separate_figures_required	Supplementary Figure S3; current workflow schematic

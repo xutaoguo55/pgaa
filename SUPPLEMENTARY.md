@@ -151,25 +151,27 @@ This table separates causal perturbation benchmarks from observational marker-re
 |---|---|
 | Python implementation | Included under `pgaa/`; installable with `pip install -e .` |
 | R implementation | Included under `pgaa_r/`; tested with the local R smoke/regression suite |
-| License | MIT |
+| License | MIT; `LICENSE` file included |
 | Public repository | Planned URL: https://github.com/xutaoguo55/pgaa; must be publicly reachable before final submission |
 | Supplementary software file | `PGAA_supplementary_code.zip` supplied with the submission package |
 | Environment description | Python requirements, R package files, `environment.yml`, and `Dockerfile` are included in the package |
 | Automated tests | `python3 -m pytest tests -q`; `python3 scripts/test_python_pkg.py`; `Rscript scripts/test_r_pkg.R` |
 | Manuscript consistency audit | `python3 scripts/verify_manuscript_consistency.py` |
 | Main PDF build | `python3 build_pdf.py` |
+| Figure rebuild scripts | Main Adamson figure: `python3 scripts/figure_adamson_benchmark.py`; simulation figure: `python3 scripts/figure_simulation.py` |
 | Raw-data-to-figure status | Partial; Norman S1 is regenerated from the processed h5ad input, whereas Adamson tables are rebuilt from curated source-data CSVs |
 
 ## Supplementary Table S9. Runtime and memory summary
 
-Runtime depends on cell count, gene count, and permutation depth. The timings below are single-core approximate values from the manuscript workflow and are intended as practical guidance rather than hardware-independent benchmarks.
+Runtime depends on cell count, gene count, and permutation depth. The timings below are single-core approximate values from the manuscript workflow and are intended as practical guidance rather than hardware-independent benchmarks. Local checks were run on macOS with Python 3.11, R 4.x, dependencies from `requirements.txt`, and package version `pgaa 0.1.0`.
 
-| Task | Data scale | Permutations | Approximate runtime | Memory note |
-|---|---:|---:|---:|---|
-| S1 Wasserstein full run | 2,000 genes | 2,000 | About 5 minutes | Fits in memory for the processed benchmark matrices |
-| S2 persistence full run | 2,000 genes | 500 | Under 2 minutes | Histogram-based; lower memory pressure than repeated model fitting |
-| Norman consistency audit | Manuscript package | NA | Seconds | Checks current values and required assets |
-| Main PDF build | Manuscript plus figures/tables | NA | About 1 minute on the local system | Requires Pandoc and TinyTeX/XeLaTeX |
+| Task | Input size | CPU / package version | Permutations | Approximate wall time | Memory note |
+|---|---:|---|---:|---:|---|
+| S1 Wasserstein full run | 2,000 genes; matched perturbation/control cells | Single CPU core; `pgaa 0.1.0` | 2,000 | About 5 minutes | Fits in memory for processed benchmark matrices; RAM depends mainly on cells x genes |
+| S2 persistence full run | 2,000 genes; matched perturbation/control cells | Single CPU core; `pgaa 0.1.0` | 500 | Under 2 minutes | Histogram-based; lower memory pressure than repeated model fitting |
+| Adamson table rebuild | 5 perturbations; 13 UPR positives in HVG universe | Single CPU core; Python 3.11 | NA | Seconds | Rebuilds from curated source-data CSV, not raw GEO |
+| Norman consistency audit | Manuscript package | Single CPU core; Python 3.11 | NA | Seconds | Checks current values and required assets |
+| Main PDF build | Manuscript plus 7 main figures | Pandoc plus TinyTeX/XeLaTeX | NA | About 1 minute | Requires local LaTeX installation |
 
 ## Supplementary Table S10. Result reproduction map
 
@@ -180,9 +182,9 @@ Runtime depends on cell count, gene count, and permutation depth. The timings be
 | ELANE histogram | `figures_png/figure_elane_histogram.png`; figure source data | Source-data reproduction from included figure files/CSVs |
 | Figure 3 and Supplementary Table S1 | `scripts/sensitivity_s2_bins.csv`; S2 sensitivity outputs | Source-data reproduction; sensitivity sweep documented in Supplementary Table S1 |
 | Figure 4 CLL analysis | CLL processed source data and figure source data | Source-data reproduction; observational rank-score analysis only |
-| Figure 5 and Supplementary Table S5 | `figure_source_data/fig6_adamson_results.csv`; `scripts/adamson2016_full_results.csv` | `python3 scripts/rebuild_adamson_full_results.py` |
+| Figure 6 and Supplementary Table S5 | `figure_source_data/fig6_adamson_results.csv`; `scripts/adamson2016_full_results.csv`; `scripts/figure_adamson_benchmark.py` | `python3 scripts/rebuild_adamson_full_results.py`; `python3 scripts/figure_adamson_benchmark.py` |
 | Supplementary Table S12 | `scripts/adamson2016_method_summary_ci.csv` | `python3 scripts/rebuild_adamson_full_results.py` |
-| Figure 6 simulation | Simulation source data and scripts | Source-data reproduction from included package materials |
+| Figure 7 simulation | `scripts/simulation_powers.csv`; `scripts/figure_simulation.py` | `python3 scripts/figure_simulation.py`; copied into `figures_png/figure_5.png` |
 | Main and supplementary PDFs | `MANUSCRIPT.md`, `SUPPLEMENTARY.md`, `build_pdf.py`, figures, CSV tables | `python3 build_pdf.py`; supplementary PDF can be rebuilt with Pandoc and XeLaTeX |
 
 ## Supplementary Table S11. Comparator and benchmark status
