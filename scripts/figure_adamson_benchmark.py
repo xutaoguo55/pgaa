@@ -106,12 +106,18 @@ def main() -> None:
     ax_d.set_xticklabels(targets, rotation=35, ha="right")
     ax_d.set_yticks(np.arange(len(methods)))
     ax_d.set_yticklabels([m[0] for m in methods])
-    for i in range(heat.shape[0]):
-        for j in range(heat.shape[1]):
-            color = "white" if heat[i, j] > 0.72 else "black"
-            ax_d.text(j, i, f"{heat[i, j]:.3f}", ha="center", va="center", fontsize=8.5, color=color)
     cbar = fig.colorbar(im, ax=ax_d, fraction=0.046, pad=0.02)
     cbar.set_label("AUROC")
+    ax_d.text(
+        0.99,
+        -0.30,
+        "Exact values in Supplementary Table S5",
+        transform=ax_d.transAxes,
+        ha="right",
+        va="top",
+        fontsize=8.5,
+        color="#333333",
+    )
 
     fig.suptitle("Adamson 2016 UPR CRISPRi benchmark", fontsize=15, fontweight="bold")
     fig.savefig(OUT, dpi=300, bbox_inches="tight")

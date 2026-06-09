@@ -34,7 +34,7 @@ fig_map = {
     '2': ('figures_png/figure_2.png', 'Norman 2019 CEBPE CRISPRa.'),
     '3': ('figures_png/figure_3.png', 'Calibration across six perturbations.'),
     '4': ('figures_png/figure_4.png', 'CLL 20k: Wasserstein and persistence.'),
-    '5': ('figures_png/figure_adamson_benchmark.png', 'Independent validation on Adamson 2016 UPR CRISPRi benchmark.'),
+    '5': ('figures_png/figure_adamson_benchmark.png', 'Independent validation on Adamson 2016 UPR CRISPRi benchmark. Exact per-perturbation values for panel D are provided in Supplementary Table S5.'),
     '6': ('figures_png/figure_5.png', 'Simulation ablation.'),
 }
 for num, (path, cap) in fig_map.items():
