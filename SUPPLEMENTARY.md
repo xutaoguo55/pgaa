@@ -72,6 +72,27 @@ The main Norman 2019 CEBPE comparison uses the pre-specified $n_{\text{bins}} = 
 | S1 Wasserstein | 1452/2012 | 0.223 | Distributional statistic, weak for ELANE |
 | S2 persistence | 57/2012 | 0.04 | Main $n_{\text{bins}} = 20$ ranking result |
 
+Performance across all nine curated CEBPE targets:
+
+| Method | AUROC | AUPRC | Top-100 targets | Interpretation |
+|---|---:|---:|---:|---|
+| S1 Wasserstein | 0.337 | 0.0035 | 0/9 | No broad target-set recovery |
+| S2 persistence | 0.476 | 0.0076 | 2/9 | Focused ELANE/PRTN3 ranking signal; not broad target-set recovery |
+
+Target-level ranks in the pre-specified CEBPE analysis:
+
+| Target | S1 rank | S1 p | S2 rank | S2 p | S2 score |
+|---|---:|---:|---:|---:|---:|
+| ELANE | 1452 | 0.223 | 57 | 0.040 | 0.004125 |
+| AZU1 | 500 | 0.001 | 856 | 0.597 | 0.001582 |
+| MPO | 1752 | 0.529 | 1727 | 1.000 | 0.000000 |
+| LYZ | 1372 | 0.172 | 928 | 0.643 | 0.001415 |
+| CTSG | 1911 | 0.759 | 1727 | 1.000 | 0.000000 |
+| GFI1 | 1178 | 0.078 | 1506 | 0.950 | 0.000707 |
+| PRTN3 | 1364 | 0.163 | 97 | 0.068 | 0.004245 |
+| DEFA1 | 1109 | 0.058 | 1185 | 0.872 | 0.000707 |
+| RNASE2 | 1316 | 0.141 | 1105 | 0.776 | 0.001415 |
+
 Cross-perturbation ELANE checks using the CEBPE target set as the specificity reference:
 
 | Perturbation | Storey pi0 | ELANE p | Interpretation |
