@@ -1,4 +1,6 @@
-Method,AUROC,AUPRC,Baseline
-S1 (Wasserstein),0.432,0.0053,0.0045
-S2 (Persistence),0.48,0.007,0.0045
-Combined z,0.493,0.0092,0.0045
+method,mean_auprc
+S1,0.01906
+S2,0.025259999999999998
+Wilcoxon,0.00894
+t-test,0.008499999999999999
+MAST,0.0014

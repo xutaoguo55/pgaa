@@ -4,14 +4,10 @@ S₁ statistic: 1D Wasserstein distance (a.k.a. Earth Mover's Distance)
 
 For each gene g, compute:
   S1_g = W(F(Y_g | D=1), F(Y_g | D=0))
-       = ∫ |F1(t) - F0(t)| dt
-       = Σ_i |x_i^(1) - x_i^(0)|  (for sorted values, exact 1D W)
+       = ∫ |F1^{-1}(q) - F0^{-1}(q)| dq
 
-Theoretical advantage over t-test:
-  - t-test: signal ~ O(α)
-  - Wasserstein: signal ~ O(α²)  ← quadratic sensitivity
-  - For weak effects (α < 0.2 log-FC), Wasserstein has higher power
-  - Permutation null: shuffle D, recompute W, get null distribution
+The statistic is evaluated by the same quantile approximation for observed
+and permuted labels, so the permutation p-values compare like with like.
 
 Reference:
   - Ramdas et al. 2017 "On Wasserstein Two-Sample Testing"
@@ -155,20 +151,10 @@ def prt_s1_test(
             D_perm = rng.permutation(D)
         Y_pert_perm = Y_other[D_perm]
         Y_ctrl_perm = Y_other[~D_perm]
-        Y_pert_sorted = np.sort(Y_pert_perm, axis=0)
-        Y_ctrl_sorted = np.sort(Y_ctrl_perm, axis=0)
-        n_common = max(n_pert, n_ctrl)
-        idx_pert = np.linspace(0, n_pert - 1, n_common)
-        idx_ctrl = np.linspace(0, n_ctrl - 1, n_common)
-        Y_pert_interp = np.array([
-            np.interp(idx_pert, np.arange(n_pert), Y_pert_sorted[:, g])
+        null_w[b] = np.array([
+            wasserstein_1d(Y_pert_perm[:, g], Y_ctrl_perm[:, g])
             for g in range(len(other_idx))
-        ]).T
-        Y_ctrl_interp = np.array([
-            np.interp(idx_ctrl, np.arange(n_ctrl), Y_ctrl_sorted[:, g])
-            for g in range(len(other_idx))
-        ]).T
-        null_w[b] = np.mean(np.abs(Y_pert_interp - Y_ctrl_interp), axis=0)
+        ])
 
     p_perm = (null_w >= obs_w[None, :]).sum(axis=0) + 1
     p_perm = p_perm / (n_perms + 1)

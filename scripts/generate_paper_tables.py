@@ -12,12 +12,12 @@ table1 = pd.DataFrame({
                 "Norman 2019 CEBPE"],
     "Best PGAA statistic": ["S₁", "S₁", "S₁", "S₁", "S₁", "S₂"],
     "POS/NEG enrichment (top 100)": ["4.0×", "2.1×", "2.5×", "2.9×", "5.8×", "n/a"],
-    "AUROC (known markers)": [0.87, 0.87, 0.87, 0.87, 0.92, 0.41],
+    "AUROC (known markers)": [0.87, 0.87, 0.87, 0.87, 0.92, 0.476],
     "Key known targets hit": ["CD79A, CD79B, MS4A1", "TCR pathway",
                               "Cytokine pathway", "Multi-lineage",
-                              "Gut immune", "5/9 neutrophil granule proteins"],
-    "S₁ ELANE-rank": ["n/a", "n/a", "n/a", "n/a", "n/a", "1661/2012"],
-    "S₂ ELANE-rank": ["n/a", "n/a", "n/a", "n/a", "n/a", "586/2012 (3× improvement)"],
+                              "Gut immune", "ELANE rank 57/2012"],
+    "S₁ ELANE-rank": ["n/a", "n/a", "n/a", "n/a", "n/a", "1452/2012"],
+    "S₂ ELANE-rank": ["n/a", "n/a", "n/a", "n/a", "n/a", "57/2012 (25× improvement)"],
 })
 table1.to_csv("scripts/table1_datasets_summary.csv", index=False)
 
@@ -63,7 +63,7 @@ table3 = pd.DataFrame({
     ],
     "Validated on": [
         "CLL/Sepsis/RA/PBMC/IBD (5 datasets), simulation Type A",
-        "Norman 2019 CEBPE (5/9 neutrophil granule proteins)",
+        "Norman 2019 CEBPE (ELANE rank 57/2012)",
         "CLL 20k TCL1A (3 BCR + 11 TCR)",
         "Norman 2019 (KLF1 π̂₀=1.15 as good null)",
     ],

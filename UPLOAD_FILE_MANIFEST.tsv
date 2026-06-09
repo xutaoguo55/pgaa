@@ -1,0 +1,30 @@
+file	role	upload	action	notes
+MANUSCRIPT.pdf	main_manuscript	yes	upload	Main manuscript PDF generated from MANUSCRIPT.md
+SUPPLEMENTARY.pdf	supplementary_material	yes	upload	Standalone supplementary PDF with Supplementary Figures S1-S3 and Tables S1-S12
+PGAA_supplementary_code.zip	supplementary_software	yes	upload	Clean whitelist software archive; excludes internal review files and deprecated workflow image
+COVER_LETTER_BIOINFORMATICS.md	cover_letter_source	yes	convert_or_copy_to_portal	Use for cover-letter text after replacing archive DOI, author names, affiliations, and contact placeholders
+PORTAL_INPUTS.md	portal_text_source	yes	copy_to_portal	Use for portal Code Availability, Data Availability, and AI-tool-use fields after replacing final repository/archive placeholders
+figures_png/figure_1.png	main_figure	yes	upload_if_separate_figures_required	Figure 1: multi-dataset Wasserstein validation
+figures_png/figure_2.png	main_figure	yes	upload_if_separate_figures_required	Figure 2: Norman 2019 CEBPE CRISPRa
+figures_png/figure_elane_histogram.png	inline_main_figure	yes	upload_if_separate_figures_required	Inline ELANE expression distribution inserted after Figure 2
+figures_png/figure_3.png	main_figure	yes	upload_if_separate_figures_required	Figure 3: S2 calibration across six perturbations
+figures_png/figure_4.png	main_figure	yes	upload_if_separate_figures_required	Figure 4: CLL 20k Wasserstein and persistence
+figures_png/figure_adamson_benchmark.png	main_figure	yes	upload_if_separate_figures_required	Figure 5: Adamson 2016 UPR benchmark
+figures_png/figure_5.png	main_figure	yes	upload_if_separate_figures_required	Figure 6: simulation ablation
+figures_png/figure_s2_calibration_qq.png	supplementary_figure	yes	upload_if_separate_figures_required	Supplementary Figure S1
+figures_png/figure_s2_bhlhe40.png	supplementary_figure	yes	upload_if_separate_figures_required	Supplementary Figure S2
+figures_png/figure_pgaa_workflow.png	supplementary_figure	yes	upload_if_separate_figures_required	Supplementary Figure S3; current workflow schematic
+MANUSCRIPT.md	source	internal	do_not_upload_unless_requested	Pandoc source for local rebuild
+SUPPLEMENTARY.md	source	internal	do_not_upload_unless_requested	Supplementary source for local rebuild
+README.md	software_documentation	in_zip	do_not_upload_separately	Included in PGAA_supplementary_code.zip
+DATASET_MANIFEST.tsv	software_documentation	in_zip	do_not_upload_separately	Included in PGAA_supplementary_code.zip
+CITATION.cff	software_metadata	in_zip	do_not_upload_separately	Included in PGAA_supplementary_code.zip
+codemeta.json	software_metadata	in_zip	do_not_upload_separately	Included in PGAA_supplementary_code.zip
+RELEASE_ARCHIVE_CHECKLIST.md	internal_checklist	in_zip	do_not_upload_separately	Included in PGAA_supplementary_code.zip as release guidance
+SUBMISSION_CHECKLIST.md	internal_checklist	no	do_not_upload	Internal upload checklist
+SUBMISSION_READINESS_AUDIT.md	internal_audit	no	do_not_upload	Internal readiness audit
+CURRENT_BIOINFORMATICS_REVIEW_2026-06-09.md	internal_review	no	do_not_upload	Internal simulated review
+REFERENCE_AUDIT_BIOINFORMATICS_2026-06-09.md	internal_audit	no	do_not_upload	Internal reference audit
+SIMULATED_BIOINFORMATICS_REVIEW_2026-06-09.md	internal_review	no	do_not_upload	Internal historical simulated review
+POST_REVISION_BIOINFORMATICS_REVIEW_2026-06-09.md	internal_review	no	do_not_upload	Internal historical post-revision review
+figures_png/figure_workflow.png	deprecated_figure	no	do_not_upload	Deprecated workflow figure; must not appear in manuscript or upload package

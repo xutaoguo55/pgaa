@@ -1,0 +1,6 @@
+Dataset,POS_enrichment,NEG_enrichment,ratio,cells,AUROC
+CLL,4.0,1.0,4.0,36k,0.87
+Sepsis,5.1,2.4,2.1,20k,0.87
+RA,6.9,2.8,2.5,10k,0.87
+PBMC,4.0,1.4,2.9,2.7k,0.87
+IBD,2.9,0.0,5.8,10k,0.92
