@@ -19,7 +19,17 @@ PGAA is a Python and R software package for prioritizing heterogeneous single-ce
 
 ## Install
 
+Install the Python dependencies before running any smoke test:
+
 ```bash
+pip install -e .
+```
+
+Alternatively, create the supplied conda environment:
+
+```bash
+conda env create -f environment.yml
+conda activate pgaa
 pip install -e .
 ```
 
@@ -27,7 +37,7 @@ For R usage, source the files under `pgaa_r/R/` or install the R package from `p
 
 ## Quick Smoke Test
 
-Run the self-contained toy example first:
+After installation, run the self-contained toy example:
 
 ```bash
 python3 scripts/run_toy_example.py
