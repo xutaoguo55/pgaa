@@ -16,16 +16,20 @@ tex = tex.replace('π̂₀', r'$\hat{\pi}_0$')
 tex = tex.replace('H₀', r'$H_0$')
 tex = tex.replace('≥', r'$\ge$')
 
-# Step 3: Add packages (geometry, float, graphicx, fancyhdr for page numbers)
+# Step 3: Add packages (geometry, float, graphicx, fancyhdr, lineno)
 if r'\usepackage{graphicx}' not in tex:
     marker = r'\usepackage{longtable,booktabs,array}'
     extra = (r'\usepackage[margin=1in]{geometry}' + '\n'
              r'\usepackage{float}' + '\n' + r'\usepackage{graphicx}' + '\n'
+             r'\usepackage{lineno}' + '\n'
              r'\usepackage{fancyhdr}' + '\n'
              r'\pagestyle{fancy}' + '\n'
              r'\fancyhf{}' + '\n'
              r'\fancyfoot[C]{\thepage}' + '\n'
-             r'\renewcommand{\headrulewidth}{0pt}')
+             r'\renewcommand{\headrulewidth}{0pt}' + '\n'
+             r'\setlength\linenumbersep{8pt}' + '\n'
+             r'\renewcommand\linenumberfont{\normalfont\tiny\sffamily}' + '\n'
+             r'\linenumbers')
     tex = tex.replace(marker, extra + '\n' + marker)
 
 # Step 4: Insert figures (use lambda to avoid \c escape in regex)
