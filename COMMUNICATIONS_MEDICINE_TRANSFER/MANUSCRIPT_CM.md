@@ -110,9 +110,7 @@ PGAA is implemented in Python and R. The Python package (`pgaa/`) depends on Num
 
 As a general-purpose distributional statistic, Wasserstein enriches known pathway markers 2.1-5.8x over background across five observational single-cell datasets with clinical or disease relevance (CLL 4.0x, Sepsis 2.1x, RA 2.5x, PBMC 2.9x, IBD 5.8x). On CLL, the B-cell receptor signaling gene set (CD79A, CD79B, MS4A1, CD24, BANK1, LYN, BLNK, SYK, BTK, PLCG2, PIK3CD, CD19, CD22) appears prominently in the top 100, with AUROC 0.87 for known-marker recovery (Supplementary Table S2). This result is clinically relevant because B-cell receptor signaling is a central therapeutic axis in CLL, but the analysis should be read as marker prioritization from public observational data rather than as a new clinical biomarker claim.
 
-These five datasets are observational--the "perturbation" is defined by binning cells on endogenous marker or pathway-associated expression, not by an experimental intervention--so the results demonstrate disease-relevant marker recovery rather than causal discovery. The enrichment is consistent with the Wasserstein test being a reasonable default statistic when the perturbation type is unknown or when a user is screening public patient-derived scRNA-seq data for distributional marker shifts.
-
-**[Figure 2]**
+These five datasets are observational--the "perturbation" is defined by binning cells on endogenous marker or pathway-associated expression, not by an experimental intervention--so the results demonstrate disease-relevant marker recovery rather than causal discovery. The enrichment is consistent with the Wasserstein test being a reasonable default statistic when the perturbation type is unknown or when a user is screening public patient-derived scRNA-seq data for distributional marker shifts (Supplementary Figure S1).
 
 ### 3.2 Persistent homology ranks a heterogeneous myeloid response in CEBPE CRISPRa
 
@@ -122,9 +120,9 @@ SCEPTRE and the Wasserstein statistic rank this target poorly. SCEPTRE places EL
 
 The persistence statistic ($n_{\text{bins}} = 20$, 500 permutations) ranks ELANE at position 57 ($p = 0.04$), a 25-fold rank improvement over the Wasserstein statistic. With 500 permutations, this p-value is interpreted as ranking evidence rather than genome-wide significance, and no FDR-controlled CEBPE gene discovery is claimed. The $p$-value distribution is acceptable in this pre-specified setting (pi0-hat = 1.32 with 200 permutations in the sensitivity run; approximately 1.0 with 500 permutations). The top genes by raw S2 value (SLC45A1, DLX2, ATP5E) are not known CEBPE targets; ELANE's stronger rank by permutation $p$-value reflects its favorable null distribution relative to other genes. Across the full nine-gene CEBPE target set, the persistence statistic recovers two targets in the top 100 (ELANE and PRTN3), with AUROC 0.476 and AUPRC 0.0076 (Supplementary Table S4). Thus, the Norman result should be read as a focused ELANE/PRTN3 ranking signal, not broad recovery of the complete granulocytic target program. As a specificity check, we applied the persistence statistic to all six perturbations using the CEBPE target gene set as the gold standard (Supplementary Table S4). ELANE was ranked strongly for CEBPE and also for the severely over-sensitive BAK1 perturbation, where pi0-hat = 0.10. For the well-calibrated KLF1 perturbation, ELANE was not supported ($p = 0.70$, pi0-hat = 1.15). For CBL, SLC4A1, and DUSP9, ELANE p-values were 0.58, 0.16, and 0.90 respectively. This analysis supports perturbation specificity only when the calibration diagnostic is acceptable; over-sensitive perturbations should not be interpreted as formal discoveries.
 
-CRISPRa can produce heterogeneous target activation: the gRNA does not guarantee protein-level CEBPE expression in every cell, and the resulting responder/non-responder expression pattern is the regime the persistence statistic was designed to rank. K562 is an erythroleukemia line, not a neutrophil progenitor; while it retains granulocytic differentiation capacity upon CEBPE activation, not all nine targets may be transcriptionally responsive in this system.
+CRISPRa can produce heterogeneous target activation: the gRNA does not guarantee protein-level CEBPE expression in every cell, and the resulting responder/non-responder expression pattern is the regime the persistence statistic was designed to rank (Supplementary Figure S2). K562 is an erythroleukemia line, not a neutrophil progenitor; while it retains granulocytic differentiation capacity upon CEBPE activation, not all nine targets may be transcriptionally responsive in this system.
 
-**[Figure 3]**
+**[Figure 2]**
 
 ### 3.3 Calibration varies by perturbation
 
@@ -143,15 +141,13 @@ Table: Persistence test calibration across six Norman 2019 perturbations.
 
 KLF1 drives a clean erythroid program. CEBPE CRISPRa and BAK1 do not. The calibration spread reflects this biology, and the practical takeaway is simple: include a negative control perturbation and check pi0-hat. Importantly, the CEBPE pi0-hat of 0.25 reported here comes from a calibration run with n_bins = 50 and n_perms = 200; the main analysis in Section 3.2 uses n_bins = 20 and n_perms = 500, which yields pi0-hat approximately 1.0-1.3. The discrepancy illustrates how strongly calibration depends on both bin count and permutation depth, reinforcing the need for the pilot sweep recommended in Section 3.5.
 
-**[Figure 5]**
+**[Figure 3]**
 
 ### 3.4 Distributional statistics separate B-cell and T-cell marker programs in CLL
 
 The CLL TCL1A case shows how the two distributional statistics can prioritize different disease-relevant marker programs. Among the top 100 genes ranked by each statistic, only six overlap. The Wasserstein test enriches B-cell receptor markers (CD79A rank 9, CD79B rank 48, MS4A1 rank 53), matching the malignant B-cell biology of CLL. The persistence test picks up T-cell receptor genes (TRBV7-6, TRAV12-1, CD3E, CD3D) that Wasserstein misses entirely, consistent with a distinct immune-context signal rather than the same B-cell receptor program. The exploratory combined z-score recovers 3 BCR and 11 TCR genes at nominal $p < 0.05$, versus 4+3 for Wasserstein alone and 0+7 for the persistence statistic alone; these nominal combined scores are used only to illustrate rank complementarity.
 
-The CLL analysis uses rank-based inverse-normal scores (Supplementary Methods S3) rather than full permutation calibration--a lighter-weight approach appropriate when only relative gene ordering matters rather than formal significance testing.
-
-**[Figure 6]**
+The CLL analysis uses rank-based inverse-normal scores (Supplementary Methods S3) rather than full permutation calibration--a lighter-weight approach appropriate when only relative gene ordering matters rather than formal significance testing (Supplementary Figure S3).
 
 ### 3.5 Sensitivity to histogram bin count
 
@@ -165,7 +161,7 @@ To test PGAA on a small independent Perturb-seq dataset with a complementary per
 
 Across the five perturbations, the Wasserstein test achieved a mean AUROC of 0.786 (range 0.767-0.806, mean AUPRC 0.0191) for recovering known UPR genes. By comparison, Wilcoxon, t-test, and MAST achieved mean AUROCs of 0.529, 0.523, and 0.406 respectively in the same benchmark. The persistence test achieved a mean AUROC of 0.748 (range 0.658-0.833, mean AUPRC 0.0253). Descriptive 95% t intervals across the five pre-specified perturbations are reported in Supplementary Table S12; these intervals quantify between-perturbation variability and are not a substitute for a larger independent benchmark panel. For the BHLHE40 knockdown, the persistence test was the strongest method overall (AUROC 0.833, AUPRC 0.0594 vs. Wasserstein AUROC 0.788), consistent with a heterogeneous responder-associated expression pattern. Because only 13 of the 2,000 HVGs were UPR positives, the random AUPRC baseline was 0.0065; observed AUPRC values correspond to 2.9x and 3.9x enrichment over random expectation for the Wasserstein and persistence tests, respectively. These perturbations were selected a priori based on UPR annotation in the original study and a minimum cell-count threshold ($\ge 400$ cells), not based on PGAA performance (Supplementary Table S5).
 
-**[Figure 7]**
+**[Figure 4]**
 
 ### 3.7 Simulation ablation maps each statistic to its regime
 
@@ -184,7 +180,7 @@ From the simulation and real-data results, a practical decision rule emerges:
 
 Table: Practical decision rule for statistic selection.
 
-**[Figure 8]**
+**[Figure 5]**
 
 
 ## 4. Discussion
@@ -232,9 +228,12 @@ None declared.
 
 ## Supplementary Information
 
-- **Figure S1**: Persistence test calibration QQ plot ($n_{\text{bins}} = 20$, n_perms = 500) and p-value histogram.
-- **Figure S2**: Adamson 2016 BHLHE40 perturbation details: gene-level S1 vs S2 scores with UPR markers highlighted, and expression distributions.
-- **Figure S3**: PGAA distribution-aware Perturb-seq testing workflow.
+- **Figure S1**: Observational disease-relevant marker-recovery validation.
+- **Figure S2**: ELANE heterogeneous expression pattern in Norman 2019 CEBPE CRISPRa.
+- **Figure S3**: CLL 20k exploratory complementarity analysis.
+- **Figure S4**: Persistence test calibration QQ plot ($n_{\text{bins}} = 20$, n_perms = 500) and p-value histogram.
+- **Figure S5**: Adamson 2016 BHLHE40 perturbation details: gene-level S1 vs S2 scores with UPR markers highlighted, and expression distributions.
+- **Figure S6**: PGAA distribution-aware Perturb-seq testing workflow.
 - **Table S1**: Persistence test hyperparameter sensitivity (Section 3.5).
 - **Table S2**: Multi-dataset marker-recovery summary.
 - **Table S3**: Adamson 2016 UPR gold-standard genes.

@@ -35,7 +35,10 @@ CM_FILES = [
     "SUPPLEMENTARY_CM.pdf",
     "build_cm_pdf.py",
     "scripts_generate_cm_entry_figure.py",
+    "scripts_generate_cm_norman_figure.py",
     "verify_cm_transfer_ready.py",
+    "build_cm_supplementary_zip.py",
+    "build_cm_journal_upload_packet.py",
 ]
 
 ROOT_DIRS = ["pgaa", "pgaa_r", "figure_source_data", "figures_png", "tests"]
@@ -148,6 +151,7 @@ def validate(zpath: Path) -> tuple[int, int]:
         f"{STAGE_NAME}/RELEASE_ARCHIVE_CHECKLIST.md",
         f"{STAGE_NAME}/communications_medicine/MANUSCRIPT_CM.pdf",
         f"{STAGE_NAME}/communications_medicine/SUPPLEMENTARY_CM.pdf",
+        f"{STAGE_NAME}/communications_medicine/scripts_generate_cm_norman_figure.py",
         f"{STAGE_NAME}/communications_medicine/verify_cm_transfer_ready.py",
         f"{STAGE_NAME}/figures_png/figure_pgaa_workflow.png",
     ]

@@ -95,7 +95,7 @@ ax.set_xticks(range(len(targets_order)))
 ax.set_xticklabels(targets_order, rotation=30, ha='right', fontsize=9)
 ax.set_yticks(range(len(genes_order)))
 ax.set_yticklabels(genes_order, fontsize=9)
-ax.set_title("(B) CEBPE 'target' genes: p across 6 perturbations")
+ax.set_title("(B) CEBPE 'target' genes: p across 6 perturbations", pad=10)
 # Annotate sig ones
 for i in range(len(genes_order)):
     for j in range(len(targets_order)):
@@ -105,9 +105,17 @@ for i in range(len(genes_order)):
                 fontsize=7, color='black')
 cbar = plt.colorbar(im, ax=ax, fraction=0.04, pad=0.04)
 cbar.set_label("p-value", fontsize=8)
-# Mark CEBPE column
+# Mark CEBPE column without colliding with the panel title.
 ax.axvline(0.5, color='red', linewidth=2, alpha=0.3)
-ax.text(0, -0.7, "← real target", color='red', fontsize=8, ha='center')
+ax.text(
+    0.06, -0.28, "real target",
+    transform=ax.transAxes,
+    color='red',
+    fontsize=8,
+    ha='left',
+    va='top',
+    clip_on=False,
+)
 
 # Panel C: how many CEBPE 'target' genes are sig (p<0.05) in each perturbation
 ax = axes[2]

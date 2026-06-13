@@ -8,22 +8,52 @@ header-includes:
 ## Supplementary Figures
 
 \begin{center}
+\includegraphics[width=0.95\textwidth]{figures_png/figure_1.png}
+
+\textbf{Supplementary Figure S1.} Observational disease-relevant marker-recovery validation across CLL, sepsis, RA, PBMC, and IBD datasets. These analyses assess marker recovery rather than causal perturbation effects.
+\end{center}
+
+\clearpage
+
+\begin{center}
+\includegraphics[width=0.95\textwidth]{figures_png/figure_elane_histogram.png}
+
+\textbf{Supplementary Figure S2.} ELANE heterogeneous expression pattern in Norman 2019 CEBPE CRISPRa.
+\end{center}
+
+\clearpage
+
+\begin{center}
+\includegraphics[width=0.95\textwidth]{figures_png/figure_4.png}
+
+\textbf{Supplementary Figure S3.} CLL 20k exploratory complementarity analysis comparing Wasserstein and persistence rankings. This observational pseudo-perturbation analysis is used for marker-program ranking only.
+\end{center}
+
+\clearpage
+
+\begin{center}
 \includegraphics[width=0.85\textwidth]{figures_png/figure_s2_calibration_qq.png}
 
-\textbf{Supplementary Figure S1.} Persistence-test calibration QQ plot and p-value histogram for the pre-specified Norman 2019 CEBPE $n_{\text{bins}} = 20$ analysis.
+\textbf{Supplementary Figure S4.} Persistence-test calibration QQ plot and p-value histogram for the pre-specified Norman 2019 CEBPE $n_{\text{bins}} = 20$ analysis.
 \end{center}
+
+\clearpage
 
 \begin{center}
 \includegraphics[width=0.95\textwidth]{figures_png/figure_s2_bhlhe40.png}
 
-\textbf{Supplementary Figure S2.} Adamson 2016 BHLHE40 perturbation details: gene-level S1 versus S2 scores with UPR markers highlighted, and expression distributions for representative UPR genes.
+\textbf{Supplementary Figure S5.} Adamson 2016 BHLHE40 perturbation details: gene-level S1 versus S2 scores with UPR markers highlighted, and expression distributions for representative UPR genes.
 \end{center}
+
+\clearpage
 
 \begin{center}
 \includegraphics[width=0.95\textwidth]{figures_png/figure_pgaa_workflow.png}
 
-\textbf{Supplementary Figure S3.} PGAA distribution-aware Perturb-seq testing workflow. The schematic summarizes the input data, preprocessing, S1 Wasserstein statistic, S2 persistence statistic, permutation calibration, and outputs.
+\textbf{Supplementary Figure S6.} PGAA distribution-aware Perturb-seq testing workflow. The schematic summarizes the input data, preprocessing, S1 Wasserstein statistic, S2 persistence statistic, permutation calibration, and outputs.
 \end{center}
+
+\clearpage
 
 ## Supplementary Table S1. Persistence hyperparameter sensitivity
 

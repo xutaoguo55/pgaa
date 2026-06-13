@@ -31,24 +31,22 @@ if r'\usepackage{graphicx}' not in tex:
 # Step 4: Insert figures (use lambda to avoid \c escape in regex)
 fig_map = {
     '1': ('figures_png/figure_cm_entry.png', 'PGAA as a clinically oriented single-cell perturbation mapping framework for heterogeneous disease-relevant transcriptional responses.'),
-    '2': ('figures_png/figure_1.png', 'Observational disease-relevant marker-recovery validation.'),
-    '3': ('figures_png/figure_2.png', 'Norman 2019 CEBPE CRISPRa.'),
-    '5': ('figures_png/figure_3.png', 'Calibration across six perturbations.'),
-    '6': ('figures_png/figure_4.png', 'CLL 20k: Wasserstein and persistence.'),
-    '7': ('figures_png/figure_adamson_benchmark.png', 'Independent validation on Adamson 2016 UPR CRISPRi benchmark. Exact per-perturbation values for panel D are provided in Supplementary Table S5.'),
-    '8': ('figures_png/figure_5.png', 'Simulation ablation.'),
+    '2': ('figures_png/figure_norman_main_cm.png', 'Norman 2019 CEBPE CRISPRa persistence ranking.'),
+    '3': ('figures_png/figure_3.png', 'Calibration across six perturbations.'),
+    '4': ('figures_png/figure_adamson_benchmark.png', 'Independent validation on Adamson 2016 UPR CRISPRi benchmark. Exact per-perturbation values for panel D are provided in Supplementary Table S5.'),
+    '5': ('figures_png/figure_5.png', 'Simulation ablation.'),
 }
 for num, (path, cap) in fig_map.items():
     placement = 'htbp'
     width = '0.85\\textwidth'
     prefix = ''
     suffix = ''
-    if num == '7':
+    if num == '4':
         placement = 'p'
         width = '1.0\\textwidth'
         prefix = '\\clearpage\n'
         suffix = '\n\\clearpage'
-    elif num in {'1', '8'}:
+    elif num in {'1', '2', '3', '5'}:
         width = '1.0\\textwidth'
     fig_code = prefix + '\\begin{figure}[' + placement + ']\n\\centering\n\\includegraphics[width=' + width + ']{' + path + '}\n\\caption{' + cap + '}\n\\end{figure}' + suffix
     pattern = r'\\textbf\{\{\[\}Figure ' + num + r'[^\}]*\{\]\}\}'
@@ -60,14 +58,7 @@ tex = tex.replace(r'\subsection{4. Discussion}', r'\clearpage' + '\n' + r'\subse
 # Add clearpage before availability sections.
 tex = re.sub(r'\\subsection\{Data availability\}', r'\\clearpage\n\\subsection{Data availability}', tex)
 
-# Step 5: Insert ELANE histogram after the Norman CEBPE figure
-elane_code = r'\begin{figure}[H]\centering\includegraphics[width=0.95\textwidth]{figures_png/figure_elane_histogram.png}\caption{ELANE heterogeneous expression pattern in Norman 2019 CEBPE CRISPRa.}\end{figure}'
-pos = tex.find('figure_2.png')
-if pos > 0:
-    end = tex.find(r'\end{figure}', pos)
-    tex = tex[:end + len(r'\end{figure}')] + '\n' + elane_code + '\n' + tex[end + len(r'\end{figure}'):]
-
-# Step 6: Remove placeholder text. Supplementary figures and tables are built
+# Step 5: Remove placeholder text. Supplementary figures and tables are built
 # separately in SUPPLEMENTARY.pdf rather than inserted into the main manuscript.
 tex = tex.replace(r'\textbf{{[}Supplementary Table S1{]}}', '')
 
@@ -80,8 +71,8 @@ figs_n = tex.count('includegraphics')
 tabs_n = tex.count('begin{table}')
 print("Figures: {} Tables: {}".format(figs_n, tabs_n))
 
-if figs_n < 7:
-    print("WARNING: less than 7 main figures!")
+if figs_n != 5:
+    print("WARNING: expected exactly 5 main figures!")
     sys.exit(1)
 
 # Step 9: Compile with xelatex (twice for TOC)
