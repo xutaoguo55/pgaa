@@ -232,7 +232,7 @@ This table separates methods that were directly benchmarked in this manuscript f
 | t-test | Yes | Adamson 2016 UPR CRISPRi: mean AUROC 0.523 across five pre-specified UPR perturbations | Simple mean-shift baseline |
 | MAST [Finak *et al.*, 2015] | Yes | Adamson 2016 UPR CRISPRi: mean AUROC 0.406 across five pre-specified UPR perturbations | Differential-expression comparator in this focused benchmark |
 | Robust SCEPTRE [Barry *et al.*, 2024] | No | Discussed as a future comparison target | Same broad problem class; a direct robust-SCEPTRE benchmark remains necessary |
-| pertpy [Heumos *et al.*, 2025] | No | Discussed as an integration ecosystem | Workflow framework rather than a single statistic comparator |
+| pertpy [Heumos *et al.*, 2026] | No | Discussed as an integration ecosystem | Workflow framework rather than a single statistic comparator |
 | Mixscape [Papalexi *et al.*, 2021] | No | Discussed as a complementary responder-assignment method | Addresses responder/non-responder assignment, complementary to gene-level distribution tests |
 | scMAGeCK [Yang *et al.*, 2020] | No | Discussed as a complementary genotype-phenotype and screen-level method | Different analysis level; future integration or comparison may be useful |
 | DESeq2 [Love *et al.*, 2014] and SCDE [Kharchenko *et al.*, 2014] | No | Background references only | Not prioritized for direct benchmarking because this manuscript focuses on non-mean distributional response |
