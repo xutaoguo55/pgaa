@@ -29,6 +29,15 @@ tests, build scripts, and reproducibility checks.
 - `COMMUNICATIONS_MEDICINE_TRANSFER/verify_cm_transfer_ready.py`: transfer
   package gate for manuscript, supplementary, code archive, portal inputs, and
   cover letter.
+- `COMMUNICATIONS_MEDICINE_TRANSFER/build_cm_journal_upload_packet.py`: creates
+  the clean journal-upload directory and zip. This packet excludes internal
+  audits and portal-helper files.
+- `COMMUNICATIONS_MEDICINE_TRANSFER/PGAA_COMMUNICATIONS_MEDICINE_JOURNAL_UPLOAD.zip`:
+  clean Communications Medicine upload packet containing only the manuscript
+  PDF, supplementary PDF, supplementary software archive, and cover letter.
+- `COMMUNICATIONS_MEDICINE_TRANSFER/PGAA_COMMUNICATIONS_MEDICINE_TRANSFER_PACKET.zip`:
+  author-facing transfer-preparation packet that also includes portal text and
+  internal readiness audits.
 - `scripts/verify_bioinformatics_upload_ready.py`: earlier Bioinformatics
   upload gate retained for provenance.
 - `scripts/finalize_archive_metadata.py`: synchronizes the final repository URL
@@ -120,6 +129,7 @@ python3 COMMUNICATIONS_MEDICINE_TRANSFER/verify_cm_transfer_ready.py
 python3 build_pdf.py
 python3 scripts/build_submission_zip.py
 python3 COMMUNICATIONS_MEDICINE_TRANSFER/build_cm_supplementary_zip.py
+python3 COMMUNICATIONS_MEDICINE_TRANSFER/build_cm_journal_upload_packet.py
 ```
 
 `scripts/compare_combinations.py` requires the local Norman 2019 h5ad file used
