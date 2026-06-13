@@ -274,6 +274,7 @@ def check_upload_manifest_documented() -> list[str]:
     manifest = ROOT / "UPLOAD_FILE_MANIFEST.tsv"
     verifier = ROOT / "scripts" / "verify_upload_file_manifest.py"
     builder = ROOT / "COMMUNICATIONS_MEDICINE_TRANSFER" / "build_cm_supplementary_zip.py"
+    journal_builder = ROOT / "COMMUNICATIONS_MEDICINE_TRANSFER" / "build_cm_journal_upload_packet.py"
     readme_text = (ROOT / "README.md").read_text(errors="replace")
     checklist_text = (ROOT / "RELEASE_ARCHIVE_CHECKLIST.md").read_text(errors="replace")
     if not manifest.exists() or manifest.stat().st_size == 0:
@@ -282,6 +283,8 @@ def check_upload_manifest_documented() -> list[str]:
         errors.append("Missing upload-file manifest verifier: scripts/verify_upload_file_manifest.py")
     if not builder.exists() or builder.stat().st_size == 0:
         errors.append("Missing Communications Medicine supplementary zip builder")
+    if not journal_builder.exists() or journal_builder.stat().st_size == 0:
+        errors.append("Missing Communications Medicine journal upload builder")
     for text, rel in [(readme_text, "README.md"), (checklist_text, "RELEASE_ARCHIVE_CHECKLIST.md")]:
         if "UPLOAD_FILE_MANIFEST.tsv" not in text:
             errors.append(f"{rel} does not mention UPLOAD_FILE_MANIFEST.tsv")
@@ -289,6 +292,8 @@ def check_upload_manifest_documented() -> list[str]:
             errors.append(f"{rel} does not document the upload-file manifest verifier")
         if "python3 COMMUNICATIONS_MEDICINE_TRANSFER/build_cm_supplementary_zip.py" not in text:
             errors.append(f"{rel} does not document the Communications Medicine supplementary zip builder")
+        if "python3 COMMUNICATIONS_MEDICINE_TRANSFER/build_cm_journal_upload_packet.py" not in text:
+            errors.append(f"{rel} does not document the Communications Medicine journal upload builder")
     return errors
 
 

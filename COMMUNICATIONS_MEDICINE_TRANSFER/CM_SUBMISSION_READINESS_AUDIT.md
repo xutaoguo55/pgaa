@@ -33,6 +33,8 @@ Main changes:
 - Figure 1 is now a Communications Medicine entry schematic: clinical problem -> PGAA distribution-aware statistics -> calibrated translational output.
 - Cover letter and portal inputs state an OPT OUT preference for Transparent Peer Review report publication.
 - `UPLOAD_PACKET_COMMUNICATIONS_MEDICINE/PGAA_supplementary_code.zip` is now built by the CM-specific archive builder and contains the CM manuscript/supplementary files, not the older Bioinformatics manuscript PDFs.
+- `JOURNAL_UPLOAD_COMMUNICATIONS_MEDICINE/` and `PGAA_COMMUNICATIONS_MEDICINE_JOURNAL_UPLOAD.zip` are the clean journal-upload artifacts. They contain only `MANUSCRIPT.pdf`, `SUPPLEMENTARY.pdf`, `PGAA_supplementary_code.zip`, and `COVER_LETTER_COMMUNICATIONS_MEDICINE.md`.
+- `UPLOAD_PACKET_COMMUNICATIONS_MEDICINE/` and `PGAA_COMMUNICATIONS_MEDICINE_TRANSFER_PACKET.zip` are author-facing transfer-preparation artifacts and include portal text plus internal audit files; do not upload the audit files to the journal portal.
 
 ## Verification
 

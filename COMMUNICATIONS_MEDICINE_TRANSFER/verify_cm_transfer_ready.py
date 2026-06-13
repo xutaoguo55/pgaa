@@ -12,6 +12,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 PACKET = ROOT / "UPLOAD_PACKET_COMMUNICATIONS_MEDICINE"
 ZIP = ROOT / "PGAA_COMMUNICATIONS_MEDICINE_TRANSFER_PACKET.zip"
+CLEAN_PACKET = ROOT / "JOURNAL_UPLOAD_COMMUNICATIONS_MEDICINE"
+CLEAN_ZIP = ROOT / "PGAA_COMMUNICATIONS_MEDICINE_JOURNAL_UPLOAD.zip"
 
 REQUIRED_PACKET_FILES = {
     "MANUSCRIPT.pdf",
@@ -22,6 +24,23 @@ REQUIRED_PACKET_FILES = {
     "CM_REQUIREMENTS_AUDIT.md",
     "CM_SUBMISSION_READINESS_AUDIT.md",
 }
+
+REQUIRED_CLEAN_UPLOAD_FILES = {
+    "MANUSCRIPT.pdf",
+    "SUPPLEMENTARY.pdf",
+    "PGAA_supplementary_code.zip",
+    "COVER_LETTER_COMMUNICATIONS_MEDICINE.md",
+}
+
+FORBIDDEN_CLEAN_UPLOAD_TERMS = [
+    "AUDIT",
+    "READINESS",
+    "REQUIREMENTS",
+    "PORTAL_INPUTS",
+    "CHECKLIST",
+    "REVIEW",
+    "INTERNAL",
+]
 
 FORBIDDEN_MANUSCRIPT_PATTERNS = [
     "Bioinformatics",
@@ -66,6 +85,8 @@ def main() -> None:
 
     if not ZIP.exists():
         fail("missing PGAA_COMMUNICATIONS_MEDICINE_TRANSFER_PACKET.zip")
+    if not CLEAN_ZIP.exists():
+        fail("missing PGAA_COMMUNICATIONS_MEDICINE_JOURNAL_UPLOAD.zip")
 
     manuscript = PACKET / "MANUSCRIPT.pdf"
     supplement = PACKET / "SUPPLEMENTARY.pdf"
@@ -87,6 +108,36 @@ def main() -> None:
     missing_in_zip = sorted(name for name in REQUIRED_PACKET_FILES if name not in names)
     if missing_in_zip:
         fail(f"packet zip missing files: {', '.join(missing_in_zip)}")
+
+    clean_missing = sorted(name for name in REQUIRED_CLEAN_UPLOAD_FILES if not (CLEAN_PACKET / name).exists())
+    if clean_missing:
+        fail(f"clean journal upload packet missing files: {', '.join(clean_missing)}")
+    clean_extra = sorted(path.name for path in CLEAN_PACKET.iterdir() if path.is_file() and path.name not in REQUIRED_CLEAN_UPLOAD_FILES)
+    if clean_extra:
+        fail(f"clean journal upload packet has unexpected files: {', '.join(clean_extra)}")
+    clean_bad_names = [
+        path.name
+        for path in CLEAN_PACKET.iterdir()
+        if path.is_file() and any(term in path.name.upper() for term in FORBIDDEN_CLEAN_UPLOAD_TERMS)
+    ]
+    if clean_bad_names:
+        fail(f"clean journal upload packet contains internal filenames: {', '.join(clean_bad_names)}")
+    with zipfile.ZipFile(CLEAN_ZIP) as zf:
+        clean_zip_names = {Path(name).name for name in zf.namelist() if not name.endswith("/")}
+        clean_zip_entries = [name for name in zf.namelist() if not name.endswith("/")]
+    missing_clean_zip = sorted(REQUIRED_CLEAN_UPLOAD_FILES - clean_zip_names)
+    if missing_clean_zip:
+        fail(f"clean journal upload zip missing files: {', '.join(missing_clean_zip)}")
+    extra_clean_zip = sorted(clean_zip_names - REQUIRED_CLEAN_UPLOAD_FILES)
+    if extra_clean_zip:
+        fail(f"clean journal upload zip has unexpected files: {', '.join(extra_clean_zip)}")
+    bad_clean_zip = [
+        name
+        for name in clean_zip_entries
+        if any(term in name.upper() for term in FORBIDDEN_CLEAN_UPLOAD_TERMS)
+    ]
+    if bad_clean_zip:
+        fail(f"clean journal upload zip contains internal entries: {', '.join(bad_clean_zip)}")
 
     code_zip = PACKET / "PGAA_supplementary_code.zip"
     with zipfile.ZipFile(code_zip) as zf:
@@ -130,6 +181,7 @@ def main() -> None:
 
     print("CM TRANSFER CHECK PASSED")
     print(f"Packet files: {len(REQUIRED_PACKET_FILES)}")
+    print(f"Clean journal-upload files: {len(REQUIRED_CLEAN_UPLOAD_FILES)}")
     print(f"Manuscript pages: {pdf_pages(manuscript)}")
     print(f"Supplement pages: {pdf_pages(supplement)}")
     print("Remaining expected blocker: public repository/archive DOI placeholder")

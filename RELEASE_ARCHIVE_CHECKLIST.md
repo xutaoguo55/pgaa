@@ -37,6 +37,7 @@ python3 build_pdf.py
 pandoc SUPPLEMENTARY.md -o SUPPLEMENTARY.tex --from markdown --standalone && Rscript -e "tinytex::xelatex('SUPPLEMENTARY.tex')"
 python3 scripts/build_submission_zip.py
 python3 COMMUNICATIONS_MEDICINE_TRANSFER/build_cm_supplementary_zip.py
+python3 COMMUNICATIONS_MEDICINE_TRANSFER/build_cm_journal_upload_packet.py
 ```
 
 ## Version Tag
