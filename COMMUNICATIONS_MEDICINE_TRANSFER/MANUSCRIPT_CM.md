@@ -26,16 +26,97 @@ The standard analysis of a perturbation screen compares mean expression of each 
 
 Many disease-relevant responses, however, are not uniform. CRISPRa [Gilbert *et al.*, 2014] can activate a target in only a fraction of cells. A weak perturbation may shift variance, create responder and non-responder subpopulations, or change the shape of an expression distribution while leaving the mean only modestly changed. Similar patterns are common in patient-derived single-cell data, where disease-associated programs often appear in subsets of malignant, immune, stromal, or inflammatory cells rather than across an entire population. A method that only asks whether the average expression changed can under-rank such signals and can make disease-state prioritization less interpretable.
 
-Few existing Perturb-seq methods make distribution-shape changes a primary output, although heterogeneity-aware approaches are emerging [Heumos *et al.*, 2026]. We present **PGAA**, a Perturb-seq-oriented framework and software implementation for disease-relevant single-cell perturbation analysis. PGAA uses two complementary statistics sharing a common calibration infrastructure: a Wasserstein statistic that captures one-dimensional distributional shifts, and a persistent-homology statistic that ranks histogram-shape changes consistent with responder-associated heterogeneity. Additional modules for conditional MI and Fisher NB testing are provided as software extensions. All statistics are accompanied by a calibration diagnostic (Storey pi0-hat) that lets users assess reliability on their own data before interpreting results.
+Few existing Perturb-seq methods make distribution-shape changes a primary output, although heterogeneity-aware approaches are emerging [Heumos *et al.*, 2025]. We present **PGAA**, a Perturb-seq-oriented framework and software implementation for disease-relevant single-cell perturbation analysis. PGAA uses two complementary statistics sharing a common calibration infrastructure: a Wasserstein statistic that captures one-dimensional distributional shifts, and a persistent-homology statistic that ranks histogram-shape changes consistent with responder-associated heterogeneity. Additional modules for conditional MI and Fisher NB testing are provided as software extensions. All statistics are accompanied by a calibration diagnostic (Storey pi0-hat) that lets users assess reliability on their own data before interpreting results.
 
 We evaluate PGAA across disease-relevant observational scRNA-seq datasets and experimental Perturb-seq benchmarks. The observational datasets in chronic lymphocytic leukemia (CLL), sepsis, rheumatoid arthritis, inflammatory bowel disease, and PBMCs test whether distributional ranking recovers known marker biology in medically relevant single-cell contexts; they are not interpreted as causal perturbation validation. Norman 2019 CEBPE CRISPRa and Adamson 2016 UPR CRISPRi provide real perturbation benchmarks, and calibration and simulation analyses define where the method should be used cautiously.
 
 **[Figure 1]**
 
 
-## 2. Methods
+## 2. Results
 
-### 2.1 Setup and residualization
+### 2.1 Distributional ranking recovers disease-relevant marker programs
+
+As a general-purpose distributional statistic, Wasserstein enriches known pathway markers 2.1-5.8x over background across five observational single-cell datasets with clinical or disease relevance (CLL 4.0x, Sepsis 2.1x, RA 2.5x, PBMC 2.9x, IBD 5.8x). On CLL, the B-cell receptor signaling gene set (CD79A, CD79B, MS4A1, CD24, BANK1, LYN, BLNK, SYK, BTK, PLCG2, PIK3CD, CD19, CD22) appears prominently in the top 100, with AUROC 0.87 for known-marker recovery (Supplementary Table S2). This result is clinically relevant because B-cell receptor signaling is a central therapeutic axis in CLL, but the analysis should be read as marker prioritization from public observational data rather than as a new clinical biomarker claim.
+
+These five datasets are observational--the "perturbation" is defined by binning cells on endogenous marker or pathway-associated expression, not by an experimental intervention--so the results demonstrate disease-relevant marker recovery rather than causal discovery. The enrichment is consistent with the Wasserstein test being a reasonable default statistic when the perturbation type is unknown or when a user is screening public patient-derived scRNA-seq data for distributional marker shifts. Because this is the most directly disease-facing analysis, we keep it in the main text while retaining the causal limitation explicitly.
+
+**[Figure 2]**
+
+### 2.2 Independent Perturb-seq validation in unfolded-protein-response biology
+
+To test PGAA on a small independent Perturb-seq dataset with a complementary perturbation modality and a disease-relevant stress-response pathway, we applied both tests to the Adamson et al. (2016) UPR CRISPRi screen (GSE90546). After QC, 5,680 K562 cells were retained across five well-characterized sgRNA perturbations targeting UPR genes (SPI1, ZNF326, BHLHE40, CREB1, DDIT3; 468-686 cells each) and a non-targeting control (1,759 cells). The gold standard was a curated UPR marker set covering IRE1, PERK, ATF6, ERAD, and chaperone branches, of which 13 markers were present in the 2,000-gene HVG subset.
+
+Across the five perturbations, the Wasserstein test achieved a mean AUROC of 0.786 (range 0.767-0.806, mean AUPRC 0.0191) for recovering known UPR genes. By comparison, Wilcoxon, t-test, and MAST achieved mean AUROCs of 0.529, 0.523, and 0.406 respectively in the same benchmark. The persistence test achieved a mean AUROC of 0.748 (range 0.658-0.833, mean AUPRC 0.0253). Descriptive 95% t intervals across the five pre-specified perturbations are reported in Supplementary Table S12; these intervals quantify between-perturbation variability and are not a substitute for a larger independent benchmark panel. For the BHLHE40 knockdown, the persistence test was the strongest method overall (AUROC 0.833, AUPRC 0.0594 vs. Wasserstein AUROC 0.788), consistent with a heterogeneous responder-associated expression pattern. Because only 13 of the 2,000 HVGs were UPR positives, the random AUPRC baseline was 0.0065; observed AUPRC values correspond to 2.9x and 3.9x enrichment over random expectation for the Wasserstein and persistence tests, respectively. These perturbations were selected a priori based on UPR annotation in the original study and a minimum cell-count threshold ($\ge 400$ cells), not based on PGAA performance (Supplementary Table S5). The Adamson benchmark supports proof-of-principle prioritization in a small curated UPR setting, but it does not establish general performance across perturbation modalities, cell types, or disease models.
+
+**[Figure 3]**
+
+### 2.3 Persistent homology provides a narrow CEBPE CRISPRa ranking example
+
+Norman *et al.* (2019) used CRISPRa to activate CEBPE in K562 cells [Lozzio & Lozzio, 1975]. CEBPE is a myeloid transcription factor whose known targets include nine neutrophil granule proteins: ELANE, AZU1, MPO, LYZ, CTSG, GFI1, PRTN3, DEFA1, and RNASE2 [Friedman, 2007; Park *et al.*, 1999]. This benchmark is not a clinical disease cohort, but it is relevant to hematologic differentiation biology and tests the response regime that motivated PGAA: a regulator is activated, but the downstream expression response may be heterogeneous across cells.
+
+SCEPTRE and the Wasserstein statistic rank this target poorly. SCEPTRE places ELANE at rank 1761/2012 ($p = 0.92$). The Wasserstein statistic places it at rank 1452/2012 ($p = 0.223$). Neither method ranks ELANE among its strongest CEBPE candidates in this analysis.
+
+The persistence statistic ($n_{\text{bins}} = 20$, 500 permutations) ranks ELANE at position 57 ($p = 0.04$), a 25-fold rank improvement over the Wasserstein statistic. With 500 permutations, this p-value is interpreted as ranking evidence rather than genome-wide significance, and no FDR-controlled CEBPE gene discovery is claimed. The $p$-value distribution is acceptable in this pre-specified setting (pi0-hat = 1.32 with 200 permutations in the sensitivity run; approximately 1.0 with 500 permutations). The top genes by raw S2 value (SLC45A1, DLX2, ATP5E) are not known CEBPE targets; ELANE's stronger rank by permutation $p$-value reflects its favorable null distribution relative to other genes. Across the full nine-gene CEBPE target set, the persistence statistic recovers two targets in the top 100 (ELANE and PRTN3), with AUROC 0.476 and AUPRC 0.0076 (Supplementary Table S4). Thus, the Norman result should be read as a focused ELANE/PRTN3 ranking signal, not broad recovery of the complete granulocytic target program. As a specificity check, we applied the persistence statistic to all six perturbations using the CEBPE target gene set as the gold standard (Supplementary Table S4). ELANE was ranked strongly for CEBPE and also for the severely over-sensitive BAK1 perturbation, where pi0-hat = 0.10. For the well-calibrated KLF1 perturbation, ELANE was not supported ($p = 0.70$, pi0-hat = 1.15). For CBL, SLC4A1, and DUSP9, ELANE p-values were 0.58, 0.16, and 0.90 respectively. This analysis supports perturbation specificity only when the calibration diagnostic is acceptable; over-sensitive perturbations should not be interpreted as formal discoveries.
+
+CRISPRa can produce heterogeneous target activation: the gRNA does not guarantee protein-level CEBPE expression in every cell, and the resulting responder/non-responder expression pattern is the regime the persistence statistic was designed to rank (Supplementary Figure S1). K562 is an erythroleukemia line, not a neutrophil progenitor; while it retains granulocytic differentiation capacity upon CEBPE activation, not all nine targets may be transcriptionally responsive in this system.
+
+**[Figure 4]**
+
+### 2.4 Perturbation-specific calibration defines guardrails for persistence-based ranking
+
+Running persistent homology on six different perturbations from the Norman 2019 screen reveals that calibration is far from consistent. The Storey pi0-hat ranges from 1.15 for KLF1, a well-calibrated erythroid transcription-factor perturbation, to 0.10 for BAK1, a severely over-sensitive perturbation. Intermediate cases include CBL (pi0-hat = 0.72), SLC4A1 (0.67), DUSP9 (0.68), and CEBPE in the n_bins = 50 calibration run (0.25). These values are shown in Figure 5 and are reported with the cross-perturbation ELANE checks in Supplementary Table S4.
+
+KLF1 drives a clean erythroid program. CEBPE CRISPRa and BAK1 do not. The calibration spread reflects this biology, and the practical takeaway is simple: include a negative control perturbation and check pi0-hat. Importantly, the CEBPE pi0-hat of 0.25 reported here comes from a calibration run with n_bins = 50 and n_perms = 200; the main analysis in Section 2.3 uses n_bins = 20 and n_perms = 500, which yields pi0-hat approximately 1.0-1.3. The discrepancy illustrates how strongly calibration depends on both bin count and permutation depth, reinforcing the need for the pilot sweep recommended in Section 2.6.
+
+**[Figure 5]**
+
+### 2.5 Distributional statistics separate B-cell and T-cell marker programs in CLL
+
+The CLL TCL1A case shows how the two distributional statistics can prioritize different disease-relevant marker programs. Among the top 100 genes ranked by each statistic, only six overlap. The Wasserstein test enriches B-cell receptor markers (CD79A rank 9, CD79B rank 48, MS4A1 rank 53), matching the malignant B-cell biology of CLL. The persistence test picks up T-cell receptor genes (TRBV7-6, TRAV12-1, CD3E, CD3D) that Wasserstein misses entirely, consistent with a distinct immune-context signal rather than the same B-cell receptor program. The exploratory combined z-score recovers 3 BCR and 11 TCR genes at nominal $p < 0.05$, versus 4+3 for Wasserstein alone and 0+7 for the persistence statistic alone; these nominal combined scores are used only to illustrate rank complementarity.
+
+The CLL analysis uses rank-based inverse-normal scores (Supplementary Methods S3) rather than full permutation calibration--a lighter-weight approach appropriate when only relative gene ordering matters rather than formal significance testing (Supplementary Figure S2).
+
+### 2.6 Sensitivity to histogram bin count
+
+The persistence test depends on the number of histogram bins, and the dependence is non-trivial. We tested $n_{\text{bins}} \in \{20, 30, 50, 75, 100, 150\}$ on Norman 2019 CEBPE ($n_{\text{perms}} = 200$ for speed; main results use $n_{\text{perms}} = 500$). The full sweep is reported in Supplementary Table S1. In brief, ELANE ranks well at $n_{\text{bins}} = 20$ (rank 32, $p = 0.025$, pi0-hat = 1.32 in the 200-permutation sweep), collapses at $n_{\text{bins}} = 30$ (rank 1807, $p = 0.672$), and larger bin counts produce many nominally significant genes with low pi0-hat values (0.23-0.25). This is a sharp failure mode rather than a gradual degradation. We recommend the default $n_{\text{bins}} = 20$ as a starting point, with a pilot sweep ($n_{\text{bins}} \in \{10, 20, 30, 50\}$) on a control or null perturbation to verify that the chosen value does not fall into a peak-merging failure mode. The sweep should not be tuned on the perturbation of interest.
+
+**[Supplementary Table S1]**
+
+### 2.7 Simulation ablation maps each statistic to its regime
+
+To systematically assess when each statistic performs best, we simulated three perturbation types at seven effect sizes ($\theta \in \{0.1, \ldots, 1.0\}$) with three replicates each (63 conditions total). These simulations are intended as operating-regime diagnostics rather than a full generative model of scRNA-seq count data.
+
+Type A (pure mean shift) is the Wasserstein test's home territory (TPR = 0.97 at $\theta = 1.0$). Type C (mean + bimodality) favors the Wasserstein test as well. The most informative condition is Type B, where only 40% of perturbed cells respond. Here the Wasserstein test and the combined z-test are competitive (TPR = 0.52–0.85 depending on $\theta$), while persistent homology reaches only TPR = 0.12. This simulation uses *partial* bimodality—the two modes overlap in the 40%-response regime. On real CRISPRa data where the split is more complete (nearer to 50% "on" vs. 50% "off"), persistent homology's performance is stronger, as demonstrated by the Norman 2019 results.
+
+From the simulation and real-data results, a practical decision rule emerges:
+
+| Scenario | Recommended statistic |
+|---|---|
+| Standard KO/OE | Wasserstein |
+| CRISPRa / suspected discrete responder states | Run Wasserstein first; use persistence only as a secondary diagnostic after negative-control calibration and bin-sensitivity checks |
+| Mixed signal | Combined z |
+| Unknown | Run the Wasserstein test first. If no signal, try the persistence test with pilot sweep. |
+
+Table: Practical decision rule for statistic selection.
+
+The full simulation plot is provided in Supplementary Figure S3.
+
+
+## 3. Discussion
+
+We set out to test whether distribution-aware statistics could improve single-cell perturbation analysis in settings where disease-relevant or experimentally induced responses are heterogeneous. The answer, based on disease-relevant observational single-cell datasets and two independent Perturb-seq benchmarks with complementary perturbation modalities, is cautiously positive. Across five observational datasets, Wasserstein ranking recovered known marker programs, including B-cell receptor signaling in CLL. On Norman 2019 CEBPE CRISPRa, the persistence statistic ranked the known neutrophil granule target ELANE at position 57, while SCEPTRE and the Wasserstein statistic placed it at 1761 and 1452; across the full nine-gene target set, however, recovery remained limited. On the small Adamson 2016 UPR CRISPRi benchmark, the Wasserstein statistic achieved a mean AUROC of 0.786 across five perturbations, outperforming Wilcoxon (0.529), t-test (0.523), and MAST (0.406) in this benchmark. In the BHLHE40 knockdown case, the persistence statistic was the strongest method overall (AUROC 0.833), consistent with a heterogeneous responder-associated expression pattern.
+
+These results suggest a practical two-pronged strategy for translational single-cell perturbation analysis. The Wasserstein statistic is a useful default distributional score when the perturbation type is unknown, including when patient-derived scRNA-seq data are used to prioritize disease-associated marker programs for follow-up. The persistence statistic fills a narrower niche--CRISPRa screens, weak-effect perturbations, and any setting where the response is expected to be heterogeneous--but requires the user to verify calibration via the Storey pi0-hat diagnostic and to run a pilot n_bins sweep before committing to results. The persistence statistic's strong dependence on histogram bin count (values at n_bins = 20 and n_bins = 50 correlate at only r = 0.12) means it should be treated as a ranking tool rather than a formal discovery procedure unless substantially more permutations are used.
+
+Several limitations should be noted. First, the persistence test is calibrated differently for different perturbations; the six-perturbation calibration study showed pi0-hat ranging from 0.10 (BAK1, over-sensitive) to 1.15 (KLF1, well-calibrated), so a negative control perturbation is essential. Second, the MI and Fisher NB modules are provided as software extensions but have not been benchmarked. Third, our simulation uses Gaussian noise for computational efficiency; we verified that the persistence test does not spuriously detect bimodality from zero-inflation (mean S2 = 0.031 under NB H0 with 30% dropout; Supplementary Methods S4), consistent with evidence that droplet-based scRNA-seq data are well-modeled by the negative binomial without explicit zero-inflation [Svensson, 2020]. Fourth, all benchmarks use K-means (k = 5) as a cell-type proxy; finer annotation may improve specificity. Fifth, broader genome-scale validation against SCEPTRE-family and perturbation-specific methods remains necessary. Finally, the observational disease datasets do not establish new causal disease mechanisms or clinical biomarkers; instead, they show how PGAA can prioritize disease-relevant heterogeneous transcriptional responses for experimental or clinical follow-up.
+
+PGAA fits into the growing ecosystem of Perturb-seq analysis tools and addresses a complementary translational use case. The pertpy framework [Heumos *et al.*, 2025] provides an end-to-end pipeline into which PGAA's statistics could be integrated as modular test components. Mixscape [Papalexi *et al.*, 2021] handles the complementary problem of identifying cells with failed perturbations, while scMAGeCK [Yang *et al.*, 2020] operates at the CRISPR screen level. SCEPTRE [Barry *et al.*, 2021] and its robust extension [Barry *et al.*, 2024] set a high standard for calibrated permutation testing of mean shifts; PGAA extends this paradigm to distributional and topological shifts that may matter when only a subset of disease-relevant cells responds.
+
+The most immediate priority is genome-scale validation on Replogle 2020/2022 and additional disease-focused perturbation screens, where thousands of perturbations would allow a systematic assessment of calibration behavior and the identification of perturbation-level features that predict whether Wasserstein or persistence will prove more informative. For clinical and translational users, the main value of PGAA is not to replace mechanistic validation, but to provide a transparent ranking layer for heterogeneous responses that can be followed up in disease models, patient-derived systems, or therapeutic perturbation experiments.
+## 4. Methods
+
+### 4.1 Setup and residualization
 
 We work with log-normalized expression matrices ($\log(\text{CPM} + 1)$, CPM = counts per million, target sum 10,000). After standard QC and highly-variable gene selection (2,000 genes), each cell $i$ has a perturbation label $D_i \in \{0,1\}$ and covariates $Z_i$. Before applying any statistic, we residualize out cell-type and library-size effects via OLS:
 
@@ -45,7 +126,7 @@ where $Z$ contains an intercept, K-means cluster indicators ($k = 5$) [MacQueen,
 
 For a target gene $g^*$, we test each non-target gene $g$ for whether $P(Y_g \mid D = 1)$ differs from $P(Y_g \mid D = 0)$ in mean, shape, or dependency structure.
 
-### 2.2 Wasserstein distance
+### 4.2 Wasserstein distance
 
 The Wasserstein distance (Earth Mover's Distance) between two empirical CDFs:
 
@@ -59,7 +140,7 @@ We compute $p$-values via within-cluster permutation [Good, 2005; Efron & Tibshi
 
 A note on numerical consistency. The observed and permuted $W_1$ statistics are computed with the same 99-quantile approximation. This is essential because permutation $p$-values compare the observed statistic directly with its empirical null distribution. We verified calibration empirically: under the null, the observed false positive rate is 0.057 (30 simulations, 95% CI [0.021, 0.079]).
 
-### 2.3 Persistent homology
+### 4.3 Persistent homology
 
 The persistence statistic summarizes topological changes in the 1D expression histogram, such as the emergence or disappearance of peaks. For each gene $g$, we compute histograms of $\tilde{X}_{\cdot,g}$ for perturbed and control cells using shared bin edges ($n_{\text{bins}} = 20$ equally spaced bins over the pooled perturbed-control expression range used in the analysis), then apply the Elder Rule to extract persistence diagrams [Edelsbrunner & Harer, 2010; Bubenik, 2015; Zomorodian & Carlsson, 2005; Carlsson, 2009]:
 
@@ -73,21 +154,21 @@ $$S_2(g) = \sqrt{ \frac{1}{3} \sum_{k=1}^3 \bigl( p_k^{(1)} - p_k^{(0)} \bigr)^2
 
 When a CRISPRa perturbation activates a gene in only a fraction of cells, the expression histogram can change from a single dominant pattern to a heterogeneous responder-associated pattern. The dominant persistence value may then increase substantially, yielding large S2 values. A pure mean shift that preserves the histogram shape leaves S2 comparatively unchanged. The contrast between these two scenarios is what makes the persistence statistic complementary to the Wasserstein statistic, but S2 is interpreted here as a ranking and diagnostic statistic rather than as a standalone genome-wide discovery test.
 
-The choice of $n_{\text{bins}}$ matters. Our sensitivity analysis (Section 3.5) tests $n_{\text{bins}} \in \{20, 30, 50, 75, 100, 150\}$. The default $n_{\text{bins}} = 20$ is well-calibrated on benchmark data (pi0-hat approximately 1.0-1.3 on Norman 2019 CEBPE). Larger values detect more targets at the cost of higher false-positive rates. We use 500 within-cluster permutations for the null. With 500 permutations, the minimum attainable $p$-value is $1/501 \approx 0.0020$, which is above the Bonferroni threshold for 2,000 genes ($2.5 \times 10^{-5}$). The persistence-based $p$-values therefore support ranking-based evaluation (AUROC) rather than formal FDR-controlled discovery; for genome-wide significance, we recommend $n_{\text{perms}} \ge 40{,}000$.
+The choice of $n_{\text{bins}}$ matters. Our sensitivity analysis (Section 2.6) tests $n_{\text{bins}} \in \{20, 30, 50, 75, 100, 150\}$. The default $n_{\text{bins}} = 20$ is well-calibrated on benchmark data (pi0-hat approximately 1.0-1.3 on Norman 2019 CEBPE). Larger values detect more targets at the cost of higher false-positive rates. We use 500 within-cluster permutations for the null. With 500 permutations, the minimum attainable $p$-value is $1/501 \approx 0.0020$, which is above the Bonferroni threshold for 2,000 genes ($2.5 \times 10^{-5}$). The persistence-based $p$-values therefore support ranking-based evaluation (AUROC) rather than formal FDR-controlled discovery; for genome-wide significance, we recommend $n_{\text{perms}} \ge 40{,}000$.
 
-### 2.4 Additional modules
+### 4.4 Additional modules
 
 Two additional test statistics are included in the software package as extensions. The conditional MI test assesses whether perturbation alters gene–gene dependency structure via $k$-NN entropy estimators [Kraskov *et al.*, 2004]. The Fisher NB test measures perturbation-induced shifts using the Fisher information metric on the negative binomial family. These modules are not benchmarked or claimed as primary contributions; they are provided for users who wish to explore dependency or count-model effects. Algorithm details are given in the Supplementary Methods.
 
-### 2.5 Combined z-test
+### 4.5 Combined z-test
 
 Under independence and correct calibration, $z_{\text{comb}} = \frac{1}{\sqrt{k}} \sum_{i=1}^{k} \Phi^{-1}(1 - p_i)$ is asymptotically $\mathcal{N}(0,1)$ under $H_0$. We use $k = 2$ (Wasserstein + persistence) as an exploratory rank-combination score. Because both statistics are computed from the same expression distributions, the independence assumption is unlikely to hold exactly; formal combined-test inference would require an empirical covariance adjustment, Brown's method, or a permutation-calibrated combination. In this manuscript, the combined score is used only for exploratory ranking. For Norman 2019 CEBPE, the persistence statistic alone outperforms the combination.
 
-### 2.6 Calibration diagnostics
+### 4.6 Calibration diagnostics
 
 Every PGAA run reports Storey's pi0-hat [Storey, 2002; Benjamini & Hochberg, 1995]--the estimated fraction of true null genes from the upper tail of the $p$-value distribution ($\lambda = 0.5$, valid when $n_{\text{perms}} \ge 100$ since minimum attainable $p = 1/101 \ll \lambda$). Values near 1.0 indicate well-calibrated $p$-values. We also recommend running persistent homology on an unrelated target gene from the same screen (e.g., KLF1 from Norman 2019) as a negative perturbation control, and verifying that pi0-hat remains acceptable.
 
-### 2.7 Datasets
+### 4.7 Datasets
 
 We use seven publicly available datasets (five observational scRNA-seq datasets for marker-recovery validation and two real Perturb-seq datasets for method benchmarking):
 
@@ -101,101 +182,11 @@ We use seven publicly available datasets (five observational scRNA-seq datasets 
 
 Preprocessing for all datasets: QC filter (200–6000 genes, <20% MT, >500 UMI for CLL; pre-filtered by original authors for Norman 2019), normalize to 10K CPM, log1p, retain 2,000 HVGs with forced inclusion of target genes.
 
-### 2.8 Implementation
+### 4.8 Implementation
 
 PGAA is implemented in Python and R. The Python package (`pgaa/`) depends on NumPy, SciPy, Pandas, Scanpy [Wolf *et al.*, 2018], and scikit-learn; the R package (`pgaa_r/`) uses only base R plus the MASS library. Both implementations of both tests produce identical numerical output (error < $10^{-6}$). On a single CPU core, the Wasserstein test processes 2,000 genes with 2,000 permutations in about five minutes; persistent homology with 500 permutations takes under two minutes. Preprocessing follows standard scRNA-seq workflows [Luecken & Theis, 2019; Lun *et al.*, 2016].
 
 
-## 3. Results
-
-### 3.1 Distributional ranking recovers disease-relevant marker programs
-
-As a general-purpose distributional statistic, Wasserstein enriches known pathway markers 2.1-5.8x over background across five observational single-cell datasets with clinical or disease relevance (CLL 4.0x, Sepsis 2.1x, RA 2.5x, PBMC 2.9x, IBD 5.8x). On CLL, the B-cell receptor signaling gene set (CD79A, CD79B, MS4A1, CD24, BANK1, LYN, BLNK, SYK, BTK, PLCG2, PIK3CD, CD19, CD22) appears prominently in the top 100, with AUROC 0.87 for known-marker recovery (Supplementary Table S2). This result is clinically relevant because B-cell receptor signaling is a central therapeutic axis in CLL, but the analysis should be read as marker prioritization from public observational data rather than as a new clinical biomarker claim.
-
-These five datasets are observational--the "perturbation" is defined by binning cells on endogenous marker or pathway-associated expression, not by an experimental intervention--so the results demonstrate disease-relevant marker recovery rather than causal discovery. The enrichment is consistent with the Wasserstein test being a reasonable default statistic when the perturbation type is unknown or when a user is screening public patient-derived scRNA-seq data for distributional marker shifts (Supplementary Figure S1).
-
-### 3.2 Persistent homology ranks a heterogeneous myeloid response in CEBPE CRISPRa
-
-Norman *et al.* (2019) used CRISPRa to activate CEBPE in K562 cells [Lozzio & Lozzio, 1975]. CEBPE is a myeloid transcription factor whose known targets include nine neutrophil granule proteins: ELANE, AZU1, MPO, LYZ, CTSG, GFI1, PRTN3, DEFA1, and RNASE2 [Friedman, 2007; Park *et al.*, 1999]. This benchmark is not a clinical disease cohort, but it is relevant to hematologic differentiation biology and tests the response regime that motivated PGAA: a regulator is activated, but the downstream expression response may be heterogeneous across cells.
-
-SCEPTRE and the Wasserstein statistic rank this target poorly. SCEPTRE places ELANE at rank 1761/2012 ($p = 0.92$). The Wasserstein statistic places it at rank 1452/2012 ($p = 0.223$). Neither method ranks ELANE among its strongest CEBPE candidates in this analysis.
-
-The persistence statistic ($n_{\text{bins}} = 20$, 500 permutations) ranks ELANE at position 57 ($p = 0.04$), a 25-fold rank improvement over the Wasserstein statistic. With 500 permutations, this p-value is interpreted as ranking evidence rather than genome-wide significance, and no FDR-controlled CEBPE gene discovery is claimed. The $p$-value distribution is acceptable in this pre-specified setting (pi0-hat = 1.32 with 200 permutations in the sensitivity run; approximately 1.0 with 500 permutations). The top genes by raw S2 value (SLC45A1, DLX2, ATP5E) are not known CEBPE targets; ELANE's stronger rank by permutation $p$-value reflects its favorable null distribution relative to other genes. Across the full nine-gene CEBPE target set, the persistence statistic recovers two targets in the top 100 (ELANE and PRTN3), with AUROC 0.476 and AUPRC 0.0076 (Supplementary Table S4). Thus, the Norman result should be read as a focused ELANE/PRTN3 ranking signal, not broad recovery of the complete granulocytic target program. As a specificity check, we applied the persistence statistic to all six perturbations using the CEBPE target gene set as the gold standard (Supplementary Table S4). ELANE was ranked strongly for CEBPE and also for the severely over-sensitive BAK1 perturbation, where pi0-hat = 0.10. For the well-calibrated KLF1 perturbation, ELANE was not supported ($p = 0.70$, pi0-hat = 1.15). For CBL, SLC4A1, and DUSP9, ELANE p-values were 0.58, 0.16, and 0.90 respectively. This analysis supports perturbation specificity only when the calibration diagnostic is acceptable; over-sensitive perturbations should not be interpreted as formal discoveries.
-
-CRISPRa can produce heterogeneous target activation: the gRNA does not guarantee protein-level CEBPE expression in every cell, and the resulting responder/non-responder expression pattern is the regime the persistence statistic was designed to rank (Supplementary Figure S2). K562 is an erythroleukemia line, not a neutrophil progenitor; while it retains granulocytic differentiation capacity upon CEBPE activation, not all nine targets may be transcriptionally responsive in this system.
-
-**[Figure 2]**
-
-### 3.3 Calibration varies by perturbation
-
-Running persistent homology on six different perturbations from the Norman 2019 screen reveals that calibration is far from consistent. The Storey pi0-hat ranges from 1.15 (KLF1, well-calibrated) to 0.10 (BAK1, severely over-sensitive). The table below summarizes the results.
-
-| Perturbation | pi0-hat | n_sig | Calibration |
-|---|---|---|---|
-| KLF1 (erythroid TF) | 1.15 | 54 | well-calibrated |
-| CBL | 0.72 | 173 | acceptable |
-| SLC4A1 | 0.67 | 222 | mild over-sensitivity |
-| DUSP9 | 0.68 | 460 | over-sensitive |
-| CEBPE (CRISPRa) | 0.25 | 1063 | severely over-sensitive |
-| BAK1 | 0.10 | 1789 | over-sensitive |
-
-Table: Persistence test calibration across six Norman 2019 perturbations.
-
-KLF1 drives a clean erythroid program. CEBPE CRISPRa and BAK1 do not. The calibration spread reflects this biology, and the practical takeaway is simple: include a negative control perturbation and check pi0-hat. Importantly, the CEBPE pi0-hat of 0.25 reported here comes from a calibration run with n_bins = 50 and n_perms = 200; the main analysis in Section 3.2 uses n_bins = 20 and n_perms = 500, which yields pi0-hat approximately 1.0-1.3. The discrepancy illustrates how strongly calibration depends on both bin count and permutation depth, reinforcing the need for the pilot sweep recommended in Section 3.5.
-
-**[Figure 3]**
-
-### 3.4 Distributional statistics separate B-cell and T-cell marker programs in CLL
-
-The CLL TCL1A case shows how the two distributional statistics can prioritize different disease-relevant marker programs. Among the top 100 genes ranked by each statistic, only six overlap. The Wasserstein test enriches B-cell receptor markers (CD79A rank 9, CD79B rank 48, MS4A1 rank 53), matching the malignant B-cell biology of CLL. The persistence test picks up T-cell receptor genes (TRBV7-6, TRAV12-1, CD3E, CD3D) that Wasserstein misses entirely, consistent with a distinct immune-context signal rather than the same B-cell receptor program. The exploratory combined z-score recovers 3 BCR and 11 TCR genes at nominal $p < 0.05$, versus 4+3 for Wasserstein alone and 0+7 for the persistence statistic alone; these nominal combined scores are used only to illustrate rank complementarity.
-
-The CLL analysis uses rank-based inverse-normal scores (Supplementary Methods S3) rather than full permutation calibration--a lighter-weight approach appropriate when only relative gene ordering matters rather than formal significance testing (Supplementary Figure S3).
-
-### 3.5 Sensitivity to histogram bin count
-
-The persistence test depends on the number of histogram bins, and the dependence is non-trivial. We tested $n_{\text{bins}} \in \{20, 30, 50, 75, 100, 150\}$ on Norman 2019 CEBPE ($n_{\text{perms}} = 200$ for speed; main results use $n_{\text{perms}} = 500$). The full sweep is reported in Supplementary Table S1. In brief, ELANE ranks well at $n_{\text{bins}} = 20$ (rank 32, $p = 0.025$, pi0-hat = 1.32 in the 200-permutation sweep), collapses at $n_{\text{bins}} = 30$ (rank 1807, $p = 0.672$), and larger bin counts produce many nominally significant genes with low pi0-hat values (0.23-0.25). This is a sharp failure mode rather than a gradual degradation. We recommend the default $n_{\text{bins}} = 20$ as a starting point, with a pilot sweep ($n_{\text{bins}} \in \{10, 20, 30, 50\}$) on a control or null perturbation to verify that the chosen value does not fall into a peak-merging failure mode. The sweep should not be tuned on the perturbation of interest.
-
-**[Supplementary Table S1]**
-
-### 3.6 Independent Perturb-seq validation in unfolded-protein-response biology
-
-To test PGAA on a small independent Perturb-seq dataset with a complementary perturbation modality and a disease-relevant stress-response pathway, we applied both tests to the Adamson et al. (2016) UPR CRISPRi screen (GSE90546). After QC, 5,680 K562 cells were retained across five well-characterized sgRNA perturbations targeting UPR genes (SPI1, ZNF326, BHLHE40, CREB1, DDIT3; 468-686 cells each) and a non-targeting control (1,759 cells). The gold standard was a curated UPR marker set covering IRE1, PERK, ATF6, ERAD, and chaperone branches, of which 13 markers were present in the 2,000-gene HVG subset.
-
-Across the five perturbations, the Wasserstein test achieved a mean AUROC of 0.786 (range 0.767-0.806, mean AUPRC 0.0191) for recovering known UPR genes. By comparison, Wilcoxon, t-test, and MAST achieved mean AUROCs of 0.529, 0.523, and 0.406 respectively in the same benchmark. The persistence test achieved a mean AUROC of 0.748 (range 0.658-0.833, mean AUPRC 0.0253). Descriptive 95% t intervals across the five pre-specified perturbations are reported in Supplementary Table S12; these intervals quantify between-perturbation variability and are not a substitute for a larger independent benchmark panel. For the BHLHE40 knockdown, the persistence test was the strongest method overall (AUROC 0.833, AUPRC 0.0594 vs. Wasserstein AUROC 0.788), consistent with a heterogeneous responder-associated expression pattern. Because only 13 of the 2,000 HVGs were UPR positives, the random AUPRC baseline was 0.0065; observed AUPRC values correspond to 2.9x and 3.9x enrichment over random expectation for the Wasserstein and persistence tests, respectively. These perturbations were selected a priori based on UPR annotation in the original study and a minimum cell-count threshold ($\ge 400$ cells), not based on PGAA performance (Supplementary Table S5).
-
-**[Figure 4]**
-
-### 3.7 Simulation ablation maps each statistic to its regime
-
-To systematically assess when each statistic performs best, we simulated three perturbation types at seven effect sizes ($\theta \in \{0.1, \ldots, 1.0\}$) with three replicates each (63 conditions total). These simulations are intended as operating-regime diagnostics rather than a full generative model of scRNA-seq count data.
-
-Type A (pure mean shift) is the Wasserstein test's home territory (TPR = 0.97 at $\theta = 1.0$). Type C (mean + bimodality) favors the Wasserstein test as well. The most informative condition is Type B, where only 40% of perturbed cells respond. Here the Wasserstein test and the combined z-test are competitive (TPR = 0.52–0.85 depending on $\theta$), while persistent homology reaches only TPR = 0.12. This simulation uses *partial* bimodality—the two modes overlap in the 40%-response regime. On real CRISPRa data where the split is more complete (nearer to 50% "on" vs. 50% "off"), persistent homology's performance is stronger, as demonstrated by the Norman 2019 results.
-
-From the simulation and real-data results, a practical decision rule emerges:
-
-| Scenario | Recommended statistic |
-|---|---|
-| Standard KO/OE | Wasserstein |
-| CRISPRa / heterogeneous response | Persistence test (check pi0-hat) |
-| Mixed signal | Combined z |
-| Unknown | Run the Wasserstein test first. If no signal, try the persistence test with pilot sweep. |
-
-Table: Practical decision rule for statistic selection.
-
-**[Figure 5]**
-
-
-## 4. Discussion
-
-We set out to test whether distribution-aware statistics could improve single-cell perturbation analysis in settings where disease-relevant or experimentally induced responses are heterogeneous. The answer, based on disease-relevant observational single-cell datasets and two independent Perturb-seq benchmarks with complementary perturbation modalities, is cautiously positive. Across five observational datasets, Wasserstein ranking recovered known marker programs, including B-cell receptor signaling in CLL. On Norman 2019 CEBPE CRISPRa, the persistence statistic ranked the known neutrophil granule target ELANE at position 57, while SCEPTRE and the Wasserstein statistic placed it at 1761 and 1452; across the full nine-gene target set, however, recovery remained limited. On the small Adamson 2016 UPR CRISPRi benchmark, the Wasserstein statistic achieved a mean AUROC of 0.786 across five perturbations, outperforming Wilcoxon (0.529), t-test (0.523), and MAST (0.406) in this benchmark. In the BHLHE40 knockdown case, the persistence statistic was the strongest method overall (AUROC 0.833), consistent with a heterogeneous responder-associated expression pattern.
-
-These results suggest a practical two-pronged strategy for translational single-cell perturbation analysis. The Wasserstein statistic is a useful default distributional score when the perturbation type is unknown, including when patient-derived scRNA-seq data are used to prioritize disease-associated marker programs for follow-up. The persistence statistic fills a narrower niche--CRISPRa screens, weak-effect perturbations, and any setting where the response is expected to be heterogeneous--but requires the user to verify calibration via the Storey pi0-hat diagnostic and to run a pilot n_bins sweep before committing to results. The persistence statistic's strong dependence on histogram bin count (values at n_bins = 20 and n_bins = 50 correlate at only r = 0.12) means it should be treated as a ranking tool rather than a formal discovery procedure unless substantially more permutations are used.
-
-Several limitations should be noted. First, the persistence test is calibrated differently for different perturbations; the six-perturbation calibration study showed pi0-hat ranging from 0.10 (BAK1, over-sensitive) to 1.15 (KLF1, well-calibrated), so a negative control perturbation is essential. Second, the MI and Fisher NB modules are provided as software extensions but have not been benchmarked. Third, our simulation uses Gaussian noise for computational efficiency; we verified that the persistence test does not spuriously detect bimodality from zero-inflation (mean S2 = 0.031 under NB H0 with 30% dropout; Supplementary Methods S4), consistent with evidence that droplet-based scRNA-seq data are well-modeled by the negative binomial without explicit zero-inflation [Svensson, 2020]. Fourth, all benchmarks use K-means (k = 5) as a cell-type proxy; finer annotation may improve specificity. Fifth, broader genome-scale validation against SCEPTRE-family and perturbation-specific methods remains necessary. Finally, the observational disease datasets do not establish new causal disease mechanisms or clinical biomarkers; instead, they show how PGAA can prioritize disease-relevant heterogeneous transcriptional responses for experimental or clinical follow-up.
-
-PGAA fits into the growing ecosystem of Perturb-seq analysis tools and addresses a complementary translational use case. The pertpy framework [Heumos *et al.*, 2026] provides an end-to-end pipeline into which PGAA's statistics could be integrated as modular test components. Mixscape [Papalexi *et al.*, 2021] handles the complementary problem of identifying cells with failed perturbations, while scMAGeCK [Yang *et al.*, 2020] operates at the CRISPR screen level. SCEPTRE [Barry *et al.*, 2021] and its robust extension [Barry *et al.*, 2024] set a high standard for calibrated permutation testing of mean shifts; PGAA extends this paradigm to distributional and topological shifts that may matter when only a subset of disease-relevant cells responds.
-
-The most immediate priority is genome-scale validation on Replogle 2020/2022 and additional disease-focused perturbation screens, where thousands of perturbations would allow a systematic assessment of calibration behavior and the identification of perturbation-level features that predict whether Wasserstein or persistence will prove more informative. For clinical and translational users, the main value of PGAA is not to replace mechanistic validation, but to provide a transparent ranking layer for heterogeneous responses that can be followed up in disease models, patient-derived systems, or therapeutic perturbation experiments.
 
 
 
@@ -230,13 +221,13 @@ None declared.
 
 ## Supplementary Information
 
-- **Figure S1**: Observational disease-relevant marker-recovery validation.
-- **Figure S2**: ELANE heterogeneous expression pattern in Norman 2019 CEBPE CRISPRa.
-- **Figure S3**: CLL 20k exploratory complementarity analysis.
+- **Figure S1**: ELANE heterogeneous expression pattern in Norman 2019 CEBPE CRISPRa.
+- **Figure S2**: CLL 20k exploratory complementarity analysis.
+- **Figure S3**: Simulation ablation.
 - **Figure S4**: Persistence test calibration QQ plot ($n_{\text{bins}} = 20$, n_perms = 500) and p-value histogram.
 - **Figure S5**: Adamson 2016 BHLHE40 perturbation details: gene-level S1 vs S2 scores with UPR markers highlighted, and expression distributions.
 - **Figure S6**: PGAA distribution-aware Perturb-seq testing workflow.
-- **Table S1**: Persistence test hyperparameter sensitivity (Section 3.5).
+- **Table S1**: Persistence test hyperparameter sensitivity (Section 2.6).
 - **Table S2**: Multi-dataset marker-recovery summary.
 - **Table S3**: Adamson 2016 UPR gold-standard genes.
 - **Table S4**: SCEPTRE vs PGAA comparison and six-perturbation specificity checks.
@@ -287,5 +278,5 @@ None declared.
 32. Finak G, McDavid A, Yajima M, Deng J, Gersuk V, Shalek AK, et al. (2015) MAST: a flexible statistical framework for assessing transcriptional changes and characterizing heterogeneity in single-cell RNA sequencing data. *Genome Biology*, 16, 278.
 33. Kharchenko PV, Silberstein L, Scadden DT. (2014) Bayesian approach to single-cell differential expression analysis. *Nature Methods*, 11(7), 740–742.
 34. Lun ATL, McCarthy DJ, Marioni JC. (2016) A step-by-step workflow for low-level analysis of single-cell RNA-seq data with Bioconductor [version 2; peer review: 3 approved, 2 approved with reservations]. *F1000Research*, 5, 2122.
-35. Heumos L, Ji Y, May L, Green TD, Peidli S, Zhang X, et al. (2026) Pertpy: an end-to-end framework for perturbation analysis. *Nature Methods*, 23, 350–359.
+35. Heumos L, Ji Y, May L, Green TD, Peidli S, Zhang X, et al. (2025) Pertpy: an end-to-end framework for perturbation analysis. *Nature Methods*, 23, 350–359.
 36. Barry T, Mason K, Roeder K, Katsevich E. (2024) Robust differential expression testing for single-cell CRISPR screens at low multiplicity of infection. *Genome Biology*, 25, 124.

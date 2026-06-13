@@ -146,7 +146,6 @@ def main() -> None:
         "pgaa_cm_supplementary/communications_medicine/MANUSCRIPT_CM.pdf",
         "pgaa_cm_supplementary/communications_medicine/SUPPLEMENTARY_CM.pdf",
         "pgaa_cm_supplementary/communications_medicine/scripts_generate_cm_norman_figure.py",
-        "pgaa_cm_supplementary/communications_medicine/verify_cm_transfer_ready.py",
         "pgaa_cm_supplementary/.zenodo.json",
         "pgaa_cm_supplementary/CITATION.cff",
         "pgaa_cm_supplementary/codemeta.json",

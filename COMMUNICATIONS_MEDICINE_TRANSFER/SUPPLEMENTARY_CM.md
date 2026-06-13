@@ -8,17 +8,9 @@ header-includes:
 ## Supplementary Figures
 
 \begin{center}
-\includegraphics[width=0.95\textwidth]{figures_png/figure_1.png}
-
-\textbf{Supplementary Figure S1.} Observational disease-relevant marker-recovery validation across CLL, sepsis, RA, PBMC, and IBD datasets. These analyses assess marker recovery rather than causal perturbation effects.
-\end{center}
-
-\clearpage
-
-\begin{center}
 \includegraphics[width=0.95\textwidth]{figures_png/figure_elane_histogram.png}
 
-\textbf{Supplementary Figure S2.} ELANE heterogeneous expression pattern in Norman 2019 CEBPE CRISPRa.
+\textbf{Supplementary Figure S1.} ELANE heterogeneous expression pattern in Norman 2019 CEBPE CRISPRa.
 \end{center}
 
 \clearpage
@@ -26,7 +18,15 @@ header-includes:
 \begin{center}
 \includegraphics[width=0.95\textwidth]{figures_png/figure_4.png}
 
-\textbf{Supplementary Figure S3.} CLL 20k exploratory complementarity analysis comparing Wasserstein and persistence rankings. This observational pseudo-perturbation analysis is used for marker-program ranking only.
+\textbf{Supplementary Figure S2.} CLL 20k exploratory complementarity analysis comparing Wasserstein and persistence rankings. This observational pseudo-perturbation analysis is used for marker-program ranking only.
+\end{center}
+
+\clearpage
+
+\begin{center}
+\includegraphics[width=0.95\textwidth]{figures_png/figure_5.png}
+
+\textbf{Supplementary Figure S3.} Simulation ablation across mean-shift, heterogeneous-response, and mixed-response regimes. These simulations are operating-regime diagnostics rather than a full generative model of scRNA-seq counts.
 \end{center}
 
 \clearpage
@@ -187,7 +187,7 @@ This table separates causal perturbation benchmarks from observational marker-re
 | Environment description | Python requirements, R package files, `environment.yml`, and `Dockerfile` are included in the package |
 | Automated tests | `python3 -m pytest tests -q`; `python3 scripts/test_python_pkg.py`; `Rscript scripts/test_r_pkg.R` |
 | Manuscript consistency audit | `python3 scripts/verify_manuscript_consistency.py` |
-| Main PDF build | `python3 build_pdf.py` |
+| Main PDF build | `python3 build_cm_pdf.py` |
 | Figure rebuild scripts | Main Adamson figure: `python3 scripts/figure_adamson_benchmark.py`; simulation figure: `python3 scripts/figure_simulation.py` |
 | Raw-data-to-figure status | Partial; Norman S1 is regenerated from the processed h5ad input, whereas Adamson tables are rebuilt from curated source-data CSVs |
 
@@ -201,21 +201,24 @@ Runtime depends on cell count, gene count, and permutation depth. The timings be
 | S2 persistence full run | 2,000 genes; matched perturbation/control cells | Single CPU core; `pgaa 0.1.0` | 500 | Under 2 minutes | Histogram-based; lower memory pressure than repeated model fitting |
 | Adamson table rebuild | 5 perturbations; 13 UPR positives in HVG universe | Single CPU core; Python 3.11 | NA | Seconds | Rebuilds from curated source-data CSV, not raw GEO |
 | Norman consistency audit | Manuscript package | Single CPU core; Python 3.11 | NA | Seconds | Checks current values and required assets |
-| Main PDF build | Manuscript plus 7 main figures | Pandoc plus TinyTeX/XeLaTeX | NA | About 1 minute | Requires local LaTeX installation |
+| Main PDF build | Manuscript plus 5 main figures | Pandoc plus TinyTeX/XeLaTeX | NA | About 1 minute | Requires local LaTeX installation |
 
 ## Supplementary Table S10. Result reproduction map
 
 | Manuscript item | Primary source files | Reproduction command or status |
 |---|---|---|
-| Figure 1 and Supplementary Table S2 | `scripts/table1_datasets_summary.csv`; figure source data | Source-data reproduction from included CSVs |
-| Figure 2 and Norman S1 table | `scripts/norman2019_prt_s1_full.csv`; `scripts/table_sceptre_vs_pgaa.csv` | `python3 scripts/compare_combinations.py`; `python3 scripts/table_sceptre_vs_pgaa.py` |
-| ELANE histogram | `figures_png/figure_elane_histogram.png`; figure source data | Source-data reproduction from included figure files/CSVs |
-| Figure 3 and Supplementary Table S1 | `scripts/sensitivity_s2_bins.csv`; S2 sensitivity outputs | Source-data reproduction; sensitivity sweep documented in Supplementary Table S1 |
-| Figure 4 CLL analysis | CLL processed source data and figure source data | Source-data reproduction; observational rank-score analysis only |
-| Figure 6 and Supplementary Table S5 | `figure_source_data/fig6_adamson_results.csv`; `scripts/adamson2016_full_results.csv`; `scripts/figure_adamson_benchmark.py` | `python3 scripts/rebuild_adamson_full_results.py`; `python3 scripts/figure_adamson_benchmark.py` |
+| Figure 1 clinical/translational schematic | `scripts_generate_cm_entry_figure.py`; `figures_png/figure_cm_entry.png` | `python3 scripts_generate_cm_entry_figure.py` |
+| Figure 2 and Supplementary Table S2 | `scripts/table1_datasets_summary.csv`; `figures_png/figure_1.png` | Source-data reproduction from included CSVs; observational marker recovery only |
+| Figure 3 and Supplementary Table S5 | `figure_source_data/fig6_adamson_results.csv`; `scripts/adamson2016_full_results.csv`; `scripts/figure_adamson_benchmark.py` | `python3 scripts/rebuild_adamson_full_results.py`; `python3 scripts/figure_adamson_benchmark.py` |
 | Supplementary Table S12 | `scripts/adamson2016_method_summary_ci.csv` | `python3 scripts/rebuild_adamson_full_results.py` |
-| Figure 7 simulation | `scripts/simulation_powers.csv`; `scripts/figure_simulation.py` | `python3 scripts/figure_simulation.py`; copied into `figures_png/figure_5.png` |
-| Main and supplementary PDFs | `MANUSCRIPT.md`, `SUPPLEMENTARY.md`, `build_pdf.py`, figures, CSV tables | `python3 build_pdf.py`; supplementary PDF can be rebuilt with Pandoc and XeLaTeX |
+| Figure 4 and Supplementary Table S4 | `scripts/norman2019_prt_s1_full.csv`; `scripts/table_sceptre_vs_pgaa.csv`; `figures_png/figure_norman_main_cm.png` | `python3 scripts/compare_combinations.py`; `python3 scripts/table_sceptre_vs_pgaa.py`; narrow CEBPE ranking use case |
+| Figure 5 and Supplementary Table S4 | Six-perturbation persistence calibration outputs; `figures_png/figure_3.png` | Source-data reproduction; calibration guardrails rather than discovery claims |
+| Supplementary Figure S1 | `figures_png/figure_elane_histogram.png`; figure source data | Source-data reproduction from included figure files/CSVs |
+| Supplementary Figure S2 | CLL processed source data and figure source data; `figures_png/figure_4.png` | Source-data reproduction; observational rank-score analysis only |
+| Supplementary Figure S3 | `scripts/simulation_powers.csv`; `scripts/figure_simulation.py`; `figures_png/figure_5.png` | `python3 scripts/figure_simulation.py` |
+| Supplementary Figure S4 and Supplementary Table S1 | `scripts/sensitivity_s2_bins.csv`; S2 sensitivity outputs; `figures_png/figure_s2_calibration_qq.png` | Source-data reproduction; sensitivity sweep documented in Supplementary Table S1 |
+| Supplementary Figure S5 | `figure_source_data/fig6_adamson_results.csv`; `figures_png/figure_s2_bhlhe40.png` | Adamson BHLHE40 detail panel from included source data |
+| Main and supplementary PDFs | `MANUSCRIPT_CM.md`, `SUPPLEMENTARY_CM.md`, `build_cm_pdf.py`, figures, CSV tables | `python3 build_cm_pdf.py`; supplementary PDF can be rebuilt with Pandoc and XeLaTeX |
 
 ## Supplementary Table S11. Comparator and benchmark status
 
@@ -228,7 +231,7 @@ This table separates methods that were directly benchmarked in this manuscript f
 | t-test | Yes | Adamson 2016 UPR CRISPRi: mean AUROC 0.523 across five pre-specified UPR perturbations | Simple mean-shift baseline |
 | MAST [Finak *et al.*, 2015] | Yes | Adamson 2016 UPR CRISPRi: mean AUROC 0.406 across five pre-specified UPR perturbations | Differential-expression comparator in this focused benchmark |
 | Robust SCEPTRE [Barry *et al.*, 2024] | No | Discussed as a future comparison target | Same broad problem class; a direct robust-SCEPTRE benchmark remains necessary |
-| pertpy [Heumos *et al.*, 2026] | No | Discussed as an integration ecosystem | Workflow framework rather than a single statistic comparator |
+| pertpy [Heumos *et al.*, 2025] | No | Discussed as an integration ecosystem | Workflow framework rather than a single statistic comparator |
 | Mixscape [Papalexi *et al.*, 2021] | No | Discussed as a complementary responder-assignment method | Addresses responder/non-responder assignment, complementary to gene-level distribution tests |
 | scMAGeCK [Yang *et al.*, 2020] | No | Discussed as a complementary genotype-phenotype and screen-level method | Different analysis level; future integration or comparison may be useful |
 | DESeq2 [Love *et al.*, 2014] and SCDE [Kharchenko *et al.*, 2014] | No | Background references only | Not prioritized for direct benchmarking because this manuscript focuses on non-mean distributional response |

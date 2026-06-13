@@ -31,29 +31,26 @@ if r'\usepackage{graphicx}' not in tex:
 # Step 4: Insert figures (use lambda to avoid \c escape in regex)
 fig_map = {
     '1': ('figures_png/figure_cm_entry.png', 'PGAA as a clinically oriented single-cell perturbation mapping framework for heterogeneous disease-relevant transcriptional responses.'),
-    '2': ('figures_png/figure_norman_main_cm.png', 'Norman 2019 CEBPE CRISPRa persistence ranking.'),
-    '3': ('figures_png/figure_3.png', 'Calibration across six perturbations.'),
-    '4': ('figures_png/figure_adamson_benchmark.png', 'Independent validation on Adamson 2016 UPR CRISPRi benchmark. Exact per-perturbation values for panel D are provided in Supplementary Table S5.'),
-    '5': ('figures_png/figure_5.png', 'Simulation ablation.'),
+    '2': ('figures_png/figure_1.png', 'Disease-state marker recovery across five observational single-cell datasets. These analyses assess marker recovery rather than causal perturbation effects.'),
+    '3': ('figures_png/figure_adamson_benchmark.png', 'Independent validation on Adamson 2016 UPR CRISPRi benchmark. Exact per-perturbation values for panel D are provided in Supplementary Table S5.'),
+    '4': ('figures_png/figure_norman_main_cm.png', 'Norman 2019 CEBPE CRISPRa persistence ranking as a narrow use-case example.'),
+    '5': ('figures_png/figure_3.png', 'Perturbation-specific calibration defines guardrails for persistence-based ranking.'),
 }
 for num, (path, cap) in fig_map.items():
     placement = 'htbp'
     width = '0.85\\textwidth'
     prefix = ''
     suffix = ''
-    if num == '4':
-        placement = 'p'
-        width = '1.0\\textwidth'
-        prefix = '\\clearpage\n'
-        suffix = '\n\\clearpage'
-    elif num in {'1', '2', '3', '5'}:
+    if num == '3':
+        width = '0.92\\textwidth'
+    elif num in {'1', '2', '5'}:
         width = '1.0\\textwidth'
     fig_code = prefix + '\\begin{figure}[' + placement + ']\n\\centering\n\\includegraphics[width=' + width + ']{' + path + '}\n\\caption{' + cap + '}\n\\end{figure}' + suffix
     pattern = r'\\textbf\{\{\[\}Figure ' + num + r'[^\}]*\{\]\}\}'
     tex = re.sub(pattern, lambda m, fc=fig_code: fc, tex, flags=re.DOTALL)
 
-# Add clearpage before Discussion to flush all Results figures
-tex = tex.replace(r'\subsection{4. Discussion}', r'\clearpage' + '\n' + r'\subsection{4. Discussion}')
+# Add clearpage before Discussion to flush all Results figures.
+tex = tex.replace(r'\subsection{3. Discussion}', r'\clearpage' + '\n' + r'\subsection{3. Discussion}')
 
 # Add clearpage before availability sections.
 tex = re.sub(r'\\subsection\{Data availability\}', r'\\clearpage\n\\subsection{Data availability}', tex)
