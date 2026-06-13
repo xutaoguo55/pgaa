@@ -1,0 +1,42 @@
+Upload file:
+/Users/guoxutao/.openclaw/workspace/PGAA_method_paper/ZENODO_CODE_ONLY_RELEASE/PGAA_v0.1.0_code_only_for_Zenodo.zip
+
+Upload type:
+Software
+
+Title:
+PGAA: distribution-aware single-cell perturbation analysis software
+
+Version:
+0.1.0
+
+Creators:
+Wei, Xiaolei
+Zheng, Haiqing
+Huang, Junwei
+Wei, Qi
+Wei, Yongqiang
+Feng, Ru
+Guo, Xutao (Nanfang Hospital, Southern Medical University)
+
+Description:
+PGAA provides Python and R implementations of distribution-aware single-cell perturbation statistics, including a Wasserstein statistic for full expression-distribution shifts and a persistent-homology statistic for responder-associated expression-shape changes. This archive is a code-only software release and excludes manuscript drafts, submission materials, figures, source-data tables, and review materials.
+
+License:
+MIT
+
+Keywords:
+single-cell RNA-seq; Perturb-seq; Wasserstein distance; persistent homology; CRISPR screening
+
+Related identifier:
+https://github.com/xutaoguo55/pgaa
+Relation: isSupplementTo or isIdenticalTo / isSupplementedBy depending on Zenodo options; if unsure, use isSupplementTo.
+
+GitHub release:
+https://github.com/xutaoguo55/pgaa/releases/tag/v0.1.0-code
+
+Software Heritage SWHID:
+swh:1:snp:5b1b2cc9ce32298968e00f69e1af5ff8aed8889f
+
+SHA256:
+d8e033bdbd7f838e967d8f1df1d64f265ce956a6f388d1a87e333eaeaa2a3e2e
