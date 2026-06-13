@@ -185,9 +185,9 @@ This table separates causal perturbation benchmarks from observational marker-re
 | Public repository | Planned URL: https://github.com/xutaoguo55/pgaa; must be publicly reachable before final submission |
 | Supplementary software file | `PGAA_supplementary_code.zip` supplied with the submission package |
 | Environment description | Python requirements, R package files, `environment.yml`, and `Dockerfile` are included in the package |
-| Automated tests | `python3 -m pytest tests -q`; `python3 scripts/test_python_pkg.py`; `Rscript scripts/test_r_pkg.R` |
-| Manuscript consistency audit | `python3 scripts/verify_manuscript_consistency.py` |
-| Main PDF build | `python3 build_cm_pdf.py` |
+| Automated tests | `python3 scripts/run_toy_example.py`; `python3 -m pytest tests -q`; `python3 scripts/test_python_pkg.py`; `Rscript scripts/test_r_pkg.R` |
+| Dataset manifest check | `python3 scripts/verify_dataset_manifest.py` |
+| Main PDF build | `cd communications_medicine && python3 build_cm_pdf.py` |
 | Figure rebuild scripts | Main Adamson figure: `python3 scripts/figure_adamson_benchmark.py`; simulation figure: `python3 scripts/figure_simulation.py` |
 | Raw-data-to-figure status | Partial; Norman S1 is regenerated from the processed h5ad input, whereas Adamson tables are rebuilt from curated source-data CSVs |
 
@@ -266,4 +266,4 @@ The simulation evaluates three response types across seven effect sizes and thre
 
 ## Reproducibility Notes
 
-All analyses use public data and fixed random seeds (`random_state=42` or the R equivalent). The submission package includes the source code, environment files, benchmark scripts, and CSV files used to generate the manuscript tables and figures. For the Norman 2019 CEBPE analysis, `scripts/compare_combinations.py` regenerates the full S1 permutation table and combined-method summaries from the processed h5ad input used in this study. For the Adamson 2016 benchmark, `scripts/rebuild_adamson_full_results.py` regenerates the manuscript table from the curated figure source-data file `figure_source_data/fig6_adamson_results.csv`. This should be described as source-data reproducibility, not a one-command raw GEO-to-final-figure workflow. The focused package audit `scripts/verify_manuscript_consistency.py` checks current Norman values, forbidden stale placeholders, and required figure assets before PDF generation.
+All analyses use public data and fixed random seeds (`random_state=42` or the R equivalent). The submission package includes the source code, environment files, benchmark scripts, and CSV files used to generate the manuscript tables and figures. For the Norman 2019 CEBPE analysis, `scripts/compare_combinations.py` regenerates the full S1 permutation table and combined-method summaries from the processed h5ad input used in this study. For the Adamson 2016 benchmark, `scripts/rebuild_adamson_full_results.py` regenerates the manuscript table from the curated figure source-data file `figure_source_data/fig6_adamson_results.csv`. This should be described as source-data reproducibility, not a one-command raw GEO-to-final-figure workflow. The supplementary archive is designed for package smoke tests, source-data table rebuilds, and manuscript PDF rebuilds; final public repository and archive identifiers should be inserted before journal submission.

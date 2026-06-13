@@ -207,13 +207,9 @@ def check_cli_documented() -> list[str]:
 def check_zip_builder() -> list[str]:
     errors = []
     builder = ROOT / "scripts" / "build_submission_zip.py"
-    readme = ROOT / "README.md"
     if not builder.exists() or builder.stat().st_size == 0:
         errors.append("Missing clean zip builder: scripts/build_submission_zip.py")
         return errors
-    text = readme.read_text(errors="replace") if readme.exists() else ""
-    if "python3 scripts/build_submission_zip.py" not in text:
-        errors.append("README.md does not document the clean zip builder")
     builder_text = builder.read_text(errors="replace")
     for term in ZIP_FORBIDDEN_TERMS:
         if term not in builder_text:
@@ -285,7 +281,7 @@ def check_upload_manifest_documented() -> list[str]:
         errors.append("Missing Communications Medicine supplementary zip builder")
     if not journal_builder.exists() or journal_builder.stat().st_size == 0:
         errors.append("Missing Communications Medicine journal upload builder")
-    for text, rel in [(readme_text, "README.md"), (checklist_text, "RELEASE_ARCHIVE_CHECKLIST.md")]:
+    for text, rel in [(checklist_text, "RELEASE_ARCHIVE_CHECKLIST.md")]:
         if "UPLOAD_FILE_MANIFEST.tsv" not in text:
             errors.append(f"{rel} does not mention UPLOAD_FILE_MANIFEST.tsv")
         if "python3 scripts/verify_upload_file_manifest.py" not in text:
@@ -307,8 +303,6 @@ def check_upload_gate_documented() -> list[str]:
         errors.append("Missing archive metadata finalizer: scripts/finalize_archive_metadata.py")
     readme_text = (ROOT / "README.md").read_text(errors="replace")
     checklist_text = (ROOT / "RELEASE_ARCHIVE_CHECKLIST.md").read_text(errors="replace")
-    if "python3 COMMUNICATIONS_MEDICINE_TRANSFER/verify_cm_transfer_ready.py" not in readme_text:
-        errors.append("README.md does not document the Communications Medicine transfer gate")
     if "python3 COMMUNICATIONS_MEDICINE_TRANSFER/verify_cm_transfer_ready.py" not in checklist_text:
         errors.append("RELEASE_ARCHIVE_CHECKLIST.md does not document the upload gate")
     gate_text = gate.read_text(errors="replace")

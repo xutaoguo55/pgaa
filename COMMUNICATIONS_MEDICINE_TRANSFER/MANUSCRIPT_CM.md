@@ -41,6 +41,8 @@ As a general-purpose distributional statistic, Wasserstein enriches known pathwa
 
 These five datasets are observational--the "perturbation" is defined by binning cells on endogenous marker or pathway-associated expression, not by an experimental intervention--so the results demonstrate disease-relevant marker recovery rather than causal discovery. The enrichment is consistent with the Wasserstein test being a reasonable default statistic when the perturbation type is unknown or when a user is screening public patient-derived scRNA-seq data for distributional marker shifts. Because this is the most directly disease-facing analysis, we keep it in the main text while retaining the causal limitation explicitly.
 
+In the observational CLL marker-recovery setting, Wasserstein produced biologically coherent rankings but was not uniformly superior to all conventional ranking baselines. Its value here is as a distribution-aware prioritization score for heterogeneous disease-state contrasts, not as a replacement for standard marker-ranking methods.
+
 **[Figure 2]**
 
 ### 2.2 Independent Perturb-seq validation in unfolded-protein-response biology
@@ -114,6 +116,7 @@ Several limitations should be noted. First, the persistence test is calibrated d
 PGAA fits into the growing ecosystem of Perturb-seq analysis tools and addresses a complementary translational use case. The pertpy framework [Heumos *et al.*, 2025] provides an end-to-end pipeline into which PGAA's statistics could be integrated as modular test components. Mixscape [Papalexi *et al.*, 2021] handles the complementary problem of identifying cells with failed perturbations, while scMAGeCK [Yang *et al.*, 2020] operates at the CRISPR screen level. SCEPTRE [Barry *et al.*, 2021] and its robust extension [Barry *et al.*, 2024] set a high standard for calibrated permutation testing of mean shifts; PGAA extends this paradigm to distributional and topological shifts that may matter when only a subset of disease-relevant cells responds.
 
 The most immediate priority is genome-scale validation on Replogle 2020/2022 and additional disease-focused perturbation screens, where thousands of perturbations would allow a systematic assessment of calibration behavior and the identification of perturbation-level features that predict whether Wasserstein or persistence will prove more informative. For clinical and translational users, the main value of PGAA is not to replace mechanistic validation, but to provide a transparent ranking layer for heterogeneous responses that can be followed up in disease models, patient-derived systems, or therapeutic perturbation experiments.
+
 ## 4. Methods
 
 ### 4.1 Setup and residualization

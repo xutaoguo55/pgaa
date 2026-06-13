@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the Bioinformatics upload-file manifest."""
+"""Validate the Communications Medicine upload-file manifest."""
 from __future__ import annotations
 
 import csv
@@ -9,36 +9,34 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "UPLOAD_FILE_MANIFEST.tsv"
-ZIP_PATH = ROOT / "PGAA_supplementary_code.zip"
+CLEAN_ZIP = ROOT / "COMMUNICATIONS_MEDICINE_TRANSFER" / "PGAA_COMMUNICATIONS_MEDICINE_JOURNAL_UPLOAD.zip"
+SUPP_CODE = (
+    ROOT
+    / "COMMUNICATIONS_MEDICINE_TRANSFER"
+    / "JOURNAL_UPLOAD_COMMUNICATIONS_MEDICINE"
+    / "PGAA_supplementary_code.zip"
+)
 
-FORBIDDEN_UPLOAD_TERMS = [
-    "figure_workflow",
+REQUIRED_UPLOAD_FILES = {
+    "COMMUNICATIONS_MEDICINE_TRANSFER/JOURNAL_UPLOAD_COMMUNICATIONS_MEDICINE/MANUSCRIPT.pdf",
+    "COMMUNICATIONS_MEDICINE_TRANSFER/JOURNAL_UPLOAD_COMMUNICATIONS_MEDICINE/SUPPLEMENTARY.pdf",
+    "COMMUNICATIONS_MEDICINE_TRANSFER/JOURNAL_UPLOAD_COMMUNICATIONS_MEDICINE/PGAA_supplementary_code.zip",
+    "COMMUNICATIONS_MEDICINE_TRANSFER/JOURNAL_UPLOAD_COMMUNICATIONS_MEDICINE/COVER_LETTER_COMMUNICATIONS_MEDICINE.md",
+    "COMMUNICATIONS_MEDICINE_TRANSFER/PGAA_COMMUNICATIONS_MEDICINE_JOURNAL_UPLOAD.zip",
+}
+
+FORBIDDEN_ANYWHERE = [
+    "COVER_LETTER_BIOINFORMATICS",
     "CURRENT_BIOINFORMATICS_REVIEW",
     "SIMULATED_BIOINFORMATICS_REVIEW",
     "POST_REVISION_BIOINFORMATICS_REVIEW",
-    "REFERENCE_AUDIT",
+    "REFERENCE_AUDIT_BIOINFORMATICS",
     "SUBMISSION_READINESS_AUDIT",
     "SUBMISSION_CHECKLIST",
-    "mmd_psm",
+    "figure_workflow",
+    "Figure 6:",
+    "Figure 7:",
 ]
-
-REQUIRED_UPLOAD_FILES = {
-    "MANUSCRIPT.pdf",
-    "SUPPLEMENTARY.pdf",
-    "PGAA_supplementary_code.zip",
-    "COVER_LETTER_BIOINFORMATICS.md",
-    "PORTAL_INPUTS.md",
-    "figures_png/figure_1.png",
-    "figures_png/figure_2.png",
-    "figures_png/figure_elane_histogram.png",
-    "figures_png/figure_3.png",
-    "figures_png/figure_4.png",
-    "figures_png/figure_adamson_benchmark.png",
-    "figures_png/figure_5.png",
-    "figures_png/figure_s2_calibration_qq.png",
-    "figures_png/figure_s2_bhlhe40.png",
-    "figures_png/figure_pgaa_workflow.png",
-}
 
 
 def read_manifest() -> list[dict[str, str]]:
@@ -60,33 +58,53 @@ def main() -> None:
     if len(by_file) != len(rows):
         errors.append("UPLOAD_FILE_MANIFEST.tsv contains duplicate file rows")
 
+    manifest_text = MANIFEST.read_text(errors="replace")
+    for term in FORBIDDEN_ANYWHERE:
+        if term in manifest_text:
+            errors.append(f"Manifest contains stale/internal term: {term}")
+
     for rel, row in by_file.items():
         path = ROOT / rel
-        if row["upload"] in {"yes", "in_zip"} and not path.exists():
-            errors.append(f"Manifested required file is missing: {rel}")
-        if row["upload"] == "yes" and any(term in rel for term in FORBIDDEN_UPLOAD_TERMS):
-            errors.append(f"Forbidden internal/deprecated file marked for upload: {rel}")
+        if row["upload"] in {"yes", "in_zip", "in_pdf"} and not path.exists():
+            errors.append(f"Manifested file is missing: {rel}")
+        if row["upload"] == "yes" and "AUDIT" in rel.upper():
+            errors.append(f"Internal audit file marked upload=yes: {rel}")
 
     for rel in sorted(REQUIRED_UPLOAD_FILES):
         row = by_file.get(rel)
         if row is None:
-            errors.append(f"Required upload file missing from manifest: {rel}")
+            errors.append(f"Required CM upload file missing from manifest: {rel}")
         elif row["upload"] != "yes":
-            errors.append(f"Required upload file not marked upload=yes: {rel}")
+            errors.append(f"Required CM upload file not marked upload=yes: {rel}")
 
-    deprecated = by_file.get("figures_png/figure_workflow.png")
-    if deprecated is None or deprecated["upload"] != "no":
-        errors.append("Deprecated figures_png/figure_workflow.png must be marked upload=no")
-
-    if not ZIP_PATH.exists():
-        errors.append("Missing PGAA_supplementary_code.zip")
+    if not CLEAN_ZIP.exists():
+        errors.append("Missing PGAA_COMMUNICATIONS_MEDICINE_JOURNAL_UPLOAD.zip")
     else:
-        with zipfile.ZipFile(ZIP_PATH) as zf:
+        with zipfile.ZipFile(CLEAN_ZIP) as zf:
+            names = {Path(name).name for name in zf.namelist() if not name.endswith("/")}
+        expected = {
+            "MANUSCRIPT.pdf",
+            "SUPPLEMENTARY.pdf",
+            "PGAA_supplementary_code.zip",
+            "COVER_LETTER_COMMUNICATIONS_MEDICINE.md",
+        }
+        if names != expected:
+            errors.append(f"Clean journal upload zip has unexpected files: {sorted(names)}")
+
+    if not SUPP_CODE.exists():
+        errors.append("Missing clean supplementary software archive")
+    else:
+        with zipfile.ZipFile(SUPP_CODE) as zf:
             names = zf.namelist()
-        for term in FORBIDDEN_UPLOAD_TERMS:
+        for term in [
+            "COVER_LETTER_BIOINFORMATICS",
+            "verify_cm_transfer_ready.py",
+            "build_cm_journal_upload_packet.py",
+            "build_cm_supplementary_zip.py",
+        ]:
             hits = [name for name in names if term in name]
             if hits:
-                errors.append(f"Supplementary software zip contains forbidden entry: {hits[0]}")
+                errors.append(f"Supplementary software zip contains internal/stale entry: {hits[0]}")
 
     if errors:
         print("UPLOAD FILE MANIFEST CHECK FAILED")

@@ -25,7 +25,6 @@ ROOT_FILES = [
     "requirements.txt",
     "environment.yml",
     "Dockerfile",
-    "UPLOAD_FILE_MANIFEST.tsv",
 ]
 
 CM_FILES = [
@@ -64,6 +63,8 @@ FORBIDDEN_SUBSTRINGS = [
     "PROJECT_REVIEW",
     "REVIEWER_RESPONSE",
     "REFERENCE_AUDIT",
+    "verify_manuscript_consistency.py",
+    "verify_upload_file_manifest.py",
     "figure_workflow",
     "workflow_schematic",
     "mmd_psm",
