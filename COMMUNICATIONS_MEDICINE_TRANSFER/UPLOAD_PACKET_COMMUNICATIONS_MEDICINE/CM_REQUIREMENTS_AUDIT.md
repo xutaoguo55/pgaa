@@ -1,6 +1,6 @@
 # Communications Medicine Transfer Requirements Audit
 
-Date: 2026-06-13
+Date: 2026-06-14
 
 ## Official Scope
 
@@ -51,21 +51,18 @@ Residual risks:
 - CLL/sepsis/RA/IBD analyses are observational marker recovery, not experimental perturbation or clinical-outcome validation.
 - The most distinctive persistence result remains a focused Norman CEBPE/ELANE ranking signal.
 - Persistent homology calibration remains sensitive to histogram bin count and perturbation context.
-- Public repository and permanent archive DOI are still not finalized.
+- Public repository and permanent software archive are finalized.
 
 ## Submission Blockers
 
-Hard blocker before final upload:
-
-- Make `https://github.com/xutaoguo55/pgaa` publicly reachable or replace with a final accessible repository URL.
-- Archive the exact submitted software version with Zenodo, Figshare, Software Heritage, or Code Ocean.
-- Replace repository/DOI placeholders in manuscript, cover letter, and portal text.
+No repository/archive blocker remains. The public code-only repository is available at `https://github.com/xutaoguo55/pgaa`; the code-only software release is archived at Zenodo DOI `https://doi.org/10.5281/zenodo.20681141` and Software Heritage SWHID `swh:1:snp:5b1b2cc9ce32298968e00f69e1af5ff8aed8889f`.
 
 Author-level final checks:
 
 - Confirm whether the transfer will use the Nature Portfolio transfer link and whether previous reviewer/editor materials will be transferred.
 - Confirm open peer-review preference if the portal asks.
 - Confirm author metadata, ORCID, funding, conflict-of-interest, and reviewer suggestions/exclusions.
+- Revoke the temporary Zenodo access token used to create the DOI.
 
 ## Current Recommendation
 

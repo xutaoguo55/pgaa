@@ -183,7 +183,7 @@ This table separates causal perturbation benchmarks from observational marker-re
 | R implementation | Included under `pgaa_r/`; tested with the local R smoke/regression suite |
 | License | MIT; `LICENSE` file included |
 | Public repository | Code-only repository: https://github.com/xutaoguo55/pgaa |
-| Archived software version | GitHub release `v0.1.0-code`: https://github.com/xutaoguo55/pgaa/releases/tag/v0.1.0-code; Software Heritage SWHID: \path{swh:1:snp:5b1b2cc9ce32298968e00f69e1af5ff8aed8889f} |
+| Archived software version | GitHub release `v0.1.0-code`: https://github.com/xutaoguo55/pgaa/releases/tag/v0.1.0-code; Zenodo DOI: https://doi.org/10.5281/zenodo.20681141; Software Heritage SWHID: \path{swh:1:snp:5b1b2cc9ce32298968e00f69e1af5ff8aed8889f} |
 | Supplementary software file | `PGAA_supplementary_code.zip` supplied with the submission package |
 | Environment description | Python requirements, R package files, `environment.yml`, and `Dockerfile` are included in the package |
 | Automated tests | `python3 scripts/run_toy_example.py`; `python3 -m pytest tests -q`; `python3 scripts/test_python_pkg.py`; `Rscript scripts/test_r_pkg.R` |

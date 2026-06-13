@@ -58,6 +58,7 @@ REQUIRED_MANUSCRIPT_REGEXES = [
     r"Competing interests",
     r"public\s+code-only repository",
     r"https://github\.com/xutaoguo55/pgaa",
+    r"10\.5281/zenodo\.20681141",
     r"swh:1:snp:\s*5b1b2cc9ce32298968e00f69e1af5ff8aed8889f",
     r"Figure 1:[\s\S]{0,160}clinically oriented single-cell perturbation mapping",
 ]
@@ -187,6 +188,8 @@ def main() -> None:
     portal = (PACKET / "PORTAL_INPUTS_COMMUNICATIONS_MEDICINE.md").read_text()
     if "https://github.com/xutaoguo55/pgaa/releases/tag/v0.1.0-code" not in portal:
         fail("final GitHub release URL missing from portal inputs")
+    if "https://doi.org/10.5281/zenodo.20681141" not in portal:
+        fail("final Zenodo DOI missing from portal inputs")
     if "swh:1:snp:5b1b2cc9ce32298968e00f69e1af5ff8aed8889f" not in portal:
         fail("final Software Heritage SWHID missing from portal inputs")
     if "OPT OUT of publication of reviewer reports" not in portal:
@@ -197,7 +200,7 @@ def main() -> None:
     print(f"Clean journal-upload files: {len(REQUIRED_CLEAN_UPLOAD_FILES)}")
     print(f"Manuscript pages: {pdf_pages(manuscript)}")
     print(f"Supplement pages: {pdf_pages(supplement)}")
-    print("Public code-only repository and Software Heritage SWHID are present")
+    print("Public code-only repository, Zenodo DOI, and Software Heritage SWHID are present")
 
 
 if __name__ == "__main__":

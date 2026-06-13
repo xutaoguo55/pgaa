@@ -1,10 +1,10 @@
 # Communications Medicine Submission Readiness Audit
 
-Date: 2026-06-13
+Date: 2026-06-14
 
 ## Verdict
 
-The Communications Medicine transfer package is suitable for author review and transfer preparation. It is not yet fully upload-complete because the public repository and permanent software archive identifier remain unresolved. This is the same hard blocker as the Bioinformatics version, and it should be closed before final submission.
+The Communications Medicine transfer package is technically upload-ready after final author/portal checks. The public code-only repository is available at `https://github.com/xutaoguo55/pgaa`; the code-only software release is archived at Zenodo DOI `https://doi.org/10.5281/zenodo.20681141` and Software Heritage SWHID `swh:1:snp:5b1b2cc9ce32298968e00f69e1af5ff8aed8889f`.
 
 ## Files Created
 
@@ -49,8 +49,8 @@ Passed:
 
 PDF checks:
 
-- `MANUSCRIPT_CM.pdf`: 15 pages.
-- `SUPPLEMENTARY_CM.pdf`: 14 pages.
+- `MANUSCRIPT_CM.pdf`: 14 pages, with line numbers.
+- `SUPPLEMENTARY_CM.pdf`: 20 pages.
 - Main text before references: approximately 4,915 words, consistent with the Communications Medicine Article guide of approximately 5,000 words.
 - First-page render checked visually.
 - Figure 1 render checked visually after the clinical/translational entry schematic was added.
@@ -61,20 +61,14 @@ Search checks:
 - No `No new biological discoveries` string in `MANUSCRIPT_CM.md`.
 - No old structured Bioinformatics abstract labels such as `Motivation:` or `Availability and implementation:` in `MANUSCRIPT_CM.md`.
 
-## Remaining Blockers
+## Remaining Author/Portal Checks
 
 Before final upload:
 
-- Make `https://github.com/xutaoguo55/pgaa` publicly reachable or replace it with the final repository URL. Current external checks show the repository remains private: unauthenticated GitHub API access returns 404, while authenticated `gh repo view` reports `visibility=PRIVATE`.
-- Archive the exact submitted software version and add the final DOI/persistent URL.
-- Replace the archive placeholder in `PORTAL_INPUTS_COMMUNICATIONS_MEDICINE.md`.
-- Update the Data and Code Availability text in `MANUSCRIPT_CM.md` and `SUPPLEMENTARY_CM.md` once the public URL and archive identifier exist.
-
-Author/portal checks:
-
-- Confirm whether to use the Nature Portfolio transfer link so the Nature Methods editorial recommendation and any transferred materials are visible to Communications Medicine.
+- Use the Nature Portfolio transfer link so the Nature Methods editorial recommendation and any transferred materials are visible to Communications Medicine.
 - Confirm that OPT OUT is the desired open peer-review preference; if not, change both the cover letter and portal inputs before upload.
-- Confirm author metadata, ORCID, funding/conflict statements, and reviewer suggestions/exclusions.
+- Confirm author metadata, ORCID, funding/conflict statements, and reviewer suggestions/exclusions in the submission portal.
+- Revoke the temporary Zenodo access token used to create the DOI.
 
 ## Residual Editorial Risk
 
