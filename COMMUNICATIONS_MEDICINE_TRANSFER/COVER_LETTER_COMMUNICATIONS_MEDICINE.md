@@ -10,6 +10,8 @@ The manuscript has been revised specifically for Communications Medicine. We hav
 
 The software is implemented in Python and R and is accompanied by source data, test scripts, figure-reproduction scripts, runtime documentation, and a supplementary software archive. The planned public repository is https://github.com/xutaoguo55/pgaa, and the exact submitted software version will be archived with a permanent identifier before final submission/publication. All authors have approved the manuscript. We declare no competing interests.
 
+For Transparent Peer Review, we wish to OPT OUT of publication of the reviewer reports if the manuscript is accepted.
+
 Thank you for considering our manuscript.
 
 Sincerely,

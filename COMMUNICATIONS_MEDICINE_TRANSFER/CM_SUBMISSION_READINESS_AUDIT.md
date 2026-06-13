@@ -31,6 +31,7 @@ Main changes:
 - Discussion no longer says "No new biological discoveries are claimed"; it now states that observational datasets do not establish new causal mechanisms or clinical biomarkers, but demonstrate prioritization of disease-relevant heterogeneous responses for follow-up.
 - Cover letter explicitly states that the submission follows a Nature Methods editorial transfer recommendation.
 - Figure 1 is now a Communications Medicine entry schematic: clinical problem -> PGAA distribution-aware statistics -> calibrated translational output.
+- Cover letter and portal inputs state an OPT OUT preference for Transparent Peer Review report publication.
 
 ## Verification
 
@@ -61,7 +62,7 @@ Search checks:
 
 Before final upload:
 
-- Make `https://github.com/xutaoguo55/pgaa` publicly reachable or replace it with the final repository URL.
+- Make `https://github.com/xutaoguo55/pgaa` publicly reachable or replace it with the final repository URL. Current external checks show the repository remains private: unauthenticated GitHub API access returns 404, while authenticated `gh repo view` reports `visibility=PRIVATE`.
 - Archive the exact submitted software version and add the final DOI/persistent URL.
 - Replace the archive placeholder in `PORTAL_INPUTS_COMMUNICATIONS_MEDICINE.md`.
 - Update the Data and Code Availability text in `MANUSCRIPT_CM.md` and `SUPPLEMENTARY_CM.md` once the public URL and archive identifier exist.
@@ -69,7 +70,7 @@ Before final upload:
 Author/portal checks:
 
 - Confirm whether to use the Nature Portfolio transfer link so the Nature Methods editorial recommendation and any transferred materials are visible to Communications Medicine.
-- Confirm open peer-review preference if requested.
+- Confirm that OPT OUT is the desired open peer-review preference; if not, change both the cover letter and portal inputs before upload.
 - Confirm author metadata, ORCID, funding/conflict statements, and reviewer suggestions/exclusions.
 
 ## Residual Editorial Risk

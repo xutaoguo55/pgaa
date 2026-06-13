@@ -57,8 +57,8 @@ for num, (path, cap) in fig_map.items():
 # Add clearpage before Discussion to flush all Results figures
 tex = tex.replace(r'\subsection{4. Discussion}', r'\clearpage' + '\n' + r'\subsection{4. Discussion}')
 
-# Add clearpage before Data and Code Availability (title wraps, use regex)
-tex = re.sub(r'\\subsection\{Data and Code', r'\\clearpage\n\\subsection{Data and Code', tex)
+# Add clearpage before availability sections.
+tex = re.sub(r'\\subsection\{Data availability\}', r'\\clearpage\n\\subsection{Data availability}', tex)
 
 # Step 5: Insert ELANE histogram after the Norman CEBPE figure
 elane_code = r'\begin{figure}[H]\centering\includegraphics[width=0.95\textwidth]{figures_png/figure_elane_histogram.png}\caption{ELANE heterogeneous expression pattern in Norman 2019 CEBPE CRISPRa.}\end{figure}'

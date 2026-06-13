@@ -52,4 +52,4 @@ No external funding was received for this work.
 
 ## Open Peer Review Preference
 
-To be confirmed by the corresponding author in the portal.
+OPT OUT of publication of reviewer reports if the manuscript is accepted.

@@ -34,6 +34,9 @@ REQUIRED_MANUSCRIPT_REGEXES = [
     r"disease-relevant",
     r"translational",
     r"marker[- ]recovery[\s\S]{0,80}causal validation",
+    r"Data availability",
+    r"Code availability",
+    r"Competing interests",
     r"public repository[\s\S]{0,160}archive identifiers[\s\S]{0,120}before\s+(?:final\s+)?submission",
     r"Figure 1:[\s\S]{0,120}clinically oriented single-cell perturbation mapping",
 ]
@@ -89,6 +92,12 @@ def main() -> None:
     expected_placeholder = "[insert final archive DOI or persistent URL]"
     if expected_placeholder not in portal:
         fail("expected archive placeholder missing from portal inputs; update verifier after DOI insertion")
+    if "OPT OUT of publication of reviewer reports" not in portal:
+        fail("transparent peer review preference is not set in portal inputs")
+
+    cover = (PACKET / "COVER_LETTER_COMMUNICATIONS_MEDICINE.md").read_text()
+    if "OPT OUT of publication of the reviewer reports" not in cover:
+        fail("transparent peer review preference is not stated in the cover letter")
 
     print("CM TRANSFER CHECK PASSED")
     print(f"Packet files: {len(REQUIRED_PACKET_FILES)}")
