@@ -76,13 +76,13 @@ def main() -> None:
     ax_b.set_ylim(0.25, 0.9)
     ax_b.set_ylabel("AUROC")
     ax_b.set_xticks(x)
-    ax_b.set_xticklabels([m[0].replace(" ", "\n") for m in methods])
+    ax_b.set_xticklabels(["S1 W1", "S2 PH", "Wilcoxon", "t-test", "MAST"])
     ax_b.spines["top"].set_visible(False)
     ax_b.spines["right"].set_visible(False)
 
     # Panel C: AUPRC against random baseline.
     ax_c.set_title("(C) AUPRC vs random baseline", loc="left", fontweight="bold")
-    auprc_labels = ["S1 Wasserstein", "S2 persistence", "Random"]
+    auprc_labels = ["S1 W1", "S2 PH", "Random"]
     auprc_vals = [df["auprc_s1"].mean(), df["auprc_s2"].mean(), 13 / 2000]
     auprc_colors = ["#2F6DB3", "#2F9E44", "#D9D9D9"]
     bars = ax_c.bar(np.arange(3), auprc_vals, color=auprc_colors, edgecolor="black", linewidth=0.6)
