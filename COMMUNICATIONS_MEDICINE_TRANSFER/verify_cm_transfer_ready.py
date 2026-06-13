@@ -150,7 +150,6 @@ def main() -> None:
         "pgaa_cm_supplementary/CITATION.cff",
         "pgaa_cm_supplementary/codemeta.json",
         "pgaa_cm_supplementary/pgaa/cli.py",
-        "pgaa_cm_supplementary/scripts/finalize_archive_metadata.py",
     }
     missing_code_entries = sorted(required_code_entries - code_names)
     if missing_code_entries:
@@ -167,6 +166,21 @@ def main() -> None:
     bioinformatics_named = sorted(name for name in code_names if "bioinformatics" in name.lower())
     if bioinformatics_named:
         fail(f"supplementary code zip contains Bioinformatics-specific entries: {', '.join(bioinformatics_named[:10])}")
+    internal_release_entries = sorted(
+        name
+        for name in code_names
+        if any(
+            term in name
+            for term in [
+                "RELEASE_ARCHIVE_CHECKLIST.md",
+                "build_submission_zip.py",
+                "finalize_archive_metadata.py",
+                "COMMUNICATIONS_MEDICINE_TRANSFER",
+            ]
+        )
+    )
+    if internal_release_entries:
+        fail(f"supplementary code zip contains internal release entries: {', '.join(internal_release_entries[:10])}")
 
     portal = (PACKET / "PORTAL_INPUTS_COMMUNICATIONS_MEDICINE.md").read_text()
     expected_placeholder = "[insert final archive DOI or persistent URL]"
