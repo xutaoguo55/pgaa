@@ -36,7 +36,7 @@ Norman 2019: GSE133344. Adamson 2016: GSE90546. CLL: GSE111014. Sepsis: GSE16736
 
 ## Code Availability
 
-Source code, documentation, environment files, tests, benchmark source-data files, and PDF build scripts are prepared under the MIT license. Planned public repository: https://github.com/xutaoguo55/pgaa. Permanent archive DOI or persistent URL: [insert final archive DOI or persistent URL].
+Public code-only repository: https://github.com/xutaoguo55/pgaa. GitHub release: https://github.com/xutaoguo55/pgaa/releases/tag/v0.1.0-code. Software Heritage archive SWHID: swh:1:snp:5b1b2cc9ce32298968e00f69e1af5ff8aed8889f. Manuscript-specific source-data tables, figure-reproduction scripts, runtime documentation, and PDF build files are provided in the submitted supplementary software archive rather than in the public code-only repository.
 
 ## Transfer Note
 

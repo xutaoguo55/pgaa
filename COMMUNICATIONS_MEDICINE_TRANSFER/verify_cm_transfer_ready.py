@@ -56,7 +56,9 @@ REQUIRED_MANUSCRIPT_REGEXES = [
     r"Data availability",
     r"Code availability",
     r"Competing interests",
-    r"public repository[\s\S]{0,160}archive identifiers[\s\S]{0,120}before\s+(?:final\s+)?submission",
+    r"public\s+code-only repository",
+    r"https://github\.com/xutaoguo55/pgaa",
+    r"swh:1:snp:\s*5b1b2cc9ce32298968e00f69e1af5ff8aed8889f",
     r"Figure 1:[\s\S]{0,160}clinically oriented single-cell perturbation mapping",
 ]
 
@@ -183,9 +185,10 @@ def main() -> None:
         fail(f"supplementary code zip contains internal release entries: {', '.join(internal_release_entries[:10])}")
 
     portal = (PACKET / "PORTAL_INPUTS_COMMUNICATIONS_MEDICINE.md").read_text()
-    expected_placeholder = "[insert final archive DOI or persistent URL]"
-    if expected_placeholder not in portal:
-        fail("expected archive placeholder missing from portal inputs; update verifier after DOI insertion")
+    if "https://github.com/xutaoguo55/pgaa/releases/tag/v0.1.0-code" not in portal:
+        fail("final GitHub release URL missing from portal inputs")
+    if "swh:1:snp:5b1b2cc9ce32298968e00f69e1af5ff8aed8889f" not in portal:
+        fail("final Software Heritage SWHID missing from portal inputs")
     if "OPT OUT of publication of reviewer reports" not in portal:
         fail("transparent peer review preference is not set in portal inputs")
 
@@ -194,7 +197,7 @@ def main() -> None:
     print(f"Clean journal-upload files: {len(REQUIRED_CLEAN_UPLOAD_FILES)}")
     print(f"Manuscript pages: {pdf_pages(manuscript)}")
     print(f"Supplement pages: {pdf_pages(supplement)}")
-    print("Remaining expected blocker: public repository/archive DOI placeholder")
+    print("Public code-only repository and Software Heritage SWHID are present")
 
 
 if __name__ == "__main__":
