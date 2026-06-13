@@ -28,6 +28,8 @@ Few existing Perturb-seq methods make distribution-shape changes a primary outpu
 
 We evaluate PGAA across disease-relevant observational scRNA-seq datasets and experimental Perturb-seq benchmarks. The observational datasets in chronic lymphocytic leukemia (CLL), sepsis, rheumatoid arthritis, inflammatory bowel disease, and PBMCs test whether distributional ranking recovers known marker biology in medically relevant single-cell contexts; they are not interpreted as causal perturbation validation. Norman 2019 CEBPE CRISPRa and Adamson 2016 UPR CRISPRi provide real perturbation benchmarks, and calibration and simulation analyses define where the method should be used cautiously.
 
+**[Figure 1]**
+
 
 ## 2. Methods
 
@@ -110,7 +112,7 @@ As a general-purpose distributional statistic, Wasserstein enriches known pathwa
 
 These five datasets are observational--the "perturbation" is defined by binning cells on endogenous marker or pathway-associated expression, not by an experimental intervention--so the results demonstrate disease-relevant marker recovery rather than causal discovery. The enrichment is consistent with the Wasserstein test being a reasonable default statistic when the perturbation type is unknown or when a user is screening public patient-derived scRNA-seq data for distributional marker shifts.
 
-**[Figure 1]**
+**[Figure 2]**
 
 ### 3.2 Persistent homology ranks a heterogeneous myeloid response in CEBPE CRISPRa
 
@@ -122,7 +124,7 @@ The persistence statistic ($n_{\text{bins}} = 20$, 500 permutations) ranks ELANE
 
 CRISPRa can produce heterogeneous target activation: the gRNA does not guarantee protein-level CEBPE expression in every cell, and the resulting responder/non-responder expression pattern is the regime the persistence statistic was designed to rank. K562 is an erythroleukemia line, not a neutrophil progenitor; while it retains granulocytic differentiation capacity upon CEBPE activation, not all nine targets may be transcriptionally responsive in this system.
 
-**[Figure 2]**
+**[Figure 3]**
 
 ### 3.3 Calibration varies by perturbation
 
@@ -141,7 +143,7 @@ Table: Persistence test calibration across six Norman 2019 perturbations.
 
 KLF1 drives a clean erythroid program. CEBPE CRISPRa and BAK1 do not. The calibration spread reflects this biology, and the practical takeaway is simple: include a negative control perturbation and check pi0-hat. Importantly, the CEBPE pi0-hat of 0.25 reported here comes from a calibration run with n_bins = 50 and n_perms = 200; the main analysis in Section 3.2 uses n_bins = 20 and n_perms = 500, which yields pi0-hat approximately 1.0-1.3. The discrepancy illustrates how strongly calibration depends on both bin count and permutation depth, reinforcing the need for the pilot sweep recommended in Section 3.5.
 
-**[Figure 3]**
+**[Figure 5]**
 
 ### 3.4 Distributional statistics separate B-cell and T-cell marker programs in CLL
 
@@ -149,7 +151,7 @@ The CLL TCL1A case shows how the two distributional statistics can prioritize di
 
 The CLL analysis uses rank-based inverse-normal scores (Supplementary Methods S3) rather than full permutation calibration--a lighter-weight approach appropriate when only relative gene ordering matters rather than formal significance testing.
 
-**[Figure 4]**
+**[Figure 6]**
 
 ### 3.5 Sensitivity to histogram bin count
 
@@ -163,7 +165,7 @@ To test PGAA on a small independent Perturb-seq dataset with a complementary per
 
 Across the five perturbations, the Wasserstein test achieved a mean AUROC of 0.786 (range 0.767-0.806, mean AUPRC 0.0191) for recovering known UPR genes. By comparison, Wilcoxon, t-test, and MAST achieved mean AUROCs of 0.529, 0.523, and 0.406 respectively in the same benchmark. The persistence test achieved a mean AUROC of 0.748 (range 0.658-0.833, mean AUPRC 0.0253). Descriptive 95% t intervals across the five pre-specified perturbations are reported in Supplementary Table S12; these intervals quantify between-perturbation variability and are not a substitute for a larger independent benchmark panel. For the BHLHE40 knockdown, the persistence test was the strongest method overall (AUROC 0.833, AUPRC 0.0594 vs. Wasserstein AUROC 0.788), consistent with a heterogeneous responder-associated expression pattern. Because only 13 of the 2,000 HVGs were UPR positives, the random AUPRC baseline was 0.0065; observed AUPRC values correspond to 2.9x and 3.9x enrichment over random expectation for the Wasserstein and persistence tests, respectively. These perturbations were selected a priori based on UPR annotation in the original study and a minimum cell-count threshold ($\ge 400$ cells), not based on PGAA performance (Supplementary Table S5).
 
-**[Figure 5]**
+**[Figure 7]**
 
 ### 3.7 Simulation ablation maps each statistic to its regime
 
@@ -182,7 +184,7 @@ From the simulation and real-data results, a practical decision rule emerges:
 
 Table: Practical decision rule for statistic selection.
 
-**[Figure 6]**
+**[Figure 8]**
 
 
 ## 4. Discussion

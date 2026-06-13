@@ -30,6 +30,7 @@ Main changes:
 - Norman and Adamson remain as experimental Perturb-seq benchmarks.
 - Discussion no longer says "No new biological discoveries are claimed"; it now states that observational datasets do not establish new causal mechanisms or clinical biomarkers, but demonstrate prioritization of disease-relevant heterogeneous responses for follow-up.
 - Cover letter explicitly states that the submission follows a Nature Methods editorial transfer recommendation.
+- Figure 1 is now a Communications Medicine entry schematic: clinical problem -> PGAA distribution-aware statistics -> calibrated translational output.
 
 ## Verification
 
@@ -44,10 +45,11 @@ Passed:
 
 PDF checks:
 
-- `MANUSCRIPT_CM.pdf`: 14 pages.
+- `MANUSCRIPT_CM.pdf`: 15 pages.
 - `SUPPLEMENTARY_CM.pdf`: 14 pages.
 - Main text before references: approximately 4,915 words, consistent with the Communications Medicine Article guide of approximately 5,000 words.
 - First-page render checked visually.
+- Figure 1 render checked visually after the clinical/translational entry schematic was added.
 
 Search checks:
 

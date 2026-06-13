@@ -31,6 +31,7 @@ Changes made in `MANUSCRIPT_CM.md`:
 - Observational CLL, sepsis, RA, IBD, and PBMC datasets are described as disease-relevant marker-recovery contexts, not causal perturbation validation.
 - Norman and Adamson are retained as experimental Perturb-seq benchmarks.
 - Discussion now states that observational datasets do not establish new causal mechanisms or clinical biomarkers, but show how PGAA prioritizes disease-relevant heterogeneous responses for follow-up.
+- Figure 1 is now a clinical/translational entry schematic rather than a methods-only benchmark figure.
 
 ## Fit Assessment
 
