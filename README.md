@@ -6,20 +6,31 @@ distribution-aware tests:
 - S1: a Wasserstein distance statistic for distributional shifts.
 - S2: a persistent-homology statistic for heterogeneous or bimodal responses.
 
-The manuscript package targets *Bioinformatics* and includes the main
-manuscript, supplementary material, source data for figures and tables, and
-reproducibility checks.
+The repository supports a Communications Medicine transfer package and retains
+the earlier Bioinformatics manuscript sources for provenance. The active
+transfer-ready files are under `COMMUNICATIONS_MEDICINE_TRANSFER/`; the software
+archive contains the PGAA Python/R code, source data for figures and tables,
+tests, build scripts, and reproducibility checks.
 
 ## Main Files
 
-- `MANUSCRIPT.md`: manuscript source.
-- `MANUSCRIPT.pdf`: compiled main manuscript.
-- `SUPPLEMENTARY.md`: supplementary source.
-- `SUPPLEMENTARY.pdf`: compiled supplementary material.
+- `COMMUNICATIONS_MEDICINE_TRANSFER/MANUSCRIPT_CM.md`: Communications Medicine
+  manuscript source.
+- `COMMUNICATIONS_MEDICINE_TRANSFER/MANUSCRIPT_CM.pdf`: compiled Communications
+  Medicine manuscript.
+- `COMMUNICATIONS_MEDICINE_TRANSFER/SUPPLEMENTARY_CM.md`: Communications
+  Medicine supplementary source.
+- `COMMUNICATIONS_MEDICINE_TRANSFER/SUPPLEMENTARY_CM.pdf`: compiled
+  Communications Medicine supplementary material.
+- `MANUSCRIPT.md` and `SUPPLEMENTARY.md`: earlier Bioinformatics-oriented
+  manuscript sources retained for provenance.
 - `build_pdf.py`: Pandoc/TinyTeX build script for the main PDF.
 - `scripts/verify_manuscript_consistency.py`: focused manuscript-package audit.
-- `scripts/verify_bioinformatics_upload_ready.py`: final-upload gate for the
-  public repository URL and archive DOI/persistent identifier.
+- `COMMUNICATIONS_MEDICINE_TRANSFER/verify_cm_transfer_ready.py`: transfer
+  package gate for manuscript, supplementary, code archive, portal inputs, and
+  cover letter.
+- `scripts/verify_bioinformatics_upload_ready.py`: earlier Bioinformatics
+  upload gate retained for provenance.
 - `scripts/finalize_archive_metadata.py`: synchronizes the final repository URL
   and archive DOI/persistent identifier across manuscript and metadata files.
 - `scripts/rebuild_adamson_full_results.py`: rebuilds the Adamson benchmark
@@ -28,8 +39,11 @@ reproducibility checks.
   reproduction-status map for all public datasets used in the manuscript.
 - `UPLOAD_FILE_MANIFEST.tsv`: upload/include/exclude map for manuscript,
   supplementary, figure, portal, cover-letter, and internal audit files.
-- `scripts/build_bioinformatics_upload_packet.py`: copies only manifest-approved
-  upload-facing files into `BIOINFORMATICS_UPLOAD_PACKET/`.
+- `COMMUNICATIONS_MEDICINE_TRANSFER/build_cm_supplementary_zip.py`: builds a
+  CM-specific supplementary software archive without older Bioinformatics
+  manuscript PDFs.
+- `scripts/build_bioinformatics_upload_packet.py`: earlier Bioinformatics upload
+  packet builder retained for provenance.
 - `CITATION.cff` and `codemeta.json`: software citation and metadata files for
   GitHub/Zenodo-style archival records.
 - `RELEASE_ARCHIVE_CHECKLIST.md`: final release, DOI, and portal-field checklist.
@@ -102,10 +116,10 @@ python3 scripts/rebuild_adamson_full_results.py
 python3 scripts/verify_manuscript_consistency.py
 python3 scripts/verify_dataset_manifest.py
 python3 scripts/verify_upload_file_manifest.py
-python3 scripts/verify_bioinformatics_upload_ready.py --allow-pending
+python3 COMMUNICATIONS_MEDICINE_TRANSFER/verify_cm_transfer_ready.py
 python3 build_pdf.py
 python3 scripts/build_submission_zip.py
-python3 scripts/build_bioinformatics_upload_packet.py
+python3 COMMUNICATIONS_MEDICINE_TRANSFER/build_cm_supplementary_zip.py
 ```
 
 `scripts/compare_combinations.py` requires the local Norman 2019 h5ad file used
@@ -136,14 +150,16 @@ MIT.
 
 ## Citation
 
-Use `CITATION.cff` for software citation metadata. Before final Bioinformatics
-submission, add the permanent archive DOI or persistent URL to `CITATION.cff`,
-the manuscript availability statement, and the submission portal after Zenodo,
-Figshare, Software Heritage, or Code Ocean deposition.
+Use `CITATION.cff` for software citation metadata. Before final Communications
+Medicine submission, make the repository public and add the permanent archive
+DOI or persistent URL to `CITATION.cff`, the manuscript availability statement,
+and the submission portal after Zenodo, Figshare, Software Heritage, or Code
+Ocean deposition.
 
-Run `python3 scripts/verify_bioinformatics_upload_ready.py` without
-`--allow-pending` immediately before final upload. It should pass only after the
-repository URL is public and an archive DOI or persistent URL has been added.
+Run `python3 COMMUNICATIONS_MEDICINE_TRANSFER/verify_cm_transfer_ready.py`
+immediately before final upload. It currently permits the explicit repository
+and archive placeholder, but the final upload should proceed only after the
+GitHub repository is public and an archive DOI or persistent URL has been added.
 After the final identifiers are available, run:
 
 ```bash

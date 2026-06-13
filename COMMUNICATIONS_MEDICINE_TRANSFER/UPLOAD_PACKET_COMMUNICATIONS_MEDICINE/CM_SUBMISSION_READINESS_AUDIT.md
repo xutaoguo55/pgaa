@@ -32,6 +32,7 @@ Main changes:
 - Cover letter explicitly states that the submission follows a Nature Methods editorial transfer recommendation.
 - Figure 1 is now a Communications Medicine entry schematic: clinical problem -> PGAA distribution-aware statistics -> calibrated translational output.
 - Cover letter and portal inputs state an OPT OUT preference for Transparent Peer Review report publication.
+- `UPLOAD_PACKET_COMMUNICATIONS_MEDICINE/PGAA_supplementary_code.zip` is now built by the CM-specific archive builder and contains the CM manuscript/supplementary files, not the older Bioinformatics manuscript PDFs.
 
 ## Verification
 

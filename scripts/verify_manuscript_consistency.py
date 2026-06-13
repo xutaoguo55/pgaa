@@ -273,53 +273,55 @@ def check_upload_manifest_documented() -> list[str]:
     errors = []
     manifest = ROOT / "UPLOAD_FILE_MANIFEST.tsv"
     verifier = ROOT / "scripts" / "verify_upload_file_manifest.py"
-    builder = ROOT / "scripts" / "build_bioinformatics_upload_packet.py"
+    builder = ROOT / "COMMUNICATIONS_MEDICINE_TRANSFER" / "build_cm_supplementary_zip.py"
     readme_text = (ROOT / "README.md").read_text(errors="replace")
-    checklist_text = (ROOT / "SUBMISSION_CHECKLIST.md").read_text(errors="replace")
+    checklist_text = (ROOT / "RELEASE_ARCHIVE_CHECKLIST.md").read_text(errors="replace")
     if not manifest.exists() or manifest.stat().st_size == 0:
         errors.append("Missing upload-file manifest: UPLOAD_FILE_MANIFEST.tsv")
     if not verifier.exists() or verifier.stat().st_size == 0:
         errors.append("Missing upload-file manifest verifier: scripts/verify_upload_file_manifest.py")
     if not builder.exists() or builder.stat().st_size == 0:
-        errors.append("Missing Bioinformatics upload-packet builder: scripts/build_bioinformatics_upload_packet.py")
-    for text, rel in [(readme_text, "README.md"), (checklist_text, "SUBMISSION_CHECKLIST.md")]:
+        errors.append("Missing Communications Medicine supplementary zip builder")
+    for text, rel in [(readme_text, "README.md"), (checklist_text, "RELEASE_ARCHIVE_CHECKLIST.md")]:
         if "UPLOAD_FILE_MANIFEST.tsv" not in text:
             errors.append(f"{rel} does not mention UPLOAD_FILE_MANIFEST.tsv")
         if "python3 scripts/verify_upload_file_manifest.py" not in text:
             errors.append(f"{rel} does not document the upload-file manifest verifier")
-        if "python3 scripts/build_bioinformatics_upload_packet.py" not in text:
-            errors.append(f"{rel} does not document the Bioinformatics upload-packet builder")
+        if "python3 COMMUNICATIONS_MEDICINE_TRANSFER/build_cm_supplementary_zip.py" not in text:
+            errors.append(f"{rel} does not document the Communications Medicine supplementary zip builder")
     return errors
 
 
 def check_upload_gate_documented() -> list[str]:
     errors = []
-    gate = ROOT / "scripts" / "verify_bioinformatics_upload_ready.py"
+    gate = ROOT / "COMMUNICATIONS_MEDICINE_TRANSFER" / "verify_cm_transfer_ready.py"
     finalizer = ROOT / "scripts" / "finalize_archive_metadata.py"
     if not gate.exists() or gate.stat().st_size == 0:
-        errors.append("Missing final upload gate: scripts/verify_bioinformatics_upload_ready.py")
+        errors.append("Missing final CM transfer gate: COMMUNICATIONS_MEDICINE_TRANSFER/verify_cm_transfer_ready.py")
     if not finalizer.exists() or finalizer.stat().st_size == 0:
         errors.append("Missing archive metadata finalizer: scripts/finalize_archive_metadata.py")
     readme_text = (ROOT / "README.md").read_text(errors="replace")
     checklist_text = (ROOT / "RELEASE_ARCHIVE_CHECKLIST.md").read_text(errors="replace")
-    if "python3 scripts/verify_bioinformatics_upload_ready.py" not in readme_text:
-        errors.append("README.md does not document the Bioinformatics upload gate")
-    if "python3 scripts/verify_bioinformatics_upload_ready.py" not in checklist_text:
+    if "python3 COMMUNICATIONS_MEDICINE_TRANSFER/verify_cm_transfer_ready.py" not in readme_text:
+        errors.append("README.md does not document the Communications Medicine transfer gate")
+    if "python3 COMMUNICATIONS_MEDICINE_TRANSFER/verify_cm_transfer_ready.py" not in checklist_text:
         errors.append("RELEASE_ARCHIVE_CHECKLIST.md does not document the upload gate")
     gate_text = gate.read_text(errors="replace")
     required_gate_terms = [
-        "COVER_LETTER_BIOINFORMATICS.md",
-        "[insert archive DOI or persistent URL]",
-        "[Author names]",
-        "[Affiliations]",
-        "[Contact email]",
+        "COVER_LETTER_COMMUNICATIONS_MEDICINE.md",
+        "PORTAL_INPUTS_COMMUNICATIONS_MEDICINE.md",
+        "[insert final archive DOI or persistent URL]",
+        "OPT OUT of publication of reviewer reports",
+        "pgaa_cm_supplementary/communications_medicine/MANUSCRIPT_CM.pdf",
     ]
     for term in required_gate_terms:
         if term not in gate_text:
-            errors.append(f"Bioinformatics upload gate does not cover: {term}")
+            errors.append(f"Communications Medicine transfer gate does not cover: {term}")
     finalizer_text = finalizer.read_text(errors="replace")
     required_finalizer_terms = [
-        "COVER_LETTER_BIOINFORMATICS.md",
+        "COVER_LETTER_COMMUNICATIONS_MEDICINE.md",
+        "PORTAL_INPUTS_COMMUNICATIONS_MEDICINE.md",
+        "MANUSCRIPT_CM.md",
         "[insert archive DOI or persistent URL]",
         "[archive DOI or persistent URL]",
         "[repository URL]",

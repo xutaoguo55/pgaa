@@ -83,6 +83,26 @@ def update_codemeta(repo_url: str, archive_url: str, dry_run: bool) -> list[str]
     return changed
 
 
+def update_zenodo(repo_url: str, archive_url: str, dry_run: bool) -> list[str]:
+    path = ROOT / ".zenodo.json"
+    if not path.exists():
+        return []
+    data = json.loads(path.read_text())
+    changed: list[str] = []
+    related = data.setdefault("related_identifiers", [])
+    if not any(item.get("identifier") == repo_url for item in related):
+        related.append({"identifier": repo_url, "relation": "isSupplementTo", "scheme": "url"})
+        changed.append("repository related identifier")
+    if not any(item.get("identifier") == archive_url for item in related):
+        scheme = "doi" if DOI_URL_RE.match(archive_url) else "url"
+        value = archive_url.removeprefix("https://doi.org/") if scheme == "doi" else archive_url
+        related.append({"identifier": value, "relation": "isIdenticalTo", "scheme": scheme})
+        changed.append("archive related identifier")
+    if changed and not dry_run:
+        path.write_text(json.dumps(data, indent=2) + "\n")
+    return changed
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--repo-url", required=True, help="Final public repository URL")
@@ -138,6 +158,23 @@ def main() -> None:
             "Heritage, or Code Ocean, and replace this sentence with the assigned DOI "
             "or persistent URL."
         ): f"The public GitHub repository is {args.repo_url}. The archived software release is available at {args.archive_url}.",
+        (
+            "final public repository and archive identifiers will be supplied before submission"
+        ): f"source code is available at {args.repo_url}; the archived release is available at {args.archive_url}",
+        (
+            "The planned public repository is https://github.com/xutaoguo55/pgaa; this URL must "
+            "be publicly reachable, and a permanent Zenodo, Figshare, Software Heritage, or "
+            "Code Ocean identifier must be added before final submission. The exact submitted "
+            "software version will be made available to editors and reviewers during peer review "
+            "and archived before publication."
+        ): f"The public repository is {args.repo_url}; the archived software release is available at {args.archive_url}.",
+        (
+            "The planned public repository is https://github.com/xutaoguo55/pgaa, and the exact "
+            "submitted software version will be archived with a permanent identifier before "
+            "final submission/publication."
+        ): f"The public repository is {args.repo_url}, and the exact submitted software version is archived at {args.archive_url}.",
+        "Planned public repository: https://github.com/xutaoguo55/pgaa.": f"Public repository: {args.repo_url}.",
+        "Permanent archive DOI or persistent URL: [insert final archive DOI or persistent URL].": f"Permanent archive DOI or persistent URL: {args.archive_url}.",
     }
 
     targets = [
@@ -146,6 +183,11 @@ def main() -> None:
         ROOT / "PORTAL_INPUTS.md",
         ROOT / "COVER_LETTER_BIOINFORMATICS.md",
         ROOT / "README.md",
+        ROOT / "COMMUNICATIONS_MEDICINE_TRANSFER" / "MANUSCRIPT_CM.md",
+        ROOT / "COMMUNICATIONS_MEDICINE_TRANSFER" / "SUPPLEMENTARY_CM.md",
+        ROOT / "COMMUNICATIONS_MEDICINE_TRANSFER" / "PORTAL_INPUTS_COMMUNICATIONS_MEDICINE.md",
+        ROOT / "COMMUNICATIONS_MEDICINE_TRANSFER" / "COVER_LETTER_COMMUNICATIONS_MEDICINE.md",
+        ROOT / "COMMUNICATIONS_MEDICINE_TRANSFER" / "CM_SUBMISSION_READINESS_AUDIT.md",
     ]
     for path in targets:
         changed = replace_in_file(path, replacements, args.dry_run)
@@ -153,6 +195,7 @@ def main() -> None:
 
     print(f"CITATION.cff: {len(update_citation(args.repo_url, args.archive_url, args.dry_run))} update(s)")
     print(f"codemeta.json: {len(update_codemeta(args.repo_url, args.archive_url, args.dry_run))} update(s)")
+    print(f".zenodo.json: {len(update_zenodo(args.repo_url, args.archive_url, args.dry_run))} update(s)")
 
     if args.dry_run:
         print("dry-run only; no files changed")

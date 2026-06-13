@@ -88,6 +88,35 @@ def main() -> None:
     if missing_in_zip:
         fail(f"packet zip missing files: {', '.join(missing_in_zip)}")
 
+    code_zip = PACKET / "PGAA_supplementary_code.zip"
+    with zipfile.ZipFile(code_zip) as zf:
+        code_names = set(zf.namelist())
+    required_code_entries = {
+        "pgaa_cm_supplementary/communications_medicine/MANUSCRIPT_CM.pdf",
+        "pgaa_cm_supplementary/communications_medicine/SUPPLEMENTARY_CM.pdf",
+        "pgaa_cm_supplementary/communications_medicine/verify_cm_transfer_ready.py",
+        "pgaa_cm_supplementary/.zenodo.json",
+        "pgaa_cm_supplementary/CITATION.cff",
+        "pgaa_cm_supplementary/codemeta.json",
+        "pgaa_cm_supplementary/pgaa/cli.py",
+        "pgaa_cm_supplementary/scripts/finalize_archive_metadata.py",
+    }
+    missing_code_entries = sorted(required_code_entries - code_names)
+    if missing_code_entries:
+        fail(f"supplementary code zip missing CM entries: {', '.join(missing_code_entries)}")
+    forbidden_code_entries = {
+        "pgaa_cm_supplementary/MANUSCRIPT.md",
+        "pgaa_cm_supplementary/MANUSCRIPT.pdf",
+        "pgaa_cm_supplementary/SUPPLEMENTARY.md",
+        "pgaa_cm_supplementary/SUPPLEMENTARY.pdf",
+    }
+    present_forbidden = sorted(forbidden_code_entries & code_names)
+    if present_forbidden:
+        fail(f"supplementary code zip contains older manuscript entries: {', '.join(present_forbidden)}")
+    bioinformatics_named = sorted(name for name in code_names if "bioinformatics" in name.lower())
+    if bioinformatics_named:
+        fail(f"supplementary code zip contains Bioinformatics-specific entries: {', '.join(bioinformatics_named[:10])}")
+
     portal = (PACKET / "PORTAL_INPUTS_COMMUNICATIONS_MEDICINE.md").read_text()
     expected_placeholder = "[insert final archive DOI or persistent URL]"
     if expected_placeholder not in portal:
