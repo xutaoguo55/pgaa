@@ -65,6 +65,7 @@ FORBIDDEN_SUBSTRINGS = [
     "PROJECT_REVIEW",
     "REVIEWER_RESPONSE",
     "REFERENCE_AUDIT",
+    "FIGURE_PROMPTS.md",
     "verify_manuscript_consistency.py",
     "verify_upload_file_manifest.py",
     "figure_workflow",

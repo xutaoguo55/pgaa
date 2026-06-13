@@ -23,8 +23,6 @@ REQUIRED_PACKET_FILES = {
     "COVER_LETTER_COMMUNICATIONS_MEDICINE.docx",
     "COVER_LETTER_COMMUNICATIONS_MEDICINE.pdf",
     "PORTAL_INPUTS_COMMUNICATIONS_MEDICINE.md",
-    "CM_REQUIREMENTS_AUDIT.md",
-    "CM_SUBMISSION_READINESS_AUDIT.md",
 }
 
 REQUIRED_CLEAN_UPLOAD_FILES = {
@@ -39,6 +37,15 @@ FORBIDDEN_CLEAN_UPLOAD_TERMS = [
     "READINESS",
     "REQUIREMENTS",
     "PORTAL_INPUTS",
+    "CHECKLIST",
+    "REVIEW",
+    "INTERNAL",
+]
+
+FORBIDDEN_PACKET_TERMS = [
+    "AUDIT",
+    "READINESS",
+    "REQUIREMENTS",
     "CHECKLIST",
     "REVIEW",
     "INTERNAL",
@@ -87,6 +94,13 @@ def main() -> None:
     missing = sorted(name for name in REQUIRED_PACKET_FILES if not (PACKET / name).exists())
     if missing:
         fail(f"missing packet files: {', '.join(missing)}")
+    packet_bad_names = [
+        path.name
+        for path in PACKET.iterdir()
+        if path.is_file() and any(term in path.name.upper() for term in FORBIDDEN_PACKET_TERMS)
+    ]
+    if packet_bad_names:
+        fail(f"transfer packet contains internal filenames: {', '.join(packet_bad_names)}")
 
     if not ZIP.exists():
         fail("missing PGAA_COMMUNICATIONS_MEDICINE_TRANSFER_PACKET.zip")
@@ -109,10 +123,18 @@ def main() -> None:
             fail(f"required manuscript pattern missing: {pattern}")
 
     with zipfile.ZipFile(ZIP) as zf:
-        names = {Path(name).name for name in zf.namelist()}
+        zip_entries = [name for name in zf.namelist() if not name.endswith("/")]
+        names = {Path(name).name for name in zip_entries}
     missing_in_zip = sorted(name for name in REQUIRED_PACKET_FILES if name not in names)
     if missing_in_zip:
         fail(f"packet zip missing files: {', '.join(missing_in_zip)}")
+    packet_zip_bad = [
+        name
+        for name in zip_entries
+        if any(term in name.upper() for term in FORBIDDEN_PACKET_TERMS)
+    ]
+    if packet_zip_bad:
+        fail(f"transfer packet zip contains internal entries: {', '.join(packet_zip_bad)}")
 
     clean_missing = sorted(name for name in REQUIRED_CLEAN_UPLOAD_FILES if not (CLEAN_PACKET / name).exists())
     if clean_missing:
@@ -181,6 +203,7 @@ def main() -> None:
                 "build_submission_zip.py",
                 "finalize_archive_metadata.py",
                 "COMMUNICATIONS_MEDICINE_TRANSFER",
+                "FIGURE_PROMPTS.md",
             ]
         )
     )
