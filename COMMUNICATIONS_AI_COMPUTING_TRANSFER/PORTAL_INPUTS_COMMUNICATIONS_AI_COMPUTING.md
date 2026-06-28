@@ -6,7 +6,7 @@ Article
 
 ## Title
 
-A distribution-aware computational framework for prioritizing heterogeneous responses in single-cell perturbation data
+PGAA: distribution-aware ranking of heterogeneous single-cell perturbation responses
 
 ## Short Title
 

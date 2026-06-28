@@ -72,8 +72,8 @@ FORBIDDEN_MANUSCRIPT_PATTERNS = [
 ]
 
 REQUIRED_MANUSCRIPT_REGEXES = [
-    r"distribution-aware computational framework",
-    r"computational ranking layer",
+    r"distribution-aware ranking",
+    r"guardrailed ranking method",
     r"single-cell perturbation data",
     r"marker[- ]recovery stress (tests|checks)",
     r"rather than causal interpretation",
@@ -242,7 +242,7 @@ def main() -> None:
     cover_text = pdf_text(PACKET / "COVER_LETTER_COMMUNICATIONS_AI_COMPUTING.pdf")
     for required in [
         "Communications AI & Computing",
-        "computational framework",
+        "ranking method",
         "opt in to Transparent Peer Review",
     ]:
         if required not in cover_text:
