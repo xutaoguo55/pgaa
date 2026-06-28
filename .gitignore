@@ -43,3 +43,6 @@ pgaa_r/pgaa_r.Rcheck/
 *.log
 scripts/*_test_output.txt
 figures_png/figure_workflow.png
+# Large files
+cancer_treatment_response_validation/raw/
+COMMUNICATIONS_AI_COMPUTING_TRANSFER/figures_source/Figure_1_PGAA_framework_final.tiff
