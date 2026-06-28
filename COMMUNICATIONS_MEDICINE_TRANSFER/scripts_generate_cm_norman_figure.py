@@ -68,7 +68,7 @@ def main() -> None:
     ax.text(0.995, 0.86, "p=0.05", transform=ax.transAxes, ha="right", va="top", color="#B22222", fontsize=8.5)
     ax.set_xlabel("S2 persistence statistic")
     ax.set_ylabel("-log10(permutation p)")
-    ax.set_title("(A) Persistence ranking in CEBPE CRISPRa", loc="left", fontweight="bold")
+    ax.set_title("a  Persistence ranking in CEBPE CRISPRa", loc="left", fontweight="bold")
     ax.legend(frameon=False, loc="upper left")
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
@@ -96,18 +96,7 @@ def main() -> None:
             fontsize=8.7,
             fontweight="bold",
         )
-    ax.annotate(
-        "25x rank\nimprovement",
-        xy=(2, s2_rank),
-        xytext=(2.05, 520),
-        arrowprops={"arrowstyle": "->", "lw": 1.0, "color": "#2F6DB3"},
-        ha="left",
-        va="center",
-        color="#2F6DB3",
-        fontsize=9.5,
-        fontweight="bold",
-    )
-    ax.set_title("(B) ELANE rank comparison", loc="left", fontweight="bold")
+    ax.set_title("b  ELANE rank comparison", loc="left", fontweight="bold")
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
 

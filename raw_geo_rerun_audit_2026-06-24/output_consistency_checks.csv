@@ -1,0 +1,10 @@
+check,computed,reported,reported_in_summary,reported_in_table_sceptre_vs_pgaa,status
+Norman S2 known_hits from current per-gene table,1/9,,,1/9,PASS
+Norman S2 ELANE rank by p-value,57,,,57,PASS
+Norman S2 ELANE rank by raw S2 score,93,,,57,INFO: manuscript rank is permutation-p rank
+Norman S2 summary known_hits,1/9,,1/9,,PASS
+Adamson selected perturbation count,5,5,,,PASS
+Adamson mean AUROC S1,0.786,0.786 approx,,,PASS
+Adamson mean AUPRC S1,0.0191,0.0188 approx,,,PASS
+Adamson raw 10X001 sanity rerun mean AUROC S1,0.787,0.786 approx,,,PASS
+Adamson raw 10X001 sanity rerun selected perturbations,5,5,,,PASS

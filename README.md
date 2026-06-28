@@ -1,6 +1,6 @@
 # PGAA: distribution-aware single-cell perturbation analysis
 
-PGAA is a Python and R software package for prioritizing heterogeneous single-cell transcriptional responses. It implements a Wasserstein statistic for full-distribution shifts and a persistent-homology statistic for responder-associated expression-shape changes. The Communications Medicine transfer materials are included under `communications_medicine/` when this archive is unpacked.
+PGAA is a Python and R software package for prioritizing heterogeneous single-cell transcriptional responses. It implements PGAA-W Wasserstein for full-distribution shifts and the PGAA-H histogram-shape statistic for responder-associated expression-shape changes. The Communications AI & Computing manuscript-support materials are included under `communications_ai_computing/` when this archive is unpacked.
 
 ## Archive Contents
 
@@ -9,12 +9,11 @@ PGAA is a Python and R software package for prioritizing heterogeneous single-ce
 - `scripts/`: reproducibility scripts, toy example, source-data table rebuilds, and figure-generation helpers.
 - `figure_source_data/`: CSV files used to rebuild manuscript figure panels and benchmark summaries.
 - `figures_png/`: final figure images used by the manuscript and supplementary PDF.
-- `communications_medicine/MANUSCRIPT_CM.pdf`: submitted manuscript PDF.
-- `communications_medicine/SUPPLEMENTARY_CM.pdf`: submitted supplementary PDF.
-- `communications_medicine/MANUSCRIPT_CM.md` and `SUPPLEMENTARY_CM.md`: manuscript sources.
-- `communications_medicine/build_cm_pdf.py`: PDF builder for the main manuscript.
+- `communications_ai_computing/MANUSCRIPT_CAIC.pdf`: submitted manuscript PDF.
+- `communications_ai_computing/SUPPLEMENTARY_CAIC.pdf`: submitted supplementary PDF.
+- `communications_ai_computing/MANUSCRIPT_CAIC.md` and `SUPPLEMENTARY_CAIC.md`: manuscript sources.
+- `communications_ai_computing/build_caic_pdf.py`: PDF builder for the main manuscript.
 - `DATASET_MANIFEST.tsv`: public dataset accessions, analysis roles, and reproduction status.
-- `UPLOAD_FILE_MANIFEST.tsv`: map of journal-upload, supplementary-archive, and internal-only files for the Communications Medicine transfer package.
 - `CITATION.cff`, `codemeta.json`, `.zenodo.json`: software citation and archive metadata.
 
 ## Install
@@ -22,7 +21,7 @@ PGAA is a Python and R software package for prioritizing heterogeneous single-ce
 Install the Python dependencies before running any smoke test:
 
 ```bash
-pip install -e .
+python3 -m pip install -e .
 ```
 
 Alternatively, create the supplied conda environment:
@@ -30,7 +29,7 @@ Alternatively, create the supplied conda environment:
 ```bash
 conda env create -f environment.yml
 conda activate pgaa
-pip install -e .
+python3 -m pip install -e .
 ```
 
 For R usage, source the files under `pgaa_r/R/` or install the R package from `pgaa_r/`.
@@ -43,13 +42,13 @@ After installation, run the self-contained toy example:
 python3 scripts/run_toy_example.py
 ```
 
-The script generates a small synthetic Perturb-seq-like matrix, runs S1 and S2, and checks that planted distributional and heterogeneous responses rank near the top.
+The script generates a small synthetic Perturb-seq-like matrix, runs PGAA-W and PGAA-H, and checks that planted distributional and heterogeneous responses rank near the top.
 
 Optional package checks:
 
 ```bash
 python3 scripts/test_python_pkg.py
-Rscript scripts/test_r_pkg.R
+Rscript scripts/test_r_pkg.R    # requires R and Rscript; not runnable in R-free environments
 python3 -m pytest tests/test_cli.py -q
 python3 scripts/verify_dataset_manifest.py
 ```
@@ -71,6 +70,8 @@ python3 -m pgaa.cli \
 
 The expression CSV should have cells as rows, genes as columns, and the first column as cell IDs. The metadata CSV must contain `cell_id` and a group column. The command writes `results/MYC.s1.csv` and `results/MYC.s2.csv`.
 
+Naming note: historical code outputs and filenames use `s1` and `s2` for backward compatibility. In the manuscript terminology, `s1` corresponds to PGAA-W and `s2` corresponds to PGAA-H.
+
 ## Reproduce Key Source-Data Tables
 
 ```bash
@@ -79,15 +80,29 @@ python3 scripts/table_sceptre_vs_pgaa.py
 python3 scripts/figure_simulation.py
 ```
 
-`scripts/rebuild_adamson_full_results.py` rebuilds the Adamson benchmark summary from `figure_source_data/fig6_adamson_results.csv`. Some Norman analyses require the processed Norman 2019 h5ad input used in the manuscript workflow and therefore are documented as source-data or processed-data reproducibility rather than a one-command raw GEO-to-final-figure workflow.
+`scripts/rebuild_adamson_full_results.py` rebuilds the Adamson benchmark summary from `figure_source_data/fig6_adamson_results.csv`. `scripts/benchmark_adamson2016.py` provides a raw GSE90546/GSM2406675 10X001 sanity rerun for the five selected Adamson perturbations and reproduces the reported AUROC scale, but the final PDF table remains rebuilt from the curated source-data CSV. Some Norman analyses require the processed Norman 2019 h5ad input used in the manuscript workflow and therefore are documented as source-data or processed-data reproducibility rather than a one-command raw GEO-to-final-figure workflow. Full MMD-PSM and Norman multi-perturbation recomputation require setting `NORMAN2019_H5AD` to the processed Norman 2019 h5ad file; clean-archive reruns of both scripts have been verified when that input is supplied. Without that input, the archive still supports processed-source-data summaries and manifest checks rather than a full rerun.
+
+## Reproducibility Status
+
+| Check | Expected status |
+|---|---|
+| `python3 -m pip install -e .` | Should pass |
+| `python3 scripts/run_toy_example.py` | Should pass without external data |
+| `python3 scripts/test_python_pkg.py` | Should pass (may take ~20 s) |
+| `python3 -m pytest tests/test_cli.py -q` | Should pass |
+| `python3 scripts/verify_dataset_manifest.py` | Should pass |
+| `python3 scripts/rebuild_adamson_full_results.py` | Should pass |
+| `python3 scripts/benchmark_mmd_psm.py` | Requires `NORMAN2019_H5AD` |
+| `python3 scripts/benchmark_norman_multi_perturbation.py` | Requires `NORMAN2019_H5AD` |
+| `Rscript scripts/test_r_pkg.R` | Requires R and Rscript; not runnable in R-free environments |
 
 ## Rebuild Manuscript PDFs
 
 ```bash
-cd communications_medicine
-python3 build_cm_pdf.py
-pandoc SUPPLEMENTARY_CM.md -o SUPPLEMENTARY_CM.tex --from markdown --standalone
-Rscript -e "tinytex::xelatex('SUPPLEMENTARY_CM.tex')"
+cd communications_ai_computing
+python3 build_caic_pdf.py
+pandoc SUPPLEMENTARY_CAIC.md -o SUPPLEMENTARY_CAIC.tex --from markdown --standalone
+Rscript -e "tinytex::xelatex('SUPPLEMENTARY_CAIC.tex')"
 ```
 
 ## Public Data
@@ -100,4 +115,4 @@ MIT.
 
 ## Citation and Archive Status
 
-Use `CITATION.cff` for software citation metadata. Before final journal submission, the repository should be made public and the permanent Zenodo, Figshare, Software Heritage, or Code Ocean DOI/persistent identifier should be inserted into `CITATION.cff`, `codemeta.json`, `.zenodo.json`, the manuscript availability statement, and the submission portal.
+Use `CITATION.cff` for software citation metadata. The public code-only repository is available at https://github.com/xutaoguo55/pgaa, the archived software release is available at https://doi.org/10.5281/zenodo.20681141, and the Software Heritage snapshot identifier is `swh:1:snp:5b1b2cc9ce32298968e00f69e1af5ff8aed8889f`.

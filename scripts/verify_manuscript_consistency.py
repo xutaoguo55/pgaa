@@ -133,6 +133,8 @@ def check_adamson_ci() -> list[str]:
     expected_methods = {
         "S1 Wasserstein",
         "S2 persistence",
+        "histogram-persistence",
+        "persistence-inspired histogram-shape statistic",
         "Wilcoxon rank-sum",
         "t-test",
         "MAST",

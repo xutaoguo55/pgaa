@@ -16,29 +16,33 @@ tex = tex.replace('π̂₀', r'$\hat{\pi}_0$')
 tex = tex.replace('H₀', r'$H_0$')
 tex = tex.replace('≥', r'$\ge$')
 
-# Step 3: Add packages (geometry, float, graphicx, fancyhdr, lineno)
+# Step 3: Add packages (geometry, float, graphicx, fancyhdr, lineno).
+# Insert before \begin{document}; relying on a longtable package anchor is
+# fragile because the main manuscript may contain no formal tables.
+required_preamble = '\n'.join([
+    r'\usepackage[margin=1in]{geometry}',
+    r'\usepackage{float}',
+    r'\usepackage{graphicx}',
+    r'\usepackage{lineno}',
+    r'\usepackage{fancyhdr}',
+    r'\pagestyle{fancy}',
+    r'\fancyhf{}',
+    r'\fancyfoot[C]{\thepage}',
+    r'\renewcommand{\headrulewidth}{0pt}',
+    r'\setlength\linenumbersep{8pt}',
+    r'\renewcommand\linenumberfont{\normalfont\tiny\sffamily}',
+    r'\linenumbers',
+])
 if r'\usepackage{graphicx}' not in tex:
-    marker = r'\usepackage{longtable,booktabs,array}'
-    extra = (r'\usepackage[margin=1in]{geometry}' + '\n'
-             r'\usepackage{float}' + '\n' + r'\usepackage{graphicx}' + '\n'
-             r'\usepackage{lineno}' + '\n'
-             r'\usepackage{fancyhdr}' + '\n'
-             r'\pagestyle{fancy}' + '\n'
-             r'\fancyhf{}' + '\n'
-             r'\fancyfoot[C]{\thepage}' + '\n'
-             r'\renewcommand{\headrulewidth}{0pt}' + '\n'
-             r'\setlength\linenumbersep{8pt}' + '\n'
-             r'\renewcommand\linenumberfont{\normalfont\tiny\sffamily}' + '\n'
-             r'\linenumbers')
-    tex = tex.replace(marker, extra + '\n' + marker)
+    tex = tex.replace(r'\begin{document}', required_preamble + '\n\n' + r'\begin{document}')
 
 # Step 4: Insert figures (use lambda to avoid \c escape in regex)
 fig_map = {
     '1': ('figures_png/figure_cm_entry.png', 'PGAA as a clinically oriented single-cell perturbation mapping framework for heterogeneous disease-relevant transcriptional responses.'),
-    '2': ('figures_png/figure_1.png', 'Disease-state marker recovery across five observational single-cell datasets. These analyses assess marker recovery rather than causal perturbation effects.'),
-    '3': ('figures_png/figure_adamson_benchmark.png', 'Independent validation on Adamson 2016 UPR CRISPRi benchmark. Exact per-perturbation values for panel D are provided in Supplementary Table S5.'),
-    '4': ('figures_png/figure_norman_main_cm.png', 'Norman 2019 CEBPE CRISPRa persistence ranking as a narrow use-case example.'),
-    '5': ('figures_png/figure_3.png', 'Perturbation-specific calibration defines guardrails for persistence-based ranking.'),
+    '2': ('figures_png/figure_1.png', 'Disease-state marker recovery across five observational single-cell datasets. a, Recovery of known disease-relevant marker sets compared with housekeeping negative controls in the top-100 Wasserstein ranking. b, Positive-to-negative enrichment ratios, with 1x as the random expectation and 2x as a practical enrichment threshold. c, CLL comparator analysis showing that Wasserstein produced coherent BCR-axis rankings but was not uniformly superior to all conventional ranking baselines. These analyses assess marker recovery rather than causal perturbation effects.'),
+    '3': ('figures_png/figure_adamson_benchmark.png', 'Independent validation on the Adamson 2016 UPR CRISPRi benchmark. a, Benchmark design and curated evaluation universe. b, Mean AUROC across five pre-specified UPR perturbations, with dots showing individual perturbations. c, Mean AUPRC compared with the random positive-rate baseline. d, Per-perturbation AUROC heatmap. Exact values for panel d are provided in Supplementary Table S5.'),
+    '4': ('figures_png/figure_norman_main_cm.png', 'Norman 2019 CEBPE CRISPRa persistence ranking as a narrow use-case example. a, S2 persistence statistic versus permutation p-value across genes, with known CEBPE targets highlighted. b, ELANE rank comparison across SCEPTRE, PGAA S1 Wasserstein and PGAA S2 persistence. The panel illustrates ranking evidence only, not FDR-controlled discovery or complete CEBPE program recovery.'),
+    '5': ('figures_png/figure_3.png', 'Perturbation-specific calibration defines guardrails for persistence-based ranking. a, Number of nominally significant genes and Storey pi0-hat across six Norman perturbations. b, CEBPE-target p-values across perturbation contexts. c, Leakage of CEBPE-target significance across non-CEBPE perturbations. S2 denotes the persistence statistic.'),
 }
 for num, (path, cap) in fig_map.items():
     placement = 'htbp'
@@ -59,8 +63,8 @@ tex = tex.replace(r'\subsection{3. Discussion}', r'\clearpage' + '\n' + r'\subse
 # Add clearpage before availability sections.
 tex = re.sub(r'\\subsection\{Data availability\}', r'\\clearpage\n\\subsection{Data availability}', tex)
 
-# Step 5: Remove placeholder text. Supplementary figures and tables are built
-# separately in SUPPLEMENTARY.pdf rather than inserted into the main manuscript.
+# Step 5: Remove the in-text cross-reference marker. Supplementary figures and
+# tables are built separately in SUPPLEMENTARY.pdf.
 tex = tex.replace(r'\textbf{{[}Supplementary Table S1{]}}', '')
 
 # Step 7: Write and compile
@@ -82,12 +86,14 @@ for i in range(2):
         ["Rscript", "-e", "tinytex::xelatex('MANUSCRIPT_CM.tex')"],
         capture_output=True, text=True
     )
-    if "Emergency stop" in result.stdout or "Fatal" in result.stdout:
+    combined_log = result.stdout + "\n" + result.stderr
+    if result.returncode != 0 or "Emergency stop" in combined_log or "Fatal" in combined_log or "Undefined control sequence" in combined_log:
         print("LaTeX ERROR on pass {}".format(i+1))
         # Find error
-        for line in result.stdout.split('\n'):
+        for line in combined_log.split('\n'):
             if '!' in line or 'Error' in line:
                 print("  " + line.strip()[:120])
+        sys.exit(1)
     else:
         print("Pass {}: OK".format(i+1))
 

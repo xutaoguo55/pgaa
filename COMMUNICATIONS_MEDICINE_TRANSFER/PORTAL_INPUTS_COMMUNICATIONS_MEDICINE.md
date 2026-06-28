@@ -6,11 +6,11 @@ Article
 
 ## Title
 
-Distribution-aware single-cell perturbation analysis for heterogeneous disease-relevant transcriptional responses
+A distribution-aware framework for prioritizing heterogeneous disease-relevant responses in single-cell perturbation data
 
 ## Short Title
 
-Distribution-aware single-cell perturbation analysis
+Distribution-aware perturbation prioritization
 
 ## Corresponding Author
 
@@ -24,7 +24,7 @@ Email: guoxutao@smu.edu.cn
 
 ## Abstract
 
-Single-cell perturbation screens are increasingly used to nominate disease mechanisms and therapeutic targets, but many analyses emphasize average expression changes and can miss heterogeneous cellular responses. We present PGAA, a distribution-aware framework for ranking perturbation-associated transcriptional responses using a Wasserstein statistic for full-expression-distribution shifts and a persistent-homology statistic for responder-associated expression-shape changes. Across five disease-relevant observational scRNA-seq datasets, Wasserstein recovered known pathway markers with 2.1-5.8x top-100 enrichment, including B-cell receptor signaling in chronic lymphocytic leukemia (AUROC 0.87), interpreted as marker recovery rather than causal validation. In Norman 2019 CEBPE CRISPRa, persistence ranked ELANE 57/2012, compared with 1761 and 1452 for SCEPTRE and Wasserstein; this is ranking evidence, not FDR-controlled discovery. A small independent Adamson 2016 unfolded-protein-response CRISPRi benchmark, calibration analyses, and simulations define operating regimes and limitations.
+Patient-derived single-cell datasets and disease-model perturbation screens often contain responder states that are confined to a subset of cells, making target-prioritization difficult when analyses focus only on average expression changes. We present PGAA, a distribution-aware framework for prioritizing heterogeneous transcriptional responses in single-cell perturbation data and marker-anchored disease-state contrasts. PGAA combines a Wasserstein statistic for full-expression-distribution shifts with a persistent-homology statistic for responder-associated expression-shape changes, both accompanied by permutation calibration and Storey pi0-hat diagnostics. Across five disease-relevant observational scRNA-seq datasets, Wasserstein recovered known pathway markers with 2.1-5.8x top-100 enrichment, including B-cell receptor signaling in chronic lymphocytic leukemia (AUROC 0.87), interpreted as disease-state marker prioritization rather than causal validation. In a small independent Adamson 2016 unfolded-protein-response CRISPRi benchmark, Wasserstein achieved mean AUROC 0.786 across five perturbations, outperforming Wilcoxon, t-test, and MAST in this benchmark. Norman 2019 CEBPE CRISPRa illustrates the narrower use case for persistence: ELANE ranked 57/2012, but this is ranking evidence rather than FDR-controlled discovery and does not recover the complete CEBPE target program. PGAA is intended for translational hypothesis prioritization, not bedside diagnosis or treatment recommendation, and is provided as Python/R software with a public code-only repository and a submitted supplementary reproducibility archive.
 
 ## Keywords
 
@@ -50,6 +50,14 @@ The authors declare no competing interests.
 
 No external funding was received for this work.
 
+## Ethics Statement
+
+This study re-analyzes publicly available and previously published datasets. No new human participants, human samples, animals, or identifiable private information were collected for this study. Ethics approval and participant consent were handled by the original studies.
+
+## Author Contributions
+
+X.W., H.Z., and J.H. contributed equally. X.G. conceived the study and designed the framework. X.W., H.Z., and J.H. implemented the software and performed the analyses. Q.W., Y.W., and R.F. contributed to data collection and biological interpretation. All authors wrote and approved the manuscript.
+
 ## Open Peer Review Preference
 
-OPT OUT of publication of reviewer reports if the manuscript is accepted.
+OPT IN to Transparent Peer Review / publication of reviewer reports if the manuscript is accepted.

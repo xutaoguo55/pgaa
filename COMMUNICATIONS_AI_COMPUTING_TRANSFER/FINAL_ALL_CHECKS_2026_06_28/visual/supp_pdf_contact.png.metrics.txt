@@ -1,0 +1,15 @@
+page-01.png	1190x1540	dark_fraction=0.0263
+page-02.png	1190x1540	dark_fraction=0.0142
+page-03.png	1190x1540	dark_fraction=0.0129
+page-04.png	1190x1540	dark_fraction=0.0148
+page-05.png	1190x1540	dark_fraction=0.0296
+page-06.png	1190x1540	dark_fraction=0.0386
+page-07.png	1190x1540	dark_fraction=0.0168
+page-08.png	1540x1190	dark_fraction=0.0146
+page-09.png	1540x1190	dark_fraction=0.0334
+page-10.png	1540x1190	dark_fraction=0.0288
+page-11.png	1190x1540	dark_fraction=0.0320
+page-12.png	1540x1190	dark_fraction=0.0388
+page-13.png	1540x1190	dark_fraction=0.0372
+page-14.png	1190x1540	dark_fraction=0.0518
+page-15.png	1190x1540	dark_fraction=0.0365

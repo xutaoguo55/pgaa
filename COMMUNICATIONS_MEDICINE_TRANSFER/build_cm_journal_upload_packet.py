@@ -23,6 +23,12 @@ REQUIRED_FILES = [
     "COVER_LETTER_COMMUNICATIONS_MEDICINE.pdf",
 ]
 
+CURRENT_FILE_MAP = {
+    "MANUSCRIPT_CM.pdf": "MANUSCRIPT.pdf",
+    "SUPPLEMENTARY_CM.pdf": "SUPPLEMENTARY.pdf",
+    "COVER_LETTER_COMMUNICATIONS_MEDICINE.pdf": "COVER_LETTER_COMMUNICATIONS_MEDICINE.pdf",
+}
+
 FORBIDDEN_TERMS = [
     "AUDIT",
     "READINESS",
@@ -41,6 +47,12 @@ def fail(message: str) -> None:
 def build() -> Path:
     if not SOURCE.exists():
         fail(f"source packet missing: {SOURCE}")
+    for current_name, packet_name in CURRENT_FILE_MAP.items():
+        current = ROOT / current_name
+        if not current.exists() or current.stat().st_size == 0:
+            fail(f"missing current source file: {current_name}")
+        shutil.copy2(current, SOURCE / packet_name)
+
     if CLEAN.exists():
         shutil.rmtree(CLEAN)
     CLEAN.mkdir(parents=True)

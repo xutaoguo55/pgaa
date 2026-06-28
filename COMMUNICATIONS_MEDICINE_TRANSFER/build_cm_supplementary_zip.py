@@ -38,6 +38,15 @@ CM_FILES = [
 
 ROOT_DIRS = ["pgaa", "pgaa_r", "figure_source_data", "figures_png", "tests"]
 SCRIPT_SUFFIXES = {".py", ".R", ".csv", ".md", ".txt", ".sh"}
+FORBIDDEN_SCRIPT_CONTENT = [
+    "/Users/guoxutao",
+    "COMMUNICATIONS_MEDICINE_TRANSFER",
+    "BIOINFORMATICS",
+    "Bioinformatics",
+    "bioinformatics",
+    "desk reject",
+    "internal review",
+]
 FORBIDDEN_SUBSTRINGS = [
     "BIOINFORMATICS_UPLOAD_PACKET",
     "Bioinformatics",
@@ -68,6 +77,11 @@ FORBIDDEN_SUBSTRINGS = [
     "FIGURE_PROMPTS.md",
     "verify_manuscript_consistency.py",
     "verify_upload_file_manifest.py",
+    "generate_paper_tables.py",
+    "table1_datasets_summary.csv",
+    "table2_s2_calibration.csv",
+    "table3_decision_rule.csv",
+    "tables_paper.md",
     "figure_workflow",
     "workflow_schematic",
     "mmd_psm",
@@ -96,6 +110,10 @@ def copy_tree(src: Path, dest: Path, suffixes: set[str] | None = None) -> None:
             continue
         if suffixes is not None and path.suffix not in suffixes:
             continue
+        if suffixes is not None and path.suffix in {".py", ".R", ".md", ".txt", ".sh"}:
+            text = path.read_text(errors="replace")
+            if any(term in text for term in FORBIDDEN_SCRIPT_CONTENT):
+                continue
         rel = path.relative_to(src)
         out = dest / rel
         out.parent.mkdir(parents=True, exist_ok=True)

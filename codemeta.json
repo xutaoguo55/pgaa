@@ -3,7 +3,7 @@
   "@type": "SoftwareSourceCode",
   "name": "PGAA",
   "version": "0.1.0",
-  "description": "Distribution-aware testing for single-cell perturbation screens using Wasserstein distance and persistent homology statistics.",
+  "description": "Distribution-aware ranking for single-cell perturbation screens using PGAA-W Wasserstein and PGAA-H histogram-shape statistics.",
   "codeRepository": "https://github.com/xutaoguo55/pgaa",
   "url": "https://github.com/xutaoguo55/pgaa",
   "license": "https://spdx.org/licenses/MIT",
@@ -19,7 +19,7 @@
     "Perturb-seq",
     "single-cell RNA-seq",
     "Wasserstein distance",
-    "persistent homology",
+    "histogram-shape statistic",
     "CRISPR screening"
   ],
   "author": [
@@ -72,7 +72,7 @@
     "statsmodels",
     "joblib"
   ],
-  "applicationCategory": "Bioinformatics",
+  "applicationCategory": "Computational biology",
   "operatingSystem": [
     "macOS",
     "Linux"

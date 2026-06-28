@@ -8,6 +8,8 @@ The Communications Medicine transfer package is technically upload-ready after f
 
 ## Files Created
 
+Source and audit artifacts below are for local preparation. The journal upload should use only the four files in `FILES_TO_UPLOAD_COMMUNICATIONS_MEDICINE/`.
+
 - `MANUSCRIPT_CM.md`
 - `MANUSCRIPT_CM.pdf`
 - `SUPPLEMENTARY_CM.md`
@@ -31,10 +33,10 @@ Main changes:
 - Discussion no longer says "No new biological discoveries are claimed"; it now states that observational datasets do not establish new causal mechanisms or clinical biomarkers, but demonstrate prioritization of disease-relevant heterogeneous responses for follow-up.
 - Cover letter explicitly states that the submission follows a Nature Methods editorial transfer recommendation.
 - Figure 1 is now a Communications Medicine entry schematic: clinical problem -> PGAA distribution-aware statistics -> calibrated translational output.
-- Cover letter and portal inputs state an OPT OUT preference for Transparent Peer Review report publication.
+- Cover letter and portal inputs state an OPT IN preference for Transparent Peer Review report publication.
 - `UPLOAD_PACKET_COMMUNICATIONS_MEDICINE/PGAA_supplementary_code.zip` is now built by the CM-specific archive builder and contains the CM manuscript/supplementary files, not the older Bioinformatics manuscript PDFs.
-- `JOURNAL_UPLOAD_COMMUNICATIONS_MEDICINE/` and `PGAA_COMMUNICATIONS_MEDICINE_JOURNAL_UPLOAD.zip` are the clean journal-upload artifacts. They contain only `MANUSCRIPT.pdf`, `SUPPLEMENTARY.pdf`, `PGAA_supplementary_code.zip`, and `COVER_LETTER_COMMUNICATIONS_MEDICINE.md`.
-- `UPLOAD_PACKET_COMMUNICATIONS_MEDICINE/` and `PGAA_COMMUNICATIONS_MEDICINE_TRANSFER_PACKET.zip` are author-facing transfer-preparation artifacts and include portal text plus internal audit files; do not upload the audit files to the journal portal.
+- `JOURNAL_UPLOAD_COMMUNICATIONS_MEDICINE/` and `PGAA_COMMUNICATIONS_MEDICINE_JOURNAL_UPLOAD.zip` are the clean journal-upload artifacts. They contain only `MANUSCRIPT.pdf`, `SUPPLEMENTARY.pdf`, `PGAA_supplementary_code.zip`, and `COVER_LETTER_COMMUNICATIONS_MEDICINE.pdf`.
+- `UPLOAD_PACKET_COMMUNICATIONS_MEDICINE/` and `PGAA_COMMUNICATIONS_MEDICINE_TRANSFER_PACKET.zip` are author-facing transfer-preparation artifacts and include portal text plus internal audit files; do not upload the audit files to the journal portal. Use `FILES_TO_UPLOAD_COMMUNICATIONS_MEDICINE/` for the clean four-file upload set.
 
 ## Verification
 
@@ -43,17 +45,17 @@ Passed:
 - `python3 build_cm_pdf.py`
 - `pandoc SUPPLEMENTARY_CM.md -o SUPPLEMENTARY_CM.tex --from markdown --standalone`
 - `Rscript -e "tinytex::xelatex('SUPPLEMENTARY_CM.tex')"`
-- `python3 ../scripts/verify_manuscript_consistency.py`
-- `python3 ../scripts/verify_dataset_manifest.py`
-- `python3 ../scripts/verify_upload_file_manifest.py`
+- `python3 verify_cm_transfer_ready.py`
+- `python3 scripts/run_toy_example.py`
+- `python3 scripts/test_python_pkg.py`
 
 PDF checks:
 
 - `MANUSCRIPT_CM.pdf`: 14 pages, with line numbers.
-- `SUPPLEMENTARY_CM.pdf`: 20 pages.
+- `SUPPLEMENTARY_CM.pdf`: 16 pages.
 - Main text before references: approximately 4,915 words, consistent with the Communications Medicine Article guide of approximately 5,000 words.
-- First-page render checked visually.
-- Figure 1 render checked visually after the clinical/translational entry schematic was added.
+- Main and supplementary PDFs rendered to PNG contact sheets and checked visually for table/figure overlap.
+- Figure/table text scans showed no stale S12, result-reproduction-map, planned availability, Markdown heading, or old-journal residue in final PDFs.
 
 Search checks:
 
@@ -66,7 +68,7 @@ Search checks:
 Before final upload:
 
 - Use the Nature Portfolio transfer link so the Nature Methods editorial recommendation and any transferred materials are visible to Communications Medicine.
-- Confirm that OPT OUT is the desired open peer-review preference; if not, change both the cover letter and portal inputs before upload.
+- Confirm in the portal that Transparent Peer Review is set to OPT IN, matching the cover letter and portal-input text.
 - Confirm author metadata, ORCID, funding/conflict statements, and reviewer suggestions/exclusions in the submission portal.
 - Revoke the temporary Zenodo access token used to create the DOI.
 

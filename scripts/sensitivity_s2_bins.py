@@ -5,10 +5,10 @@ Sensitivity analysis: S₂ n_bins ∈ {20, 30, 50, 75, 100, 150} on Norman 2019 
 For each setting, run full S₂ with 200 perms and report:
   - ELANE rank, ELANE p-value
   - n_sig (p<0.05)
-  - Storey π̂₀
+  - Storey upper-tail calibration ratio
   - Top known-targets hit count
 
-This is a reviewer-proofing robustness check.
+This is a robustness check for the S2 histogram-shape statistic.
 """
 import time
 import numpy as np
@@ -118,18 +118,18 @@ def main():
 
         # Metrics
         n_sig = int((p_perm < 0.05).sum())
-        pi0 = max(1, (p_perm > 0.5).sum()) / (0.5 * len(p_perm))
+        tail_ratio = (p_perm > 0.5).sum() / (0.5 * len(p_perm))
         elane_rank = int(np.where(np.argsort(p_perm) == other_genes.index("ELANE"))[0][0]) + 1
         elane_p = float(p_perm[other_genes.index("ELANE")])
         hits = sum(1 for g in cebpe_targets if p_perm[other_genes.index(g)] < 0.05)
 
         rows.append({
             "n_bins": n_bins, "elane_rank": elane_rank, "elane_p": elane_p,
-            "n_sig": n_sig, "pi0": round(pi0, 3), "known_hits": f"{hits}/9",
+            "n_sig": n_sig, "tail_ratio": round(tail_ratio, 3), "known_hits": f"{hits}/9",
             "time_s": round(elapsed, 1),
         })
         print(f"n_bins={n_bins:>4}: ELANE rank {elane_rank:>4} p={elane_p:.4f} "
-              f"n_sig={n_sig:>4} π̂₀={pi0:.3f} hits={hits}/9 ({int(elapsed)}s)",
+              f"n_sig={n_sig:>4} tail_ratio={tail_ratio:.3f} hits={hits}/9 ({int(elapsed)}s)",
               flush=True)
 
     df = pd.DataFrame(rows)

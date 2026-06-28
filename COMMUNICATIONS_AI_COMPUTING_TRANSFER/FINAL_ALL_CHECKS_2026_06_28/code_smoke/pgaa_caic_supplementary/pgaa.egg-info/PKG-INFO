@@ -1,0 +1,146 @@
+Metadata-Version: 2.4
+Name: pgaa
+Version: 0.1.0
+Summary: Distribution-aware testing for single-cell perturbation screens
+Author: PGAA Team
+License: MIT
+Project-URL: Homepage, https://github.com/xutaoguo55/pgaa
+Project-URL: Repository, https://github.com/xutaoguo55/pgaa
+Keywords: single-cell,perturb-seq,perturbation,transcriptomics,wasserstein,persistent-homology
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Science/Research
+Classifier: Topic :: Scientific/Engineering :: Bio-Informatics
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: numpy>=1.21
+Requires-Dist: scipy>=1.7
+Requires-Dist: pandas>=1.3
+Requires-Dist: scanpy>=1.9
+Requires-Dist: anndata>=0.8
+Requires-Dist: scikit-learn>=1.0
+Requires-Dist: matplotlib>=3.4
+Requires-Dist: seaborn>=0.11
+Requires-Dist: statsmodels>=0.13
+Requires-Dist: joblib>=1.0
+Provides-Extra: gpu
+Requires-Dist: cupy-cuda11x; extra == "gpu"
+Requires-Dist: cuml; extra == "gpu"
+Requires-Dist: cugraph; extra == "gpu"
+Provides-Extra: dev
+Requires-Dist: pytest>=7.0; extra == "dev"
+Requires-Dist: pytest-cov; extra == "dev"
+Requires-Dist: black; extra == "dev"
+Requires-Dist: flake8; extra == "dev"
+Requires-Dist: mypy; extra == "dev"
+Dynamic: license-file
+
+# PGAA: distribution-aware single-cell perturbation analysis
+
+PGAA is a Python and R software package for prioritizing heterogeneous single-cell transcriptional responses. It implements PGAA-W Wasserstein for full-distribution shifts and a PGAA-H histogram-shape diagnostic for responder-associated expression-shape changes. The Communications AI & Computing manuscript-support materials are included under `communications_ai_computing/` when this archive is unpacked.
+
+## Archive Contents
+
+- `pgaa/`: Python implementation and command-line interface.
+- `pgaa_r/`: R implementation.
+- `scripts/`: reproducibility scripts, toy example, source-data table rebuilds, and figure-generation helpers.
+- `figure_source_data/`: CSV files used to rebuild manuscript figure panels and benchmark summaries.
+- `figures_png/`: final figure images used by the manuscript and supplementary PDF.
+- `communications_ai_computing/MANUSCRIPT_CAIC.pdf`: submitted manuscript PDF.
+- `communications_ai_computing/SUPPLEMENTARY_CAIC.pdf`: submitted supplementary PDF.
+- `communications_ai_computing/MANUSCRIPT_CAIC.md` and `SUPPLEMENTARY_CAIC.md`: manuscript sources.
+- `communications_ai_computing/build_caic_pdf.py`: PDF builder for the main manuscript.
+- `DATASET_MANIFEST.tsv`: public dataset accessions, analysis roles, and reproduction status.
+- `CITATION.cff`, `codemeta.json`, `.zenodo.json`: software citation and archive metadata.
+
+## Install
+
+Install the Python dependencies before running any smoke test:
+
+```bash
+python3 -m pip install -e .
+```
+
+Alternatively, create the supplied conda environment:
+
+```bash
+conda env create -f environment.yml
+conda activate pgaa
+python3 -m pip install -e .
+```
+
+For R usage, source the files under `pgaa_r/R/` or install the R package from `pgaa_r/`.
+
+## Quick Smoke Test
+
+After installation, run the self-contained toy example:
+
+```bash
+python3 scripts/run_toy_example.py
+```
+
+The script generates a small synthetic Perturb-seq-like matrix, runs PGAA-W and PGAA-H, and checks that planted distributional and heterogeneous responses rank near the top.
+
+Optional package checks:
+
+```bash
+python3 scripts/test_python_pkg.py
+Rscript scripts/test_r_pkg.R
+python3 -m pytest tests/test_cli.py -q
+python3 scripts/verify_dataset_manifest.py
+```
+
+## Command-Line Example
+
+```bash
+python3 -m pgaa.cli \
+  --expression expression.csv \
+  --metadata metadata.csv \
+  --target MYC \
+  --out-prefix results/MYC \
+  --group-column group \
+  --perturbed-value perturbed \
+  --control-value control \
+  --cell-type-column cell_type \
+  --library-size-column library_size
+```
+
+The expression CSV should have cells as rows, genes as columns, and the first column as cell IDs. The metadata CSV must contain `cell_id` and a group column. The command writes `results/MYC.s1.csv` and `results/MYC.s2.csv`.
+
+Naming note: historical code outputs and filenames use `s1` and `s2` for backward compatibility. In the manuscript terminology, `s1` corresponds to PGAA-W and `s2` corresponds to PGAA-H.
+
+## Reproduce Key Source-Data Tables
+
+```bash
+python3 scripts/rebuild_adamson_full_results.py
+python3 scripts/table_sceptre_vs_pgaa.py
+python3 scripts/figure_simulation.py
+```
+
+`scripts/rebuild_adamson_full_results.py` rebuilds the Adamson benchmark summary from `figure_source_data/fig6_adamson_results.csv`. `scripts/benchmark_adamson2016.py` provides a raw GSE90546/GSM2406675 10X001 sanity rerun for the five selected Adamson perturbations and reproduces the reported AUROC scale, but the final PDF table remains rebuilt from the curated source-data CSV. Some Norman analyses require the processed Norman 2019 h5ad input used in the manuscript workflow and therefore are documented as source-data or processed-data reproducibility rather than a one-command raw GEO-to-final-figure workflow. Full MMD-PSM and Norman multi-perturbation recomputation require setting `NORMAN2019_H5AD` to the processed Norman 2019 h5ad file; clean-archive reruns of both scripts have been verified when that input is supplied. Without that input, the archive still supports processed-source-data summaries and manifest checks rather than a full rerun.
+
+## Rebuild Manuscript PDFs
+
+```bash
+cd communications_ai_computing
+python3 build_caic_pdf.py
+pandoc SUPPLEMENTARY_CAIC.md -o SUPPLEMENTARY_CAIC.tex --from markdown --standalone
+Rscript -e "tinytex::xelatex('SUPPLEMENTARY_CAIC.tex')"
+```
+
+## Public Data
+
+The manuscript uses public datasets GSE133344, GSE90546, GSE111014, GSE167363, GSE159117, GSE116222, and the 10x Genomics PBMC 3k demo dataset. See `DATASET_MANIFEST.tsv` for accessions, analysis roles, included source-data files, reproduction commands, and limitations.
+
+## License
+
+MIT.
+
+## Citation and Archive Status
+
+Use `CITATION.cff` for software citation metadata. The public code-only repository is available at https://github.com/xutaoguo55/pgaa, the archived software release is available at https://doi.org/10.5281/zenodo.20681141, and the Software Heritage snapshot identifier is `swh:1:snp:5b1b2cc9ce32298968e00f69e1af5ff8aed8889f`.

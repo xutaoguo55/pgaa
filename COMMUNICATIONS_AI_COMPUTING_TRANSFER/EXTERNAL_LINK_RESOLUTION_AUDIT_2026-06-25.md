@@ -1,0 +1,41 @@
+# External Link and DOI Resolution Audit - 2026-06-25
+
+HEAD/GET checks were used for external links. DOI targets returning `doi.org` 403 were rechecked through Crossref API metadata resolution.
+
+- PASS: GitHub repo `200` https://github.com/xutaoguo55/pgaa
+- PASS: GitHub release `200` https://github.com/xutaoguo55/pgaa/releases/tag/v0.1.0-code
+- PASS: Zenodo DOI `200` https://doi.org/10.5281/zenodo.20681141
+- PASS: Software Heritage SWHID `200` https://archive.softwareheritage.org/swh:1:snp:5b1b2cc9ce32298968e00f69e1af5ff8aed8889f/
+- PASS: GSE133344 `200` https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE133344
+- PASS: GSE90546 `200` https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE90546
+- PASS: GSE111014 `200` https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE111014
+- PASS: GSE167363 `200` https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE167363
+- PASS: GSE159117 `200` https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE159117
+- PASS: GSE116222 `200` https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE116222
+- PASS: ref 1 DOI `200` https://doi.org/10.1016/j.cell.2016.11.038
+- PASS: ref 2 DOI `200` https://doi.org/10.1016/j.cell.2016.11.048
+- PASS: ref 3 DOI `403` https://doi.org/10.1126/science.aax4438 (doi.org returned 403 in this environment; Crossref API metadata resolved)
+- PASS: ref 4 DOI `200` https://doi.org/10.1016/j.cell.2022.05.013
+- PASS: ref 5 DOI `200` https://doi.org/10.1186/s13059-021-02545-2
+- PASS: ref 6 DOI `200` https://doi.org/10.1186/s13059-015-0844-5
+- PASS: ref 7 DOI `200` https://doi.org/10.1016/j.cell.2019.05.031
+- PASS: ref 8 DOI `200` https://doi.org/10.1016/j.cell.2021.04.048
+- PASS: ref 9 DOI `200` https://doi.org/10.1186/s13059-017-1382-0
+- PASS: ref 10 DOI `200` https://doi.org/10.1016/j.cell.2014.09.029
+- PASS: ref 11 DOI `200` https://doi.org/10.1038/s41592-025-02909-7
+- PASS: ref 12 DOI `403` https://doi.org/10.1182/blood.v45.3.321.321 (doi.org returned 403 in this environment; Crossref API metadata resolved)
+- PASS: ref 13 DOI `200` https://doi.org/10.1172/jci2887
+- PASS: ref 14 DOI `200` https://doi.org/10.1038/sj.onc.1210764
+- PASS: ref 15 DOI `200` https://doi.org/10.1038/s41587-019-0379-5
+- PASS: ref 16 DOI `200` https://doi.org/10.1038/s41588-021-00778-2
+- PASS: ref 17 DOI `200` https://doi.org/10.1186/s13059-020-1928-4
+- PASS: ref 18 DOI `200` https://doi.org/10.1186/s13059-024-03254-2
+- PASS: ref 21 DOI `403` https://doi.org/10.3390/e19020047 (doi.org returned 403 in this environment; Crossref API metadata resolved)
+- PASS: ref 26 DOI `200` https://doi.org/10.1007/s00454-004-1146-y
+- PASS: ref 27 DOI `403` https://doi.org/10.1090/s0273-0979-09-01249-x (doi.org returned 403 in this environment; Crossref API metadata resolved)
+- PASS: ref 28 DOI `403` https://doi.org/10.1103/physreve.69.066138 (doi.org returned 403 in this environment; Crossref API metadata resolved)
+- PASS: ref 29 DOI `403` https://doi.org/10.1111/1467-9868.00346 (doi.org returned 403 in this environment; Crossref API metadata resolved)
+- PASS: ref 30 DOI `403` https://doi.org/10.1111/j.2517-6161.1995.tb02031.x (doi.org returned 403 in this environment; Crossref API metadata resolved)
+- PASS: ref 31 DOI `200` https://doi.org/10.1038/ncomms14049
+- PASS: ref 32 DOI `200` https://doi.org/10.15252/msb.20188746
+- PASS: ref 33 DOI `200` https://doi.org/10.12688/f1000research.9501.2

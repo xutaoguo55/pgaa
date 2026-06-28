@@ -1,0 +1,492 @@
+[
+  {
+    "num": 1,
+    "entry": "Dixit, A. et al. Perturb-Seq: dissecting molecular circuits with scalable single-cell RNA profiling of pooled genetic screens. Cell 167, 1853--1866.e17 (2016).",
+    "crossref": {
+      "score": 108.46646,
+      "DOI": "10.1016/j.cell.2016.11.038",
+      "title": "Perturb-Seq: Dissecting Molecular Circuits with Scalable Single-Cell RNA Profiling of Pooled Genetic Screens",
+      "container": "Cell",
+      "year": 2016,
+      "volume": "167",
+      "page": "1853-1866.e17",
+      "type": "journal-article"
+    }
+  },
+  {
+    "num": 2,
+    "entry": "Adamson, B. et al. A multiplexed single-cell CRISPR screening platform enables systematic dissection of the unfolded protein response. Cell 167, 1867--1882.e21 (2016).",
+    "crossref": {
+      "score": 93.99189,
+      "DOI": "10.1016/j.cell.2016.11.048",
+      "title": "A Multiplexed Single-Cell CRISPR Screening Platform Enables Systematic Dissection of the Unfolded Protein Response",
+      "container": "Cell",
+      "year": 2016,
+      "volume": "167",
+      "page": "1867-1882.e21",
+      "type": "journal-article"
+    }
+  },
+  {
+    "num": 3,
+    "entry": "Norman, T. M. et al. Exploring genetic interaction manifolds constructed from rich single-cell phenotypes. Science 365, 786--793 (2019).",
+    "crossref": {
+      "score": 88.17714,
+      "DOI": "10.1126/science.aax4438",
+      "title": "Exploring genetic interaction manifolds constructed from rich single-cell phenotypes",
+      "container": "Science",
+      "year": 2019,
+      "volume": "365",
+      "page": "786-793",
+      "type": "journal-article"
+    }
+  },
+  {
+    "num": 4,
+    "entry": "Replogle, J. M. et al. Mapping information-rich genotype-phenotype landscapes with genome-scale Perturb-seq. Cell 185, 2559--2575.e28 (2022).",
+    "crossref": {
+      "score": 92.13805,
+      "DOI": "10.1016/j.cell.2022.05.013",
+      "title": "Mapping information-rich genotype-phenotype landscapes with genome-scale Perturb-seq",
+      "container": "Cell",
+      "year": 2022,
+      "volume": "185",
+      "page": "2559-2575.e28",
+      "type": "journal-article"
+    }
+  },
+  {
+    "num": 5,
+    "entry": "Barry, T., Wang, X., Morris, J. A., Roeder, K. & Katsevich, E. SCEPTRE improves calibration and sensitivity in single-cell CRISPR screen analysis. Genome Biol. 22, 344 (2021).",
+    "crossref": {
+      "score": 128.89667,
+      "DOI": "10.1186/s13059-021-02545-2",
+      "title": "SCEPTRE improves calibration and sensitivity in single-cell CRISPR screen analysis",
+      "container": "Genome Biology",
+      "year": 2021,
+      "volume": "22",
+      "page": null,
+      "type": "journal-article"
+    }
+  },
+  {
+    "num": 6,
+    "entry": "Finak, G. et al. MAST: a flexible statistical framework for assessing transcriptional changes and characterizing heterogeneity in single-cell RNA sequencing data. Genome Biol. 16, 278 (2015).",
+    "crossref": {
+      "score": 97.277824,
+      "DOI": "10.1186/s13059-015-0844-5",
+      "title": "MAST: a flexible statistical framework for assessing transcriptional changes and characterizing heterogeneity in single-cell RNA sequencing data",
+      "container": "Genome Biology",
+      "year": 2015,
+      "volume": "16",
+      "page": null,
+      "type": "journal-article"
+    }
+  },
+  {
+    "num": 7,
+    "entry": "Stuart, T. et al. Comprehensive integration of single-cell data. Cell 177, 1888--1902.e21 (2019).",
+    "crossref": {
+      "score": 73.46839,
+      "DOI": "10.1016/j.cell.2019.05.031",
+      "title": "Comprehensive Integration of Single-Cell Data",
+      "container": "Cell",
+      "year": 2019,
+      "volume": "177",
+      "page": "1888-1902.e21",
+      "type": "journal-article"
+    }
+  },
+  {
+    "num": 8,
+    "entry": "Hao, Y. et al. Integrated analysis of multimodal single-cell data. Cell 184, 3573--3587.e29 (2021).",
+    "crossref": {
+      "score": 59.503605,
+      "DOI": "10.1016/j.cell.2021.04.048",
+      "title": "Integrated analysis of multimodal single-cell data",
+      "container": "Cell",
+      "year": 2021,
+      "volume": "184",
+      "page": "3573-3587.e29",
+      "type": "journal-article"
+    }
+  },
+  {
+    "num": 9,
+    "entry": "Wolf, F. A., Angerer, P. & Theis, F. J. SCANPY: large-scale single-cell gene expression data analysis. Genome Biol. 19, 15 (2018).",
+    "crossref": {
+      "score": 109.87001,
+      "DOI": "10.1186/s13059-017-1382-0",
+      "title": "SCANPY: large-scale single-cell gene expression data analysis",
+      "container": "Genome Biology",
+      "year": 2018,
+      "volume": "19",
+      "page": null,
+      "type": "journal-article"
+    }
+  },
+  {
+    "num": 10,
+    "entry": "Gilbert, L. A. et al. Genome-scale CRISPR-mediated control of gene repression and activation. Cell 159, 647--661 (2014).",
+    "crossref": {
+      "score": 76.72755,
+      "DOI": "10.1016/j.cell.2014.09.029",
+      "title": "Genome-Scale CRISPR-Mediated Control of Gene Repression and Activation",
+      "container": "Cell",
+      "year": 2014,
+      "volume": "159",
+      "page": "647-661",
+      "type": "journal-article"
+    }
+  },
+  {
+    "num": 11,
+    "entry": "Heumos, L. et al. Pertpy: an end-to-end framework for perturbation analysis. Nat. Methods 23, 350--359 (2026).",
+    "crossref": {
+      "score": 60.23022,
+      "DOI": "10.1038/s41592-025-02909-7",
+      "title": "Pertpy: an end-to-end framework for perturbation analysis",
+      "container": "Nature Methods",
+      "year": 2026,
+      "volume": "23",
+      "page": "350-359",
+      "type": "journal-article"
+    }
+  },
+  {
+    "num": 12,
+    "entry": "Lozzio, C. B. & Lozzio, B. B. Human chronic myelogenous leukemia cell-line with positive Philadelphia chromosome. Blood 45, 321--334 (1975).",
+    "crossref": {
+      "score": 139.03548,
+      "DOI": "10.1182/blood.v45.3.321.321",
+      "title": "Human chronic myelogenous leukemia cell-line with positive Philadelphia chromosome",
+      "container": "Blood",
+      "year": 1975,
+      "volume": "45",
+      "page": "321-334",
+      "type": "journal-article"
+    }
+  },
+  {
+    "num": 13,
+    "entry": "Park, D. J. et al. CCAAT/enhancer binding protein epsilon is a potential retinoid target gene in acute promyelocytic leukemia treatment. J. Clin. Invest. 103, 1399--1408 (1999).",
+    "crossref": {
+      "score": 106.17504,
+      "DOI": "10.1172/jci2887",
+      "title": "CCAAT/enhancer binding protein ε is a potential retinoid target gene in acute promyelocytic leukemia treatment",
+      "container": "Journal of Clinical Investigation",
+      "year": 1999,
+      "volume": "103",
+      "page": "1399-1408",
+      "type": "journal-article"
+    }
+  },
+  {
+    "num": 14,
+    "entry": "Friedman, A. D. Transcriptional control of granulocyte and monocyte development. Oncogene 26, 6816--6828 (2007).",
+    "crossref": {
+      "score": 94.95608,
+      "DOI": "10.1038/sj.onc.1210764",
+      "title": "Transcriptional control of granulocyte and monocyte development",
+      "container": "Oncogene",
+      "year": 2007,
+      "volume": "26",
+      "page": "6816-6828",
+      "type": "journal-article"
+    }
+  },
+  {
+    "num": 15,
+    "entry": "Svensson, V. Droplet scRNA-seq is not zero-inflated. Nat. Biotechnol. 38, 147--150 (2020).",
+    "crossref": {
+      "score": 99.892845,
+      "DOI": "10.1038/s41587-019-0379-5",
+      "title": "Droplet scRNA-seq is not zero-inflated",
+      "container": "Nature Biotechnology",
+      "year": 2020,
+      "volume": "38",
+      "page": "147-150",
+      "type": "journal-article"
+    }
+  },
+  {
+    "num": 16,
+    "entry": "Papalexi, E. et al. Characterizing the molecular regulation of inhibitory immune checkpoints with multimodal single-cell screens. Nat. Genet. 53, 322--331 (2021).",
+    "crossref": {
+      "score": 92.59451,
+      "DOI": "10.1038/s41588-021-00778-2",
+      "title": "Characterizing the molecular regulation of inhibitory immune checkpoints with multimodal single-cell screens",
+      "container": "Nature Genetics",
+      "year": 2021,
+      "volume": "53",
+      "page": "322-331",
+      "type": "journal-article"
+    }
+  },
+  {
+    "num": 17,
+    "entry": "Yang, L. et al. scMAGeCK links genotypes with multiple phenotypes in single-cell CRISPR screens. Genome Biol. 21, 19 (2020).",
+    "crossref": {
+      "score": 90.50349,
+      "DOI": "10.1186/s13059-020-1928-4",
+      "title": "scMAGeCK links genotypes with multiple phenotypes in single-cell CRISPR screens",
+      "container": "Genome Biology",
+      "year": 2020,
+      "volume": "21",
+      "page": null,
+      "type": "journal-article"
+    }
+  },
+  {
+    "num": 18,
+    "entry": "Barry, T., Mason, K., Roeder, K. & Katsevich, E. Robust differential expression testing for single-cell CRISPR screens at low multiplicity of infection. Genome Biol. 25, 124 (2024).",
+    "crossref": {
+      "score": 133.55006,
+      "DOI": "10.1186/s13059-024-03254-2",
+      "title": "Robust differential expression testing for single-cell CRISPR screens at low multiplicity of infection",
+      "container": "Genome Biology",
+      "year": 2024,
+      "volume": "25",
+      "page": null,
+      "type": "journal-article"
+    }
+  },
+  {
+    "num": 19,
+    "entry": "MacQueen, J. Some methods for classification and analysis of multivariate observations. In Proceedings of the Fifth Berkeley Symposium on Mathematical Statistics and Probability Vol. 1, 281--297 (University of California Press, 1967).",
+    "crossref": {
+      "score": 50.309387,
+      "DOI": "10.1007/bf02288874",
+      "title": "Jerz Neyman.(ed.) Proceedings of the Berkeley Symposium on Mathematical Statistics and Probability. Berkeley: University of California Press, 1949. Pp. 501 + viii.*",
+      "container": "Psychometrika",
+      "year": 1950,
+      "volume": "15",
+      "page": "449-453",
+      "type": "journal-article"
+    }
+  },
+  {
+    "num": 20,
+    "entry": "Villani, C. Optimal Transport: Old and New (Springer, 2009).",
+    "crossref": {
+      "score": 35.421906,
+      "DOI": "10.1007/978-3-540-71050-9_28",
+      "title": "Stability of optimal transport",
+      "container": "Grundlehren der mathematischen Wissenschaften",
+      "year": 2009,
+      "volume": null,
+      "page": "773-793",
+      "type": "book-chapter"
+    }
+  },
+  {
+    "num": 21,
+    "entry": "Ramdas, A., Garcia Trillos, N. & Cuturi, M. On Wasserstein two-sample testing and related families of nonparametric tests. Entropy 19, 47 (2017).",
+    "crossref": {
+      "score": 125.7837,
+      "DOI": "10.3390/e19020047",
+      "title": "On Wasserstein Two-Sample Testing and Related Families of Nonparametric Tests",
+      "container": "Entropy",
+      "year": 2017,
+      "volume": "19",
+      "page": "47",
+      "type": "journal-article"
+    }
+  },
+  {
+    "num": 22,
+    "entry": "Good, P. I. Permutation, Parametric, and Bootstrap Tests of Hypotheses, 3rd edn (Springer, 2005).",
+    "crossref": {
+      "score": 69.73752,
+      "DOI": "10.1007/b138696",
+      "title": "Permutation, Parametric and Bootstrap Tests of Hypotheses",
+      "container": "Springer Series in Statistics",
+      "year": 2005,
+      "volume": null,
+      "page": null,
+      "type": "book"
+    }
+  },
+  {
+    "num": 23,
+    "entry": "Efron, B. & Tibshirani, R. J. An Introduction to the Bootstrap (Chapman & Hall, 1993).",
+    "crossref": {
+      "score": 56.334213,
+      "DOI": "10.1007/978-1-4899-4541-9_1",
+      "title": "Introduction",
+      "container": "An Introduction to the Bootstrap",
+      "year": 1993,
+      "volume": null,
+      "page": "1-9",
+      "type": "book-chapter"
+    }
+  },
+  {
+    "num": 24,
+    "entry": "Edelsbrunner, H. & Harer, J. Computational Topology: An Introduction (American Mathematical Society, 2010).",
+    "crossref": {
+      "score": 52.005386,
+      "DOI": "10.1090/mbk/069",
+      "title": "Computational Topology",
+      "container": "",
+      "year": 2009,
+      "volume": null,
+      "page": null,
+      "type": "monograph"
+    }
+  },
+  {
+    "num": 25,
+    "entry": "Bubenik, P. Statistical topological data analysis using persistence landscapes. J. Mach. Learn. Res. 16, 77--102 (2015).",
+    "crossref": {
+      "score": 39.39298,
+      "DOI": "10.1016/j.jsc.2016.03.009",
+      "title": "A persistence landscapes toolbox for topological statistics",
+      "container": "Journal of Symbolic Computation",
+      "year": 2017,
+      "volume": "78",
+      "page": "91-114",
+      "type": "journal-article"
+    }
+  },
+  {
+    "num": 26,
+    "entry": "Zomorodian, A. & Carlsson, G. Computing persistent homology. Discrete Comput. Geom. 33, 249--274 (2005).",
+    "crossref": {
+      "score": 97.97241,
+      "DOI": "10.1007/s00454-004-1146-y",
+      "title": "Computing Persistent Homology",
+      "container": "Discrete &amp; Computational Geometry",
+      "year": 2005,
+      "volume": "33",
+      "page": "249-274",
+      "type": "journal-article"
+    }
+  },
+  {
+    "num": 27,
+    "entry": "Carlsson, G. Topology and data. Bull. Am. Math. Soc. 46, 255--308 (2009).",
+    "crossref": {
+      "score": 65.17104,
+      "DOI": "10.1090/s0273-0979-09-01249-x",
+      "title": "Topology and data",
+      "container": "Bulletin of the American Mathematical Society",
+      "year": 2009,
+      "volume": "46",
+      "page": "255-308",
+      "type": "journal-article"
+    }
+  },
+  {
+    "num": 28,
+    "entry": "Kraskov, A., Stogbauer, H. & Grassberger, P. Estimating mutual information. Phys. Rev. E 69, 066138 (2004).",
+    "crossref": {
+      "score": 84.70673,
+      "DOI": "10.1103/physreve.83.019903",
+      "title": "Erratum: Estimating mutual information [Phys. Rev. E<b>69</b>, 066138 (2004)]",
+      "container": "Physical Review E",
+      "year": 2011,
+      "volume": "83",
+      "page": null,
+      "type": "journal-article"
+    }
+  },
+  {
+    "num": 29,
+    "entry": "Storey, J. D. A direct approach to false discovery rates. J. R. Stat. Soc. Ser. B 64, 479--498 (2002).",
+    "crossref": {
+      "score": 67.93828,
+      "DOI": "10.1111/1467-9868.00346",
+      "title": "A Direct Approach to False Discovery Rates",
+      "container": "Journal of the Royal Statistical Society Series B: Statistical Methodology",
+      "year": 2002,
+      "volume": "64",
+      "page": "479-498",
+      "type": "journal-article"
+    }
+  },
+  {
+    "num": 30,
+    "entry": "Benjamini, Y. & Hochberg, Y. Controlling the false discovery rate: a practical and powerful approach to multiple testing. J. R. Stat. Soc. Ser. B 57, 289--300 (1995).",
+    "crossref": {
+      "score": 98.77842,
+      "DOI": "10.1111/j.2517-6161.1995.tb02031.x",
+      "title": "Controlling the False Discovery Rate: A Practical and Powerful Approach to Multiple Testing",
+      "container": "Journal of the Royal Statistical Society Series B: Statistical Methodology",
+      "year": 1995,
+      "volume": "57",
+      "page": "289-300",
+      "type": "journal-article"
+    }
+  },
+  {
+    "num": 31,
+    "entry": "Zheng, G. X. Y. et al. Massively parallel digital transcriptional profiling of single cells. Nat. Commun. 8, 14049 (2017).",
+    "crossref": {
+      "score": 52.110527,
+      "DOI": "10.3410/f.727212325.793533466",
+      "title": "Faculty Opinions recommendation of Massively parallel digital transcriptional profiling of single cells.",
+      "container": "Faculty Opinions – Post-Publication Peer Review of the Biomedical Literature",
+      "year": 2017,
+      "volume": null,
+      "page": null,
+      "type": "dataset"
+    }
+  },
+  {
+    "num": 32,
+    "entry": "Luecken, M. D. & Theis, F. J. Current best practices in single-cell RNA-seq analysis: a tutorial. Mol. Syst. Biol. 15, e8746 (2019).",
+    "crossref": {
+      "score": 107.388916,
+      "DOI": "10.15252/msb.20188746",
+      "title": "Current best practices in single‐cell RNA‐seq analysis: a tutorial",
+      "container": "Molecular Systems Biology",
+      "year": 2019,
+      "volume": "15",
+      "page": null,
+      "type": "journal-article"
+    }
+  },
+  {
+    "num": 33,
+    "entry": "Lun, A. T. L., McCarthy, D. J. & Marioni, J. C. A step-by-step workflow for low-level analysis of single-cell RNA-seq data with Bioconductor. F1000Research 5, 2122 (2016).",
+    "crossref": {
+      "score": 131.94542,
+      "DOI": "10.12688/f1000research.9501.2",
+      "title": "A step-by-step workflow for low-level analysis of single-cell RNA-seq data with Bioconductor",
+      "container": "F1000Research",
+      "year": 2016,
+      "volume": "5",
+      "page": "2122",
+      "type": "journal-article"
+    }
+  },
+  {
+    "num": 34,
+    "entry": "Current best practices in single‐cell RNA‐seq analysis: a tutorial",
+    "crossref": {
+      "score": 100.0,
+      "DOI": "10.15252/msb.20188746",
+      "title": "Current best practices in single‐cell RNA‐seq analysis: a tutorial",
+      "container": "Molecular Systems Biology",
+      "year": 2019,
+      "volume": "15",
+      "page": "",
+      "type": "journal-article"
+    }
+  },
+  {
+    "num": 35,
+    "entry": "A step-by-step workflow for low-level analysis of single-cell RNA-seq data with Bioconductor",
+    "crossref": {
+      "score": 100.0,
+      "DOI": "10.12688/f1000research.9501.2",
+      "title": "A step-by-step workflow for low-level analysis of single-cell RNA-seq data with Bioconductor",
+      "container": "F1000Research",
+      "year": 2016,
+      "volume": "5",
+      "page": "2122",
+      "type": "journal-article"
+    }
+  }
+]

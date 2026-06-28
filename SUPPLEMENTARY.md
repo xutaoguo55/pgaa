@@ -77,7 +77,7 @@ Performance across all nine curated CEBPE targets:
 | Method | AUROC | AUPRC | Top-100 targets | Interpretation |
 |---|---:|---:|---:|---|
 | S1 Wasserstein | 0.337 | 0.0035 | 0/9 | No broad target-set recovery |
-| S2 persistence | 0.476 | 0.0076 | 2/9 | Focused ELANE/PRTN3 ranking signal; not broad target-set recovery |
+| S2 persistence | 0.476 | 0.0076 | 1/9 | Focused ELANE ranking signal; not broad target-set recovery |
 
 Target-level ranks in the pre-specified CEBPE analysis:
 
@@ -158,7 +158,7 @@ This table separates causal perturbation benchmarks from observational marker-re
 | Automated tests | `python3 -m pytest tests -q`; `python3 scripts/test_python_pkg.py`; `Rscript scripts/test_r_pkg.R` |
 | Manuscript consistency audit | `python3 scripts/verify_manuscript_consistency.py` |
 | Main PDF build | `python3 build_pdf.py` |
-| Figure rebuild scripts | Main Adamson figure: `python3 scripts/figure_adamson_benchmark.py`; simulation figure: `python3 scripts/figure_simulation.py` |
+| Figure rebuild scripts | Main Adamson figure: `python3 scripts/figure_adamson_benchmark.py`; BHLHE40 detail figure: `python3 scripts/figure_bhlhe40_details.py`; simulation figure: `python3 scripts/figure_simulation.py` |
 | Raw-data-to-figure status | Partial; Norman S1 is regenerated from the processed h5ad input, whereas Adamson tables are rebuilt from curated source-data CSVs |
 
 ## Supplementary Table S9. Runtime and memory summary
@@ -169,7 +169,7 @@ Runtime depends on cell count, gene count, and permutation depth. The timings be
 |---|---:|---|---:|---:|---|
 | S1 Wasserstein full run | 2,000 genes; matched perturbation/control cells | Single CPU core; `pgaa 0.1.0` | 2,000 | About 5 minutes | Fits in memory for processed benchmark matrices; RAM depends mainly on cells x genes |
 | S2 persistence full run | 2,000 genes; matched perturbation/control cells | Single CPU core; `pgaa 0.1.0` | 500 | Under 2 minutes | Histogram-based; lower memory pressure than repeated model fitting |
-| Adamson table rebuild | 5 perturbations; 13 UPR positives in HVG universe | Single CPU core; Python 3.11 | NA | Seconds | Rebuilds from curated source-data CSV, not raw GEO |
+| Adamson table rebuild and raw sanity rerun | 5 perturbations; 13 UPR positives in HVG universe | Single CPU core; Python 3.11 | NA | Seconds to minutes | Final table rebuilds from curated source-data CSV; raw 10X001 sanity rerun is available in `scripts/benchmark_adamson2016.py` |
 | Norman consistency audit | Manuscript package | Single CPU core; Python 3.11 | NA | Seconds | Checks current values and required assets |
 | Main PDF build | Manuscript plus 7 main figures | Pandoc plus TinyTeX/XeLaTeX | NA | About 1 minute | Requires local LaTeX installation |
 
@@ -183,6 +183,7 @@ Runtime depends on cell count, gene count, and permutation depth. The timings be
 | Figure 3 and Supplementary Table S1 | `scripts/sensitivity_s2_bins.csv`; S2 sensitivity outputs | Source-data reproduction; sensitivity sweep documented in Supplementary Table S1 |
 | Figure 4 CLL analysis | CLL processed source data and figure source data | Source-data reproduction; observational rank-score analysis only |
 | Figure 6 and Supplementary Table S5 | `figure_source_data/fig6_adamson_results.csv`; `scripts/adamson2016_full_results.csv`; `scripts/figure_adamson_benchmark.py` | `python3 scripts/rebuild_adamson_full_results.py`; `python3 scripts/figure_adamson_benchmark.py` |
+| Supplementary Figure S2 | `figure_source_data/adamson_gene_level_scores.csv`; `figure_source_data/adamson_bhlhe40_distribution.csv`; `scripts/figure_bhlhe40_details.py` | `python3 scripts/figure_bhlhe40_details.py` |
 | Supplementary Table S12 | `scripts/adamson2016_method_summary_ci.csv` | `python3 scripts/rebuild_adamson_full_results.py` |
 | Figure 7 simulation | `scripts/simulation_powers.csv`; `scripts/figure_simulation.py` | `python3 scripts/figure_simulation.py`; copied into `figures_png/figure_5.png` |
 | Main and supplementary PDFs | `MANUSCRIPT.md`, `SUPPLEMENTARY.md`, `build_pdf.py`, figures, CSV tables | `python3 build_pdf.py`; supplementary PDF can be rebuilt with Pandoc and XeLaTeX |
@@ -233,4 +234,4 @@ The simulation evaluates three response types across seven effect sizes and thre
 
 ## Reproducibility Notes
 
-All analyses use public data and fixed random seeds (`random_state=42` or the R equivalent). The submission package includes the source code, environment files, benchmark scripts, and CSV files used to generate the manuscript tables and figures. For the Norman 2019 CEBPE analysis, `scripts/compare_combinations.py` regenerates the full S1 permutation table and combined-method summaries from the processed h5ad input used in this study. For the Adamson 2016 benchmark, `scripts/rebuild_adamson_full_results.py` regenerates the manuscript table from the curated figure source-data file `figure_source_data/fig6_adamson_results.csv`. This should be described as source-data reproducibility, not a one-command raw GEO-to-final-figure workflow. The focused package audit `scripts/verify_manuscript_consistency.py` checks current Norman values, forbidden stale placeholders, and required figure assets before PDF generation.
+All analyses use public data and fixed random seeds (`random_state=42` or the R equivalent). The submission package includes the source code, environment files, benchmark scripts, and CSV files used to generate the manuscript tables and figures. For the Norman 2019 CEBPE analysis, `scripts/compare_combinations.py` regenerates the full S1 permutation table and combined-method summaries from the processed h5ad input used in this study. For the Adamson 2016 benchmark, `scripts/rebuild_adamson_full_results.py` regenerates the manuscript table from the curated figure source-data file `figure_source_data/fig6_adamson_results.csv`; `scripts/benchmark_adamson2016.py` additionally performs a raw GSE90546/GSM2406675 10X001 sanity rerun for the five selected perturbations. This should still be described as source-data reproducibility plus a raw sanity rerun, not a fully unified raw GEO-to-final-figure workflow. The focused package audit `scripts/verify_manuscript_consistency.py` checks current Norman values, forbidden stale placeholders, and required figure assets before PDF generation.

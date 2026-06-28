@@ -1,0 +1,266 @@
+[
+  {
+    "num": 1,
+    "title": "et al. Perturb-Seq: dissecting molecular circuits with scalable single-cell RNA profiling of pooled genetic screens",
+    "entry": "Dixit, A. et al. Perturb-Seq: dissecting molecular circuits with scalable single-cell RNA profiling of pooled genetic screens. *Cell* **167**, 1853--1866.e17 (2016).",
+    "pubmed": null,
+    "crossref": null,
+    "pubmed_ids": []
+  },
+  {
+    "num": 2,
+    "title": "et al. A multiplexed single-cell CRISPR screening platform enables systematic dissection of the unfolded protein response",
+    "entry": "Adamson, B. et al. A multiplexed single-cell CRISPR screening platform enables systematic dissection of the unfolded protein response. *Cell* **167**, 1867--1882.e21 (2016).",
+    "pubmed": null,
+    "crossref": null,
+    "pubmed_ids": []
+  },
+  {
+    "num": 3,
+    "title": "M. et al. Exploring genetic interaction manifolds constructed from rich single-cell phenotypes",
+    "entry": "Norman, T. M. et al. Exploring genetic interaction manifolds constructed from rich single-cell phenotypes. *Science* **365**, 786--793 (2019).",
+    "pubmed": null,
+    "crossref": null,
+    "pubmed_ids": []
+  },
+  {
+    "num": 4,
+    "title": "M. et al. Mapping information-rich genotype-phenotype landscapes with genome-scale Perturb-seq",
+    "entry": "Replogle, J. M. et al. Mapping information-rich genotype-phenotype landscapes with genome-scale Perturb-seq. *Cell* **185**, 2559--2575.e28 (2022).",
+    "pubmed": null,
+    "crossref": null,
+    "pubmed_ids": []
+  },
+  {
+    "num": 5,
+    "title": "A., Roeder, K. & Katsevich, E. SCEPTRE improves calibration and sensitivity in single-cell CRISPR screen analysis",
+    "entry": "Barry, T., Wang, X., Morris, J. A., Roeder, K. & Katsevich, E. SCEPTRE improves calibration and sensitivity in single-cell CRISPR screen analysis. *Genome Biol.* **22**, 344 (2021).",
+    "pubmed": null,
+    "crossref": null,
+    "pubmed_ids": []
+  },
+  {
+    "num": 6,
+    "title": "et al. MAST: a flexible statistical framework for assessing transcriptional changes and characterizing heterogeneity in single-cell RNA sequencing data",
+    "entry": "Finak, G. et al. MAST: a flexible statistical framework for assessing transcriptional changes and characterizing heterogeneity in single-cell RNA sequencing data. *Genome Biol.* **16**, 278 (2015).",
+    "pubmed": null,
+    "crossref": null,
+    "pubmed_ids": []
+  },
+  {
+    "num": 7,
+    "title": "et al. Comprehensive integration of single-cell data",
+    "entry": "Stuart, T. et al. Comprehensive integration of single-cell data. *Cell* **177**, 1888--1902.e21 (2019).",
+    "pubmed": null,
+    "crossref": null,
+    "pubmed_ids": []
+  },
+  {
+    "num": 8,
+    "title": "et al. Integrated analysis of multimodal single-cell data",
+    "entry": "Hao, Y. et al. Integrated analysis of multimodal single-cell data. *Cell* **184**, 3573--3587.e29 (2021).",
+    "pubmed": null,
+    "crossref": null,
+    "pubmed_ids": []
+  },
+  {
+    "num": 9,
+    "title": "A., Angerer, P. & Theis, F. J. SCANPY: large-scale single-cell gene expression data analysis",
+    "entry": "Wolf, F. A., Angerer, P. & Theis, F. J. SCANPY: large-scale single-cell gene expression data analysis. *Genome Biol.* **19**, 15 (2018).",
+    "pubmed": null,
+    "crossref": null,
+    "pubmed_ids": []
+  },
+  {
+    "num": 10,
+    "title": "A. et al. Genome-scale CRISPR-mediated control of gene repression and activation",
+    "entry": "Gilbert, L. A. et al. Genome-scale CRISPR-mediated control of gene repression and activation. *Cell* **159**, 647--661 (2014).",
+    "pubmed": null,
+    "crossref": null,
+    "pubmed_ids": []
+  },
+  {
+    "num": 11,
+    "title": "et al. Pertpy: an end-to-end framework for perturbation analysis",
+    "entry": "Heumos, L. et al. Pertpy: an end-to-end framework for perturbation analysis. *Nat. Methods* **23**, 350--359 (2026).",
+    "pubmed": null,
+    "crossref": null,
+    "pubmed_ids": []
+  },
+  {
+    "num": 12,
+    "title": "B. & Lozzio, B. B. Human chronic myelogenous leukemia cell-line with positive Philadelphia chromosome",
+    "entry": "Lozzio, C. B. & Lozzio, B. B. Human chronic myelogenous leukemia cell-line with positive Philadelphia chromosome. *Blood* **45**, 321--334 (1975).",
+    "pubmed": null,
+    "crossref": null,
+    "pubmed_ids": []
+  },
+  {
+    "num": 13,
+    "title": "J. et al. CCAAT/enhancer binding protein epsilon is a potential retinoid target gene in acute promyelocytic leukemia treatment",
+    "entry": "Park, D. J. et al. CCAAT/enhancer binding protein epsilon is a potential retinoid target gene in acute promyelocytic leukemia treatment. *J. Clin. Invest.* **103**, 1399--1408 (1999).",
+    "pubmed": null,
+    "crossref": null,
+    "pubmed_ids": []
+  },
+  {
+    "num": 14,
+    "title": "D. Transcriptional control of granulocyte and monocyte development",
+    "entry": "Friedman, A. D. Transcriptional control of granulocyte and monocyte development. *Oncogene* **26**, 6816--6828 (2007).",
+    "pubmed": null,
+    "crossref": null,
+    "pubmed_ids": []
+  },
+  {
+    "num": 15,
+    "title": "Droplet scRNA-seq is not zero-inflated",
+    "entry": "Svensson, V. Droplet scRNA-seq is not zero-inflated. *Nat. Biotechnol.* **38**, 147--150 (2020).",
+    "pubmed": null,
+    "crossref": null,
+    "pubmed_ids": []
+  },
+  {
+    "num": 16,
+    "title": "et al. Characterizing the molecular regulation of inhibitory immune checkpoints with multimodal single-cell screens",
+    "entry": "Papalexi, E. et al. Characterizing the molecular regulation of inhibitory immune checkpoints with multimodal single-cell screens. *Nat. Genet.* **53**, 322--331 (2021).",
+    "pubmed": null,
+    "crossref": null,
+    "pubmed_ids": []
+  },
+  {
+    "num": 17,
+    "title": "et al. scMAGeCK links genotypes with multiple phenotypes in single-cell CRISPR screens",
+    "entry": "Yang, L. et al. scMAGeCK links genotypes with multiple phenotypes in single-cell CRISPR screens. *Genome Biol.* **21**, 19 (2020).",
+    "pubmed": null,
+    "crossref": null,
+    "pubmed_ids": []
+  },
+  {
+    "num": 18,
+    "title": "& Katsevich, E. Robust differential expression testing for single-cell CRISPR screens at low multiplicity of infection",
+    "entry": "Barry, T., Mason, K., Roeder, K. & Katsevich, E. Robust differential expression testing for single-cell CRISPR screens at low multiplicity of infection. *Genome Biol.* **25**, 124 (2024).",
+    "pubmed": null,
+    "crossref": null,
+    "pubmed_ids": []
+  },
+  {
+    "num": 19,
+    "title": "Some methods for classification and analysis of multivariate observations",
+    "entry": "MacQueen, J. Some methods for classification and analysis of multivariate observations. In *Proceedings of the Fifth Berkeley Symposium on Mathematical Statistics and Probability* Vol. 1, 281--297 (University of California Press, 1967).",
+    "pubmed": null,
+    "crossref": null,
+    "pubmed_ids": []
+  },
+  {
+    "num": 20,
+    "title": "Optimal Transport: Old and New (Springer, 2009)",
+    "entry": "Villani, C. *Optimal Transport: Old and New* (Springer, 2009).",
+    "pubmed": null,
+    "crossref": null,
+    "pubmed_ids": []
+  },
+  {
+    "num": 21,
+    "title": "& Cuturi, M. On Wasserstein two-sample testing and related families of nonparametric tests",
+    "entry": "Ramdas, A., Garcia Trillos, N. & Cuturi, M. On Wasserstein two-sample testing and related families of nonparametric tests. *Entropy* **19**, 47 (2017).",
+    "pubmed": null,
+    "crossref": null,
+    "pubmed_ids": []
+  },
+  {
+    "num": 22,
+    "title": "I. Permutation, Parametric, and Bootstrap Tests of Hypotheses, 3rd edn (Springer, 2005)",
+    "entry": "Good, P. I. *Permutation, Parametric, and Bootstrap Tests of Hypotheses*, 3rd edn (Springer, 2005).",
+    "pubmed": null,
+    "crossref": null,
+    "pubmed_ids": []
+  },
+  {
+    "num": 23,
+    "title": "& Tibshirani, R. J. An Introduction to the Bootstrap (Chapman & Hall, 1993)",
+    "entry": "Efron, B. & Tibshirani, R. J. *An Introduction to the Bootstrap* (Chapman & Hall, 1993).",
+    "pubmed": null,
+    "crossref": null,
+    "pubmed_ids": []
+  },
+  {
+    "num": 24,
+    "title": "& Harer, J. Computational Topology: An Introduction (American Mathematical Society, 2010)",
+    "entry": "Edelsbrunner, H. & Harer, J. *Computational Topology: An Introduction* (American Mathematical Society, 2010).",
+    "pubmed": null,
+    "crossref": null,
+    "pubmed_ids": []
+  },
+  {
+    "num": 25,
+    "title": "Statistical topological data analysis using persistence landscapes",
+    "entry": "Bubenik, P. Statistical topological data analysis using persistence landscapes. *J. Mach. Learn. Res.* **16**, 77--102 (2015).",
+    "pubmed": null,
+    "crossref": null,
+    "pubmed_ids": []
+  },
+  {
+    "num": 26,
+    "title": "& Carlsson, G. Computing persistent homology",
+    "entry": "Zomorodian, A. & Carlsson, G. Computing persistent homology. *Discrete Comput. Geom.* **33**, 249--274 (2005).",
+    "pubmed": null,
+    "crossref": null,
+    "pubmed_ids": []
+  },
+  {
+    "num": 27,
+    "title": "Topology and data",
+    "entry": "Carlsson, G. Topology and data. *Bull. Am. Math. Soc.* **46**, 255--308 (2009).",
+    "pubmed": null,
+    "crossref": null,
+    "pubmed_ids": []
+  },
+  {
+    "num": 28,
+    "title": "& Grassberger, P. Estimating mutual information",
+    "entry": "Kraskov, A., Stogbauer, H. & Grassberger, P. Estimating mutual information. *Phys. Rev. E* **69**, 066138 (2004).",
+    "pubmed": null,
+    "crossref": null,
+    "pubmed_ids": []
+  },
+  {
+    "num": 29,
+    "title": "D. A direct approach to false discovery rates",
+    "entry": "Storey, J. D. A direct approach to false discovery rates. *J. R. Stat. Soc. Ser. B* **64**, 479--498 (2002).",
+    "pubmed": null,
+    "crossref": null,
+    "pubmed_ids": []
+  },
+  {
+    "num": 30,
+    "title": "& Hochberg, Y. Controlling the false discovery rate: a practical and powerful approach to multiple testing",
+    "entry": "Benjamini, Y. & Hochberg, Y. Controlling the false discovery rate: a practical and powerful approach to multiple testing. *J. R. Stat. Soc. Ser. B* **57**, 289--300 (1995).",
+    "pubmed": null,
+    "crossref": null,
+    "pubmed_ids": []
+  },
+  {
+    "num": 31,
+    "title": "X. Y. et al. Massively parallel digital transcriptional profiling of single cells",
+    "entry": "Zheng, G. X. Y. et al. Massively parallel digital transcriptional profiling of single cells. *Nat. Commun.* **8**, 14049 (2017).",
+    "pubmed": null,
+    "crossref": null,
+    "pubmed_ids": []
+  },
+  {
+    "num": 32,
+    "title": "D. & Theis, F. J. Current best practices in single-cell RNA-seq analysis: a tutorial",
+    "entry": "Luecken, M. D. & Theis, F. J. Current best practices in single-cell RNA-seq analysis: a tutorial. *Mol. Syst. Biol.* **15**, e8746 (2019).",
+    "pubmed": null,
+    "crossref": null,
+    "pubmed_ids": []
+  },
+  {
+    "num": 33,
+    "title": "T. L., McCarthy, D. J. & Marioni, J. C. A step-by-step workflow for low-level analysis of single-cell RNA-seq data with Bioconductor",
+    "entry": "Lun, A. T. L., McCarthy, D. J. & Marioni, J. C. A step-by-step workflow for low-level analysis of single-cell RNA-seq data with Bioconductor. *F1000Research* **5**, 2122 (2016).",
+    "pubmed": null,
+    "crossref": null,
+    "pubmed_ids": []
+  }
+]

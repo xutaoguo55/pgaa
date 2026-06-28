@@ -1,4 +1,4 @@
-n_bins,elane_rank,elane_p,n_sig,pi0,known_hits,time_s
+n_bins,elane_rank,elane_p,n_sig,R_lambda,known_hits,time_s
 20,32,0.024875621890547265,66,1.321,1/9,46.6
 30,1807,0.6716417910447762,387,0.407,0/9,53.6
 50,489,0.004975124378109453,1063,0.246,3/9,66.0

@@ -76,9 +76,9 @@ The five observational datasets are used for marker recovery rather than causal 
 |---|---|---:|---:|---|
 | CLL 20k | S1 Wasserstein | 4.0x | 0.87 | CD79A, CD79B, MS4A1 |
 | Sepsis 20k | S1 Wasserstein | 2.1x | 0.87 | TCR pathway |
-| RA 10k | S1 Wasserstein | 2.5x | 0.87 | Cytokine pathway |
+| RA 10k | S1 Wasserstein | 2.5x | 0.87 | PBMC/monocyte-associated cytokine pathway |
 | PBMC 3k | S1 Wasserstein | 2.9x | 0.87 | Multi-lineage markers |
-| IBD 10k | S1 Wasserstein | 5.8x | 0.92 | Gut immune markers |
+| IBD 10k | S1 Wasserstein | 5.8x | 0.92 | Gut epithelial disease-associated markers |
 
 ## Supplementary Table S3. Adamson 2016 UPR marker set
 
@@ -91,6 +91,8 @@ The Adamson benchmark uses a curated UPR marker set covering IRE1, PERK, ATF6, E
 | ATF6 | ATF6, MBTPS1, MBTPS2, CALR, PDIA4, HYOU1 |
 | ERAD | EDEM1, SYVN1, SEL1L, HERPUD1, DERL1 |
 | Chaperones | HSPA5, HSP90B1, CALR, PDIA3, PDIA6, ERP29 |
+
+\clearpage
 
 ## Supplementary Table S4. Norman 2019 CEBPE comparison and specificity checks
 
@@ -106,8 +108,8 @@ Performance across all nine curated CEBPE targets:
 
 | Method | AUROC | AUPRC | Top-100 targets | Interpretation |
 |---|---:|---:|---:|---|
-| S1 Wasserstein | 0.337 | 0.0035 | 0/9 | No broad target-set recovery |
-| S2 persistence | 0.476 | 0.0076 | 2/9 | Focused ELANE/PRTN3 ranking signal; not broad target-set recovery |
+| S1 Wasserstein | 0.337 | 0.0035 | 0/9 | No broad recovery |
+| S2 persistence | 0.476 | 0.0076 | 2/9 | ELANE/PRTN3 only |
 
 Target-level ranks in the pre-specified CEBPE analysis:
 
@@ -127,12 +129,14 @@ Cross-perturbation ELANE checks using the CEBPE target set as the specificity re
 
 | Perturbation | Storey pi0 | ELANE p | Interpretation |
 |---|---:|---:|---|
-| CEBPE | approximately 1.0-1.3 in $n_{\text{bins}}=20$ runs | 0.04 | Main ranking result |
-| KLF1 | 1.15 | 0.70 | Negative specificity check |
+| CEBPE | approx. 1.0-1.3 | 0.04 | Main result |
+| KLF1 | 1.15 | 0.70 | Negative check |
 | SLC4A1 | 0.67 | 0.16 | Not supported |
-| BAK1 | 0.10 | 0.005 | Over-sensitive; not interpretable as specificity |
+| BAK1 | 0.10 | 0.005 | Over-sensitive; not interpreted |
 | DUSP9 | 0.68 | 0.90 | Not supported |
 | CBL | 0.72 | 0.58 | Not supported |
+
+\clearpage
 
 ## Supplementary Table S5. Adamson 2016 UPR CRISPRi benchmark
 
@@ -162,15 +166,17 @@ Baseline AUROC values:
 
 This table separates causal perturbation benchmarks from observational marker-recovery analyses. The observational datasets are included to assess whether S1 produces biologically coherent rankings, not to validate causal effects.
 
-| Dataset | Evidence level | Role and main limitation |
-|---|---|---|
-| Norman 2019 K562 CRISPRa (GSE133344) | Experimental Perturb-seq | CEBPE case study and S2 calibration checks. The S2 result is mainly an ELANE ranking signal; 500 permutations do not support genome-wide FDR-controlled discovery. |
-| Adamson 2016 K562 CRISPRi (GSE90546) | Experimental Perturb-seq | Independent UPR benchmark. The scope is small: five pre-specified sgRNAs and 13 UPR positives in the HVG universe. |
-| CLL 20k (GSE111014) | Observational scRNA-seq | S1 marker recovery and S1/S2 complementarity. Virtual TCL1A grouping is not an intervention. |
-| Sepsis 20k (GSE167363) | Observational scRNA-seq | S1 marker recovery; marker enrichment only. |
-| RA 10k (GSE159117) | Observational scRNA-seq | S1 marker recovery; marker enrichment only. |
-| PBMC 3k (10x Genomics demo) | Observational scRNA-seq | Scale and marker recovery; demo dataset, not a perturbation screen. |
-| IBD 10k (GSE116222) | Observational scRNA-seq | S1 marker recovery; marker enrichment only. |
+| Dataset | Evidence class | Manuscript role | Main limitation |
+|---|---|---|---|
+| Norman 2019 K562 CRISPRa (GSE133344) | Experimental Perturb-seq | CEBPE case example; S2 calibration checks | Narrow ELANE/PRTN3 ranking signal; no FDR-controlled discovery |
+| Adamson 2016 K562 CRISPRi (GSE90546) | Experimental Perturb-seq | Independent UPR benchmark | Five pre-specified sgRNAs; 13 UPR positives in the HVG universe |
+| CLL 20k (GSE111014) | Observational scRNA-seq | Disease-state marker recovery; S1/S2 complementarity | Virtual TCL1A grouping is not an intervention |
+| Sepsis 20k (GSE167363) | Observational scRNA-seq | Marker recovery | Marker enrichment only |
+| RA 10k PBMC/monocyte dataset (GSE159117) | Observational scRNA-seq | Marker recovery | Marker enrichment only |
+| PBMC 3k (10x Genomics demo) | Observational scRNA-seq | Scale and marker recovery | Demo dataset; not a perturbation screen |
+| IBD 10k gut epithelial dataset (GSE116222) | Observational scRNA-seq | Marker recovery | Marker enrichment only |
+
+\clearpage
 
 ## Supplementary Table S7. Main parameter settings
 
@@ -191,80 +197,62 @@ This table separates causal perturbation benchmarks from observational marker-re
 
 | Item | Status |
 |---|---|
-| Python implementation | Included under `pgaa/`; installable with `pip install -e .`. |
-| R implementation | Included under `pgaa_r/`; tested with the local R smoke/regression suite. |
+| Python implementation | Included under `pgaa/`; install with `pip install -e .`. |
+| R implementation | Included under `pgaa_r/`; smoke/regression tests included. |
 | License | MIT; `LICENSE` file included. |
-| Public repository | Code-only repository at https://github.com/xutaoguo55/pgaa. |
-| Archived version | GitHub release `v0.1.0-code`; Zenodo DOI https://doi.org/10.5281/zenodo.20681141; Software Heritage identifier supplied in the manuscript and metadata. |
-| Supplementary software file | `PGAA_supplementary_code.zip` supplied with the submission package. |
-| Environment | Python requirements, R package files, `environment.yml`, and `Dockerfile` are included. |
-| Automated tests | Python toy example, package tests, pytest suite, and R smoke tests are included. |
+| Public repository | Code-only repository: https://github.com/xutaoguo55/pgaa. |
+| Archived version | GitHub release `v0.1.0-code`; Zenodo DOI https://doi.org/10.5281/zenodo.20681141; Software Heritage identifier in manuscript metadata. |
+| Supplementary software file | `PGAA_supplementary_code.zip`. |
+| Environment | `requirements.txt`, `environment.yml`, `Dockerfile`, and R package files. |
+| Automated tests | Python toy example, package tests, pytest suite, and R smoke tests. |
 | Dataset manifest check | Included as `scripts/verify_dataset_manifest.py`. |
-| Main PDF build | Included as `communications_medicine/build_cm_pdf.py`. |
-| Figure rebuild scripts | Adamson and simulation figure scripts are included in `scripts/`. |
-| Raw-data-to-figure status | Partial; Norman S1 uses processed h5ad input, whereas Adamson tables use curated source-data CSVs. |
+| Figure rebuild scripts | Adamson and simulation scripts included under `scripts/`. |
+| Raw-data-to-figure status | Partial: Norman uses processed h5ad input; Adamson tables use curated source-data CSVs. |
 
 ## Supplementary Table S9. Runtime and memory summary
 
 Runtime depends on cell count, gene count, and permutation depth. The timings below are single-core approximate values from the manuscript workflow and are intended as practical guidance rather than hardware-independent benchmarks. Local checks were run on macOS with Python 3.11, R 4.x, dependencies from `requirements.txt`, and package version `pgaa 0.1.0`.
 
-| Task | Input and setting | Runtime and memory note |
+| Task | Input/setting | Runtime/memory note |
 |---|---|---|
-| S1 Wasserstein full run | 2,000 genes; matched perturbation/control cells; 2,000 permutations; single CPU core. | About 5 minutes. Fits in memory for processed benchmark matrices; RAM depends mainly on cells x genes. |
-| S2 persistence full run | 2,000 genes; matched perturbation/control cells; 500 permutations; single CPU core. | Under 2 minutes. Histogram-based and lower memory pressure than repeated model fitting. |
-| Adamson table rebuild | 5 perturbations and 13 UPR positives; Python 3.11. | Seconds. Rebuilds from curated source-data CSV, not raw GEO. |
-| Norman consistency audit | Manuscript package; Python 3.11. | Seconds. Checks current values and required assets. |
-| Main PDF build | Manuscript plus 5 main figures; Pandoc plus TinyTeX/XeLaTeX. | About 1 minute; requires local LaTeX installation. |
+| S1 Wasserstein full run | 2,000 genes; matched cells; 2,000 permutations; one CPU core | About 5 min; RAM scales mainly with cells x genes |
+| S2 persistence full run | 2,000 genes; matched cells; 500 permutations; one CPU core | Under 2 min; lower memory pressure than repeated model fitting |
+| Adamson benchmark summary | Five perturbations; 13 UPR positives; Python 3.11 | Seconds; rebuilds summary from curated source-data CSV |
 
-## Supplementary Table S10. Result reproduction map
+\clearpage
 
-| Manuscript item | Reproduction status |
-|---|---|
-| Figure 1 schematic | Rebuild with `scripts_generate_cm_entry_figure.py`. |
-| Figure 2 and Table S2 | Reproduced from included dataset-summary CSV and figure source files; observational marker recovery only. |
-| Figure 3 and Table S5 | Rebuild Adamson source table, then rebuild the Adamson benchmark figure. |
-| Table S12 | Rebuild with the Adamson full-results script. |
-| Figure 4 and Table S4 | Rebuild Norman comparison tables and figure; narrow CEBPE ranking use case. |
-| Figure 5 and Table S4 | Reproduced from six-perturbation calibration outputs; calibration guardrails, not discovery claims. |
-| Supplementary Figure S1 | Reproduced from ELANE histogram source files and CSVs. |
-| Supplementary Figure S2 | Reproduced from CLL processed source data; observational rank-score analysis only. |
-| Supplementary Figure S3 | Rebuild with `scripts/figure_simulation.py`. |
-| Supplementary Figure S4 and Table S1 | Reproduced from S2 bin-sensitivity source data and QQ-plot source files. |
-| Supplementary Figure S5 | Reproduced from Adamson BHLHE40 source data and figure source files. |
-| Main and supplementary PDFs | Main PDF built with `build_cm_pdf.py`; supplementary PDF built from `SUPPLEMENTARY_CM.md`. |
+## Supplementary Table S10. Comparator status
 
-## Supplementary Table S11. Comparator and benchmark status
+Direct comparators included in benchmark analyses:
 
-This table separates methods that were directly benchmarked in this manuscript from related tools that are discussed as adjacent or complementary. It is included to avoid implying that every cited method was run in every benchmark.
-
-Directly benchmarked comparators:
-
-| Method | Benchmark evidence | Interpretation |
+| Comparator | Benchmark used | Result or role |
 |---|---|---|
-| SCEPTRE [Barry *et al.*, 2021] | Norman CEBPE CRISPRa: ELANE rank 1761/2012, $p = 0.92$; AUROC 0.469; 0/9 CEBPE targets in top 100. | Direct comparator for the CEBPE case; not a general claim that SCEPTRE performs poorly. |
-| Wilcoxon rank-sum | Adamson UPR CRISPRi: mean AUROC 0.529 across five perturbations. | Simple location-shift baseline. |
-| t-test | Adamson UPR CRISPRi: mean AUROC 0.523 across five perturbations. | Simple mean-shift baseline. |
-| MAST [Finak *et al.*, 2015] | Adamson UPR CRISPRi: mean AUROC 0.406 across five perturbations. | Differential-expression comparator in this focused benchmark. |
+| SCEPTRE [Barry *et al.*, 2021] | Norman CEBPE CRISPRa | ELANE rank 1761/2012; $p = 0.92$; AUROC 0.469; 0/9 targets in top 100 |
+| Wilcoxon rank-sum | Adamson UPR CRISPRi | Mean AUROC 0.529 across five perturbations |
+| t-test | Adamson UPR CRISPRi | Mean AUROC 0.523 across five perturbations |
+| MAST [Finak *et al.*, 2015] | Adamson UPR CRISPRi | Mean AUROC 0.406 across five perturbations |
 
-Discussed but not directly benchmarked:
+Related tools or background comparators not directly benchmarked:
 
-| Tool or method | Role or remaining gap |
-|---|---|
-| Robust SCEPTRE [Barry *et al.*, 2024] | Same broad problem class; direct robust-SCEPTRE benchmarking remains necessary. |
-| pertpy [Heumos *et al.*, 2026] | Integration ecosystem rather than a single statistic comparator. |
-| Mixscape [Papalexi *et al.*, 2021] | Complementary responder/non-responder assignment method. |
-| scMAGeCK [Yang *et al.*, 2020] | Complementary genotype-phenotype and screen-level method. |
-| DESeq2 [Love *et al.*, 2014] and SCDE [Kharchenko *et al.*, 2014] | Background references; not prioritized for direct non-mean distributional benchmarking. |
+| Tool or reference | Status | Reason for inclusion |
+|---|---|---|
+| Robust SCEPTRE [Barry *et al.*, 2024] | Discussed | Same broad class of calibrated single-cell CRISPR-screen testing |
+| pertpy [Heumos *et al.*, 2026] | Discussed | Perturbation-analysis ecosystem and integration framework |
+| Mixscape [Papalexi *et al.*, 2021] | Discussed | Responder/non-responder assignment in perturbation screens |
+| scMAGeCK [Yang *et al.*, 2020] | Discussed | Genotype-phenotype and screen-level modeling |
+| DESeq2 [Love *et al.*, 2014] and SCDE [Kharchenko *et al.*, 2014] | Background | RNA-seq and single-cell differential-expression context |
 
-## Supplementary Table S12. Adamson 2016 method-level descriptive confidence intervals
+\clearpage
 
-Intervals are 95% t intervals across the five pre-specified Adamson perturbations. They summarize between-perturbation variability in this focused benchmark and should not be interpreted as population-level uncertainty over all possible Perturb-seq screens.
+## Supplementary Table S11. Adamson descriptive intervals
 
-| Method | n perturbations | Mean AUROC | AUROC 95% CI | Mean AUPRC | AUPRC 95% CI |
+Intervals are 95% t intervals across the five pre-specified Adamson perturbations. They summarize between-perturbation variability in this focused benchmark and should not be interpreted as population-level uncertainty over all possible Perturb-seq screens. S1 denotes Wasserstein; S2 denotes persistence.
+
+| Method | n | Mean AUROC | AUROC 95% CI | Mean AUPRC | AUPRC 95% CI |
 |---|---:|---:|---:|---:|---:|
-| S1 Wasserstein | 5 | 0.786 | 0.766-0.807 | 0.0191 | 0.0160-0.0222 |
-| S2 persistence | 5 | 0.748 | 0.662-0.834 | 0.0253 | 0.0010-0.0495 |
-| Wilcoxon rank-sum | 5 | 0.529 | 0.415-0.643 | 0.0089 | 0.0048-0.0131 |
+| S1 | 5 | 0.786 | 0.766-0.807 | 0.0191 | 0.0160-0.0222 |
+| S2 | 5 | 0.748 | 0.662-0.834 | 0.0253 | 0.0010-0.0495 |
+| Wilcoxon | 5 | 0.529 | 0.415-0.643 | 0.0089 | 0.0048-0.0131 |
 | t-test | 5 | 0.523 | 0.430-0.616 | 0.0085 | 0.0050-0.0120 |
 | MAST | 5 | 0.406 | 0.354-0.458 | 0.0014 | 0.0012-0.0016 |
 
@@ -286,4 +274,4 @@ The simulation evaluates three response types across seven effect sizes and thre
 
 ## Reproducibility Notes
 
-All analyses use public data and fixed random seeds (`random_state=42` or the R equivalent). The public code-only repository contains the PGAA Python/R package, installation files, tests, and toy smoke-test scripts. The submitted supplementary software archive contains the manuscript-specific benchmark scripts and CSV files used to generate the manuscript tables and figures. For the Norman 2019 CEBPE analysis, `scripts/compare_combinations.py` regenerates the full S1 permutation table and combined-method summaries from the processed h5ad input used in this study. For the Adamson 2016 benchmark, `scripts/rebuild_adamson_full_results.py` regenerates the manuscript table from the curated figure source-data file `figure_source_data/fig6_adamson_results.csv`. This should be described as source-data reproducibility, not a one-command raw GEO-to-final-figure workflow. The supplementary archive is designed for package smoke tests, source-data table rebuilds, and manuscript PDF rebuilds.
+All analyses use public data and fixed random seeds (`random_state=42` or the R equivalent). The public code-only repository contains the PGAA Python/R package, installation files, tests, and toy smoke-test scripts. The submitted supplementary archive contains manuscript-specific benchmark scripts and CSV source-data files for table and figure rebuilds. The Norman 2019 CEBPE summaries are provided as processed source-data CSV files because the full rerun requires the processed Norman h5ad input used in this study. `scripts/rebuild_adamson_full_results.py` regenerates the Adamson 2016 benchmark table from `figure_source_data/fig6_adamson_results.csv`. This is source-data reproducibility, not a one-command raw GEO-to-final-figure workflow.

@@ -6,6 +6,7 @@ import re
 import subprocess
 import sys
 import zipfile
+import hashlib
 from pathlib import Path
 
 
@@ -14,6 +15,7 @@ PACKET = ROOT / "UPLOAD_PACKET_COMMUNICATIONS_MEDICINE"
 ZIP = ROOT / "PGAA_COMMUNICATIONS_MEDICINE_TRANSFER_PACKET.zip"
 CLEAN_PACKET = ROOT / "JOURNAL_UPLOAD_COMMUNICATIONS_MEDICINE"
 CLEAN_ZIP = ROOT / "PGAA_COMMUNICATIONS_MEDICINE_JOURNAL_UPLOAD.zip"
+FINAL_UPLOAD = ROOT / "FILES_TO_UPLOAD_COMMUNICATIONS_MEDICINE"
 
 REQUIRED_PACKET_FILES = {
     "MANUSCRIPT.pdf",
@@ -30,6 +32,12 @@ REQUIRED_CLEAN_UPLOAD_FILES = {
     "SUPPLEMENTARY.pdf",
     "PGAA_supplementary_code.zip",
     "COVER_LETTER_COMMUNICATIONS_MEDICINE.pdf",
+}
+
+CURRENT_FILE_MAP = {
+    ROOT / "MANUSCRIPT_CM.pdf": "MANUSCRIPT.pdf",
+    ROOT / "SUPPLEMENTARY_CM.pdf": "SUPPLEMENTARY.pdf",
+    ROOT / "COVER_LETTER_COMMUNICATIONS_MEDICINE.pdf": "COVER_LETTER_COMMUNICATIONS_MEDICINE.pdf",
 }
 
 FORBIDDEN_CLEAN_UPLOAD_TERMS = [
@@ -90,6 +98,14 @@ def pdf_text(path: Path) -> str:
     return subprocess.check_output(["pdftotext", str(path), "-"], text=True)
 
 
+def sha256(path: Path) -> str:
+    h = hashlib.sha256()
+    with path.open("rb") as fh:
+        for chunk in iter(lambda: fh.read(1024 * 1024), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
 def main() -> None:
     missing = sorted(name for name in REQUIRED_PACKET_FILES if not (PACKET / name).exists())
     if missing:
@@ -109,6 +125,14 @@ def main() -> None:
 
     manuscript = PACKET / "MANUSCRIPT.pdf"
     supplement = PACKET / "SUPPLEMENTARY.pdf"
+    for current, packet_name in CURRENT_FILE_MAP.items():
+        for base in [PACKET, CLEAN_PACKET, FINAL_UPLOAD]:
+            candidate = base / packet_name
+            if not candidate.exists():
+                fail(f"missing synced upload file: {candidate}")
+            if sha256(current) != sha256(candidate):
+                fail(f"stale upload file: {candidate} does not match {current.name}")
+
     if pdf_pages(manuscript) < 5:
         fail("manuscript PDF is unexpectedly short")
     if pdf_pages(supplement) < 3:
@@ -121,6 +145,14 @@ def main() -> None:
     for pattern in REQUIRED_MANUSCRIPT_REGEXES:
         if not re.search(pattern, text):
             fail(f"required manuscript pattern missing: {pattern}")
+
+    supp_text = pdf_text(supplement)
+    for forbidden in ["Result reproduction map", "Supplementary Table S12", "Table S12", "Norman consistency audit"]:
+        if forbidden in supp_text:
+            fail(f"forbidden supplementary text remains: {forbidden}")
+    for required in ["Supplementary Table S10. Comparator status", "Supplementary Table S11. Adamson descriptive intervals"]:
+        if required not in supp_text:
+            fail(f"required supplementary table heading missing: {required}")
 
     with zipfile.ZipFile(ZIP) as zf:
         zip_entries = [name for name in zf.namelist() if not name.endswith("/")]
@@ -217,8 +249,11 @@ def main() -> None:
         fail("final Zenodo DOI missing from portal inputs")
     if "swh:1:snp:5b1b2cc9ce32298968e00f69e1af5ff8aed8889f" not in portal:
         fail("final Software Heritage SWHID missing from portal inputs")
-    if "OPT OUT of publication of reviewer reports" not in portal:
-        fail("transparent peer review preference is not set in portal inputs")
+    if "OPT IN to Transparent Peer Review" not in portal:
+        fail("transparent peer review OPT IN preference is not set in portal inputs")
+    cover_text = pdf_text(PACKET / "COVER_LETTER_COMMUNICATIONS_MEDICINE.pdf")
+    if "opt in to Transparent Peer Review" not in cover_text:
+        fail("cover letter PDF does not state Transparent Peer Review opt in")
 
     print("CM TRANSFER CHECK PASSED")
     print(f"Packet files: {len(REQUIRED_PACKET_FILES)}")

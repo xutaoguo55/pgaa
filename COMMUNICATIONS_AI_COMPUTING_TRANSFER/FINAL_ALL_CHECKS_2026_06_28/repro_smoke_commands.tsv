@@ -1,0 +1,7 @@
+check	status	reason_or_log
+pip_install	passed	/Users/guoxutao/.openclaw/workspace/PGAA_method_paper/COMMUNICATIONS_AI_COMPUTING_TRANSFER/FINAL_ALL_CHECKS_2026_06_28/code_smoke/pip_install.log
+toy_example	passed	/Users/guoxutao/.openclaw/workspace/PGAA_method_paper/COMMUNICATIONS_AI_COMPUTING_TRANSFER/FINAL_ALL_CHECKS_2026_06_28/code_smoke/toy_example.log
+python_pkg	passed	/Users/guoxutao/.openclaw/workspace/PGAA_method_paper/COMMUNICATIONS_AI_COMPUTING_TRANSFER/FINAL_ALL_CHECKS_2026_06_28/code_smoke/python_pkg.log
+r_pkg	passed	/Users/guoxutao/.openclaw/workspace/PGAA_method_paper/COMMUNICATIONS_AI_COMPUTING_TRANSFER/FINAL_ALL_CHECKS_2026_06_28/code_smoke/r_pkg.log
+pytest_cli	passed	/Users/guoxutao/.openclaw/workspace/PGAA_method_paper/COMMUNICATIONS_AI_COMPUTING_TRANSFER/FINAL_ALL_CHECKS_2026_06_28/code_smoke/pytest_cli.log
+dataset_manifest	passed	/Users/guoxutao/.openclaw/workspace/PGAA_method_paper/COMMUNICATIONS_AI_COMPUTING_TRANSFER/FINAL_ALL_CHECKS_2026_06_28/code_smoke/dataset_manifest.log

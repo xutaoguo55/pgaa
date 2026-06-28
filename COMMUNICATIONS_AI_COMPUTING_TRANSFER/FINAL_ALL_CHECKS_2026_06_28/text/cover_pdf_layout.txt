@@ -1,0 +1,36 @@
+Dear Editors,
+We are pleased to submit our manuscript, “A distribution-aware computational framework for
+prioritizing heterogeneous responses in single-cell perturbation data,” for consideration as an
+Article in Communications AI & Computing.
+The manuscript presents PGAA as a computational framework for prioritizing heterogeneous
+transcriptional responses in single-cell perturbation data. PGAA combines PGAA-W
+Wasserstein for full-expression-distribution shifts with a PGAA-H histogram-shape diagnostic
+for responder-associated expression-shape changes, both accompanied by permutation
+calibration and Storey upper-tail diagnostics. The framework is implemented in Python and R as
+a reproducible ranking layer for perturbation screens and marker-anchored single-cell contrasts.
+The evidence is organized around computational scope, benchmarking, and reproducibility.
+Adamson 2016 UPR CRISPRi provides a small independent proof-of-principle benchmark.
+Norman 2019 CRISPRa provides a multi-perturbation PGAA-W extension across KLF1,
+CEBPE, and CEBPA, plus a narrow CEBPE PGAA-H ranking example for ELANE. A
+processed-source-data MMD-PSM comparator is included as an additional distribution-aware
+baseline. Observational disease-related scRNA-seq datasets are retained as marker-recovery
+stress checks, not as causal disease validation or clinical biomarker evidence.
+We believe the work fits Communications AI & Computing because it addresses a general
+computational problem in modern single-cell analysis: how to prioritize response programs when
+perturbation effects are heterogeneous and not adequately summarized by mean shifts. The
+manuscript provides calibration guardrails, simulation ablations, software availability, and a
+supplementary reproducibility archive.
+We do not claim new clinical biomarkers, treatment recommendations, or bedside diagnostic
+utility. The public code-only repository is available at https://github.com/xutaoguo55/pgaa and is
+archived at Zenodo (DOI: https://doi.org/10.5281/zenodo.20681141) and Software Heritage.
+Manuscript-specific source-data tables, figure-reproduction scripts, runtime documentation, and
+PDF build files are provided in the supplementary software archive.
+All authors have approved the manuscript. We declare no competing interests and no external
+funding. We opt in to Transparent Peer Review.
+Thank you for considering our manuscript.
+Sincerely,
+Xutao Guo, on behalf of all authors
+Department of Hematology, Nanfang Hospital, Southern Medical University
+Clinical Medical Research Center of Hematological Diseases of Guangdong Province
+Email: guoxutao@smu.edu.cn
+

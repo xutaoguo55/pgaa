@@ -1,0 +1,2 @@
+[console_scripts]
+pgaa-run = pgaa.cli:main

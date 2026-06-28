@@ -1,0 +1,5 @@
+method,elane_rank,elane_p,n_sig,auroc,known_hits
+SCEPTRE,1761,0.92,30,0.469,0/9
+PGAA S₁ (Wasserstein),1452,0.2234,1083,0.337,0/9
+"PGAA S₂ (persistent homology, n_bins=20)",57,0.0399,66,0.476,2/9
+PGAA S₁+S₂ combined z,427,0.0378,473,0.424,3/9

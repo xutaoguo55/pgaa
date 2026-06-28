@@ -1,0 +1,1031 @@
+A distribution-aware computational framework for prioritizing heterogeneous responses in single-cell perturbation data
+
+Authors: Xiaolei Wei1†, Haiqing Zheng2†, Junwei Huang1†, Qi Wei1,
+Yongqiang Wei1, Ru Feng1, Xutao Guo1,3*
+
+1 Department of Hematology, Nanfang Hospital, Southern Medical
+University, Guangzhou, China
+2 Department of Nosocomial Infection Management, Nanfang Hospital,
+Southern Medical University, Guangzhou, China
+3 Clinical Medical Research Center of Hematological Diseases of
+Guangdong Province, Guangzhou, China
+
+† These authors contributed equally to this work.
+* Correspondence: Xutao Guo (guoxutao@smu.edu.cn)
+
+Abstract
+
+Single-cell perturbation datasets often contain subset-confined
+responses rather than uniform mean shifts, making target prioritization
+difficult for average-based analyses. We present PGAA, a
+distribution-aware computational framework for ranking heterogeneous
+transcriptional responses in single-cell perturbation data. PGAA
+combines PGAA-W Wasserstein, a 99-point quantile-grid statistic for
+full-expression-distribution shifts, with the S2 histogram-shape
+statistic (PGAA-H), a secondary statistic for responder-associated
+expression-shape changes. Both statistics use permutation calibration
+and Storey upper-tail diagnostics. In an Adamson 2016
+unfolded-protein-response CRISPRi proof-of-principle benchmark, PGAA-W
+Wasserstein achieved mean AUROC 0.786 across five pre-specified
+perturbations and mean AUPRC 0.0191 against a 0.0065 random baseline. A
+Norman 2019 multi-perturbation CRISPRa extension supported PGAA-W as the
+default ranking statistic in curated target-panel checks, while a
+focused Norman CEBPE example illustrated the narrower role of the S2
+statistic. A processed-source-data MMD-PSM comparison and observational
+single-cell datasets are retained as bounded comparator and
+marker-recovery stress checks.
+
+Keywords: single-cell RNA-seq, Perturb-seq, computational biology,
+Wasserstein distance, histogram-shape statistic, distributional ranking,
+CRISPR screening
+
+1. Introduction
+
+Single-cell perturbation screens ^(1–4) provide a scalable way to
+connect genetic or transcriptional perturbations to cellular phenotypes.
+A central computational task in these datasets is to rank genes or
+response programs whose expression differs between perturbed and control
+cells. The standard analysis compares mean expression of each non-target
+gene between groups. This works well when a perturbation produces a
+uniform transcriptional shift: knock out a transcription factor, its
+targets drop, and a t-test, Wilcoxon test, MAST, or SCEPTRE can detect
+the difference ^(5,6). Together with preprocessing workflows in Seurat
+^(7,8) and Scanpy ⁹, these methods form the standard Perturb-seq
+analysis toolkit.
+
+Many perturbation responses, however, are not well summarized by a mean
+shift. CRISPRa ¹⁰ can activate a target in only a fraction of cells. A
+weak perturbation may shift variance, create responder and non-responder
+subpopulations, or change the shape of an expression distribution while
+leaving the mean only modestly changed. Similar response structures can
+also appear in marker-anchored contrasts from patient-derived
+single-cell data, where disease-associated programs often mark subsets
+of malignant, immune, stromal, or inflammatory cells rather than an
+entire population. A method that only asks whether average expression
+changed can under-rank such signals and can make downstream
+prioritization less interpretable.
+
+Few existing Perturb-seq methods make distribution-shape changes a
+primary output, although heterogeneity-aware approaches are emerging ¹¹.
+This leaves a gap between calibrated mean-shift testing and the
+practical need to rank heterogeneous responses for follow-up
+experiments. The gap is computational rather than only biological: users
+need statistics that compare full expression distributions, calibration
+diagnostics that reveal when a ranking is trustworthy, and software that
+can be applied consistently across perturbation screens and
+marker-anchored single-cell contrasts.
+
+We present PGAA, a distribution-aware framework and software
+implementation for heterogeneous single-cell response prioritization.
+PGAA uses two complementary statistics sharing a common calibration
+infrastructure: the PGAA-W Wasserstein quantile-grid statistic captures
+one-dimensional distributional shifts, and the S2 histogram-shape
+statistic (PGAA-H) ranks expression-shape changes consistent with
+responder-associated heterogeneity. The mathematical target is to rank
+non-target genes by perturbation-associated distributional discrepancy
+after coarse cell-state and library-size adjustment. The novelty is not
+the invention of Wasserstein distance or histogram peak scoring; it is
+their calibration-aware adaptation into a reproducible single-cell
+perturbation ranking layer with explicit evidence boundaries. Additional
+modules for conditional MI and Fisher NB scoring are provided as
+software extensions. All statistics are accompanied by Storey upper-tail
+calibration diagnostics that let users assess reliability on their own
+data before interpreting results. Figure 1a illustrates the response
+regimes motivating PGAA, and Figure 1b summarizes the analysis workflow.
+
+We evaluate PGAA across experimental Perturb-seq benchmarks, simulation
+ablations, distribution-aware comparators, and external marker-recovery
+stress checks. Adamson 2016 UPR CRISPRi and Norman 2019 CRISPRa provide
+real perturbation benchmarks with complementary response regimes. The
+Norman analyses include a multi-perturbation PGAA-W extension across
+KLF1, CEBPE, and CEBPA with KS as an additional distribution-aware
+baseline, followed by a focused CEBPE S2 example. Simulations define the
+operating regimes of the Wasserstein and S2 histogram-shape statistic
+(PGAA-H). A processed-source-data MMD-PSM comparison is included as an
+additional distribution-aware baseline for the Norman CEBPE contrast.
+Observational scRNA-seq datasets in chronic lymphocytic leukemia (CLL),
+sepsis, rheumatoid arthritis, inflammatory bowel disease, and PBMCs are
+used only to ask whether distributional ranking can recover known marker
+biology in medically relevant single-cell contexts. These analyses
+support marker recovery rather than causal interpretation, and Table 1
+states the evidence level assigned to each analysis class.
+
+Table 1. Evidence levels across PGAA evaluations.
+
+  -----------------------------------------------------------------------------
+  Evidence class       Datasets or     Purpose                 Boundary
+                       analyses                                
+  -------------------- --------------- ----------------------- ----------------
+  Perturb-seq          Adamson 2016    Test PGAA-W/PGAA-H      Thirteen
+  proof-of-principle   UPR CRISPRi     ranking behavior in a   positives among
+  benchmark                            small curated real      2,000 HVGs; not
+                                       perturbation benchmark  broad proof
+                                                               across all
+                                                               perturbation
+                                                               modalities
+
+  Multi-perturbation   Norman 2019     Compare PGAA-W          Curated panel
+  CRISPRa extension    KLF1, CEBPE,    Wasserstein against KS, recovery rather
+                       CEBPA           Welch t, and Wilcoxon   than original
+                                       on curated              genome-wide DEG
+                                       target-program panels   gold standard;
+                                                               top-rank
+                                                               recovery remains
+                                                               sparse
+
+  Narrow S2 ranking    Norman 2019     Test whether S2 can     ELANE/PRTN3
+  example              CEBPE CRISPRa   prioritize a            ranking evidence
+                                       responder-associated    only; full
+                                       expression-shape target target-program
+                                                               recovery is weak
+
+  Distribution-aware   MMD-PSM on      Compare against an      Not a full
+  comparator           Norman 2019     additional              benchmark suite;
+                       CEBPE           distributional baseline included to
+                                       in the                  avoid only
+                                       processed-source-data   mean-based
+                                       setting                 comparators
+
+  External marker      CLL, sepsis,    Bounded recovery check  Observational
+  recovery             rheumatoid      of known marker biology marker
+                       arthritis,      in public scRNA-seq     prioritization
+                       inflammatory    data                    only; not causal
+                       bowel disease,                          or clinical
+                       PBMC                                    biomarker
+                                                               evidence
+
+  Calibration and      Simulations,    Define when the         Guardrail
+  operating-regime     null controls,  statistics are          evidence; not a
+  checks               S2 bin sweep,   interpretable           replacement for
+                       Storey                                  experimental
+                       upper-tail                              follow-up
+                       diagnostics                             
+  -----------------------------------------------------------------------------
+
+This separation is used throughout the manuscript: perturbation
+benchmarks assess ranking behavior, observational datasets are used only
+as marker-recovery stress checks, and calibration analyses define when a
+score should be interpreted. With these evidence boundaries stated,
+Figure 1 gives the conceptual overview of the response regimes and the
+PGAA workflow.
+
+The statistics in PGAA are deliberately assigned different roles. PGAA-W
+Wasserstein measures location, spread and other one-dimensional
+distributional shifts and is the default score. KS measures the maximum
+empirical CDF discrepancy and is used as a distribution-aware
+comparator. MMD-PSM and related energy or kernel methods test broader
+distributional discrepancies but can be computationally heavier and
+depend on implementation choices. S2 histogram-shape measures
+peak-structure changes, including responder-associated expression-shape
+shifts, and is treated as a secondary diagnostic. Mean-based tests
+remain useful when the response is dominated by a location shift but can
+under-rank subset-confined or shape-changing responses.
+
+[Figure 1. PGAA framework for distribution-aware single-cell
+perturbation ranking. a, Uniform shifts are captured by mean-based
+tests, whereas subset-confined responder states can show weak average
+shifts. b, PGAA residualizes cell-state and library-size effects, scores
+genes with PGAA-W Wasserstein for full-distribution shifts and PGAA-H
+histogram-shape changes, calibrates rankings by within-cluster
+permutation and Storey’s upper-tail diagnostic, and returns ranked
+response genes. The Wasserstein statistic is the primary starting score;
+PGAA-H is a secondary diagnostic and should be interpreted only when
+calibration is acceptable.]
+
+2. Results
+
+2.1 Framework overview and evidence boundaries
+
+PGAA is designed as a modular computational ranking layer for
+heterogeneous single-cell responses. The Wasserstein statistic is the
+primary starting score for full-distribution shifts, whereas the S2
+histogram-shape statistic (PGAA-H) is a secondary diagnostic for
+responder-associated expression-shape changes. The framework first
+adjusts expression for coarse cell-state and library-size effects, then
+ranks genes by distributional discrepancy between perturbed and control
+cells. Within-cluster permutation is used to provide empirical ranking
+evidence, and the Storey upper-tail diagnostic is used as a guardrail
+for calibration rather than as a guarantee of genome-wide discovery.
+
+Figure 1 summarizes the response-regime problem and the analysis
+workflow. The figure intentionally separates the default PGAA-W score
+from the secondary S2 statistic, because the benchmarks below support a
+hierarchy rather than two interchangeable discovery tests.
+
+2.2 Independent Perturb-seq benchmark in unfolded-protein-response biology
+
+To test PGAA on a small independent Perturb-seq dataset with a
+complementary perturbation modality and a disease-relevant
+stress-response pathway, we applied both statistics to the Adamson et
+al. (2016) UPR CRISPRi screen (GSE90546). After QC, 5,680 K562 cells
+were retained across five well-characterized sgRNA perturbations
+targeting UPR genes (SPI1, ZNF326, BHLHE40, CREB1, DDIT3; 468-686 cells
+each) and a non-targeting control (1,759 cells). The reference positive
+set was a curated UPR marker set covering IRE1, PERK, ATF6, ERAD, and
+chaperone branches, of which 13 markers were present in the 2,000-gene
+HVG subset (Supplementary Table 1).
+
+Across the five perturbations, the Wasserstein statistic achieved a mean
+AUROC of 0.786 (range 0.767-0.806, mean AUPRC 0.0191) for recovering
+known UPR genes (Table 2). By comparison, Wilcoxon, t-test, and MAST
+achieved mean AUROCs of 0.529, 0.523, and 0.406 respectively in the same
+benchmark. The S2 histogram-shape statistic (PGAA-H) achieved a mean
+AUROC of 0.748 (range 0.658-0.833, mean AUPRC 0.0253). For the BHLHE40
+knockdown, this histogram-shape statistic had the highest AUROC and
+AUPRC among the compared methods (AUROC 0.833, AUPRC 0.0594
+vs. Wasserstein AUROC 0.788), consistent with a heterogeneous
+responder-associated expression pattern (Supplementary Figure 1).
+Because only 13 of the 2,000 HVGs were UPR positives, the random AUPRC
+baseline was 0.0065; observed AUPRC values correspond to 2.9x and 3.9x
+enrichment over random expectation for the Wasserstein and
+histogram-shape statistics, respectively. These perturbations were
+selected a priori based on UPR annotation in the original study and a
+minimum cell-count threshold of at least 400 cells, not based on PGAA
+performance (Supplementary Table 2). The Adamson benchmark supports
+proof-of-principle prioritization in a small curated UPR setting, but it
+does not establish general performance across perturbation modalities,
+cell types, or disease models.
+
+Table 2 reports the aggregate method-level performance. The accompanying
+figure then separates the benchmark design, average AUROC, AUPRC
+relative to the random positive-rate baseline, and perturbation-level
+heterogeneity.
+
+Table 2. Adamson 2016 UPR CRISPRi benchmark summary.
+
+  ------------------------------------------------------------------------------------------
+  Method              Mean AUROC AUROC range     Mean AUPRC AUPRC 95% CI    Main readout
+                                 or 95% CI                                  
+  ----------------- ------------ ------------- ------------ --------------- ----------------
+  PGAA-W                   0.786 0.767-0.806         0.0191 0.0160-0.0222   Highest mean
+  Wasserstein                                                               AUROC
+
+  S2                       0.748 0.658-0.833         0.0253 0.0010-0.0495   Higher AUPRC in
+  histogram-shape                                                           responder-like
+  statistic                                                                 cases
+  (PGAA-H)                                                                  
+
+  Wilcoxon rank-sum        0.529 0.415-0.643         0.0089 0.0048-0.0131   Rank-based
+                                                                            baseline
+
+  t-test                   0.523 0.430-0.616         0.0085 0.0050-0.0120   Mean-shift
+                                                                            baseline
+
+  MAST                     0.406 0.354-0.458         0.0014 0.0012-0.0016   Single-cell DE
+                                                                            baseline
+  ------------------------------------------------------------------------------------------
+
+The table shows that the Wasserstein statistic has the strongest mean
+AUROC, whereas the S2 histogram-shape statistic (PGAA-H) can be
+competitive when the response is responder-like. Figure 2 provides the
+corresponding visual breakdown and shows that performance varies across
+individual perturbations.
+
+[Figure 2. Independent validation on the Adamson 2016 UPR CRISPRi
+benchmark. a, Benchmark design and curated evaluation universe. b, Mean
+AUROC across five pre-specified UPR perturbations, with dots showing
+individual perturbations. c, Mean AUPRC compared with the random
+positive-rate baseline. d, Per-perturbation AUROC heatmap. Exact values
+for panel d are provided in Supplementary Table 2.]
+
+2.3 A Norman multi-perturbation extension supports PGAA-W as the default ranking statistic
+
+To broaden the real Perturb-seq evaluation beyond the small Adamson UPR
+benchmark, we added a Norman 2019 multi-perturbation CRISPRa extension
+covering KLF1, CEBPE, and CEBPA. Each perturbation was compared with
+non-targeting controls using 2,000 HVGs plus forced inclusion of the
+pre-specified target-panel genes. This forced-inclusion step is
+important: none of the KLF1, CEBPE, or CEBPA positive-panel genes were
+marked as HVGs in the processed Norman h5ad file, so a strict HVG-only
+benchmark would have silently removed the evaluation genes. The script
+reports a panel audit, gene-level scores, and a metadata table in the
+supplementary software archive.
+
+Across the three perturbations, PGAA-W Wasserstein produced higher
+target-panel AUROC than the KS statistic, Welch t statistic, or Wilcoxon
+rank-sum score in this curated-panel benchmark (Supplementary Table 3).
+The effect was not a claim of high-precision discovery: only 1-2
+positive genes appeared in the top 100 for each PGAA-W run, and AUPRC
+values must be read against random baselines of 0.0045-0.0079. The
+result is therefore useful as a broader perturbation-level ranking check
+for PGAA-W, not as a substitute for genome-scale perturbation validation
+or original-study DEG benchmarking.
+
+2.4 The S2 histogram-shape statistic (PGAA-H) provides a narrow CEBPE CRISPRa ranking example
+
+Norman et al. (2019) used CRISPRa to activate CEBPE in a K562
+Perturb-seq screen ³; K562 is a human leukemia cell line ¹². CEBPE is a
+myeloid transcription factor whose known targets include nine neutrophil
+granule proteins: ELANE, AZU1, MPO, LYZ, CTSG, GFI1, PRTN3, DEFA1, and
+RNASE2 ^(13,14). This benchmark is not a clinical disease cohort, but it
+is relevant to hematologic differentiation biology and tests the
+response regime that motivated PGAA: a regulator is activated, but the
+downstream expression response may be heterogeneous across cells.
+
+SCEPTRE and the Wasserstein statistic rank this target poorly. SCEPTRE
+places ELANE at rank 1761/2012 (p = 0.92). The Wasserstein statistic
+places it at rank 1452/2012 (p = 0.223). Neither method ranks ELANE
+among its strongest CEBPE candidates in this analysis. As an additional
+distribution-aware comparator, an MMD-PSM analysis on the same processed
+CEBPE contrast achieved target-set AUROC 0.499 and 0/9 nominal CEBPE
+target hits. This comparator is useful because it tests a distributional
+null, but it did not prioritize the curated CEBPE target program in this
+processed-source-data benchmark.
+
+The S2 histogram-shape statistic (PGAA-H) (n_bins = 20, 500
+permutations) ranks ELANE at position 57 (p = 0.04), a 25-fold rank
+improvement over the Wasserstein statistic (Table 3). With 500
+permutations, this p-value is interpreted as ranking evidence rather
+than genome-wide significance, and no FDR-controlled CEBPE gene
+discovery is claimed. The p-value distribution is acceptable in this
+pre-specified setting (uncapped Storey upper-tail ratio = 1.32 with 200
+permutations in the sensitivity run; approximately 1.0 with 500
+permutations). The top genes by raw S2 value (SLC45A1, DLX2, ATP5E) are
+not known CEBPE targets; ELANE’s stronger rank by permutation p-value
+reflects its favorable null distribution relative to other genes. Across
+the full nine-gene CEBPE target set, only ELANE reaches p < 0.05 in the
+S2 analysis; PRTN3 is also within the top 100 by permutation p-value but
+does not pass the nominal threshold (p = 0.068). The AUROC is 0.476 and
+AUPRC is 0.0076. Thus, the Norman result should be read as a focused
+ELANE/PRTN3 ranking signal, not broad recovery of the complete
+granulocytic target program. As a calibration check, we applied the S2
+statistic to all six perturbations using the CEBPE target gene set as
+the reference positive set. ELANE was ranked strongly for CEBPE and also
+for the severely over-sensitive BAK1 perturbation, where the tail ratio
+was 0.10. For the well-calibrated KLF1 perturbation, ELANE was not
+supported (p = 0.70, uncapped tail ratio = 1.15). For CBL, SLC4A1, and
+DUSP9, ELANE p-values were 0.58, 0.16, and 0.90 respectively. This
+analysis is treated as perturbation-level calibration context rather
+than specificity proof; over-sensitive perturbations should not be
+interpreted as formal discoveries. Target-level details are provided in
+Supplementary Table 4.
+
+Table 3. Norman 2019 CEBPE ranking and calibration summary.
+
+  -----------------------------------------------------------------------
+  Analysis             Method or         Key result      Interpretation
+                       perturbation                      
+  -------------------- ----------------- --------------- ----------------
+  ELANE ranking        SCEPTRE           rank 1761/2012; Not prioritized
+                                         p=0.92          
+
+  ELANE ranking        PGAA-W            rank 1452/2012; Weak
+                       Wasserstein       p=0.223         distributional
+                                                         signal
+
+  ELANE ranking        S2                rank 57/2012;   Ranking evidence
+                       histogram-shape   p=0.04          only
+                       statistic                         
+                       (PGAA-H)                          
+
+  CEBPE target set     S2                AUROC 0.476;    No broad program
+                       histogram-shape   AUPRC 0.0076;   recovery
+                       statistic         1/9 targets in  
+                       (PGAA-H)          top 100         
+
+  Distribution-aware   MMD-PSM           AUROC 0.499;    Additional
+  baseline                               0/9 nominal     distributional
+                                         target hits     comparator
+
+  Negative check       KLF1 perturbation uncapped tail   Well calibrated
+                                         ratio 1.15;     
+                                         ELANE p = 0.70  
+
+  Over-sensitive check BAK1 perturbation tail ratio      Not specificity
+                                         0.10; ELANE p = evidence
+                                         0.005           
+  -----------------------------------------------------------------------
+
+This summary motivates the narrower visual analysis in Figure 3. CRISPRa
+can produce heterogeneous target activation: the gRNA does not guarantee
+protein-level CEBPE expression in every cell, and the resulting
+responder/non-responder expression pattern is the regime the S2
+statistic was designed to rank (Supplementary Figure 2). K562 is an
+erythroleukemia line, not a neutrophil progenitor; while it retains
+granulocytic differentiation capacity upon CEBPE activation, not all
+nine targets may be transcriptionally responsive in this system.
+
+[Figure 3. Norman 2019 CEBPE CRISPRa PGAA-H ranking as a narrow use-case
+example. a, PGAA-H histogram-shape diagnostic versus permutation p-value
+across genes, with known CEBPE targets highlighted. b, ELANE rank
+comparison across SCEPTRE, PGAA-W Wasserstein and PGAA-H histogram-shape
+ranking. The panel illustrates ranking evidence only, not FDR-controlled
+discovery or complete CEBPE program recovery.]
+
+2.5 Perturbation-specific calibration defines guardrails for S2 ranking
+
+Applying the S2 histogram-shape statistic (PGAA-H) to six different
+perturbations from the Norman 2019 screen reveals that calibration is
+far from consistent. The uncapped Storey upper-tail ratio ranges from
+1.15 for KLF1, a well-calibrated erythroid transcription-factor
+perturbation, to 0.10 for BAK1, a severely over-sensitive perturbation.
+Intermediate cases include CBL (tail ratio = 0.72), SLC4A1 (0.67), DUSP9
+(0.68), and CEBPE in the n_bins = 50 calibration run (0.25). Figure 4
+shows the full calibration pattern.
+
+KLF1 drives a clean erythroid program. CEBPE CRISPRa and BAK1 do not.
+The calibration spread reflects this biology, and the practical takeaway
+is simple: include a negative control perturbation and check the
+upper-tail calibration diagnostic before interpreting S2 ranks.
+Importantly, the CEBPE tail ratio of 0.25 reported here comes from a
+calibration run with n_bins = 50 and n_perms = 200; the main analysis in
+Section 2.4 uses n_bins = 20 and n_perms = 500, which yields an
+upper-tail ratio approximately 1.0-1.3 before capping. The corresponding
+QQ plot and permutation p-value histogram are provided in Supplementary
+Figure 3. The discrepancy illustrates how strongly calibration depends
+on both bin count and permutation depth, reinforcing the need for the
+pilot sweep recommended in Section 2.6.
+
+[Figure 4. Perturbation-specific calibration defines guardrails for
+PGAA-H histogram-shape ranking. a, Number of nominally significant genes
+and uncapped Storey upper-tail ratio across six Norman perturbations. b,
+CEBPE-target p-values across perturbation contexts. c, Leakage of
+CEBPE-target significance across non-CEBPE perturbations. PGAA-H denotes
+the histogram-shape diagnostic.]
+
+2.6 Sensitivity to histogram bin count
+
+The S2 histogram-shape statistic (PGAA-H) depends on the number of
+histogram bins, and the dependence is non-trivial. We tested n_bins
+values of 20, 30, 50, 75, 100 and 150 on Norman 2019 CEBPE, using 200
+permutations for the sensitivity sweep; the main CEBPE result uses 500
+permutations. The full sweep is reported in Supplementary Table 5. In
+brief, ELANE ranks well at n_bins = 20 (rank 32, p = 0.025, uncapped
+tail ratio = 1.32 in the 200-permutation sweep), collapses at n_bins =
+30 (rank 1807, p=0.672), and larger bin counts produce many nominally
+significant genes with low tail-ratio values (0.23-0.25). This is a
+sharp failure mode rather than a gradual degradation. We therefore treat
+S2 statistic as a guarded diagnostic with a pre-specified decision rule:
+choose n_bins from a small pilot grid before interpreting the
+perturbation of interest, require an acceptable upper-tail diagnostic on
+a negative-control or unrelated perturbation, and do not tune n_bins to
+improve a target-gene rank. We recommend n_bins = 20 as the manuscript
+starting setting, with a pilot sweep over n_bins = 10, 20, 30 and 50 on
+a control or null perturbation to verify that the chosen value does not
+fall into a peak-merging failure mode.
+
+2.7 Simulation ablation maps each statistic to its regime
+
+To systematically assess when each statistic performs best, we simulated
+three perturbation types at seven effect sizes from theta = 0.1 to theta
+= 1.0, with three replicates each (63 conditions total). These
+simulations are intended as operating-regime diagnostics rather than a
+full generative model of scRNA-seq count data.
+
+Type A (pure mean shift) is the Wasserstein statistic’s home territory
+(TPR = 0.97 at theta = 1.0). Type C (mean + bimodality) favors the
+Wasserstein statistic as well. The most informative condition is Type B,
+where only 40% of perturbed cells respond. Here the Wasserstein
+statistic and the exploratory combined z-score are competitive (TPR =
+0.52-0.85 depending on theta), while S2 reaches only TPR = 0.12. This
+simulation uses partial bimodality–the two modes overlap in the
+40%-response regime. The Norman 2019 CEBPE analysis therefore should not
+be read as broad evidence that S2 prioritizes all heterogeneous
+responses; rather, it illustrates a narrower ranking use case in which a
+responder-associated expression pattern can improve the rank of selected
+targets.
+
+These results support a simple analysis hierarchy. The Wasserstein
+statistic is the starting ranking score for standard knockout or
+overexpression screens and for unknown response modes. The S2
+histogram-shape statistic (PGAA-H) should be used only as a secondary
+diagnostic when discrete responder states are biologically plausible,
+and only after negative-control calibration and bin-sensitivity checks.
+The combined z-score can be used as an exploratory ranking score when
+both mean/distributional shift and shape change are expected, but it is
+not treated as an inferential discovery test here.
+
+The full simulation plot is provided in Supplementary Figure 4.
+
+2.8 Observational marker-recovery stress checks remain secondary evidence
+
+As an external stress check outside curated perturbation benchmarks,
+Wasserstein enriches known pathway markers 2.1-5.8x over background
+across five observational single-cell datasets with clinical or disease
+relevance (CLL 4.0x, Sepsis 2.1x, RA 2.5x, PBMC 2.9x, IBD 5.8x). On CLL,
+the B-cell receptor signaling gene set (CD79A, CD79B, MS4A1, CD24,
+BANK1, LYN, BLNK, SYK, BTK, PLCG2, PIK3CD, CD19, CD22) appears
+prominently in the top 100, with AUROC 0.87 for known-marker recovery
+(Supplementary Table 6). This result is biologically coherent because
+B-cell receptor signaling is a central axis in CLL, but the analysis
+should be read as marker prioritization from public observational data
+rather than as causal or biomarker evidence.
+
+These five datasets are observational–the “perturbation” is defined by
+binning cells on endogenous marker or pathway-associated expression, not
+by an experimental intervention–so the results demonstrate marker
+recovery rather than causal interpretation. In the observational CLL
+marker-recovery setting, Wasserstein produced biologically coherent
+rankings but was not uniformly superior to all conventional ranking
+baselines. Its value here is as a distribution-aware prioritization
+score for heterogeneous disease-state contrasts, not as a replacement
+for standard marker-ranking methods.
+
+The CLL TCL1A case shows how the two distributional statistics can
+prioritize different marker programs. Among the top 100 genes ranked by
+each statistic, only six overlap. The Wasserstein statistic enriches
+B-cell receptor markers (CD79A rank 9, CD79B rank 48, MS4A1 rank 53),
+matching the malignant B-cell biology of CLL. The S2 histogram-shape
+statistic (PGAA-H) picks up T-cell receptor genes (TRBV7-6, TRAV12-1,
+CD3E, CD3D) that Wasserstein misses entirely, consistent with a distinct
+immune-context signal rather than the same B-cell receptor program. The
+exploratory combined z-score recovers 3 BCR and 11 TCR genes at nominal
+p < 0.05, versus 4+3 for Wasserstein alone and 0+7 for S2 alone; these
+nominal combined scores are used only to illustrate rank
+complementarity.
+
+The CLL analysis uses rank-based inverse-normal scores (Supplementary
+Methods, CLL rank-score analysis) rather than full permutation
+calibration–a lighter-weight approach appropriate when only relative
+gene ordering matters rather than formal significance testing
+(Supplementary Figure 5). The cross-dataset marker-recovery source data
+and CLL comparator results are retained in Supplementary Table 6. We do
+not use these observational datasets as causal or clinical evidence.
+Figure 5 summarizes the external marker-recovery stress checks and the
+CLL comparator analysis.
+
+[Figure 5. External marker-recovery stress checks across five
+observational single-cell datasets. a, Recovery of known marker sets
+compared with housekeeping negative controls in the top-100 Wasserstein
+ranking. b, Positive-to-negative enrichment ratios, with 1x as the
+random expectation and 2x as a practical enrichment threshold. c, CLL
+comparator analysis showing that Wasserstein produced coherent BCR-axis
+rankings but was not uniformly superior to all conventional ranking
+baselines. These analyses assess marker recovery rather than causal
+perturbation effects.]
+
+3. Discussion
+
+We set out to assess whether distribution-aware statistics could improve
+computational prioritization of single-cell perturbation programs when
+the signal is heterogeneous rather than a simple mean shift. The answer,
+based on Perturb-seq benchmarks, simulation ablations,
+distribution-aware comparators, and observational marker-recovery stress
+checks, is cautiously positive. On the small Adamson 2016 UPR CRISPRi
+benchmark, the Wasserstein statistic achieved a mean AUROC of 0.786
+across five perturbations, higher than Wilcoxon (0.529), t-test (0.523),
+and MAST (0.406) in this benchmark. Because the positive set contains
+only 13 genes among 2,000 HVGs, AUPRC values must be interpreted against
+the 0.0065 random baseline rather than as large absolute precision
+values. In the Norman 2019 multi-perturbation extension, PGAA-W
+Wasserstein had higher target-panel AUROC than KS, Welch t, and Wilcoxon
+for KLF1, CEBPE, and CEBPA, but top-100 positive recovery remained
+sparse. In the BHLHE40 knockdown case, the S2 histogram-shape statistic
+(PGAA-H) had the highest AUROC among the compared methods (0.833),
+consistent with a heterogeneous responder-associated expression pattern.
+On Norman 2019 CEBPE CRISPRa, S2 ranked the known neutrophil granule
+target ELANE at position 57, while SCEPTRE and the Wasserstein statistic
+placed it at 1761 and 1452; across the full nine-gene target set,
+however, recovery remained limited. The MMD-PSM distribution-aware
+baseline achieved AUROC 0.499 with 0/9 nominal target hits in the same
+processed CEBPE comparison. Across five observational datasets used as
+external stress checks, Wasserstein ranking recovered known marker
+programs, including B-cell receptor signaling in CLL.
+
+These results suggest a practical two-pronged strategy for
+distribution-aware single-cell perturbation analysis. The Wasserstein
+statistic is a useful starting distributional score when the
+perturbation type is unknown, including when marker-anchored scRNA-seq
+contrasts are used to prioritize candidate response programs for
+follow-up. The S2 histogram-shape statistic (PGAA-H) fills a narrower
+niche–CRISPRa screens, weak-effect perturbations, and any setting where
+the response is expected to be heterogeneous–but requires the user to
+verify calibration via the Storey upper-tail diagnostic and to run a
+pilot n_bins sweep before committing to results. PGAA-H’s strong
+dependence on histogram bin count (values at n_bins = 20 and n_bins = 50
+correlate at only r = 0.12) means it should be treated as a ranking tool
+rather than a formal discovery procedure unless substantially more
+permutations are used.
+
+Several limitations should be noted. First, the Adamson 2016 benchmark
+is small and has a sparse positive set, so it is proof-of-principle
+evidence rather than broad validation. Second, the Norman
+multi-perturbation extension uses curated target-program panels rather
+than an original-study genome-wide DEG gold standard; its sparse
+top-rank recovery should be viewed as ranking enrichment, not strong
+discovery performance. Third, S2 is calibrated differently for different
+perturbations; the six-perturbation calibration check showed uncapped
+upper-tail ratios ranging from 0.10 (BAK1, over-sensitive) to 1.15
+(KLF1, well-calibrated), so a negative control perturbation is
+essential. Fourth, the MI and Fisher NB modules are provided as software
+extensions but have not been benchmarked. Fifth, our simulation uses
+Gaussian noise for computational efficiency; we verified that S2 does
+not spuriously increase under a zero-inflated negative-binomial null
+(mean S2 = 0.031 with 30% dropout; Supplementary Methods, simulation and
+zero-inflation controls), consistent with evidence that droplet-based
+scRNA-seq data are well-modeled by the negative binomial without
+explicit zero-inflation ¹⁵. Sixth, all primary benchmarks use K-means (k
+= 5) as a cell-state proxy; sensitivity analyses over k = 3, 5, 10 and
+no residualization are recommended but not yet completed in this
+submission package. Seventh, broader genome-scale evaluation against
+SCEPTRE-family and perturbation-specific methods remains necessary.
+Finally, the observational disease datasets do not establish new causal
+disease mechanisms or clinical biomarkers; instead, they show how PGAA
+can prioritize disease-relevant heterogeneous transcriptional responses
+for experimental follow-up.
+
+PGAA fits into the growing ecosystem of Perturb-seq analysis tools and
+addresses a complementary computational use case. The pertpy framework
+¹¹ provides an end-to-end pipeline into which PGAA’s statistics could be
+integrated as modular ranking components. Mixscape ¹⁶ handles the
+complementary problem of identifying cells with failed perturbations,
+while scMAGeCK ¹⁷ operates at the CRISPR screen level. SCEPTRE ⁵ and its
+robust extension ¹⁸ set a high standard for calibrated permutation
+testing of mean shifts; PGAA extends this paradigm to distributional and
+histogram-shape shifts that may matter when only a subset of cells
+responds. Recent perturbation-response scoring methods quantify
+heterogeneous response strength at the single-cell level, whereas PGAA
+operates at the non-target-gene ranking level after coarse cell-state
+and library-size adjustment ¹⁹. Large curated resources such as
+scPerturb make broader cross-dataset benchmarking feasible, but this
+submission restricts itself to source-data-supported proof-of-principle
+and curated target-panel checks ²⁰. Thus, PGAA should be read as a
+calibrated gene-level distributional ranking component that can sit
+alongside perturbation-quality, single-cell response-strength, and
+formal association-testing methods rather than as a replacement for
+them.
+
+The most immediate priority is broader genome-scale evaluation on
+scPerturb-scale collections, including Replogle 2020/2022 and additional
+perturbation screens, where thousands of perturbations would allow a
+systematic assessment of calibration behavior and the identification of
+perturbation-level features that predict whether Wasserstein or S2 will
+prove more informative. The main value of PGAA is not to replace
+mechanistic validation, but to provide a transparent and reproducible
+ranking layer for heterogeneous responses that can be followed up in
+perturbation screens, disease models, patient-derived systems, or
+therapeutic perturbation experiments.
+
+4. Methods
+
+4.1 Setup and residualization
+
+We work with expression matrices normalized to 10,000 counts per cell
+and transformed with log1p. After standard QC and highly-variable gene
+selection (2,000 genes), each cell i has a perturbation label D_i in
+{0,1} and covariates Z_i. Before applying any statistic, we remove
+cell-type and library-size effects by ordinary least-squares
+residualization:
+
+X_tilde = X_res = (I - H_Z) X
+
+H_Z = Z (Z^T Z)^+ Z^T
+
+where H_Z is the projection matrix for the covariate design matrix Z,
+X_tilde (also denoted X_res) is the residualized expression matrix, and
+(Z^T Z)^+ denotes the Moore–Penrose pseudoinverse used for numerical
+stability. The matrix Z contains an intercept, k - 1 K-means cluster
+dummy variables (k = 5, one reference cluster) ²¹, and standardized
+library size. This step is applied to the PGAA-W and S2 statistics; the
+MI and Fisher NB exploratory scores operate on the original normalized
+matrix. The value of k is fixed throughout the benchmark as a coarse
+cell-state proxy rather than estimated from the data.
+
+For a target gene g*, we score each non-target gene g for differences
+between perturbed and control cells in mean, shape, or dependency
+structure.
+
+4.2 Wasserstein distance
+
+We approximate the one-dimensional Wasserstein distance by comparing
+empirical quantile functions on a fixed 99-point percentile grid. Let
+Q_hat_{g,d}(u) denote the empirical u-quantile of residualized
+expression for gene g among cells with perturbation indicator D_i =
+d. The score is
+
+PGAA-W(g) = (1/99) sum_{r=1}^{99} |Q_hat_{g,1}(r/100) - Q_hat_{g,0}(r/100)|
+
+Wasserstein distances provide a non-parametric way to compare full
+one-dimensional distributions and can respond to changes in location,
+spread, or shape. This makes the statistic useful when the biological
+signal is not limited to a mean shift. The 1D case has an efficient
+quantile-based computation ^(22,23).
+
+We compute p-values via within-cluster permutation ^(24,25). For B
+permutations, we shuffle D within each K-means cluster, recompute the
+Wasserstein statistic, and use the plus-one estimator
+
+p_perm = [1 + sum_{b=1}^{B} I{S_b >= S_obs}] / (B + 1)
+
+where S_obs is the observed statistic and S_b is the statistic from
+permutation b. The cluster-stratified shuffle preserves cell-type
+composition while randomizing the perturbation assignment.
+
+A note on numerical consistency. The observed and permuted W1 statistics
+are computed with the same 99-quantile approximation. This is essential
+because permutation p-values compare the observed statistic directly
+with its empirical null distribution. We verified calibration
+empirically: under the null, the observed false positive rate is 0.057
+(30 simulations, 95% CI [0.021, 0.079]).
+
+4.3 S2 histogram-shape statistic (PGAA-H)
+
+The S2 histogram-shape statistic (PGAA-H) summarizes peak-structure
+changes in the one-dimensional expression histogram, such as the
+emergence or disappearance of peaks. For each gene g, we compute
+histograms of the residualized expression vector for perturbed cells
+(D_i = 1) and control cells (D_i = 0) using gene-specific shared bin
+edges for that same gene g. The manuscript starting setting is n_bins =
+20 equally spaced bins over that gene’s pooled perturbed-control
+expression range. We then identify local maxima and assign each peak a
+death level defined by the higher of the adjacent saddle levels, using
+the nearest higher peak or boundary on each side. This is a
+one-dimensional peak-prominence construction derived from the Elder Rule
+used in topological data analysis ^(26–29). The peak-prominence value is
+the peak height minus this death level. For each condition, we keep the
+three largest peak-prominence values and zero-pad when fewer than three
+peaks are present.
+
+The S2 statistic is the root-mean-square distance between the top-3
+peak-prominence vectors:
+
+PGAA-H(g) = sqrt((1/3) * sum_{r=1}^{3} (v_{g,1,r} - v_{g,0,r})^2)
+
+Here v_{g,d,r} is the r-th largest peak-prominence value for gene g in
+condition d, where d = 1 denotes perturbed cells and d = 0 denotes
+control cells. This plain-text notation is used to keep the formula
+stable in DOCX and PDF conversion.
+
+When a CRISPRa perturbation activates a gene in only a fraction of
+cells, the expression histogram can change from a single dominant
+pattern to a heterogeneous responder-associated pattern. The dominant
+peak-prominence value may then increase substantially, yielding large S2
+values. A pure mean shift that preserves the histogram shape leaves S2
+comparatively unchanged. The contrast between these two scenarios is
+what makes S2 complementary to the Wasserstein statistic, but S2 is
+interpreted here as a ranking and diagnostic statistic rather than as a
+standalone genome-wide discovery test.
+
+The choice of n_bins matters. Our sensitivity analysis (Section 2.6)
+tests n_bins values of 20, 30, 50, 75, 100, and 150. The manuscript
+starting setting, n_bins = 20, is acceptably calibrated in the Norman
+2019 CEBPE run (uncapped upper-tail ratio approximately 1.0-1.3
+depending on permutation depth). Larger values can produce more nominal
+hits at the cost of over-sensitive calibration. For new analyses, we
+recommend a guarded S2 workflow: pre-specify a small n_bins grid such as
+10, 20, 30 and 50; evaluate the grid on a negative-control, null, or
+unrelated perturbation; keep a setting only if the upper-tail diagnostic
+is acceptable and the p-value histogram is not over-sensitive; and then
+apply the chosen setting unchanged to the perturbation of interest. We
+use 500 within-cluster permutations for the null. With 500 permutations,
+the minimum attainable p-value is 1/501, approximately 0.0020, which is
+above the Bonferroni threshold for 2,000 genes (2.5e-5). The S2
+permutation p-values therefore support ranking-based evaluation (AUROC)
+rather than formal FDR-controlled discovery; for genome-wide
+significance, we recommend n_perms >= 40,000.
+
+4.4 Additional modules
+
+Two additional scoring modules are included in the software package as
+extensions. The conditional MI module explores whether perturbation
+alters gene-gene dependency structure via k-NN entropy estimators ³⁰.
+The Fisher NB module explores perturbation-induced shifts using the
+Fisher information metric on the negative binomial family. These modules
+are not benchmarked or claimed as primary contributions; they are
+provided for users who wish to explore dependency or count-model
+effects. Algorithm details are given in the Supplementary Methods.
+
+4.5 Combined exploratory z-score
+
+Under independence and correct calibration, the combined exploratory
+z-score is
+
+z_comb = (1/sqrt(k)) sum_{j=1}^{k} Phi^{-1}(1 - p_j).
+
+This score is asymptotically standard normal under H0. We use k = 2
+(Wasserstein + PGAA-H) as an exploratory rank-combination score. Because
+both statistics are computed from the same expression distributions, the
+independence assumption is unlikely to hold exactly; formal
+combined-score inference would require an empirical covariance
+adjustment, Brown’s method, or a permutation-calibrated combination. In
+this manuscript, the combined score is used only for exploratory
+ranking. For Norman 2019 CEBPE, S2 alone ranked ELANE higher than the
+combination.
+
+4.6 Calibration diagnostics
+
+For calibration, PGAA reports the Storey upper-tail diagnostic ^(31,32).
+Let p_i be the permutation p-value for ranked gene i, let m be the
+number of ranked genes, and set lambda = 0.5. The uncapped upper-tail
+calibration ratio is
+
+R_lambda = #{i: p_i > lambda} / [(1 - lambda) * m].
+
+The capped Storey null-fraction estimate is
+pi0_hat(lambda) = min(1, R_lambda). The uncapped ratio R_lambda is
+reported separately as a calibration diagnostic: values near or above 1
+indicate no obvious excess of small p-values, whereas values far below 1
+indicate over-sensitivity or anti-conservative behavior. This wording
+avoids the mathematically incorrect implication that the null fraction
+pi0 itself can exceed 1. We also recommend running the S2 statistic on
+an unrelated target gene from the same screen (e.g., KLF1 from Norman
+2019) as a negative perturbation control, and verifying that the
+calibration diagnostic remains acceptable.
+
+4.7 Datasets
+
+We use seven publicly available datasets: five observational scRNA-seq
+datasets for marker-recovery stress checks and two Perturb-seq datasets
+for method benchmarking. The observational analyses include CLL
+(GSE111014; 36,601 cells, subsampled to 20,000; TCL1A high/low grouping
+with B-cell receptor markers), sepsis (GSE167363; 64,244 cells,
+subsampled to 20,000; TCR pathway markers), rheumatoid arthritis
+(GSE159117; 10,499 cells; cytokine pathway markers), the 10x Genomics 3k
+demo PBMC dataset ³³ (2,700 cells; multi-lineage markers), and
+inflammatory bowel disease (GSE116222; 11,175 cells; gut epithelial
+disease-associated markers).
+
+The perturbation benchmarks are Norman 2019 (GSE133344) and Adamson 2016
+(GSE90546). For Norman 2019, we use the K562 CRISPRa screen for the
+CEBPE ranking example, the six-perturbation S2 calibration check, and
+the multi-perturbation PGAA-W extension across KLF1, CEBPE, and CEBPA.
+The six S2 calibration perturbations are CEBPE, KLF1, SLC4A1, BAK1,
+DUSP9, and CBL; the CEBPE target set is ELANE, AZU1, MPO, LYZ, CTSG,
+GFI1, PRTN3, DEFA1, and RNASE2. The Norman multi-perturbation extension
+uses curated target-program panels for KLF1, CEBPE, and CEBPA, 2,000
+HVGs plus forced inclusion of the panel genes, and non-targeting
+controls sampled at up to a 3:1 control-to-perturbed ratio. The
+comparator scores in that extension are PGAA-W Wasserstein, two-sample
+KS statistic, absolute Welch t statistic, and Wilcoxon -log10(p). For
+Adamson 2016, we analyze five pre-specified UPR-associated CRISPRi
+perturbations (SPI1, ZNF326, BHLHE40, CREB1, and DDIT3) against
+non-targeting controls, using the curated UPR marker set in
+Supplementary Table 1.
+
+All datasets are normalized to 10,000 counts per cell and
+log-transformed after quality control. Analyses use 2,000 highly
+variable genes, with forced inclusion of target genes where needed.
+
+4.8 Implementation
+
+PGAA is implemented in Python and R. The Python package (pgaa/) depends
+on NumPy, SciPy, Pandas, Scanpy ⁹, and scikit-learn; the R package
+(pgaa_r/) uses only base R plus the MASS library. The submitted package
+includes Python and R smoke/regression checks for the core Wasserstein
+and S2 calculations. On a single CPU core, the Wasserstein statistic
+processes 2,000 genes with 2,000 permutations in about five minutes; S2
+with 500 permutations takes under two minutes. Preprocessing follows
+standard scRNA-seq workflows ^(34,35), and the end-to-end ranking
+workflow is summarized in Supplementary Figure 6.
+
+Data availability
+
+The study uses public datasets from Norman 2019 (GSE133344), Adamson
+2016 (GSE90546), CLL (GSE111014), sepsis (GSE167363), rheumatoid
+arthritis (GSE159117), inflammatory bowel disease (GSE116222), and the
+10x Genomics 3k demo PBMC dataset ³³.
+
+Code availability
+
+The public code-only repository is available under the MIT license at
+https://github.com/xutaoguo55/pgaa, with release v0.1.0-code at
+https://github.com/xutaoguo55/pgaa/releases/tag/v0.1.0-code. The public
+code-only release is archived at Zenodo, DOI
+https://doi.org/10.5281/zenodo.20681141, and by Software Heritage with
+SWHID swh:1:snp:5b1b2cc9ce32298968e00f69e1af5ff8aed8889f. The submitted
+supplementary software archive contains manuscript-specific source-data
+tables, figure-reproduction scripts, PDF build scripts, and additional
+reproducibility files for peer review. Norman 2019 CEBPE summaries are
+provided as processed source-data CSV files because full rerun requires
+setting NORMAN2019_H5AD to the processed Norman h5ad input used in this
+study; with that input available, we verified clean-archive reruns of
+the MMD-PSM comparator and the Norman multi-perturbation extension. The
+Adamson 2016 benchmark table is rebuilt from the accompanying curated
+source-data CSV by scripts/rebuild_adamson_full_results.py;
+scripts/benchmark_adamson2016.py also performs a raw GSE90546/GSM2406675
+10X001 sanity rerun for the five selected perturbations. Implementation
+settings, reproducibility status, and comparator coverage are summarized
+in Supplementary Table 7. All random processes use random_state=42 or
+equivalent fixed seeds.
+
+AI Tool Use
+
+AI-assisted tools were used for language editing. The authors reviewed
+and approved the final text, analyses, and conclusions.
+
+Ethics statement
+
+This study re-analyzes publicly available and previously published
+datasets. No new human participants, human samples, animals, or
+identifiable private information were collected for this study. Ethics
+approval and participant consent were handled by the original studies.
+
+Acknowledgements
+
+The authors thank the investigators and database maintainers who
+generated and shared the public single-cell perturbation and disease
+datasets re-analyzed in this study.
+
+Author Contributions
+
+X.W., H.Z., and J.H. contributed equally. X.G. conceived the study and
+designed the framework. X.W., H.Z., and J.H. implemented the software
+and performed the analyses. Q.W., Y.W., and R.F. contributed to data
+collection and biological interpretation. All authors wrote and approved
+the manuscript.
+
+Funding
+
+No external funding was received for this work.
+
+Competing interests
+
+None declared.
+
+Supplementary Information
+
+The supplementary information contains Supplementary Figures 1-6,
+Supplementary Tables 1-7, and Supplementary Methods. These files include
+the Adamson UPR marker set and per-perturbation benchmark details,
+Norman multi-perturbation benchmark details, CEBPE target-level
+benchmark details, S2 bin-sensitivity analysis, multi-dataset
+marker-recovery summary, implementation settings, reproducibility
+status, and additional implementation details.
+
+References
+
+1.  Dixit, A. et al. Perturb-Seq: dissecting molecular circuits with
+    scalable single-cell RNA profiling of pooled genetic screens. Cell
+    167, 1853–1866.e17 (2016).
+2.  Adamson, B. et al. A multiplexed single-cell CRISPR screening
+    platform enables systematic dissection of the unfolded protein
+    response. Cell 167, 1867–1882.e21 (2016).
+3.  Norman, T. M. et al. Exploring genetic interaction manifolds
+    constructed from rich single-cell phenotypes. Science 365, 786–793
+    (2019).
+4.  Replogle, J. M. et al. Mapping information-rich genotype-phenotype
+    landscapes with genome-scale Perturb-seq. Cell 185, 2559–2575.e28
+    (2022).
+5.  Barry, T., Wang, X., Morris, J. A., Roeder, K. & Katsevich, E.
+    SCEPTRE improves calibration and sensitivity in single-cell CRISPR
+    screen analysis. Genome Biol. 22, 344 (2021).
+6.  Finak, G. et al. MAST: a flexible statistical framework for
+    assessing transcriptional changes and characterizing heterogeneity
+    in single-cell RNA sequencing data. Genome Biol. 16, 278 (2015).
+7.  Stuart, T. et al. Comprehensive integration of single-cell data.
+    Cell 177, 1888–1902.e21 (2019).
+8.  Hao, Y. et al. Integrated analysis of multimodal single-cell data.
+    Cell 184, 3573–3587.e29 (2021).
+9.  Wolf, F. A., Angerer, P. & Theis, F. J. SCANPY: large-scale
+    single-cell gene expression data analysis. Genome Biol. 19, 15
+    (2018).
+10. Gilbert, L. A. et al. Genome-scale CRISPR-mediated control of gene
+    repression and activation. Cell 159, 647–661 (2014).
+11. Heumos, L. et al. Pertpy: an end-to-end framework for perturbation
+    analysis. Nat. Methods 23, 350–359 (2026).
+12. Lozzio, C. B. & Lozzio, B. B. Human chronic myelogenous leukemia
+    cell-line with positive Philadelphia chromosome. Blood 45, 321–334
+    (1975).
+13. Park, D. J. et al. CCAAT/enhancer binding protein epsilon is a
+    potential retinoid target gene in acute promyelocytic leukemia
+    treatment. J. Clin. Invest. 103, 1399–1408 (1999).
+14. Friedman, A. D. Transcriptional control of granulocyte and monocyte
+    development. Oncogene 26, 6816–6828 (2007).
+15. Svensson, V. Droplet scRNA-seq is not zero-inflated. Nat.
+    Biotechnol. 38, 147–150 (2020).
+16. Papalexi, E. et al. Characterizing the molecular regulation of
+    inhibitory immune checkpoints with multimodal single-cell screens.
+    Nat. Genet. 53, 322–331 (2021).
+17. Yang, L. et al. scMAGeCK links genotypes with multiple phenotypes in
+    single-cell CRISPR screens. Genome Biol. 21, 19 (2020).
+18. Barry, T., Mason, K., Roeder, K. & Katsevich, E. Robust differential
+    expression testing for single-cell CRISPR screens at low
+    multiplicity of infection. Genome Biol. 25, 124 (2024).
+19. Song, B. et al. Decoding heterogeneous single-cell perturbation
+    responses. Nat. Cell Biol. 27, 493–504 (2025).
+20. Peidli, S. et al. scPerturb: harmonized single-cell perturbation
+    data. Nat. Methods 21, 531–540 (2024).
+21. MacQueen, J. Some methods for classification and analysis of
+    multivariate observations. In Proceedings of the Fifth Berkeley
+    Symposium on Mathematical Statistics and Probability Vol. 1, 281–297
+    (University of California Press, 1967).
+22. Villani, C. Optimal Transport: Old and New (Springer, 2009).
+23. Ramdas, A., Garcia Trillos, N. & Cuturi, M. On Wasserstein
+    two-sample testing and related families of nonparametric tests.
+    Entropy 19, 47 (2017).
+24. Good, P. I. Permutation, Parametric, and Bootstrap Tests of
+    Hypotheses, 3rd edn (Springer, 2005).
+25. Efron, B. & Tibshirani, R. J. An Introduction to the Bootstrap
+    (Chapman & Hall, 1993).
+26. Edelsbrunner, H. & Harer, J. Computational Topology: An Introduction
+    (American Mathematical Society, 2010).
+27. Bubenik, P. Statistical topological data analysis using persistence
+    landscapes. J. Mach. Learn. Res. 16, 77–102 (2015).
+28. Zomorodian, A. & Carlsson, G. Computing persistent homology.
+    Discrete Comput. Geom. 33, 249–274 (2005).
+29. Carlsson, G. Topology and data. Bull. Am. Math. Soc. 46, 255–308
+    (2009).
+30. Kraskov, A., Stogbauer, H. & Grassberger, P. Estimating mutual
+    information. Phys. Rev. E 69, 066138 (2004).
+31. Storey, J. D. A direct approach to false discovery rates. J. R.
+    Stat. Soc. Ser. B 64, 479–498 (2002).
+32. Benjamini, Y. & Hochberg, Y. Controlling the false discovery rate: a
+    practical and powerful approach to multiple testing. J. R. Stat.
+    Soc. Ser. B 57, 289–300 (1995).
+33. Zheng, G. X. Y. et al. Massively parallel digital transcriptional
+    profiling of single cells. Nat. Commun. 8, 14049 (2017).
+34. Luecken, M. D. & Theis, F. J. Current best practices in single-cell
+    RNA-seq analysis: a tutorial. Mol. Syst. Biol. 15, e8746 (2019).
+35. Lun, A. T. L., McCarthy, D. J. & Marioni, J. C. A step-by-step
+    workflow for low-level analysis of single-cell RNA-seq data with
+    Bioconductor. F1000Research 5, 2122 (2016).

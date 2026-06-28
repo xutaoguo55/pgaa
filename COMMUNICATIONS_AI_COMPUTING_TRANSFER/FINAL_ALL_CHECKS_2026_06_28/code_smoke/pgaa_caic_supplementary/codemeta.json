@@ -1,0 +1,81 @@
+{
+  "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
+  "@type": "SoftwareSourceCode",
+  "name": "PGAA",
+  "version": "0.1.0",
+  "description": "Distribution-aware testing for single-cell perturbation screens using Wasserstein distance and persistent homology statistics.",
+  "codeRepository": "https://github.com/xutaoguo55/pgaa",
+  "url": "https://github.com/xutaoguo55/pgaa",
+  "license": "https://spdx.org/licenses/MIT",
+  "programmingLanguage": [
+    "Python",
+    "R"
+  ],
+  "runtimePlatform": [
+    "Python >=3.9",
+    "R"
+  ],
+  "keywords": [
+    "Perturb-seq",
+    "single-cell RNA-seq",
+    "Wasserstein distance",
+    "persistent homology",
+    "CRISPR screening"
+  ],
+  "author": [
+    {
+      "@type": "Person",
+      "givenName": "Xiaolei",
+      "familyName": "Wei"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Haiqing",
+      "familyName": "Zheng"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Junwei",
+      "familyName": "Huang"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Qi",
+      "familyName": "Wei"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Yongqiang",
+      "familyName": "Wei"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Ru",
+      "familyName": "Feng"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Xutao",
+      "familyName": "Guo",
+      "email": "guoxutao@smu.edu.cn"
+    }
+  ],
+  "softwareRequirements": [
+    "numpy",
+    "scipy",
+    "pandas",
+    "scanpy",
+    "anndata",
+    "scikit-learn",
+    "matplotlib",
+    "seaborn",
+    "statsmodels",
+    "joblib"
+  ],
+  "applicationCategory": "Computational biology",
+  "operatingSystem": [
+    "macOS",
+    "Linux"
+  ],
+  "developmentStatus": "active"
+}
