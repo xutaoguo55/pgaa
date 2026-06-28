@@ -1,4 +1,10 @@
+# LEGACY computational log — not used for current manuscript claims.
+# The "PGAA-W (global)" row is a global (non-gene-level) test that does not correspond
+# to the per-gene PGAA-W Wasserstein ranking used in the manuscript (ELANE rank 1452/2012,
+# CEBPE target-set AUROC 0.337; see Table 3 and Supplementary Table 4).
+# The MMD-PSM row (AUROC 0.499, 0/9 nominal CEBPE target hits) is cited in the manuscript
+# as a distribution-aware comparator baseline. Retained for reference.
 Method,CEBPE_sig,CEBPE_AUROC,Known_hit,GAPDH_neg_sig
 SCEPTRE,30,0.469,0/9,N/A
-PRT-S1 (global),2012,0.511,9/9,2012
-MMD-PSM,0,0.5536972319298831,0/9,0
+PGAA-W (global),2012,0.511,9/9,2012
+MMD-PSM,0,0.49925112331502747,0/9,0

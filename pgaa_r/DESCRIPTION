@@ -6,11 +6,12 @@ Date: 2026-06-06
 Author: PGAA authors
 Maintainer: First Author <author@institution.edu>
 Description: A unified multi-statistic framework for analyzing single-cell
-    perturbation screens (Perturb-seq). Provides S1 (1D Wasserstein distance)
-    for distributional shifts, S2 (1D persistent homology) for bimodality shifts,
+    perturbation screens (Perturb-seq). Provides PGAA-W (legacy S1; 1D
+    Wasserstein distance) for distributional shifts, PGAA-H (legacy S2;
+    histogram-shape diagnostic) for bimodality and responder-state shifts,
     and S3/S4 exploratory modules for dependency and count-model effects.
     All statistics share covariate residualization, within-cluster permutation
-    nulls, and Storey pi0 calibration diagnostics.
+    nulls, and Storey upper-tail calibration diagnostics.
 License: MIT + file LICENSE
 Encoding: UTF-8
 RoxygenNote: 7.3.0

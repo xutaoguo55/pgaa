@@ -1,9 +1,10 @@
 """
-DML/GCM Causal Inference Engine for PGAA.
+DML/GCM exploratory association engine for PGAA.
 
 Implements Double Machine Learning (Chernozhukov et al. 2018) and
-Generalized Covariance Measure (Shah & Peters 2020) for causal
-effect estimation from observational scRNA-seq data.
+Generalized Covariance Measure (Shah & Peters 2020) style residual scoring
+for observational scRNA-seq data. This module is not used for the primary
+claims in the manuscript and should not be presented as causal discovery.
 """
 
 import warnings
@@ -21,7 +22,7 @@ from sklearn.preprocessing import StandardScaler
 
 class DMLEngine:
     """
-    Double Machine Learning engine for virtual KO/OE causal effect estimation.
+    Double Machine Learning style engine for virtual KO/OE association scoring.
 
     Parameters
     ----------
@@ -301,7 +302,7 @@ class DMLEngine:
         return confounders, var_ratio, residuals
 
     # ------------------------------------------------------------------ #
-    # Stage 2: Neyman-Orthogonal Causal Effect Estimation
+    # Stage 2: Neyman-orthogonal association scoring
     # ------------------------------------------------------------------ #
 
     def estimate_target(
@@ -310,7 +311,7 @@ class DMLEngine:
         hk_genes: Optional[List[str]] = None,
     ) -> pd.DataFrame:
         """
-        Estimate causal effects of target gene on all other genes.
+        Estimate residual association scores for a target gene against all other genes.
 
         Uses the Generalized Covariance Measure (GCM) test statistic
         for analytical p-values without permutation.
@@ -453,7 +454,7 @@ class DMLEngine:
         target_gene: Union[str, int],
     ) -> pd.DataFrame:
         """
-        Estimate causal effects using a binary treatment indicator
+        Estimate residual association scores using a binary treatment indicator
         (e.g. CRISPR perturbation label).
 
         Uses control-only confounder estimation (fit_confounders must
@@ -533,7 +534,7 @@ class DMLEngine:
         return res
 
     # ------------------------------------------------------------------ #
-    # Permutation calibration (optional, for small N validation)
+    # Permutation calibration (optional, for small N calibration checks)
     # ------------------------------------------------------------------ #
 
     def permutation_test(

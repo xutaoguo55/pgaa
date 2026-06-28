@@ -4,8 +4,8 @@
 #'
 #' @section Statistics:
 #' \describe{
-#'   \item{S1 (Wasserstein)}{1D Wasserstein distance between perturbed and control CDFs}
-#'   \item{S2 (Persistent Homology)}{Topology of expression histograms (bimodality detection)}
+#'   \item{PGAA-W (legacy S1)}{1D Wasserstein distance between perturbed and control CDFs}
+#'   \item{PGAA-H (legacy S2)}{Histogram-shape diagnostic for responder-associated expression-shape changes}
 #'   \item{S3 (Conditional MI)}{Dependency structure changes (exploratory)}
 #'   \item{S4 (Fisher NB)}{Negative-binomial parameter shifts (exploratory)}
 #' }

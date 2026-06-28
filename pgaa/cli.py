@@ -1,4 +1,8 @@
-"""Command-line interface for running PGAA S1/S2 tests from CSV files."""
+"""Command-line interface for PGAA-W/PGAA-H tests from CSV files.
+
+The historical CLI flags and output suffixes retain s1/s2 names for backward
+compatibility: s1 is PGAA-W and s2 is PGAA-H.
+"""
 from __future__ import annotations
 
 import argparse
@@ -53,8 +57,8 @@ def _read_metadata(
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description=(
-            "Run PGAA S1 and/or S2 tests from a cell-by-gene expression CSV and "
-            "a metadata CSV."
+            "Run PGAA-W (legacy s1) and/or PGAA-H (legacy s2) tests from a "
+            "cell-by-gene expression CSV and a metadata CSV."
         )
     )
     parser.add_argument("--expression", required=True, type=Path)
@@ -68,8 +72,8 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--library-size-column")
     parser.add_argument("--n-perms", type=int, default=2000)
     parser.add_argument("--n-bins", type=int, default=20)
-    parser.add_argument("--skip-s1", action="store_true")
-    parser.add_argument("--skip-s2", action="store_true")
+    parser.add_argument("--skip-s1", action="store_true", help="Skip PGAA-W / legacy s1 output")
+    parser.add_argument("--skip-s2", action="store_true", help="Skip PGAA-H / legacy s2 output")
     parser.add_argument("--random-state", type=int, default=42)
     return parser
 

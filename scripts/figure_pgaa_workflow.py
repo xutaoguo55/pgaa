@@ -67,12 +67,12 @@ def main():
         "Perturb-seq matrix\nperturbation labels\ncontrol cells", colors["input"])
     box(ax, (0.205, 0.34), 0.15, 0.32, "Preprocessing",
         "QC, log-CPM\n2,000 HVGs\nfixed target inclusion", colors["prep"])
-    box(ax, (0.395, 0.57), 0.15, 0.30, "S1 Wasserstein",
+    box(ax, (0.395, 0.57), 0.15, 0.30, "PGAA-W Wasserstein",
         "99-quantile distance\nlocation, spread,\nshape shifts", colors["s1"])
-    box(ax, (0.395, 0.13), 0.15, 0.30, "S2 Persistence",
-        "histogram peaks\ntop-3 persistence\nbimodal response", colors["s2"])
+    box(ax, (0.395, 0.13), 0.15, 0.30, "PGAA-H histogram-shape",
+        "histogram peaks\ntop-3 prominence\nresponder pattern", colors["s2"])
     box(ax, (0.59, 0.34), 0.16, 0.32, "Calibration",
-        "within-cluster\npermutation\nStorey pi0", colors["cal"])
+        "within-cluster\npermutation\nupper-tail diagnostic", colors["cal"])
     box(ax, (0.79, 0.34), 0.17, 0.32, "Outputs",
         "gene ranking\np-values when valid\nAUROC/AUPRC\nruntime diagnostics", colors["out"])
 
@@ -83,10 +83,10 @@ def main():
     arrow(ax, (0.545, 0.28), (0.59, 0.45))
     arrow(ax, (0.75, 0.50), (0.79, 0.50))
 
-    ax.text(0.035, 0.91, "PGAA distribution-aware Perturb-seq testing workflow",
+    ax.text(0.035, 0.91, "PGAA distribution-aware Perturb-seq ranking workflow",
             fontsize=12, fontweight="bold", ha="left", color="#15212c")
     ax.text(0.035, 0.085,
-            "S2 p-values from 500 permutations are used as ranking evidence unless permutation depth supports genome-wide error control.",
+            "PGAA-H p-values from 500 permutations are used as ranking evidence unless permutation depth supports genome-wide error control.",
             fontsize=7.7, ha="left", color="#4a5561")
 
     fig.savefig(OUT, bbox_inches="tight", pad_inches=0.05)

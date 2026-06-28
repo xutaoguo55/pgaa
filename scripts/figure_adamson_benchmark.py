@@ -7,19 +7,44 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+from matplotlib.patches import FancyBboxPatch
 
 
 ROOT = Path(__file__).resolve().parents[1]
 SRC = ROOT / "figure_source_data" / "fig6_adamson_results.csv"
 OUT = ROOT / "figures_png" / "figure_adamson_benchmark.png"
+CM_OUT = ROOT / "COMMUNICATIONS_MEDICINE_TRANSFER" / "figures_png" / "figure_adamson_benchmark.png"
+CAIC_OUT = ROOT / "COMMUNICATIONS_AI_COMPUTING_TRANSFER" / "figures_png" / "figure_adamson_benchmark.png"
+
+
+def add_box(ax, xy, width, height, text, facecolor="#F3F6FA"):
+    box = FancyBboxPatch(
+        xy,
+        width,
+        height,
+        boxstyle="round,pad=0.035,rounding_size=0.02",
+        linewidth=0.8,
+        edgecolor="#9AA9B8",
+        facecolor=facecolor,
+    )
+    ax.add_patch(box)
+    ax.text(
+        xy[0] + width / 2,
+        xy[1] + height / 2,
+        text,
+        ha="center",
+        va="center",
+        fontsize=9.5,
+        linespacing=1.25,
+    )
 
 
 def main() -> None:
     df = pd.read_csv(SRC)
     targets = [x.split("_")[0] for x in df["target"]]
     methods = [
-        ("S1 Wasserstein", "auroc_s1", "auprc_s1", "#2F6DB3"),
-        ("S2 persistence", "auroc_s2", "auprc_s2", "#2F9E44"),
+        ("PGAA-W Wasserstein", "auroc_s1", "auprc_s1", "#2F6DB3"),
+        ("PGAA-H histogram-shape", "auroc_s2", "auprc_s2", "#2F9E44"),
         ("Wilcoxon", "auroc_wilcox", "auprc_wilcox", "#8C8C8C"),
         ("t-test", "auroc_ttest", "auprc_ttest", "#B0B0B0"),
         ("MAST", "auroc_mast", "auprc_mast", "#D0D0D0"),
@@ -42,25 +67,26 @@ def main() -> None:
     ax_c = fig.add_subplot(gs[1, 0])
     ax_d = fig.add_subplot(gs[1, 1])
 
-    # Panel A: design summary
+    # Panel A: design summary as a compact workflow schematic.
     ax_a.axis("off")
-    ax_a.set_title("(A) Benchmark design", loc="left", fontweight="bold")
-    design_lines = [
-        "Adamson 2016 UPR CRISPRi (GSE90546)",
-        "5,680 QC-passed K562 cells",
-        "5 pre-specified UPR perturbations",
-        "468-686 perturbed cells per sgRNA",
-        "1,759 non-targeting controls",
-        "13 UPR positives in the 2,000-HVG universe",
-    ]
-    ax_a.text(
-        0.02, 0.87, "\n".join(design_lines),
-        va="top", ha="left", linespacing=1.45,
-        bbox={"boxstyle": "round,pad=0.45", "facecolor": "#F3F6FA", "edgecolor": "#B8C2CC"},
-    )
+    ax_a.set_xlim(0, 1)
+    ax_a.set_ylim(0, 1)
+    ax_a.set_title("a  Benchmark design", loc="left", fontweight="bold")
+    add_box(ax_a, (0.05, 0.70), 0.88, 0.18, "Adamson 2016 UPR CRISPRi\nGSE90546", "#EEF4FB")
+    add_box(ax_a, (0.05, 0.45), 0.39, 0.16, "QC-passed K562 cells\nn=5,680", "#F7F9FB")
+    add_box(ax_a, (0.54, 0.45), 0.39, 0.16, "Non-targeting controls\nn=1,759", "#F7F9FB")
+    add_box(ax_a, (0.05, 0.19), 0.39, 0.16, "5 pre-specified\nUPR perturbations", "#F7F9FB")
+    add_box(ax_a, (0.54, 0.19), 0.39, 0.16, "2,000 HVGs\n13 UPR positives", "#F7F9FB")
+    arrow_kw = {"arrowstyle": "->", "lw": 1.0, "color": "#5C6770", "shrinkA": 4, "shrinkB": 4}
+    ax_a.annotate("", xy=(0.245, 0.61), xytext=(0.49, 0.70), arrowprops=arrow_kw)
+    ax_a.annotate("", xy=(0.735, 0.61), xytext=(0.49, 0.70), arrowprops=arrow_kw)
+    ax_a.annotate("", xy=(0.245, 0.35), xytext=(0.245, 0.45), arrowprops=arrow_kw)
+    ax_a.annotate("", xy=(0.735, 0.35), xytext=(0.735, 0.45), arrowprops=arrow_kw)
+    ax_a.text(0.49, 0.08, "Rank genes by each method, then score recovery of curated UPR positives",
+              ha="center", va="center", fontsize=9, color="#333333")
 
     # Panel B: mean AUROC with per-perturbation dots.
-    ax_b.set_title("(B) Mean AUROC", loc="left", fontweight="bold")
+    ax_b.set_title("b  Mean AUROC", loc="left", fontweight="bold")
     x = np.arange(len(methods))
     auroc_means = [df[col].mean() for _, col, _, _ in methods]
     auroc_sds = [df[col].std(ddof=1) for _, col, _, _ in methods]
@@ -76,13 +102,13 @@ def main() -> None:
     ax_b.set_ylim(0.25, 0.9)
     ax_b.set_ylabel("AUROC")
     ax_b.set_xticks(x)
-    ax_b.set_xticklabels(["S1 W1", "S2 PH", "Wilcoxon", "t-test", "MAST"])
+    ax_b.set_xticklabels(["PGAA-W W1", "PGAA-H shape", "Wilcoxon", "t-test", "MAST"])
     ax_b.spines["top"].set_visible(False)
     ax_b.spines["right"].set_visible(False)
 
     # Panel C: AUPRC against random baseline.
-    ax_c.set_title("(C) AUPRC vs random baseline", loc="left", fontweight="bold")
-    auprc_labels = ["S1 W1", "S2 PH", "Random"]
+    ax_c.set_title("c  AUPRC vs random baseline", loc="left", fontweight="bold")
+    auprc_labels = ["PGAA-W W1", "PGAA-H shape", "Random"]
     auprc_vals = [df["auprc_s1"].mean(), df["auprc_s2"].mean(), 13 / 2000]
     auprc_colors = ["#2F6DB3", "#2F9E44", "#D9D9D9"]
     bars = ax_c.bar(np.arange(3), auprc_vals, color=auprc_colors, edgecolor="black", linewidth=0.6)
@@ -98,7 +124,7 @@ def main() -> None:
     ax_c.spines["right"].set_visible(False)
 
     # Panel D: per-perturbation AUROC heatmap.
-    ax_d.set_title("(D) Per-perturbation AUROC", loc="left", fontweight="bold")
+    ax_d.set_title("d  Per-perturbation AUROC", loc="left", fontweight="bold")
     heat_cols = [m[1] for m in methods]
     heat = df[heat_cols].to_numpy().T
     im = ax_d.imshow(heat, aspect="auto", cmap="YlGnBu", vmin=0.35, vmax=0.85)
@@ -108,19 +134,10 @@ def main() -> None:
     ax_d.set_yticklabels([m[0] for m in methods])
     cbar = fig.colorbar(im, ax=ax_d, fraction=0.046, pad=0.02)
     cbar.set_label("AUROC")
-    ax_d.text(
-        0.99,
-        -0.30,
-        "Exact values in Supplementary Table S5",
-        transform=ax_d.transAxes,
-        ha="right",
-        va="top",
-        fontsize=8.5,
-        color="#333333",
-    )
-
     fig.suptitle("Adamson 2016 UPR CRISPRi benchmark", fontsize=15, fontweight="bold")
     fig.savefig(OUT, dpi=300, bbox_inches="tight")
+    fig.savefig(CM_OUT, dpi=300, bbox_inches="tight")
+    fig.savefig(CAIC_OUT, dpi=300, bbox_inches="tight")
     print(f"Saved {OUT}")
 
 

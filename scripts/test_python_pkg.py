@@ -69,8 +69,8 @@ res_s2 = s2_test(X_bimodal, genes20, 'gene_0001',
                  n_bins=20)
 assert len(res_s2) == 19, f'T8 expected 19 genes, got {len(res_s2)}'
 s2_g3 = float(res_s2[res_s2.gene == 'gene_0003']['S2'].iloc[0])
-assert s2_g3 > 0, f'T8 expected S2>0 for gene_0003'
-print(f'✅ T8 s2_test: {len(res_s2)} genes, gene_0003 S2={s2_g3:.4f}')
+assert s2_g3 > 0, f'T8 expected PGAA-H/S2>0 for gene_0003'
+print(f'✅ T8 PGAA-H test: {len(res_s2)} genes, gene_0003 S2={s2_g3:.4f}')
 
 # T9: prt_s1_test random_state consistency
 np.random.seed(123)

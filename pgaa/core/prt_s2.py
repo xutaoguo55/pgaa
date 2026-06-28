@@ -1,22 +1,25 @@
 """
-PRT-S₂: 1D Persistent Homology for Perturbation Detection
+PGAA-H / legacy PRT-S2: histogram-shape ranking diagnostic
 
 Mathematical foundation
 -----------------------
-For a 1D function f(x) (estimated via histogram/KDE), the persistence
-diagram PD(f) = {(b_i, d_i)} where:
+For a 1D function f(x) (estimated via a histogram), a peak-persistence
+summary records pairs (b_i, d_i) where:
   - b_i = birth level (peak maximum)
   - d_i = death level (saddle connecting two peaks)
   - persistence = b_i - d_i
 
 For two samples X~P and Y~Q, we compute:
-  PD_X = persistence_diagram(histogram(X))
-  PD_Y = persistence_diagram(histogram(Y))
-  S₂ = bottleneck_distance(PD_X, PD_Y)  (or L2 landscape distance)
+  PD_X = peak-persistence summary of histogram(X)
+  PD_Y = peak-persistence summary of histogram(Y)
+  PGAA-H = RMS distance between the top peak-prominence values
+
+This is a custom top-persistence summary statistic, not the standard
+bottleneck distance or a full persistence-landscape distance.
 
 Computational shortcut for 1D
 -----------------------------
-In 1D, the persistence diagram can be computed by:
+In 1D, the peak-persistence summary can be computed by:
   1. Computing the level-set tree of the histogram
   2. Each local maximum corresponds to a connected component
   3. The "death" of a component occurs when its basin merges with
@@ -29,15 +32,21 @@ For a discrete histogram h[0..n-1], the persistence pairs are:
     death = max(left_saddle, right_saddle)
     persistence = h[i] - death
 
-This is equivalent to the Elder Rule in persistent homology.
+This follows the Elder Rule idea from one-dimensional topological persistence.
 
-Innovation for Perturb-seq
----------------------------
-S₂ measures changes in the TOPOLOGY of gene expression distributions
+Perturb-seq use
+---------------
+PGAA-H measures changes in peak structure of gene expression distributions
 under perturbation:
-  - If a gene switches from unimodal to bimodal → S₂ increases
+  - If a gene switches from unimodal to bimodal, PGAA-H increases
   - This captures "bimodality shifts" (e.g. ON/OFF states) that
-    mean-based tests (t-test, W1) miss
+    mean-based summaries may under-rank
+
+Scope
+-----
+This module uses 1D persistence ideas to build a custom histogram-shape
+summary for ranking candidate response genes. It should not be described as
+a standard bottleneck, persistence-landscape, or genome-wide discovery test.
 
 Reference
 ---------
@@ -52,7 +61,7 @@ import pandas as pd
 
 def compute_persistence_1d(hist: np.ndarray, bins: np.ndarray) -> np.ndarray:
     """
-    Compute 1D persistence diagram from histogram.
+    Compute a 1D peak-persistence summary from a histogram.
 
     Parameters
     ----------
@@ -110,9 +119,11 @@ def persistence_landscape_distance(
     pd1: np.ndarray, pd2: np.ndarray, n_top: int = 3
 ) -> float:
     """
-    L2 distance between top-n persistence values.
+    Root-mean-square distance between top-n persistence values.
 
     If two diagrams have different numbers of peaks, pad with zeros.
+    The function name is retained only for backward compatibility; the value is
+    not a persistence-landscape distance in the standard TDA sense.
     """
     # Take top n persistence values
     p1 = pd1[:n_top, 2] if len(pd1) >= n_top else np.pad(
@@ -135,12 +146,12 @@ def s2_test(
     library_size: np.ndarray = None,
 ) -> pd.DataFrame:
     """
-    PRT-S₂: Persistence homology test.
+    PGAA-H / legacy PRT-S2: histogram-shape ranking diagnostic.
 
     For each gene g:
       1. Compute histogram of Y_g | D=1 and Y_g | D=0
-      2. Compute persistence diagrams
-      3. S₂_g = landscape distance between diagrams
+      2. Compute peak-prominence summaries
+      3. PGAA-H_g = RMS distance between top peak-prominence values
     """
     test_idx = np.concatenate([perturbed_idx, control_idx])
     X_sub = X[test_idx]
@@ -182,21 +193,22 @@ def s2_test(
     Y_on = Y[D]
     Y_off = Y[~D]
 
-    # Global bin edges (shared across genes)
-    global_min = Y_sub.min()
-    global_max = Y_sub.max()
-    bins = np.linspace(global_min, global_max, n_bins + 1)
-    bin_centers = (bins[:-1] + bins[1:]) / 2
-
     s2_values = np.zeros(len(other_idx))
+    n_peaks_on = np.zeros(len(other_idx), dtype=int)
     import time
     t0 = time.time()
     for g in range(len(other_idx)):
         if g % 200 == 0 and g > 0:
             elapsed = time.time() - t0
             eta = elapsed / g * (len(other_idx) - g)
-            print(f"  S₂: {g}/{len(other_idx)}, {int(elapsed)}s, ~{int(eta)}s left")
+            print(f"  PGAA-H: {g}/{len(other_idx)}, {int(elapsed)}s, ~{int(eta)}s left")
 
+        g_min = min(float(np.min(Y_on[:, g])), float(np.min(Y_off[:, g])))
+        g_max = max(float(np.max(Y_on[:, g])), float(np.max(Y_off[:, g])))
+        if g_max == g_min:
+            g_max = g_min + 1e-9
+        bins = np.linspace(g_min, g_max, n_bins + 1)
+        bin_centers = (bins[:-1] + bins[1:]) / 2
         h_on, _ = np.histogram(Y_on[:, g], bins=bins, density=True)
         h_off, _ = np.histogram(Y_off[:, g], bins=bins, density=True)
 
@@ -204,13 +216,8 @@ def s2_test(
         pd_off = compute_persistence_1d(h_off, bin_centers)
 
         s2_values[g] = persistence_landscape_distance(pd_on, pd_off)
+        n_peaks_on[g] = len(pd_on)
 
-    # Compute n_peaks_on efficiently (one pass)
-    n_peaks_on = np.array([
-        len(compute_persistence_1d(
-            np.histogram(Y_on[:, g], bins=bins, density=True)[0], bin_centers
-        )) for g in range(len(other_idx))
-    ])
     res = pd.DataFrame({
         "gene": other_genes,
         "S2": s2_values,

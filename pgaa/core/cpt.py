@@ -1,10 +1,10 @@
 """
-Conditional Permutation Test (CPT): a novel null distribution
-for Perturb-seq causal inference.
+Conditional Permutation Test (CPT): exploratory conditional-null workflow
+for Perturb-seq response ranking.
 
-Innovation
+Motivation
 ----------
-SCEPTRE (Barry et al. 2021 Nature Methods) constructs an empirical
+SCEPTRE (Barry et al. 2021 Genome Biology) constructs an empirical
 null by permuting the perturbation indicator D among cells.  This
 implicitly assumes that D is independent of the cell's latent
 biological state Z.  In practice, this assumption fails: a cell
@@ -12,7 +12,7 @@ that is in a particular lineage state (e.g. myeloid) is more
 likely to be perturbed by a TF that pushes that lineage (e.g.
 CEBPE), so D and Z are correlated.
 
-CPT addresses this by:
+CPT explores this concern by:
   1. Estimating the cell's "perturbation response latent" Z_pert
      via OLS: Z_pert_i = gamma * D_i + delta * Z_i
   2. In each permutation, jointly shuffling D and Z_pert
@@ -26,7 +26,7 @@ Model:  Y_g_i = alpha_g * D_i + beta_g * Z_i + gamma_g * (D_i * Z_i) + eps
     - Y_g_i = expression of gene g in cell i
     - D_i = perturbation indicator
     - Z_i = cell type latent (1-d projection)
-    - alpha_g = direct perturbation effect (what we want)
+    - alpha_g = perturbation-associated coefficient in this working model
     - beta_g = cell type effect
     - gamma_g = interaction (cell type specific effect)
 
@@ -39,20 +39,13 @@ SCEPTRE's null:  shuffle D, keep Z fixed.
 CPT's null:  jointly permute (D, Z_pert) so that the
   conditional correlation structure is preserved.
 
-Test statistic: |alpha_g| (absolute value of OLS coefficient)
+Working score: |alpha_g| (absolute value of OLS coefficient)
 
-Theorem (informal)
-------------------
-Under H0 (no causal effect, alpha_g = 0), the CPT null
-distribution converges to the true sampling distribution of
-|alpha_g| as N -> infinity and perm_b -> infinity.  CPT has
-correct Type I error even when corr(D, Z) > 0, whereas SCEPTRE
-has inflated Type I error in this regime.
-
-In simulations with corr(D, Z) = 0.5, CPT achieves:
-  - Power 0.78 at alpha_g = 0.15, n = 1000
-  - SCEPTRE:  Power 0.31
-  - PGAA (linear):  Power 0.42
+Status
+------
+This module is an exploratory implementation kept in the software package.
+It is not used as a primary benchmarked contribution in the manuscript and
+should not be presented as an established causal-inference method.
 """
 
 from typing import Tuple, Optional
@@ -62,11 +55,11 @@ import pandas as pd
 
 class CPTEngine:
     """
-    Conditional Permutation Test engine for Perturb-seq data.
+    Conditional permutation ranking engine for Perturb-seq data.
 
     Workflow:
       1. fit(X, D)  - estimate cell type latent and perturbation response
-      2. test(target) - run CPT for all genes
+      2. test(target) - score all genes
     """
 
     def __init__(self, n_perms: int = 1000, random_state: int = 42):
@@ -189,7 +182,7 @@ def cpt_test(
     random_state: int = 42,
 ) -> pd.DataFrame:
     """
-    High-level Conditional Permutation Test.
+    High-level exploratory conditional-permutation ranking workflow.
 
     Parameters
     ----------

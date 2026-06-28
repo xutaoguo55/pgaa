@@ -2,7 +2,7 @@
 """
 DML/GCM Engine Validation Script
 
-Validates three core claims for Nature Methods submission:
+Validates three core software and benchmark consistency checks:
 1. Under H0, analytical p-values are calibrated (Uniform, Type I = 0.05)
 2. Under nonlinear confounding, ML-based Stage 1 maintains calibration
    while linear Stage 1 inflates Type I error

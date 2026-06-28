@@ -1,7 +1,7 @@
-# S1: 1D Wasserstein Distance
+# PGAA-W / legacy S1: 1D Wasserstein distance
 # ---------------------------
 # For each gene g:
-#   S1_g = W(F(Y_g | D=1), F(Y_g | D=0))
+#   PGAA-W_g = W(F(Y_g | D=1), F(Y_g | D=0))
 #        = integral |F1(t) - F0(t)| dt
 #   Approx via quantile average on q = 0.01 .. 0.99
 
@@ -27,10 +27,10 @@ wasserstein_1d <- function(x, y, n_quantiles = 99) {
   mean(abs(x_q - y_q))
 }
 
-#' PRT-S1: Wasserstein distance perturbation test
+#' PGAA-W / legacy PRT-S1: Wasserstein ranking statistic
 #'
-#' Full S1 test with covariate residualization, within-cluster
-#' permutation, and Storey pi0 calibration.
+#' Full PGAA-W ranking workflow with covariate residualization, within-cluster
+#' permutation, and Storey upper-tail calibration.
 #'
 #' @param X numeric matrix (N cells x G genes), log-normalized
 #' @param genes character vector of gene names

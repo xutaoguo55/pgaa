@@ -74,7 +74,7 @@ class NullCalibrator:
         alpha_level: float = 0.05,
     ) -> dict:
         """
-        Analytical power for detecting causal effect alpha.
+        Analytical power approximation for detecting an alpha association score.
 
         Uses asymptotic normal approximation:
         power = 1 - Phi(z_{alpha/2} - sqrt(N) * alpha * sigma_eta / sigma_nu)

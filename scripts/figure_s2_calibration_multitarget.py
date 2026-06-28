@@ -1,35 +1,34 @@
 #!/usr/bin/env python3
 """
-Figure: S₂ calibration varies wildly across perturbation types.
+Figure: PGAA-H histogram-shape calibration varies across perturbation types.
 
-This is the HONEST contribution: TDA on Perturb-seq data can be
-over-sensitive. We quantify this with 6 different perturbations and
-show that the same S₂ implementation gives π̂₀ from 0.10 to 1.15
-depending on the perturbation.
+This diagnostic figure quantifies perturbation-specific calibration for
+the PGAA-H histogram-shape diagnostic across six Norman 2019 perturbations.
 
 Panel:
-  (A) n_sig vs π̂₀ for 6 perturbations (with KLF1 as ideal)
-  (B) CEBPE target gene p-values across 6 perturbations (showing
+  (a) n_sig vs upper-tail ratio for 6 perturbations (with KLF1 as ideal)
+  (b) CEBPE target gene p-values across 6 perturbations (showing
       that ELANE/LYZ/MPO are 'sig' in multiple non-CEBPE perturbations)
-  (C) Top 30 S₂ hits colored by perturbation overlap
+  (c) CEBPE target-gene nominal hits across perturbations
 """
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+from pathlib import Path
 
-plt.rcParams.update({'font.size': 10, 'axes.labelsize': 11, 'axes.titlesize': 12,
+plt.rcParams.update({'font.size': 10, 'axes.labelsize': 11, 'axes.titlesize': 11,
                       'legend.fontsize': 9, 'figure.dpi': 300})
 
 # Hand-curated data from the 6-target run
 results = {
-    "KLF1":    {"n_sig": 54,   "pi0": 1.148, "n_pert": 1197, "type": "clean unimodal"},
-    "CBL":     {"n_sig": 173,  "pi0": 0.715, "n_pert": 663,  "type": "clean"},
-    "SLC4A1":  {"n_sig": 222,  "pi0": 0.665, "n_pert": 1000, "type": "mild bimodal"},
-    "DUSP9":   {"n_sig": 460,  "pi0": 0.679, "n_pert": 731,  "type": "mixed"},
-    "CEBPE":   {"n_sig": 1063, "pi0": 0.246, "n_pert": 566,  "type": "CRISPRa bimodal"},
-    "BAK1":    {"n_sig": 1789, "pi0": 0.104, "n_pert": 687,  "type": "severe bimodal"},
+    "KLF1":    {"n_sig": 54,   "upper_tail_ratio": 1.148, "n_pert": 1197, "type": "clean unimodal"},
+    "CBL":     {"n_sig": 173,  "upper_tail_ratio": 0.715, "n_pert": 663,  "type": "clean"},
+    "SLC4A1":  {"n_sig": 222,  "upper_tail_ratio": 0.665, "n_pert": 1000, "type": "mild bimodal"},
+    "DUSP9":   {"n_sig": 460,  "upper_tail_ratio": 0.679, "n_pert": 731,  "type": "mixed"},
+    "CEBPE":   {"n_sig": 1063, "upper_tail_ratio": 0.246, "n_pert": 566,  "type": "CRISPRa bimodal"},
+    "BAK1":    {"n_sig": 1789, "upper_tail_ratio": 0.104, "n_pert": 687,  "type": "severe bimodal"},
 }
 df = pd.DataFrame(results).T
 df.index.name = "target"
@@ -52,22 +51,26 @@ p_table = {
 }
 
 # ── Figure: 3 panels ──────────────────────────────────────
-fig, axes = plt.subplots(1, 3, figsize=(16, 5))
+ROOT = Path("/Users/guoxutao/.openclaw/workspace/PGAA_method_paper")
+CM_FIG_DIR = ROOT / "COMMUNICATIONS_MEDICINE_TRANSFER" / "figures_png"
+CAIC_FIG_DIR = ROOT / "COMMUNICATIONS_AI_COMPUTING_TRANSFER" / "figures_png"
 
-# Panel A: n_sig vs π̂₀ scatter
+fig, axes = plt.subplots(1, 3, figsize=(18, 5.2), constrained_layout=True)
+
+# Panel A: n_sig vs upper-tail ratio scatter
 ax = axes[0]
-colors = ['#4CAF50' if t['pi0'] >= 0.9 else ('#FFC107' if t['pi0'] >= 0.5 else '#F44336')
+colors = ['#4CAF50' if t['upper_tail_ratio'] >= 0.9 else ('#FFC107' if t['upper_tail_ratio'] >= 0.5 else '#F44336')
           for _, t in df.iterrows()]
 sizes = [t['n_pert'] / 4 for _, t in df.iterrows()]
-ax.scatter(df["n_sig"], df["pi0"], s=sizes, c=colors, edgecolor='black', linewidth=1, alpha=0.8)
+ax.scatter(df["n_sig"], df["upper_tail_ratio"], s=sizes, c=colors, edgecolor='black', linewidth=1, alpha=0.8)
 for _, t in df.iterrows():
-    ax.annotate(t["target"], (t["n_sig"], t["pi0"]),
+    ax.annotate(t["target"], (t["n_sig"], t["upper_tail_ratio"]),
                 fontsize=10, fontweight='bold', ha='center', va='center')
-ax.axhline(1.0, color='black', linestyle='--', linewidth=1, alpha=0.5, label='Ideal π̂₀=1')
-ax.axhline(0.5, color='gray', linestyle=':', linewidth=1, alpha=0.5, label='Acceptable π̂₀=0.5')
+ax.axhline(1.0, color='black', linestyle='--', linewidth=1, alpha=0.5, label='Ideal R_lambda=1')
+ax.axhline(0.5, color='gray', linestyle=':', linewidth=1, alpha=0.5, label='Guardrail R_lambda=0.5')
 ax.set_xlabel("# sig (p<0.05)")
-ax.set_ylabel("π̂₀ (Storey)")
-ax.set_title("(A) S₂ calibration across 6 perturbations")
+ax.set_ylabel("Upper-tail ratio R_lambda")
+ax.set_title("a  PGAA-H calibration by perturbation", loc="left", fontweight="bold")
 ax.set_xscale('log')
 ax.set_ylim(-0.1, 1.4)
 ax.legend(frameon=False, fontsize=8, loc='lower right')
@@ -76,9 +79,9 @@ ax.spines['top'].set_visible(False); ax.spines['right'].set_visible(False)
 # Add color legend
 from matplotlib.patches import Patch
 legend_elements = [
-    Patch(facecolor='#4CAF50', label='Well-calibrated (π̂₀≥0.9)'),
-    Patch(facecolor='#FFC107', label='Acceptable (0.5≤π̂₀<0.9)'),
-    Patch(facecolor='#F44336', label='Over-sensitive (π̂₀<0.5)'),
+    Patch(facecolor='#4CAF50', label='Well-calibrated (R_lambda>=0.9)'),
+    Patch(facecolor='#FFC107', label='Guardrail range (0.5<=R_lambda<0.9)'),
+    Patch(facecolor='#F44336', label='Over-sensitive (R_lambda<0.5)'),
 ]
 ax.legend(handles=legend_elements, frameon=False, fontsize=8, loc='upper right')
 
@@ -95,7 +98,7 @@ ax.set_xticks(range(len(targets_order)))
 ax.set_xticklabels(targets_order, rotation=30, ha='right', fontsize=9)
 ax.set_yticks(range(len(genes_order)))
 ax.set_yticklabels(genes_order, fontsize=9)
-ax.set_title("(B) CEBPE 'target' genes: p across 6 perturbations", pad=10)
+ax.set_title("b  CEBPE target p-values", loc="left", fontweight="bold", pad=10)
 # Annotate sig ones
 for i in range(len(genes_order)):
     for j in range(len(targets_order)):
@@ -105,17 +108,8 @@ for i in range(len(genes_order)):
                 fontsize=7, color='black')
 cbar = plt.colorbar(im, ax=ax, fraction=0.04, pad=0.04)
 cbar.set_label("p-value", fontsize=8)
-# Mark CEBPE column without colliding with the panel title.
-ax.axvline(0.5, color='red', linewidth=2, alpha=0.3)
-ax.text(
-    0.06, -0.28, "real target",
-    transform=ax.transAxes,
-    color='red',
-    fontsize=8,
-    ha='left',
-    va='top',
-    clip_on=False,
-)
+# Lightly mark the CEBPE column as the matched perturbation context.
+ax.axvline(0.5, color='black', linewidth=1.0, alpha=0.25)
 
 # Panel C: how many CEBPE 'target' genes are sig (p<0.05) in each perturbation
 ax = axes[2]
@@ -131,16 +125,14 @@ ax.set_xticklabels(targets_order, rotation=30, ha='right', fontsize=9)
 ax.set_ylabel("# CEBPE 'target' genes sig (p<0.05)")
 ax.set_ylim(0, 9)
 ax.axhline(9, color='gray', linestyle=':', linewidth=1, alpha=0.5)
-ax.set_title("(C) CEBPE target leakage across perturbations")
+ax.set_title("c  CEBPE target leakage", loc="left", fontweight="bold")
 ax.spines['top'].set_visible(False); ax.spines['right'].set_visible(False)
 
-plt.suptitle("S₂ calibration: perturbation-specific variability (Norman 2019)",
-             fontsize=13, y=1.02)
-plt.tight_layout()
-out = ("/Users/guoxutao/.openclaw/workspace/PGAA_method_paper/"
-       "scripts/figure_s2_calibration_multitarget.tif")
+out = ROOT / "scripts" / "figure_s2_calibration_multitarget.tif"
 plt.savefig(out, format='tiff', dpi=300, bbox_inches='tight')
+plt.savefig(ROOT / "figures_png" / "figure_3.png", format='png', dpi=300, bbox_inches='tight')
+plt.savefig(CM_FIG_DIR / "figure_3.png", format='png', dpi=300, bbox_inches='tight')
+plt.savefig(CAIC_FIG_DIR / "figure_3.png", format='png', dpi=300, bbox_inches='tight')
 print(f"Saved: {out}")
-print("\nThis figure replaces the broken 'S₂ succeeds' narrative.")
-print("It documents S₂'s calibration problem as a contribution: users should")
-print("always run multiple perturbation controls before trusting S₂ on new data.")
+print("\nThis diagnostic figure documents perturbation-specific PGAA-H calibration.")
+print("Users should run perturbation controls before interpreting PGAA-H rankings.")

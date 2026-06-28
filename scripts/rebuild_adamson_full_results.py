@@ -32,8 +32,8 @@ EXPECTED_COLUMNS = [
 ]
 
 METHOD_COLUMNS = {
-    "S1 Wasserstein": ("auroc_s1", "auprc_s1"),
-    "S2 persistence": ("auroc_s2", "auprc_s2"),
+    "PGAA-W Wasserstein": ("auroc_s1", "auprc_s1"),
+    "PGAA-H histogram-shape": ("auroc_s2", "auprc_s2"),
     "Wilcoxon rank-sum": ("auroc_wilcox", "auprc_wilcox"),
     "t-test": ("auroc_ttest", "auprc_ttest"),
     "MAST": ("auroc_mast", "auprc_mast"),
@@ -65,7 +65,7 @@ def main() -> None:
 
     auprc = pd.DataFrame(
         {
-            "method": ["S1", "S2", "Wilcoxon", "t-test", "MAST"],
+            "method": ["PGAA-W", "PGAA-H", "Wilcoxon", "t-test", "MAST"],
             "mean_auprc": [
                 df["auprc_s1"].mean(),
                 df["auprc_s2"].mean(),

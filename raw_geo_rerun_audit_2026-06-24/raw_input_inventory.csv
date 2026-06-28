@@ -1,0 +1,23 @@
+dataset,file,kind,shape_or_count,status
+Norman2019,GSE133344_filtered_matrix.mtx.gz,filtered MatrixMarket,"(33694, 111668, 362199631)",present
+Norman2019,GSE133344_filtered_barcodes.tsv.gz,line count,111668,present
+Norman2019,GSE133344_filtered_genes.tsv.gz,line count,33694,present
+Norman2019,GSE133344_filtered_cell_identities.csv.gz,line count,111446,present
+Norman2019,norman2019_with_symbols.h5ad,processed h5ad,"(13123, 33694)",present
+Norman2019,norman2019_full_log.h5ad,processed h5ad,"(111668, 33693)",present
+Adamson2016,GSM2406675_10X001_matrix.mtx.txt.gz,MatrixMarket,"(35635, 5768, 14751450)",present
+Adamson2016,GSM2406675_10X001_barcodes.tsv.gz,line count,5768,present
+Adamson2016,GSM2406675_10X001_genes.tsv.gz,line count,35635,present
+Adamson2016,GSM2406675_10X001_cell_identities.csv.gz,line count,5759,present
+Adamson2016,GSM2406677_10X005_matrix.mtx.txt.gz,MatrixMarket,"(32738, 15006, 63553399)",present
+Adamson2016,GSM2406677_10X005_barcodes.tsv.gz,line count,15006,present
+Adamson2016,GSM2406677_10X005_genes.tsv.gz,line count,32738,present
+Adamson2016,GSM2406677_10X005_cell_identities.csv.gz,line count,14857,present
+Adamson2016,GSM2406681_10X010_matrix.mtx.txt.gz,MatrixMarket,"(32738, 65337, 237812947)",present
+Adamson2016,GSM2406681_10X010_barcodes.tsv.gz,line count,65337,present
+Adamson2016,GSM2406681_10X010_genes.tsv.gz,line count,32738,present
+Adamson2016,GSM2406681_10X010_cell_identities.csv.gz,line count,65258,present
+CLL2018,cll_counts.mtx,local raw/metadata,"(36601, 36568, 86825974)",present
+CLL2018,cll_genes.txt,local raw/metadata,36601,present
+CLL2018,cll_barcodes.txt,local raw/metadata,36568,present
+CLL2018,cll_meta.csv,local raw/metadata,36569,present

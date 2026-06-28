@@ -24,13 +24,13 @@ library(pgaa)
 # ctrl_idx: indices of control cells
 # genes: character vector of gene names
 
-# S1 (Wasserstein)
+# PGAA-W (legacy S1; Wasserstein)
 res_s1 <- prt_s1_test(X, genes, target = "MYC",
                        perturbed_idx = pert_idx,
                        control_idx = ctrl_idx,
                        n_perms = 2000)
 
-# S2 (Persistent Homology)
+# PGAA-H (legacy S2; histogram-shape diagnostic)
 res_s2 <- prt_s2_test(X, genes, target = "MYC",
                        perturbed_idx = pert_idx,
                        control_idx = ctrl_idx,
@@ -40,7 +40,7 @@ res_s2 <- prt_s2_test(X, genes, target = "MYC",
 pi0_s1 <- pi0_storey(res_s1$p_value_perm)
 pi0_s2 <- pi0_storey(res_s2$p_value_perm)
 
-# Combined test
+# Exploratory combined score
 p_combined <- combined_z_test(res_s1$p_value_perm, res_s2$p_value_perm)
 ```
 
@@ -48,26 +48,26 @@ p_combined <- combined_z_test(res_s1$p_value_perm, res_s2$p_value_perm)
 
 | Function | Description |
 |---|---|
-| `prt_s1_test()` | S₁ Wasserstein distance test |
-| `prt_s2_test()` | S₂ persistent homology test |
-| `prt_s3_test()` | S₃ conditional MI test (exploratory) |
-| `prt_s4_test()` | S₄ Fisher NB test (exploratory) |
+| `prt_s1_test()` | PGAA-W / legacy S1 Wasserstein ranking statistic with permutation p-values |
+| `prt_s2_test()` | PGAA-H / legacy S2 histogram-shape diagnostic |
+| `prt_s3_test()` | S3 conditional MI exploratory score |
+| `prt_s4_test()` | S4 Fisher NB exploratory score |
 | `wasserstein_1d()` | 1D Wasserstein distance (low-level) |
-| `compute_persistence_1d()` | 1D persistence diagram from histogram (low-level) |
-| `persistence_landscape_distance()` | L2 distance between top-N persistence values |
+| `compute_persistence_1d()` | 1D peak-persistence summary from histogram (low-level) |
+| `persistence_landscape_distance()` | RMS distance between top-N persistence values; name retained for compatibility |
 | `residualize()` | Covariate residualization |
-| `pi0_storey()` | Storey π̂₀ estimator |
-| `perm_null_s1()` | Permutation null for S₁ |
-| `perm_null_s2()` | Permutation null for S₂ |
-| `combined_z_test()` | Combined z statistic from multiple p-value vectors |
+| `pi0_storey()` | capped Storey pi0 estimate |
+| `perm_null_s1()` | Permutation null for PGAA-W / legacy S1 |
+| `perm_null_s2()` | Permutation null for PGAA-H / legacy S2 |
+| `combined_z_test()` | exploratory combined z score from multiple p-value vectors |
 
 ## Differences from Python pgaa
 
 The R and Python implementations produce statistically equivalent
 results (within Monte Carlo noise for permutation tests). Key differences:
-- R uses `graphics::hist()` instead of `numpy.histogram()` for S₂
+- R uses `graphics::hist()` instead of `numpy.histogram()` for PGAA-H
 - Default `n_bins = 20` in both packages
-- Default `n_perms = 2000` (S₁), `500` (S₂) in both
+- Default `n_perms = 2000` (PGAA-W), `500` (PGAA-H) in both
 - `MASS::ginv()` for pseudoinverse in residualization (Python uses `np.linalg.pinv`)
 
 ## Citation

@@ -3,9 +3,9 @@
 Perturbation-type simulation study for PRT.
 
 Compares S₁, S₂, and S₁+S₂ mean z power under 3 perturbation types:
-  (A) Mean shift: ALL perturbed cells get the same log-FC
-  (B) Bimodality shift: only a SUBSET of perturbed cells get the log-FC
-  (C) Both: mean + bimodality
+  (a) Mean shift: all perturbed cells get the same log-FC
+  (b) Heterogeneous shift: only a subset of perturbed cells get the log-FC
+  (c) Both: mean + heterogeneous shift
 
 Vary effect size θ ∈ {0.1, 0.2, 0.3, 0.4, 0.5, 0.7, 1.0}.
 Measure TPR @ FPR=0.05 (using known ground truth).

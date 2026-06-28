@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-S₂ re-run with optimal n_bins=20 on Norman 2019 CEBPE.
+PGAA-H re-run with n_bins=20 on Norman 2019 CEBPE.
 
-Sensitivity analysis revealed n_bins=20 gives BEST calibration (π̂₀=1.32)
-and BEST ELANE rank (32). This becomes the default for the paper.
+Sensitivity analysis used n_bins=20 as the manuscript starting setting:
+ELANE rank 57 and uncapped upper-tail ratio R_lambda=1.32 in this run.
 """
 import time
 import numpy as np
@@ -176,13 +176,13 @@ def main():
 
     # Final summary table
     summary = pd.DataFrame({
-        "Method": ["PGAA S₁ (Wasserstein)",
-                   "PGAA S₂ (persistent homology, n_bins=20)",
-                   "PGAA S₁+S₂ combined z"],
+        "Method": ["PGAA-W Wasserstein",
+                   "PGAA-H histogram-shape (n_bins=20)",
+                   "PGAA-W+PGAA-H combined z"],
         "ELANE_rank": [s1_elane_rank, elane_rank, comb_elane_rank],
         "ELANE_p": [round(s1_elane_p, 4), round(elane_p, 4), round(comb_elane_p, 4)],
         "n_sig_p<0.05": [s1_n_sig, n_sig, comb_n_sig],
-        "π̂₀_or_AUROC": [round(s1_auroc, 3), f"π̂₀={pi0:.2f}", round(comb_auroc, 3)],
+        "calibration_or_AUROC": [round(s1_auroc, 3), f"R_lambda={pi0:.2f}", round(comb_auroc, 3)],
         "Known_hits": [f"{sum(1 for g in cebpe_targets if p_s1[other_genes.index(g)]<0.05)}/9",
                        f"{hits}/9", f"{comb_hits}/9"],
         "Time_s": [round(elapsed_s1, 1), round(elapsed, 1), 0.0],

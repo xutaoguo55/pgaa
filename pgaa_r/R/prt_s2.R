@@ -1,11 +1,11 @@
-# S2: 1D Persistent Homology
+# PGAA-H / legacy S2: histogram-shape diagnostic
 # ---------------------------
 # For each gene g:
 #   1. Compute histogram of Y_g | D=1 and Y_g | D=0
-#   2. Find peaks and saddles (1D persistence / Elder Rule)
-#   3. S2_g = L2 distance between top-3 persistence pairs
+#   2. Find peaks and saddles (1D peak-prominence construction / Elder Rule)
+#   3. PGAA-H_g = root-mean-square distance between top-3 peak-prominence values
 
-#' Compute 1D persistence diagram from histogram
+#' Compute a 1D peak-persistence summary from a histogram
 #'
 #' Returns sorted persistence pairs (birth, death, persistence) for each peak.
 #' Uses the Elder Rule: death is the max of left/right saddles.
@@ -56,12 +56,16 @@ compute_persistence_1d <- function(hist, bins) {
   result
 }
 
-#' L2 distance between top-N persistence values
+#' Root-mean-square distance between top-N persistence values
 #'
-#' @param pd1 persistence diagram matrix (n x 3)
-#' @param pd2 persistence diagram matrix (m x 3)
+#' This function name is retained for backward compatibility. The returned
+#' value is a custom top-persistence summary, not a standard persistence-
+#' landscape distance.
+#'
+#' @param pd1 peak-persistence matrix (n x 3)
+#' @param pd2 peak-persistence matrix (m x 3)
 #' @param n_top number of top persistence values to use (default 3)
-#' @return scalar L2 distance
+#' @return scalar RMS distance
 #' @export
 persistence_landscape_distance <- function(pd1, pd2, n_top = 3) {
   get_top <- function(pd, k) {
@@ -76,10 +80,10 @@ persistence_landscape_distance <- function(pd1, pd2, n_top = 3) {
   sqrt(mean((p1 - p2)^2))
 }
 
-#' PRT-S2: Persistent homology perturbation test
+#' PGAA-H / legacy PRT-S2: histogram-shape ranking diagnostic
 #'
-#' Full S2 test with covariate residualization, within-cluster
-#' permutation, and Storey pi0 calibration.
+#' Full PGAA-H ranking workflow with covariate residualization, within-cluster
+#' permutation, and Storey upper-tail calibration.
 #'
 #' @param X numeric matrix (N cells x G genes), log-normalized
 #' @param genes character vector of gene names

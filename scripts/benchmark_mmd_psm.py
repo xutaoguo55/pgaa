@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-"""MMD-PSM benchmark on Norman 2019 CEBPE vs SCEPTRE vs PRT-S1."""
+"""MMD-PSM benchmark on Norman 2019 CEBPE vs SCEPTRE vs PGAA-W."""
 
 import time
+import os
 import numpy as np
 import pandas as pd
 import scanpy as sc
@@ -20,7 +21,15 @@ np.random.seed(42)
 
 
 def main():
-    adata = sc.read_h5ad("/Users/guoxutao/.openclaw/workspace/norman2019/norman2019_full_log.h5ad")
+    root = Path(__file__).resolve().parent.parent
+    default_h5ad = root.parent / "norman2019" / "norman2019_full_log.h5ad"
+    h5ad_path = Path(os.environ.get("NORMAN2019_H5AD", default_h5ad))
+    if not h5ad_path.exists():
+        raise FileNotFoundError(
+            "Norman 2019 processed h5ad not found. Set NORMAN2019_H5AD to "
+            "the path of norman2019_full_log.h5ad."
+        )
+    adata = sc.read_h5ad(h5ad_path)
     labels = adata.obs["perturbation"].astype(str)
     print(f"Full: {adata.shape}")
 
@@ -84,10 +93,10 @@ def main():
 
     # Final summary
     print("\n" + "="*60)
-    print("MMD-PSM vs PRT-S1 vs SCEPTRE")
+    print("MMD-PSM vs PGAA-W vs SCEPTRE")
     print("="*60)
     summary = pd.DataFrame({
-        "Method": ["SCEPTRE", "PRT-S1 (global)", "MMD-PSM"],
+        "Method": ["SCEPTRE", "PGAA-W (global)", "MMD-PSM"],
         "CEBPE_sig": [30, 2012, n_sig_mmd],
         "CEBPE_AUROC": [0.469, 0.511, auroc_mmd],
         "Known_hit": ["0/9", "9/9", f"{(mmd_known['p_value_perm']<0.05).sum()}/{len(cebpe_targets)}"],

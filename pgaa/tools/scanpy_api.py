@@ -48,7 +48,7 @@ def virtual_oe(
 
     Returns
     -------
-    pd.DataFrame with causal effect estimates.
+    pd.DataFrame with residual association scores.
     """
     if target not in adata.var_names:
         raise ValueError(f"Target gene '{target}' not found in adata.var_names.")

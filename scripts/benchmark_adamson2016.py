@@ -11,8 +11,11 @@ should show downstream transcriptional effects when knocked down.
 
 Reference: Adamson et al. (2016) Cell 167(7):1867-1882.
 """
+import argparse
 import numpy as np, pandas as pd, scanpy as sc, sys, time, os, gzip
 from pathlib import Path
+from scipy import sparse
+from scipy.io import mmread
 sys.path.insert(0, str(Path(__file__).parent.parent))
 from pgaa.core.prt import prt_s1_test
 from pgaa.core.prt_s2 import s2_test
@@ -32,39 +35,58 @@ UPR_GENES = {
 ALL_UPR = list(set(sum(UPR_GENES.values(), [])))
 
 
-def load_adamson(tar_path, extract_dir="/tmp/adamson2016"):
-    """Extract and load Adamson 2016 from GEO supplementary tar."""
+PAPER_TARGETS = [
+    "SPI1_pDS255",
+    "ZNF326_pDS262",
+    "BHLHE40_pDS258",
+    "CREB1_pDS269",
+    "DDIT3_pDS263",
+]
+CONTROL_LABEL = "62(mod)_pBA581"
+
+
+def load_adamson(tar_path, extract_dir="/tmp/adamson2016", sample_prefix="GSM2406675_10X001"):
+    """Extract and load the Adamson 10X001 UPR perturbation batch from GEO."""
     os.makedirs(extract_dir, exist_ok=True)
 
-    # Check if already extracted
-    mtx_path = f"{extract_dir}/matrix.mtx.gz"
-    if not os.path.exists(mtx_path):
+    expected = [
+        f"{sample_prefix}_matrix.mtx.txt.gz",
+        f"{sample_prefix}_barcodes.tsv.gz",
+        f"{sample_prefix}_genes.tsv.gz",
+        f"{sample_prefix}_cell_identities.csv.gz",
+    ]
+    if not all((Path(extract_dir) / name).exists() for name in expected):
         import tarfile
         print(f"Extracting {tar_path} ...")
         with tarfile.open(tar_path) as tf:
             tf.extractall(extract_dir)
         print(f"Extracted to {extract_dir}")
 
-    # Find the matrix, barcodes, features files
-    import glob
-    mtx_files = glob.glob(f"{extract_dir}/**/*matrix.mtx*", recursive=True)
-    bc_files = glob.glob(f"{extract_dir}/**/*barcodes.tsv*", recursive=True)
-    feat_files = glob.glob(f"{extract_dir}/**/*genes.tsv*", recursive=True) + \
-                 glob.glob(f"{extract_dir}/**/*features.tsv*", recursive=True)
+    base = Path(extract_dir)
+    mtx_path = base / f"{sample_prefix}_matrix.mtx.txt.gz"
+    barcode_path = base / f"{sample_prefix}_barcodes.tsv.gz"
+    gene_path = base / f"{sample_prefix}_genes.tsv.gz"
+    meta_path = base / f"{sample_prefix}_cell_identities.csv.gz"
+    missing = [str(p) for p in [mtx_path, barcode_path, gene_path, meta_path] if not p.exists()]
+    if missing:
+        raise FileNotFoundError(f"Missing expected Adamson files: {missing}")
 
-    if not (mtx_files and bc_files and feat_files):
-        print(f"Files found: mtx={mtx_files}, bc={bc_files}, feat={feat_files}")
-        raise FileNotFoundError("Could not find 10x-format files in extracted data")
+    print(f"Loading Adamson {sample_prefix} MatrixMarket files ...")
+    X = sparse.csr_matrix(mmread(mtx_path).T)
+    with gzip.open(barcode_path, "rt") as handle:
+        barcodes = [line.strip() for line in handle]
+    genes_df = pd.read_csv(gene_path, sep="\t", header=None)
+    gene_symbols = genes_df.iloc[:, 1].astype(str).tolist()
+    meta = pd.read_csv(meta_path)
+    meta = meta.rename(columns={"cell BC": "cell_barcode", "guide identity": "guide_identity"})
+    meta = meta.set_index("cell_barcode")
 
-    mtx_dir = os.path.dirname(mtx_files[0])
-    print(f"Loading 10x data from {mtx_dir}")
-    adata = sc.read_10x_mtx(mtx_dir, var_names="gene_symbols", cache=False)
-
-    # Load cell metadata if available
-    meta_files = glob.glob(f"{extract_dir}/**/*cell_identities*", recursive=True)
-    if meta_files:
-        meta = pd.read_csv(meta_files[0], index_col=0)
-        adata.obs = adata.obs.join(meta, how='left')
+    adata = sc.AnnData(
+        X=X,
+        obs=pd.DataFrame(index=barcodes).join(meta, how="left"),
+        var=pd.DataFrame(index=gene_symbols),
+    )
+    adata.obs["perturbation"] = adata.obs["guide_identity"].astype(str)
 
     print(f"Loaded: {adata.shape}")
     return adata
@@ -82,6 +104,7 @@ def preprocess_perturbseq(adata):
 
 def benchmark_sgRNA(adata, sgRNA_label, n_perms=200, n_bins=20):
     """Run PGAA on cells with a specific sgRNA vs non-targeting controls."""
+    target_gene = sgRNA_label.split("_pDS", 1)[0]
     # Find perturbed cells (containing this sgRNA)
     if 'perturbation' in adata.obs.columns:
         labels = adata.obs['perturbation'].astype(str)
@@ -93,8 +116,10 @@ def benchmark_sgRNA(adata, sgRNA_label, n_perms=200, n_bins=20):
         raise ValueError("No perturbation label column found")
 
     pert_idx = np.where(labels.str.contains(sgRNA_label, case=False, na=False))[0]
-    ctrl_idx = np.where(labels.str.contains('non-targeting|NegCtrl|control',
-                                              case=False, na=False))[0]
+    ctrl_idx = np.where(
+        (labels == CONTROL_LABEL)
+        | labels.str.contains("non-targeting|NegCtrl|negative|control", case=False, na=False)
+    )[0]
 
     if len(pert_idx) < 20 or len(ctrl_idx) < 20:
         return None
@@ -106,19 +131,23 @@ def benchmark_sgRNA(adata, sgRNA_label, n_perms=200, n_bins=20):
     ct = KMeans(n_clusters=5, random_state=42, n_init=10).fit_predict(X)
 
     t0 = time.time()
-    res_s1 = prt_s1_test(X, genes, sgRNA_label, pert_idx, ctrl_idx,
+    if target_gene not in genes:
+        raise ValueError(f"Target gene {target_gene} not present in HVG universe")
+
+    res_s1 = prt_s1_test(X, genes, target_gene, pert_idx, ctrl_idx,
                          n_perms=n_perms, cell_type=ct, library_size=lib)
     t_s1 = time.time() - t0
 
     # Get S2 scores (no permutation for speed)
-    res_s2 = s2_test(X, genes, sgRNA_label, pert_idx, ctrl_idx,
+    res_s2 = s2_test(X, genes, target_gene, pert_idx, ctrl_idx,
                      n_bins=n_bins, cell_type=ct, library_size=lib)
 
     return {"s1": res_s1, "s2": res_s2, "t_s1": t_s1,
-            "n_pert": len(pert_idx), "n_ctrl": len(ctrl_idx)}
+            "n_pert": len(pert_idx), "n_ctrl": len(ctrl_idx),
+            "target_gene": target_gene}
 
 
-def compute_metrics(results, known_genes, gene_column='gene'):
+def compute_metrics(results, known_genes, target_label, gene_column='gene'):
     """Compute AUROC and enrichment for known UPR genes."""
     s1_ranks = results['s1'].sort_values('W_observed', ascending=False)
     s2_ranks = results['s2'].sort_values('S2', ascending=False)
@@ -139,7 +168,7 @@ def compute_metrics(results, known_genes, gene_column='gene'):
     top20_s1 = s1_ranks.head(20)[gene_column].isin(known_genes).sum()
     top20_s2 = s2_ranks.head(20)[gene_column].isin(known_genes).sum()
 
-    return {"target": results['s1'].get('target', 'unknown'),
+    return {"target": target_label,
             "n_pert": results['n_pert'], "n_found": len(found_known),
             "auroc_s1": auroc_s1, "auroc_s2": auroc_s2,
             "top20_s1": top20_s1, "top20_s2": top20_s2,
@@ -147,9 +176,18 @@ def compute_metrics(results, known_genes, gene_column='gene'):
 
 
 def main():
-    tar_path = "/Users/guoxutao/.openclaw/workspace/adamson2016_RAW.tar"
+    parser = argparse.ArgumentParser(description="Raw GEO sanity rerun for the Adamson 2016 UPR benchmark.")
+    parser.add_argument(
+        "--tar",
+        default=os.environ.get("ADAMSON2016_RAW_TAR", "adamson2016_RAW.tar"),
+        help="Path to the downloaded GSE90546 Adamson 2016 raw tar archive. "
+        "May also be provided with ADAMSON2016_RAW_TAR.",
+    )
+    args = parser.parse_args()
+
+    tar_path = args.tar
     if not os.path.exists(tar_path):
-        print(f"ERROR: {tar_path} not found. Download from GSE90546 first.")
+        print(f"ERROR: {tar_path} not found. Download the GSE90546 raw archive first, then pass --tar or set ADAMSON2016_RAW_TAR.")
         sys.exit(1)
 
     # Load and preprocess
@@ -169,17 +207,7 @@ def main():
             if adata.obs[col].nunique() > 5 and adata.obs[col].nunique() < 200:
                 print(f"  {col}: {adata.obs[col].nunique()} unique values — possible label column")
 
-    # Select top perturbations by cell count
-    if 'pert_counts' in dir():
-        top_targets = pert_counts.head(20).index.tolist()
-    else:
-        # Manual: use any column with 10-200 unique values
-        for col in adata.obs.columns:
-            n = adata.obs[col].nunique()
-            if 10 < n < 200:
-                adata.obs['perturbation'] = adata.obs[col].astype(str)
-                top_targets = adata.obs['perturbation'].value_counts().head(20).index.tolist()
-                break
+    top_targets = PAPER_TARGETS
 
     print(f"\nBenchmarking {len(top_targets)} perturbations...")
     results = []
@@ -188,7 +216,7 @@ def main():
         try:
             res = benchmark_sgRNA(adata, t, n_perms=200)
             if res:
-                metrics = compute_metrics(res, ALL_UPR)
+                metrics = compute_metrics(res, ALL_UPR, t)
                 if metrics:
                     results.append(metrics)
                     print(f"OK (n={res['n_pert']}, AUROC_S1={metrics['auroc_s1']:.3f})")

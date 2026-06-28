@@ -1,7 +1,7 @@
 {
   "title": "PGAA: distribution-aware single-cell perturbation analysis for heterogeneous disease-relevant transcriptional responses",
   "upload_type": "software",
-  "description": "PGAA provides Python and R implementations of distribution-aware single-cell perturbation statistics, including a Wasserstein statistic for full expression-distribution shifts and a persistent-homology statistic for responder-associated expression-shape changes. The Communications Medicine transfer package frames PGAA as a clinically oriented resource for prioritizing heterogeneous disease-relevant transcriptional responses in perturbation screens and patient-derived single-cell analyses.",
+  "description": "PGAA provides Python and R implementations of distribution-aware single-cell perturbation statistics, including a Wasserstein statistic for full expression-distribution shifts and a persistent-homology statistic for responder-associated expression-shape changes. The Communications AI & Computing transfer package frames PGAA as a computational resource for prioritizing heterogeneous transcriptional responses in perturbation screens and patient-derived single-cell analyses.",
   "creators": [
     {"name": "Wei, Xiaolei"},
     {"name": "Zheng, Haiqing"},

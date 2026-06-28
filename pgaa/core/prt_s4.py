@@ -1,8 +1,8 @@
 """
-PRT-S₄: Fisher Information Distance as Perturbation Detector
+PRT-S₄: exploratory Fisher-information-inspired perturbation score
 
-Innovation (none published for Perturb-seq)
-----------------------------
+Scope
+-----
 Treat each gene's expression as a 1-parameter exponential family:
   P(Y_g | θ) = exp(θ_g * T(Y_g) - ψ(θ_g))
 
@@ -28,8 +28,9 @@ HOWEVER, for NB(μ, φ) (Negative Binomial, used in scRNA-seq),
   θ = log(μ / (μ + φ⁻¹))  (natural parameter for NB canonical form)
   g(θ) = ... (more complex but has closed form)
 
-The innovation: use the NB Fisher metric, not Normal.
-This automatically handles overdispersion and zero-inflation.
+This module is exploratory and is not a primary benchmarked contribution in
+the manuscript. It should be described as a count-model-inspired score, not
+as a validated detector.
 """
 
 import numpy as np
@@ -66,7 +67,7 @@ def s4_test(
     control_idx: np.ndarray,
 ) -> pd.DataFrame:
     """
-    PRT-S₄ Fisher information distance.
+    PRT-S₄ Fisher-information-inspired exploratory score.
 
     For each gene g:
       Estimate NB(mu_on, phi_on) and NB(mu_off, phi_off) from

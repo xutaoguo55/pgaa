@@ -11,7 +11,7 @@ as true negatives, and compute the empirical null by permuting
 perturbation labels among real cells.
 
 But true NCGs are scarce.  SCEPTRE's actual approach (Barry et al.
-2021 Nature Methods): construct a synthetic null by sampling from the
+2021 Genome Biology): construct a synthetic null by sampling from the
 set of (control_gene, control_cell) pairs and computing the test
 statistic.  This decouples the null from the test.
 
@@ -97,7 +97,7 @@ def pg_sceptre(X, genes, target, n_perms=1000, cell_type=None,
 
     # D = perturbation indicator (1 = KLF1-perturbed, 0 = control)
     D = np.zeros(N)
-    D[tidx:N] = 1.0  # placeholder, will be set externally
+    D[tidx:N] = 1.0  # initialized for downstream perturbation labels
 
     def stat_for_d(Dvec, Ymat):
         """Compute |alpha| (correlation of D with each Y) for permutation test."""
@@ -124,7 +124,7 @@ def pg_sceptre(X, genes, target, n_perms=1000, cell_type=None,
 
     # Observed: D = indicator for perturbed cells (first len(klf1_idx) cells are perturbed)
     D_obs = np.zeros(N)
-    D_obs[:0] = 0  # placeholder, will be set externally
+    D_obs[:0] = 0  # zero-length assignment retained for shape-stable initialization
 
     return other_genes, Y_std
 

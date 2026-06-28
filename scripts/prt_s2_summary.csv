@@ -1,4 +1,4 @@
 Method,Time_s,ELANE_rank,ELANE_p,AUROC_known_targets,n_sig_0.05
-PGAA S1 (Wasserstein),746.2,1452,0.2234,0.337,1083
-"PGAA S2 (persistent homology, n_bins=20)",119.2,57,0.0399,0.476,66
-PGAA S1+S2 combined z,0.0,427,0.0378,0.424,473
+PGAA-W Wasserstein,746.2,1452,0.2234,0.337,1083
+PGAA-H histogram-shape (n_bins=20),119.2,57,0.0399,0.476,66
+PGAA-W+PGAA-H combined z,0.0,427,0.0378,0.424,473

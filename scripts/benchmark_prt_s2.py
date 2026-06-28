@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-PRT-S₂ benchmark: 1D persistent homology (TDA) on Norman 2019.
+PGAA-H benchmark: histogram-shape diagnostic on Norman 2019.
 
 Optimized: residualize once, then permute only D.
-Compares against PRT-S₁ on CEBPE → ELANE.
+Compares against PGAA-W on CEBPE -> ELANE.
 """
 
 import time

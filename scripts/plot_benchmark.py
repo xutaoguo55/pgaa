@@ -43,7 +43,7 @@ def plot_benchmark_summary(csv_path="scripts/benchmark_results.csv",
     ax.set_xticklabels([labels[m] for m in methods], rotation=15, ha="right")
     ax.set_ylim(0, 1)
     ax.legend(frameon=False)
-    ax.set_title("(A) Edge Recovery")
+    ax.set_title("a  Edge recovery", loc="left", fontweight="bold")
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
 
@@ -58,7 +58,7 @@ def plot_benchmark_summary(csv_path="scripts/benchmark_results.csv",
     ax.set_xticklabels([labels[m] for m in methods], rotation=15, ha="right")
     ax.set_ylim(0, max(type_i) * 1.2)
     ax.legend(frameon=False)
-    ax.set_title("(B) False Positive Control")
+    ax.set_title("b  False-positive control", loc="left", fontweight="bold")
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
 
@@ -74,7 +74,7 @@ def plot_benchmark_summary(csv_path="scripts/benchmark_results.csv",
     ax.set_ylabel("KS statistic vs Uniform(0,1)")
     ax.set_xticklabels([labels[m] for m in methods], rotation=15, ha="right")
     ax.set_ylim(0, 0.5)
-    ax.set_title("(C) P-value Calibration")
+    ax.set_title("c  P-value calibration", loc="left", fontweight="bold")
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
 

@@ -7,8 +7,7 @@ import pandas as pd
 
 class ComboPredictor:
     """
-    Predict combinatorial perturbation effects from single-gene causal
-    estimates (alpha scores).
+    Predict combinatorial perturbation scores from single-gene alpha scores.
 
     Supports additive, Bliss independence, and Loewe synergy models.
     """
@@ -21,7 +20,7 @@ class ComboPredictor:
             Mapping target_gene -> DataFrame from PGAA estimate_target().
             Each DataFrame must contain 'gene' and alpha_col columns.
         alpha_col : str
-            Column name for causal effect estimates.
+            Column name for alpha scores.
         """
         self.results_map = {k: v.copy() for k, v in results_map.items()}
         self.alpha_col = alpha_col

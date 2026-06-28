@@ -2,8 +2,8 @@
 """Figure: PRT variants on Norman 2019 CEBPE → ELANE.
 
 3-panel figure showing:
-  (A) Volcano-style: -log10(p) vs S₂ value, top hits annotated
-  (B) ELANE rank comparison: S₁ vs S₂ vs Combined z
+  (A) Ranking plot: -log10(p) vs PGAA-H value, top hits annotated
+  (B) ELANE rank comparison: PGAA-W vs PGAA-H vs combined z
   (C) Method summary: AUROC + ELANE p + n_sig
 """
 import matplotlib
@@ -16,9 +16,9 @@ plt.rcParams.update({'font.size': 10, 'axes.labelsize': 11, 'axes.titlesize': 12
                       'legend.fontsize': 9, 'figure.dpi': 300,
                       'font.family': 'sans-serif'})
 
-# Load calibrated S₂ results
+# Load calibrated PGAA-H results
 res_s2 = pd.read_csv("scripts/norman2019_prt_s2_calibrated.csv")
-# Load S₁ results from prt_s1_summary context (regenerate if needed)
+# Load PGAA-W results from prt_s1_summary context (regenerate if needed)
 from pgaa.core.prt import prt_s1_test
 import scanpy as sc
 from sklearn.cluster import KMeans
@@ -49,7 +49,7 @@ X_20 = svd.fit_transform(X)
 km = KMeans(n_clusters=5, random_state=42, n_init=10)
 cell_type = km.fit_predict(X_20)
 
-print("Running S₁ (Wasserstein) ...", flush=True)
+print("Running PGAA-W (Wasserstein) ...", flush=True)
 res_s1 = prt_s1_test(X, genes, "CEBPE", cebpe_pert, ctrl_idx, n_perms=2000,
                      cell_type=cell_type, library_size=lib_size)
 print("Done.", flush=True)
@@ -60,7 +60,7 @@ cebpe_targets = ["ELANE", "CTSG", "LYZ", "MPO", "GFI1", "AZU1",
 # ── Figure: 3 panels ──────────────────────────────────────
 fig, axes = plt.subplots(1, 3, figsize=(14, 4.5))
 
-# Panel A: Volcano (-log10 p vs S₂ value)
+# Panel A: ranking plot (-log10 p vs PGAA-H value)
 ax = axes[0]
 is_known = res_s2["gene"].isin(cebpe_targets).values
 ax.scatter(res_s2.loc[~is_known, "S2"],
@@ -75,15 +75,15 @@ for _, row in res_s2[is_known].iterrows():
                 fontsize=8, ha='left', va='bottom',
                 xytext=(3, 3), textcoords='offset points')
 ax.axhline(-np.log10(0.05), color='red', linestyle='--', linewidth=1, alpha=0.5)
-ax.set_xlabel("S₂ (persistence landscape distance)")
+ax.set_xlabel("PGAA-H histogram-shape diagnostic")
 ax.set_ylabel("-log₁₀(p)")
-ax.set_title("(A) S₂ on Norman 2019 CEBPE")
+ax.set_title("(A) PGAA-H on Norman 2019 CEBPE")
 ax.legend(frameon=False, fontsize=8, loc='lower right')
 ax.spines['top'].set_visible(False); ax.spines['right'].set_visible(False)
 
 # Panel B: ELANE rank comparison (bar chart)
 ax = axes[1]
-methods = ['S₁\nWasserstein', 'S₂\nTDA', 'Combined\nz=(z₁+z₂)/√2']
+methods = ['PGAA-W\nWasserstein', 'PGAA-H\nhistogram-shape', 'Combined\nz-score']
 ranks = []
 s1_rank = (res_s1.sort_values("p_value_perm")["gene"]
            .tolist().index("ELANE") + 1) if "ELANE" in res_s1["gene"].values else 0
@@ -123,9 +123,9 @@ is_known_c = np.array([g in cebpe_targets for g in common])
 auroc_comb = roc_auc_score(is_known_c, -np.log10(p_comb + 1e-300))
 
 table_data = [
-    ['S₁ Wasserstein', f'{s1_rank}', f'{res_s1[res_s1["gene"]=="ELANE"]["p_value_perm"].iloc[0]:.3f}',
+    ['PGAA-W Wasserstein', f'{s1_rank}', f'{res_s1[res_s1["gene"]=="ELANE"]["p_value_perm"].iloc[0]:.3f}',
      f'{auroc_s1:.3f}', f'{(res_s1["p_value_perm"]<0.05).sum()}'],
-    ['S₂ TDA (cal.)', f'{s2_rank}', f'{res_s2[res_s2["gene"]=="ELANE"]["p_value_perm"].iloc[0]:.3f}',
+    ['PGAA-H histogram-shape', f'{s2_rank}', f'{res_s2[res_s2["gene"]=="ELANE"]["p_value_perm"].iloc[0]:.3f}',
      f'{auroc_s2:.3f}', f'{(res_s2["p_value_perm"]<0.05).sum()}'],
     ['Combined z', f'{comb_rank}', f'{p_comb[common=="ELANE"][0]:.3f}',
      f'{auroc_comb:.3f}', f'{(p_comb<0.05).sum()}'],

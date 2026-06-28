@@ -11,10 +11,9 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "DATASET_MANIFEST.tsv"
 TEXT_SOURCES = [
-    ROOT / "MANUSCRIPT.md",
-    ROOT / "SUPPLEMENTARY.md",
+    ROOT / "communications_medicine" / "MANUSCRIPT_CM.md",
+    ROOT / "communications_medicine" / "SUPPLEMENTARY_CM.md",
     ROOT / "README.md",
-    ROOT / "PORTAL_INPUTS.md",
 ]
 REQUIRED_COLUMNS = [
     "dataset_id",

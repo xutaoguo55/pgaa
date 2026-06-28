@@ -1,8 +1,12 @@
 #!/usr/bin/env Rscript
 # Comprehensive test of PGAA R package
 
-# Source all R files
-r_dir <- "/Users/guoxutao/.openclaw/workspace/PGAA_method_paper/pgaa_r/R"
+# Source all R files relative to this script.
+args <- commandArgs(trailingOnly = FALSE)
+file_arg <- "--file="
+script_path <- normalizePath(sub(file_arg, "", args[grep(file_arg, args)]))
+root_dir <- dirname(dirname(script_path))
+r_dir <- file.path(root_dir, "pgaa_r", "R")
 for (f in list.files(r_dir, full.names = TRUE)) source(f)
 
 # Track failures
@@ -125,12 +129,12 @@ Xres <- residualize(Xtest, cell_type = ct_test, library_size = lib_test)
 check(nrow(Xres) == 200 && ncol(Xres) == 10,
       sprintf("T16 residualize dims: %dx%d", nrow(Xres), ncol(Xres)))
 
-# T14: prt_s3_test, prt_s4_test stubs
+# T14: prt_s3_test, prt_s4_test exploratory modules
 res_s3 <- prt_s3_test(X, genes, "gene_0001", 1:100, 101:400)
-check(nrow(res_s3) == 19, sprintf("T17 S3 stub: %d genes", nrow(res_s3)))
+check(nrow(res_s3) == 19, sprintf("T17 S3 exploratory module: %d genes", nrow(res_s3)))
 
 res_s4 <- prt_s4_test(X, genes, "gene_0001", 1:100, 101:400)
-check(nrow(res_s4) == 19, sprintf("T18 S4 stub: %d genes", nrow(res_s4)))
+check(nrow(res_s4) == 19, sprintf("T18 S4 exploratory module: %d genes", nrow(res_s4)))
 
 # ── Summary ──
 cat(sprintf("\n%s\n", paste(rep("=", 50), collapse="")))

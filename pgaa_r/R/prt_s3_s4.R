@@ -1,10 +1,10 @@
 # S3: Conditional Mutual Information (exploratory)
 # -----------------------------------------------
-# Tests whether perturbation changes gene-gene dependency structure.
-# Implemented as a stub: full k-NN entropy estimation via FNN package
-# would be required for production use.
+# Explores whether perturbation changes gene-gene dependency structure.
+# Implemented as an exploratory approximation; full k-NN entropy estimation
+# via FNN can be added for production conditional-MI workflows.
 
-#' PRT-S3: Conditional mutual information test (exploratory stub)
+#' PRT-S3: Conditional mutual information score (exploratory approximation)
 #'
 #' @param X numeric matrix (N cells x G genes)
 #' @param genes character vector of gene names
@@ -38,8 +38,8 @@ prt_s3_test <- function(X, genes, target,
   # (simplified: covariance-based approximation)
   s3_values <- vapply(seq_along(other_idx), function(g) {
     y <- Y[, g]
-    # Find k nearest neighbours in expression space for brevity
-    # This is a placeholder; real implementation uses FNN::knn
+    # Use the strongest absolute correlation partners as a lightweight
+    # dependency proxy for this exploratory module.
     cors <- stats::cor(y, Y)
     partners <- order(-abs(cors))[2:min(n_partners + 1, ncol(Y))]
 
@@ -55,7 +55,7 @@ prt_s3_test <- function(X, genes, target,
   )
 }
 
-#' PRT-S4: Fisher NB test (exploratory stub)
+#' PRT-S4: Fisher NB score (exploratory approximation)
 #'
 #' @param X numeric matrix (N cells x G genes)
 #' @param genes character vector of gene names

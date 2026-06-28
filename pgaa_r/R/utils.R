@@ -34,20 +34,22 @@ residualize <- function(X, cell_type = NULL, library_size = NULL) {
   X - Z %*% beta_hat
 }
 
-#' Storey pi0 estimator
+#' Storey upper-tail pi0 estimator
 #'
-#' Estimate the fraction of true null hypotheses from p-values.
+#' Estimate the capped null fraction from p-values. The uncapped upper-tail
+#' ratio can exceed 1 and is useful as a calibration diagnostic, but this
+#' exported helper returns the conventional capped estimate.
 #'
 #' @param p numeric vector of p-values
 #' @param lambda threshold for null tail (default 0.5)
 #' @return scalar pi0 estimate, capped at 1.0
 #' @export
 pi0_storey <- function(p, lambda = 0.5) {
-  pi0_hat <- sum(p > lambda) / (lambda * length(p))
+  pi0_hat <- sum(p > lambda) / ((1 - lambda) * length(p))
   min(max(pi0_hat, 0), 1.0)
 }
 
-#' Permutation null for S1 (within-cluster shuffle)
+#' Permutation null for PGAA-W / legacy S1 (within-cluster shuffle)
 #'
 #' @param Y residualized expression matrix (N x G)
 #' @param D logical vector of perturbation labels (TRUE = perturbed)
@@ -98,13 +100,13 @@ perm_null_s1 <- function(Y, D, cell_type = NULL, n_perms = 2000, seed = 42) {
   list(p_values = p_values, obs_stat = obs, null_stats = null_stats, n_perms = n_perms)
 }
 
-#' Permutation null for S2 (within-cluster shuffle)
+#' Permutation null for PGAA-H / legacy S2 (within-cluster shuffle)
 #'
 #' @param Y residualized expression matrix (N x G)
 #' @param D logical vector of perturbation labels
 #' @param cell_type integer cluster labels
 #' @param n_perms number of permutations
-#' @param n_bins histogram bins for persistence
+#' @param n_bins histogram bins for the PGAA-H peak-prominence summary
 #' @param seed random seed
 #' @return list with p_values, null_stats, obs_stat
 #' @export
@@ -161,10 +163,10 @@ perm_null_s2 <- function(Y, D, cell_type = NULL, n_perms = 500,
   list(p_values = p_values, obs_stat = obs, null_stats = null_stats, n_perms = n_perms)
 }
 
-#' Combined z-test from multiple p-value vectors
+#' Exploratory combined z-score from multiple p-value vectors
 #'
 #' @param ... named arguments, each a numeric vector of p-values
-#' @return numeric vector of combined p-values
+#' @return numeric vector of exploratory combined tail probabilities
 #' @export
 combined_z_test <- function(...) {
   p_list <- list(...)

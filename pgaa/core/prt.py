@@ -3,7 +3,7 @@ PRT: Perturbation Response Thermodynamics
 S₁ statistic: 1D Wasserstein distance (a.k.a. Earth Mover's Distance)
 
 For each gene g, compute:
-  S1_g = W(F(Y_g | D=1), F(Y_g | D=0))
+  PGAA-W_g = W(F(Y_g | D=1), F(Y_g | D=0))
        = ∫ |F1^{-1}(q) - F0^{-1}(q)| dq
 
 The statistic is evaluated by the same quantile approximation for observed
@@ -11,7 +11,8 @@ and permuted labels, so the permutation p-values compare like with like.
 
 Reference:
   - Ramdas et al. 2017 "On Wasserstein Two-Sample Testing"
-  - Our novelty: 1D Wasserstein for Perturb-seq causal inference
+  - PGAA uses this quantile-grid summary as a perturbation-response
+    ranking statistic, not as causal identification by itself.
 """
 
 from typing import Tuple
@@ -53,7 +54,7 @@ def prt_s1_test(
     random_state: int = 42,
 ):
     """
-    PRT S₁ test for all genes given target perturbation.
+    PRT S₁ ranking statistic for all genes given target perturbation.
 
     Parameters
     ----------
@@ -124,7 +125,7 @@ def prt_s1_test(
     # CONDITIONAL permutation: shuffle D WITHIN each cell type cluster
     # This removes cell type confounding while preserving D's within-cluster effect
     import time
-    print(f"PRT-S1: {n_perms} permutations (within-cluster shuffle) ...")
+    print(f"PGAA-W / legacy PRT-S1: {n_perms} permutations (within-cluster shuffle) ...")
     t0 = time.time()
     null_w = np.zeros((n_perms, len(other_idx)))
 

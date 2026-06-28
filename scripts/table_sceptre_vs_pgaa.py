@@ -4,9 +4,9 @@ SCEPTRE vs PGAA comparison table on Norman 2019 CEBPE.
 
 Methods compared:
   - SCEPTRE (rank-based, 2000 perms, 2012 genes)
-  - PGAA S₁ (Wasserstein, 2000 perms, within-cluster shuffle)
-  - PGAA S₂ (persistent homology, 500 perms, within-cluster shuffle)
-  - PGAA Combined z = (z_S1 + z_S2) / sqrt(2)
+  - PGAA-W Wasserstein (2000 perms, within-cluster shuffle)
+  - PGAA-H histogram-shape diagnostic (500 perms, within-cluster shuffle)
+  - PGAA-W+PGAA-H combined z = (z_W + z_H) / sqrt(2)
 
 Metrics:
   - ELANE rank (lower is better)
@@ -58,11 +58,11 @@ sceptre_cebpe = {
 # Actually we need to re-load SCEPTRE results — they're in benchmark_prt_s1.py
 # For now use the values from prt_s1_summary.csv
 
-# S₁ metrics
-s1_metrics = metrics("PGAA S₁ (Wasserstein)", s1["gene"].values,
+# PGAA-W metrics
+s1_metrics = metrics("PGAA-W Wasserstein", s1["gene"].values,
                      s1["p_value_perm"].values, set(cebpe_targets))
-# S₂ metrics
-s2_metrics = metrics("PGAA S₂ (persistent homology, n_bins=20)",
+# PGAA-H metrics
+s2_metrics = metrics("PGAA-H histogram-shape (n_bins=20)",
                      s2["gene"].values, s2["p_value_perm"].values,
                      set(cebpe_targets))
 
@@ -73,7 +73,7 @@ common_idx = [list(s1["gene"]).index(g) for g in s2["gene"]]
 z_s1 = norm.ppf(1 - np.clip(p_s1[common_idx], 1e-10, 1 - 1e-10))
 z_s2 = norm.ppf(1 - np.clip(p_s2, 1e-10, 1 - 1e-10))
 p_comb = 1 - norm.cdf((z_s1 + z_s2) / np.sqrt(2))
-comb_metrics = metrics("PGAA S₁+S₂ combined z", s2["gene"].values,
+comb_metrics = metrics("PGAA-W+PGAA-H combined z", s2["gene"].values,
                        p_comb, set(cebpe_targets))
 
 # Combine into table
@@ -93,13 +93,13 @@ md = "# SCEPTRE vs PGAA comparison on Norman 2019 CEBPE\n\n"
 md += df.to_markdown(index=False)
 md += "\n\n## Key takeaways\n"
 md += "- **SCEPTRE**: 0/9 known targets, AUROC ≈ 0.47 (random)\n"
-md += "- **PGAA S₁**: %s known targets, ELANE rank %d, AUROC %.3f\n" % (
+md += "- **PGAA-W**: %s known targets, ELANE rank %d, AUROC %.3f\n" % (
     s1_metrics["known_hits"], s1_metrics["elane_rank"], s1_metrics["auroc"])
-md += "- **PGAA S₂**: %s known targets, ELANE rank %d in the pre-specified n_bins=20 run, AUROC %.3f\n" % (
+md += "- **PGAA-H**: %s known targets, ELANE rank %d in the pre-specified n_bins=20 run, AUROC %.3f\n" % (
     s2_metrics["known_hits"], s2_metrics["elane_rank"], s2_metrics["auroc"])
 md += "- **PGAA Combined**: %s known targets, ELANE rank %d, AUROC %.3f\n" % (
     comb_metrics["known_hits"], comb_metrics["elane_rank"], comb_metrics["auroc"])
-md += "\nS₂ gives the strongest ELANE ranking in this pre-specified CEBPE analysis; the result is ranking evidence, not genome-wide FDR-controlled discovery.\n"
+md += "\nPGAA-H gives the strongest ELANE ranking in this pre-specified CEBPE analysis; the result is ranking evidence, not genome-wide FDR-controlled discovery.\n"
 
 with open("scripts/table_sceptre_vs_pgaa.md", "w") as f:
     f.write(md)

@@ -1,14 +1,15 @@
 """
-MMD-PSM: Propensity Score Matching + Wasserstein distance for Perturb-seq.
+MMD-PSM: Propensity Score Matching + Wasserstein distance for exploratory Perturb-seq ranking.
 
-Innovation
-----------
-Combines three classical ideas from different fields:
+Scope
+-----
+Exploratory combination of three classical ideas:
 
 1. Propensity Score Matching (Rosenbaum & Rubin 1983, Biometrika)
-   - Originally from causal inference in observational studies
+   - Originally from observational treatment-effect studies
    - Stratify or match on the conditional probability of treatment
-   - Removes bias from all observed confounders
+   - Adjusts for measured covariates in the matching model; unmeasured
+     confounding can remain
 
 2. MMD / Wasserstein (Gretton et al. 2012; Ramdas et al. 2017)
    - Originally from two-sample testing
@@ -18,7 +19,7 @@ Combines three classical ideas from different fields:
    - Each cell has a "treatment dose" (UMI_count)
    - Cells in different states have different response propensities
 
-MMD-PSM novel application:
+MMD-PSM exploratory workflow:
   1. Estimate propensity score: P(D=1 | Z) using logistic regression
      on cell type + library size + PCA
   2. For each perturbed cell, find K nearest control cells in
@@ -26,10 +27,8 @@ MMD-PSM novel application:
   3. Compute Wasserstein distance only within matched pairs
   4. Permutation: shuffle matched pair labels
 
-This is novel because:
-  - No published Perturb-seq method uses propensity score matching
-  - Most methods use global KNN which is biased by cell type
-  - MMD-PSM is the first to combine 1D-Wasserstein with PSM
+This module is not a primary manuscript contribution and should be treated as
+an exploratory ranking workflow rather than as a primary inferential method.
 
 Mathematical formulation
 -------------------------
@@ -37,13 +36,11 @@ For each gene g:
   W_g = mean_{i in treated} W_1(Y_g[i], Y_g[matched_KNN(i)])
   Null: shuffle matched pair labels within each pair
 
-Theorem (informal)
-------------------
-Under H_0 (no causal effect), W_g is consistent for the
-Wasserstein distance between matched sub-populations.  The
-permutation null is exact under finite-sample asymptotics,
-giving valid Type I error even when D and cell type are
-strongly correlated.
+Interpretation
+--------------
+The matched-score permutation is a heuristic calibration step for measured
+covariates. It does not remove unmeasured confounding and is not used for
+formal claims in the manuscript.
 """
 
 from typing import Optional, Tuple
@@ -107,7 +104,7 @@ def mmd_psm_test(
     n_jobs: int = 1,
 ) -> pd.DataFrame:
     """
-    MMD-PSM test for all genes.
+    MMD-PSM exploratory ranking workflow for all genes.
 
     Parameters
     ----------
@@ -151,19 +148,12 @@ def mmd_psm_test(
     Y = X_sub[:, other_idx]
     Y_centered = Y - Y.mean(axis=0, keepdims=True)
 
-    # For each gene, compute per-treated-cell Wasserstein to its K matched controls
-    obs_w = np.zeros(len(other_idx))
-    for g in range(len(other_idx)):
-        y_g = Y_centered[:, g]
-        per_treated_w = np.zeros(len(treated_pos))
-        for i, tidx_pos in enumerate(treated_pos):
-            matched = matched_pairs[i]
-            y_treated = np.array([y_g[tidx_pos]])
-            y_matched = y_g[matched]
-            # 1D Wasserstein between 1 sample and K samples
-            # W_1({x}, {y_1, ..., y_K}) = mean(|x - y_k|)
-            per_treated_w[i] = np.mean(np.abs(y_treated - y_matched))
-        obs_w[g] = per_treated_w.mean()
+    # Vectorized 1D Wasserstein between each treated cell and its K matched
+    # controls. For a singleton treated sample, W_1({x}, {y_1, ..., y_K}) is
+    # mean_k |x - y_k|; averaging over treated cells gives one score per gene.
+    obs_w = np.abs(
+        Y_centered[treated_pos, None, :] - Y_centered[matched_pairs, :]
+    ).mean(axis=(0, 1))
 
     # Permutation null: shuffle matched pair assignments
     print(f"MMD-PSM: {n_perms} permutations ...")
@@ -186,15 +176,9 @@ def mmd_psm_test(
         ctrl_pos_perm = np.where(~D_perm)[0]
         matched_perm = ctrl_pos_perm[idx_perm]
 
-        for g in range(len(other_idx)):
-            y_g = Y_centered[:, g]
-            per_w = np.zeros(len(treated_perm))
-            for i, tidx_pos in enumerate(treated_perm):
-                matched = matched_perm[i]
-                y_treated = np.array([y_g[tidx_pos]])
-                y_matched = y_g[matched]
-                per_w[i] = np.mean(np.abs(y_treated - y_matched))
-            null_w[b, g] = per_w.mean()
+        null_w[b] = np.abs(
+            Y_centered[treated_perm, None, :] - Y_centered[matched_perm, :]
+        ).mean(axis=(0, 1))
 
     # Two-sided p-value (treating abs difference)
     p_perm = (null_w >= obs_w[None, :]).sum(axis=0) + 1
