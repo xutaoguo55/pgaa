@@ -43,7 +43,6 @@ fig_map = {
     '2': ('figures_png/figure_adamson_benchmark.png', 'Independent validation on the Adamson 2016 UPR CRISPRi benchmark. a, Benchmark design and curated evaluation universe. b, Mean AUROC across five pre-specified UPR perturbations, with dots showing individual perturbations. c, Mean AUPRC compared with the random positive-rate baseline. d, Per-perturbation AUROC heatmap. Exact values for panel d are provided in Supplementary Table 2.'),
     '3': ('figures_png/figure_norman_main_caic.png', 'Norman 2019 CEBPE CRISPRa PGAA-H ranking as a narrow use-case example. a, PGAA-H histogram-shape diagnostic versus permutation p-value across genes, with known CEBPE targets highlighted. b, ELANE rank comparison across SCEPTRE, PGAA-W Wasserstein and PGAA-H histogram-shape ranking. The panel illustrates ranking evidence only, not FDR-controlled discovery or complete CEBPE program recovery.'),
     '4': ('figures_png/figure_3.png', 'Perturbation-specific calibration defines guardrails for PGAA-H histogram-shape ranking. a, Number of nominally significant genes and uncapped Storey upper-tail ratio across six Norman perturbations. b, CEBPE-target p-values across perturbation contexts. c, Leakage of CEBPE-target significance across non-CEBPE perturbations. PGAA-H denotes the histogram-shape diagnostic.'),
-    '5': ('figures_png/figure_1.png', 'External marker-recovery stress checks across five observational single-cell datasets. a, Recovery of known marker sets compared with housekeeping negative controls in the top-100 Wasserstein ranking. b, Positive-to-negative enrichment ratios, with 1x as the random expectation and 2x as a practical enrichment threshold. c, CLL comparator analysis showing that Wasserstein produced coherent BCR-axis rankings but was not uniformly superior to all conventional ranking baselines. These analyses assess marker recovery rather than causal perturbation effects.'),
 }
 for num, (path, cap) in fig_map.items():
     placement = 'H'
@@ -87,8 +86,8 @@ figs_n = tex.count('includegraphics')
 tabs_n = tex.count('begin{table}')
 print("Figures: {} Tables: {}".format(figs_n, tabs_n))
 
-if figs_n != 5:
-    print("WARNING: expected exactly 5 main figures!")
+if figs_n != 4:
+    print("WARNING: expected exactly 4 main figures!")
     sys.exit(1)
 
 # Step 9: Compile with xelatex (twice for TOC)
