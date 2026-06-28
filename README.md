@@ -94,7 +94,36 @@ python3 scripts/figure_simulation.py
 | `python3 scripts/rebuild_adamson_full_results.py` | Should pass |
 | `python3 scripts/benchmark_mmd_psm.py` | Requires `NORMAN2019_H5AD` |
 | `python3 scripts/benchmark_norman_multi_perturbation.py` | Requires `NORMAN2019_H5AD` |
-| `Rscript scripts/test_r_pkg.R` | Requires R and Rscript; not runnable in R-free environments |
+| `Rscript scripts/test_r_pkg.R` | Requires R ≥ 4.0 and Rscript on PATH; not runnable in R-free environments |
+
+## Docker
+
+```bash
+docker build -t pgaa .
+docker run --rm -v $(pwd):/data pgaa \
+  python3 -m pgaa.cli \
+  --expression /data/expression.csv \
+  --metadata /data/metadata.csv \
+  --target MYC \
+  --out-prefix /data/results/MYC
+```
+
+## Expected Output
+
+The CLI writes two ranked gene tables:
+
+- `<prefix>.s1.csv`: PGAA-W (Wasserstein) scores — `gene`, `W_observed`, `p_value_perm`, rank
+- `<prefix>.s2.csv`: PGAA-H (histogram-shape) scores — `gene`, `S2`, `p_value_perm`, rank
+
+Columns: gene identifier, observed score, permutation p-value (plus-one estimator), null mean, null SD, z-score. Supplementary Table 7 (submission supplement) and the supplement CLI schema provide full input/output documentation.
+
+## Troubleshooting
+
+- **`pgaa-run: command not found`**: ensure the pip install location is on PATH, or use `python3 -m pgaa.cli` instead.
+- **`ImportError: No module named 'pgaa'`**: run `pip install -e .` from the repository root.
+- **`ValueError: Input contains NaN values`**: check that the expression matrix has been normalized (10,000 counts per cell, log1p) before calling PGAA.
+- **R tests**: `test_r_pkg.R` requires R ≥ 4.0 and `Rscript` on PATH. Skip if R is not available.
+- **MMD-PSM / Norman full rerun**: these scripts require the processed Norman 2019 h5ad input. Set `NORMAN2019_H5AD=/path/to/norman2019_full_log.h5ad` before running. See Supplementary Table 7.
 
 ## Rebuild Manuscript PDFs
 
