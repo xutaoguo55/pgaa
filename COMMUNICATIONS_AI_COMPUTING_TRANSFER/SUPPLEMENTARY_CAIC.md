@@ -226,6 +226,88 @@ Reproducibility boundary & Raw GEO-to-final-figure rerun & Partial & Adamson raw
 \normalsize
 \end{landscape}
 
+\newpage
+
+## CLI Input/Output Schema
+
+The PGAA command-line interface (\texttt{pgaa-run}) accepts the following inputs and produces the following outputs.
+
+\subsection*{Input (required)}
+
+\begin{center}
+\begin{tabular}{ll>{\raggedright\arraybackslash}p{0.55\linewidth}}
+\hline
+Field & Type & Description \\
+\hline
+\texttt{-\/-expression} & CSV/TSV path & Normalized expression matrix (cells × genes, or genes × cells with \texttt{-\/-transpose}) \\
+\texttt{-\/-metadata} & CSV/TSV path & Cell-level metadata; must contain columns for perturbation label and cell identifier \\
+\texttt{-\/-target} & string & Target perturbation identifier (e.g., gene name or sgRNA label) \\
+\texttt{-\/-out-prefix} & string & Output file prefix (writes \texttt{<prefix>.pgaw.csv} and \texttt{<prefix>.pgah.csv}) \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection*{Input (optional)}
+
+\begin{center}
+\begin{tabular}{ll>{\raggedright\arraybackslash}p{0.55\linewidth}}
+\hline
+Field & Type & Default & Description \\
+\hline
+\texttt{-\/-group-column} & string & \texttt{group} & Column name for perturbation/control group labels \\
+\texttt{-\/-perturbed-value} & string & \texttt{perturbed} & Value in group column marking perturbed cells \\
+\texttt{-\/-control-value} & string & \texttt{control} & Value in group column marking control cells \\
+\texttt{-\/-cell-type-column} & string & (none) & Column name for cell-type or cluster labels for within-cluster permutation \\
+\texttt{-\/-library-size-column} & string & (none) & Column name for library size (for residualization) \\
+\texttt{-\/-n-perms} & int & 2000 & Number of within-cluster permutations for PGAA-W \\
+\texttt{-\/-n-perms-s2} & int & 500 & Number of within-cluster permutations for PGAA-H \\
+\texttt{-\/-n-bins} & int & 20 & Number of histogram bins for PGAA-H \\
+\texttt{-\/-top-n} & int & 2000 & Number of top-ranked genes to output \\
+\texttt{-\/-seed} & int & 42 & Random seed for permutation reproducibility \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection*{Output}
+
+\begin{center}
+\begin{tabular}{ll>{\raggedright\arraybackslash}p{0.55\linewidth}}
+\hline
+Column & Type & Description \\
+\hline
+\texttt{gene} & string & Gene identifier \\
+\texttt{PGAA-W score} & float & Quantile-grid Wasserstein distance (observed) \\
+\texttt{PGAA-W p\_value\_perm} & float & Within-cluster permutation p-value (plus-one estimator) \\
+\texttt{PGAA-W rank} & int & Rank by PGAA-W score (1 = highest) \\
+\texttt{PGAA-H score} & float & RMS distance between top-3 peak-prominence vectors \\
+\texttt{PGAA-H p\_value\_perm} & float & Within-cluster permutation p-value \\
+\texttt{PGAA-H rank} & int & Rank by PGAA-H score \\
+\texttt{storey\_upper\_tail\_ratio} & float & Uncapped Storey calibration diagnostic (R\_lambda; lambda=0.5) \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection*{Example}
+
+\begin{verbatim}
+pgaa-run \
+  --expression expression.csv \
+  --metadata metadata.csv \
+  --target CEBPE \
+  --group-column group \
+  --perturbed-value CEBPE_sgRNA \
+  --control-value NT_sgRNA \
+  --cell-type-column cluster \
+  --library-size-column library_size \
+  --n-perms 2000 \
+  --n-bins 20 \
+  --out-prefix results/CEBPE
+\end{verbatim}
+
+Writes \texttt{results/CEBPE.pgaw.csv} and \texttt{results/CEBPE.pgah.csv}.
+
+\newpage
+
 ## Supplementary Methods
 
 ### Additional modules
