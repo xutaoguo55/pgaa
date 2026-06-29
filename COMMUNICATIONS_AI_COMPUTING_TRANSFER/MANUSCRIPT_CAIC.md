@@ -92,7 +92,7 @@ SCEPTRE and PGAA-W rank this target poorly. SCEPTRE places ELANE at rank 1761/20
 
 The S2 histogram-shape statistic (PGAA-H) (n_bins = 20, 500 permutations) ranks ELANE at position 57 (p = 0.04), a 25-fold rank improvement over PGAA-W (Table 3). With 500 permutations, this p-value is interpreted as ranking evidence rather than genome-wide significance, and no FDR-controlled CEBPE gene discovery is claimed. The p-value distribution is acceptable in this pre-specified setting (uncapped Storey upper-tail ratio = 1.32 with 200 permutations in the sensitivity run; approximately 1.0 with 500 permutations). The top genes by raw PGAA-H value (SLC45A1, DLX2, ATP5E) are not known CEBPE targets; ELANE's stronger rank by permutation p-value reflects its favorable null distribution relative to other genes. Across the full nine-gene CEBPE target set, only ELANE reaches p < 0.05 in the PGAA-H analysis; PRTN3 is also within the top 100 by permutation p-value but does not pass the nominal threshold (p = 0.068). The AUROC is 0.476 and AUPRC is 0.0076. Thus, the Norman result should be read as a focused ELANE/PRTN3 ranking signal, not broad recovery of the complete granulocytic target program. As a calibration check, we applied PGAA-H to all six perturbations using the CEBPE target gene set as the reference positive set. ELANE was ranked strongly for CEBPE and also for the severely over-sensitive BAK1 perturbation, where the tail ratio was 0.10. For the well-calibrated KLF1 perturbation, ELANE was not supported (p = 0.70, uncapped tail ratio = 1.15). For CBL, SLC4A1, and DUSP9, ELANE p-values were 0.58, 0.16, and 0.90 respectively. This analysis is treated as perturbation-level calibration context rather than specificity proof; over-sensitive perturbations should not be interpreted as formal discoveries. Target-level details are provided in Supplementary Table 4.
 
-Table 3. Norman 2019 CEBPE ranking and calibration summary. PGAA-W denotes the Wasserstein statistic; PGAA-H denotes the histogram-shape diagnostic.
+Table 3. Norman 2019 CEBPE ranking and calibration summary. PGAA-W denotes the quantile-grid Wasserstein approximation; PGAA-H denotes the histogram-shape diagnostic.
 
 | Analysis | Method or perturbation | Key result | Interpretation |
 |---|---|---|---|
@@ -187,7 +187,7 @@ We approximate the one-dimensional Wasserstein distance by comparing empirical q
 
 The 1D Wasserstein distance provides a non-parametric way to compare full one-dimensional distributions and can respond to changes in location, spread, or shape. This makes the statistic useful when the biological signal is not limited to a mean shift. The 1D case has an efficient quantile-based computation \textsuperscript{22,23}.
 
-We compute p-values via within-cluster permutation \textsuperscript{24,25}. For B permutations, we shuffle D within each K-means cluster, recompute the Wasserstein statistic, and use the plus-one estimator
+We compute p-values via within-cluster permutation \textsuperscript{24,25}. For B permutations, we shuffle D within each K-means cluster, recompute PGAA-W, and use the plus-one estimator
 
 `p_perm = [1 + sum_{b=1}^{B} I{S_b >= S_obs}] / (B + 1)`
 
