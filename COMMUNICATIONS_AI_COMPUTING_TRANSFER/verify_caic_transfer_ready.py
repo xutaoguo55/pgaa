@@ -242,7 +242,7 @@ def main() -> None:
     cover_text = pdf_text(PACKET / "COVER_LETTER_COMMUNICATIONS_AI_COMPUTING.pdf")
     for required in [
         "Communications AI & Computing",
-        "ranking method",
+        "distribution-aware ranking",
         "opt in to Transparent Peer Review",
     ]:
         if required not in cover_text:

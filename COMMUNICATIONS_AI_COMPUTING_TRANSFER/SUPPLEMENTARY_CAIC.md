@@ -9,7 +9,7 @@ header-includes:
 
 # Supplementary Information
 
-**Manuscript title:** A distribution-aware computational framework for prioritizing heterogeneous responses in single-cell perturbation data
+**Manuscript title:** PGAA: distribution-aware ranking of heterogeneous single-cell perturbation responses
 
 **Authors:** Xiaolei Wei, Haiqing Zheng, Junwei Huang, Qi Wei, Yongqiang Wei, Ru Feng, Xutao Guo
 
@@ -66,7 +66,7 @@ header-includes:
 \begin{center}
 \includegraphics[width=1.0\textwidth]{figures_png/figure_1.png}
 
-\textbf{Supplementary Figure 7.} External marker-recovery stress checks across five observational single-cell datasets. a, Recovery of known marker sets compared with housekeeping negative controls in the top-100 PGAA-W ranking. b, Positive-to-negative enrichment ratios, with 1x as the random expectation and 2x as a practical enrichment threshold. c, CLL comparator analysis showing that PGAA-W produced coherent BCR-axis rankings but was not uniformly superior to all conventional ranking baselines. These analyses assess marker recovery rather than causal perturbation effects. All panels use source data from figure_source_data/fig2_multidataset.csv.
+\textbf{Supplementary Figure 7.} External marker-recovery stress checks across five observational single-cell datasets. a, Recovery of known marker sets compared with housekeeping negative controls in the top-100 PGAA-W ranking. b, Positive-to-negative enrichment ratios, with 1x as the random expectation and 2x as a practical enrichment threshold. c, CLL comparator analysis showing that PGAA-W produced coherent BCR-axis rankings but was not uniformly superior to all conventional ranking baselines. These analyses assess marker recovery rather than causal perturbation effects. All panels use source data from \texttt{figure\_source\_data/fig2\_multidataset.csv}.
 \end{center}
 
 \clearpage
