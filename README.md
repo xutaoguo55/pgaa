@@ -1,4 +1,4 @@
-# PGAA: distribution-aware single-cell perturbation analysis
+# PGAA: distribution-aware ranking of heterogeneous single-cell perturbation responses
 
 PGAA is a Python and R software package for prioritizing heterogeneous single-cell transcriptional responses. It implements PGAA-W Wasserstein for full-distribution shifts and the PGAA-H histogram-shape statistic for responder-associated expression-shape changes. The Communications AI & Computing manuscript-support materials are included under `communications_ai_computing/` when this archive is unpacked.
 
