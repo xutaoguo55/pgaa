@@ -1,0 +1,6 @@
+Statistic,Genes,Cells,Permutations,Time (s),"Memory (MB, est.)"
+S1 (Wasserstein),"2,000","2,000",200,0.2,~50
+S1 (Wasserstein),"2,000","10,000",200,3.9,~200
+S1 (Wasserstein),"2,000","2,000","2,000",~300,~200
+S2 (Persistence),"2,000","2,000",500,~120,~50
+S2 (Persistence),"2,000","10,000",500,~180,~250

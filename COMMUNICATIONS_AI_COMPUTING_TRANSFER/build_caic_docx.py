@@ -46,7 +46,7 @@ for prefix, uri in OOXML_NAMESPACES.items():
 FIGURES = {
     "1": (
         "figures_png/figure_caic_entry.png",
-        "PGAA framework for distribution-aware single-cell perturbation ranking. a, Uniform shifts are captured by mean-based tests, whereas subset-confined responder states can show weak average shifts. b, PGAA residualizes cell-state and library-size effects, scores genes with PGAA-W Wasserstein for full-distribution shifts and PGAA-H histogram-shape changes, calibrates rankings by within-cluster permutation and Storey's upper-tail diagnostic, and returns ranked response genes. The Wasserstein statistic is the primary starting score; PGAA-H is a secondary diagnostic and should be interpreted only when calibration is acceptable.",
+        "PGAA framework for distribution-aware single-cell perturbation ranking. a, Uniform shifts are captured by mean-based tests, whereas subset-confined responder states can show weak average shifts. b, PGAA residualizes cell-state and library-size effects, scores genes with PGAA-W Wasserstein for full-distribution shifts and PGAA-H histogram-shape changes, calibrates rankings by within-cluster permutation and Storey's upper-tail diagnostic, and returns ranked response genes. PGAA-W is the primary starting score; PGAA-H is a secondary diagnostic and should be interpreted only when calibration is acceptable.",
     ),
     "2": (
         "figures_png/figure_adamson_benchmark.png",

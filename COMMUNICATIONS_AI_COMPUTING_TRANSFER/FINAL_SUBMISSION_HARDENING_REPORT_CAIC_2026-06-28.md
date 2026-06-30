@@ -54,7 +54,7 @@ Scope: Communications AI & Computing submission package in `COMMUNICATIONS_AI_CO
 | Literature positioning | Added current perturbation-response scoring and scPerturb benchmark-resource context to position PGAA as gene-level distributional ranking alongside response-strength, perturbation-quality, and formal association-testing methods rather than as a replacement for them. |
 | Figure synchronization | Updated figure scripts so Adamson, PGAA-H calibration, Figure 1 workflow, Norman, and observational stress-check figures use current terminology and are written into the CAIC figure directory used by the manuscript build. |
 | Audit scripts | Updated expected structure to 3 main tables and Supplementary Tables 1-7. |
-| Figure/table citation order | Renumbered supplementary figures and tables by first main-text citation and updated Figure 2 caption/build scripts so final DOCX/PDF cite Main Figure 1-5, Main Table 1-3, Supplementary Figure 1-6, and Supplementary Table 1-7 in order. |
+| Figure/table citation order | Renumbered supplementary figures and tables by first main-text citation and updated Figure 2 caption/build scripts so final DOCX/PDF cite Main Figure 1-5, Main Table 1-3, Supplementary Figure 1-7, and Supplementary Table 1-7 in order. |
 | Supplementary Table 7 rendering | Fixed a late-stage supplementary PDF defect where a raw `\end{landscape}` command printed and the dense implementation/reproducibility table was clipped. Supplementary Table 7 now uses a paginating longtable and renders across pages 12-13. |
 
 ## Rebuilt deliverables
@@ -106,7 +106,7 @@ Scope: Communications AI & Computing submission package in `COMMUNICATIONS_AI_CO
   - `qc_final_2026_06_28/docx_pdf_check/MANUSCRIPT_docx_contact.png`
   - `qc_final_2026_06_28/supplement_contact_sheet.png`
   - `qc_final_2026_06_28/cover_contact_sheet.png`
-- Visual result: after PGAA-H guardrail, Norman rerun remediation, and Supplementary Table 7 longtable remediation, the source manuscript PDF rendered as 19 pages; supplementary PDF rendered as 15 pages; cover letter PDF rendered as 1 page. The 19-page manuscript contact sheet showed no blank pages, no clipped figures, and no obvious table overflow. Supplementary Table 7 spans pages 12-13 and remains dense but readable.
+- Visual result: after PGAA-H guardrail, Norman rerun remediation, and Supplementary Table 7 longtable remediation, the source manuscript PDF rendered as 20 pages; supplementary PDF rendered as 19 pages; cover letter PDF rendered as 1 page. The 20-page manuscript contact sheet showed no blank pages, no clipped figures, and no obvious table overflow. Supplementary Table 7 spans pages 12-13 and remains dense but readable.
 
 ## Final status
 

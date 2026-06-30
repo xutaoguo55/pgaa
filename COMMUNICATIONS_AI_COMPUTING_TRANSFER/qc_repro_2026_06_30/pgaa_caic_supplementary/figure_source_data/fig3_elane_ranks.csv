@@ -1,0 +1,4 @@
+Method,ELANE_rank,ELANE_p,n_sig,AUROC_or_R_lambda
+SCEPTRE,1761,0.92,30,AUROC=0.469
+Wasserstein,1452,0.2234,1083,AUROC=0.337
+PGAA-H,57,0.0399,66,R_lambda=1.32

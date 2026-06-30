@@ -7,8 +7,8 @@ Date: 2026-06-28
 | Check or script | Status | Reason if failed or not run | File or command to fix |
 |---|---|---|---|
 | `python3 build_caic_docx.py` | passed | Built `MANUSCRIPT_CAIC.docx` and copied final `MANUSCRIPT.docx` to upload directory. | None |
-| `python3 build_caic_pdf.py` | passed | Built 18-page manuscript PDF; 5 main figures found. | None |
-| `python3 build_caic_supplementary_pdf.py` | passed | Built 14-page supplement; Supplementary Figures 1-6 and Supplementary Tables 1-7 detected. | None |
+| `python3 build_caic_pdf.py` | passed | Built 20-page manuscript PDF; 5 main figures found. | None |
+| `python3 build_caic_supplementary_pdf.py` | passed | Built 19-page supplement; Supplementary Figures 1-7 and Supplementary Tables 1-7 detected. | None |
 | Cover letter DOCX/PDF build | passed | `pandoc` and LibreOffice conversion completed; final PDF is 1 page. | None |
 | `python3 build_caic_supplementary_zip.py` | passed | Built `PGAA_supplementary_code.zip`; required entries present. | None |
 | `python3 build_caic_journal_upload_packet.py` | passed | Final upload directory and journal zip contain exactly four files. | None |

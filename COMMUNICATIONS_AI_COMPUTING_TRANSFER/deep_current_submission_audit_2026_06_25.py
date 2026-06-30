@@ -180,7 +180,7 @@ def audit_main_markdown(results: list[str]) -> None:
     if cited != set(refs):
         fail(f"cited refs and reference list differ: missing={sorted(set(refs)-cited)} extra={sorted(cited-set(refs))}")
 
-    if "Supplementary Figures 1-6, Supplementary Tables 1-7, and Supplementary Methods" not in text:
+    if "Supplementary Figures 1-7, Supplementary Tables 1-7, and Supplementary Methods" not in text:
         fail("supplementary information summary is not normalized")
     results.append("Main Markdown has ordered figure/table placeholders, prior in-text citations, no hard page breaks, and refs 1-35 all cited.")
 
@@ -190,7 +190,7 @@ def audit_supplement(results: list[str]) -> None:
     figs = [int(x) for x in re.findall(r"Supplementary Figure (\d+)\.", text)]
     tabs = [int(x) for x in re.findall(r"Supplementary Table (\d+)\.", text)]
     numbered_methods = re.findall(r"Supplementary Methods (\d+)\.", text)
-    if figs != [1, 2, 3, 4, 5, 6]:
+    if figs != [1, 2, 3, 4, 5, 6, 7]:
         fail(f"supplementary figures out of order: {figs}")
     if tabs != [1, 2, 3, 4, 5, 6, 7]:
         fail(f"supplementary tables out of order: {tabs}")
@@ -220,7 +220,7 @@ def audit_supplement(results: list[str]) -> None:
             content = re.sub(r"\b\d+\b", "", page_text).strip()
             if not content:
                 fail(f"{pdf.name} page {page} is blank or contains only a page number")
-    results.append("Supplementary PDF source has title/authors, Figures 1-6, Tables 1-7, unnumbered Supplementary Methods, panel captions, separated landscape tables, and no blank PDF pages.")
+    results.append("Supplementary PDF source has title/authors, Figures 1-7, Tables 1-7, unnumbered Supplementary Methods, panel captions, separated landscape tables, and no blank PDF pages.")
 
 
 def audit_references(results: list[str]) -> None:

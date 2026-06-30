@@ -33,9 +33,9 @@ Native Microsoft Word GUI inspection was not performed from this terminal sessio
 | Check | Status | Evidence |
 |---|---|---|
 | Final DOCX text extraction | passed | `FINAL_ALL_CHECKS_2026_06_28/text/manuscript_docx_plain.txt` |
-| Final DOCX to PDF conversion via LibreOffice | passed | generated `FINAL_ALL_CHECKS_2026_06_28/visual/docx_soffice/MANUSCRIPT.pdf`, 18 pages |
-| Main manuscript PDF render | passed | 19-page contact sheet: `FINAL_ALL_CHECKS_2026_06_28/visual/main_pdf_contact.png` |
-| Supplementary PDF render | passed | 15-page contact sheet: `FINAL_ALL_CHECKS_2026_06_28/visual/supp_pdf_contact.png` |
+| Final DOCX to PDF conversion via LibreOffice | passed | generated `FINAL_ALL_CHECKS_2026_06_28/visual/docx_soffice/MANUSCRIPT.pdf`, 20 pages |
+| Main manuscript PDF render | passed | 20-page contact sheet: `FINAL_ALL_CHECKS_2026_06_28/visual/main_pdf_contact.png` |
+| Supplementary PDF render | passed | 19-page contact sheet: `FINAL_ALL_CHECKS_2026_06_28/visual/supp_pdf_contact.png` |
 | Cover letter PDF render | passed | 1-page contact sheet: `FINAL_ALL_CHECKS_2026_06_28/visual/cover_pdf_contact.png` |
 | Supplementary Table 7 visual check | passed | table spans pages 12-13; no raw LaTeX command or clipped table tail |
 | Bad export-pattern scan | passed | no raw `begin/end{landscape}`, `S2 persistence`, placeholders, or empty parentheses in final extracted text |
@@ -44,9 +44,9 @@ Native Microsoft Word GUI inspection was not performed from this terminal sessio
 
 | Artifact | Main figures | Main tables | Supplementary figures | Supplementary tables |
 |---|---:|---:|---:|---:|
-| Final DOCX text | 1-5 passed | 1-3 passed | 1-6 passed | 1-7 passed |
-| Main PDF text | 1-5 passed | 1-3 passed | 1-6 passed | 1-7 passed |
-| Supplementary PDF text | main Figure 1-5 only in source mapping, acceptable | main Table 3 note only, acceptable | 1-6 passed | 1-7 passed |
+| Final DOCX text | 1-5 passed | 1-3 passed | 1-7 passed | 1-7 passed |
+| Main PDF text | 1-5 passed | 1-3 passed | 1-7 passed | 1-7 passed |
+| Supplementary PDF text | main Figure 1-5 only in source mapping, acceptable | main Table 3 note only, acceptable | 1-7 passed | 1-7 passed |
 
 ## Reference truth and numbering
 
@@ -106,7 +106,7 @@ Full scan table: `FINAL_ALL_CHECKS_2026_06_28/overclaim_scan.tsv`.
 | Artifact | Embedded figure count | Minimum effective resolution | Status |
 |---|---:|---:|---|
 | Main manuscript PDF | 5 | 495 ppi | passed |
-| Supplementary PDF | 6 | 580 ppi | passed |
+| Supplementary PDF | 7 | 580 ppi | passed |
 
 Evidence: `FINAL_ALL_CHECKS_2026_06_28/main_pdf_images.txt` and `FINAL_ALL_CHECKS_2026_06_28/supp_pdf_images.txt`.
 

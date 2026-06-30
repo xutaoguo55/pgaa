@@ -1,0 +1,7 @@
+Perturbation/Target,Genes,N,Evidence type,Source,Used for tuning
+CEBPE (Norman 2019),"ELANE, AZU1, MPO, LYZ, CTSG, GFI1, PRTN3, DEFA1, RNASE2",9,Neutrophil granule proteins,"Literature (Park 1999, Friedman 2007)",No
+TCL1A (CLL),"CD79A, CD79B, MS4A1, CD24, BANK1, LYN, BLNK, SYK, BTK, PLCG2, PIK3CD, CD19, CD22",13,BCR signaling pathway,Literature,No
+TCR (Sepsis),"CD3D, CD3E, CD3G, TRAC, TRBC1, TRBC2, TRBV family",~20,TCR signaling,Literature,No
+Cytokine (RA),"IL1B, IL6, CXCL8, CCL2, CCL5, CXCL10, TNF, IL10, TGFB1, IFNG",10,Inflammatory cytokines,Literature,No
+Multi-lineage (PBMC),"MS4A1, CD79A, CD3D, CD8A, CD14, FCGR3A, NKG7, GNLY",8,Lineage markers,Literature,No
+Gut immune (IBD),"IL1B, IL6, CXCL8, CCL2, CCL5, CXCL10, TNF, IL10, TGFB1, IFNG",10,Inflammatory cytokines,Literature,No

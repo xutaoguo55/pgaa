@@ -1,0 +1,25 @@
+June 28, 2026
+Dear Editors,
+We are pleased to submit “PGAA: distribution-aware ranking of heterogeneous
+single-cell perturbation responses” for consideration as an Article in Communications AI & Computing.
+PGAA addresses a practical computational problem in single-cell perturbation
+analysis: ranking heterogeneous responses that are not well summarized by
+mean-shift tests. It integrates PGAA-W, a Wasserstein-based distributional
+ranking score, PGAA-H, a guarded histogram-shape diagnostic, permutation
+calibration, and a reproducible Python/R implementation with a CLI into
+a transparent ranking component for hypothesis generation. Adamson 2016
+UPR CRISPRi provides proof-of-principle evidence (5 perturbations, 13 positives); Norman 2019 CRISPRa provides a PGAA-W extension across three
+perturbations (KLF1, CEBPE, CEBPA) and a focused PGAA-H case study
+(ELANE/PRTN3 in CEBPE; BHLHE40 AUROC 0.833). SCEPTRE is compared directly on Norman CEBPE. Observational datasets are retained only
+as marker-recovery stress checks. Broader systematic distributional-test benchmarking and genome-scale Perturb-seq evaluation are acknowledged as future
+work.
+Repository: https://github.com/xutaoguo55/pgaa. Zenodo DOI: 10.5281/zenodo.20681141. This manuscript has not been published and is not under consideration elsewhere. All authors have approved. No competing interests, no
+external funding. We opt in to Transparent Peer Review.
+Sincerely,
+Xutao Guo, on behalf of all authors
+Department of Hematology, Nanfang Hospital, Southern Medical University
+guoxutao@smu.edu.cn
+
+1
+
+

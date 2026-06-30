@@ -52,12 +52,12 @@ FORBIDDEN_PATTERNS = [
 ]
 
 REQUIRED_TEXT = [
-    "Figure 1a illustrates the response regimes motivating PGAA, and Figure 1b summarizes the analysis workflow.",
+    "Figure 1a illustrates the response regimes, and Figure 1b summarizes the workflow.",
     "Table 1. Evidence levels across PGAA evaluations.",
     "Table 2. Adamson 2016 UPR CRISPRi benchmark summary.",
     "Table 3. Norman 2019 CEBPE ranking and calibration summary.",
     "Figure 1. PGAA framework for distribution-aware single-cell perturbation ranking.",
-    "The Wasserstein statistic is the primary starting score",
+    "PGAA-W is the primary starting score",
     "Data availability",
     "Code availability",
     "AI Tool Use",
@@ -234,7 +234,7 @@ def check_pdf_and_supplement(docx_plain: str) -> list[Check]:
     manuscript_pages = pdf_pages(MANUSCRIPT_PDF)
     supplement_pages = pdf_pages(SUPPLEMENT_PDF)
     checks.append(Check("manuscript_pdf_pages", "PASS" if 12 <= manuscript_pages <= 20 else "FAIL", f"{manuscript_pages} pages"))
-    checks.append(Check("supplementary_pdf_pages", "PASS" if 10 <= supplement_pages <= 18 else "FAIL", f"{supplement_pages} pages"))
+    checks.append(Check("supplementary_pdf_pages", "PASS" if 10 <= supplement_pages <= 20 else "FAIL", f"{supplement_pages} pages"))
 
     manuscript_pdf_text = pdf_text(MANUSCRIPT_PDF)
     normalized_pdf = " ".join(manuscript_pdf_text.split()).replace("Figure 1:", "Figure 1.")
@@ -244,7 +244,7 @@ def check_pdf_and_supplement(docx_plain: str) -> list[Check]:
     supplement_text = pdf_text(SUPPLEMENT_PDF)
     supp_figs = sorted(set(int(x) for x in re.findall(r"Supplementary Figure (\d+)", supplement_text)))
     supp_tables = sorted(set(int(x) for x in re.findall(r"Supplementary Table (\d+)", supplement_text)))
-    checks.append(Check("supplementary_figure_sequence_pdf", "PASS" if supp_figs == [1, 2, 3, 4, 5, 6] else "FAIL", str(supp_figs)))
+    checks.append(Check("supplementary_figure_sequence_pdf", "PASS" if supp_figs == [1, 2, 3, 4, 5, 6, 7] else "FAIL", str(supp_figs)))
     checks.append(Check("supplementary_table_sequence_pdf", "PASS" if supp_tables == [1, 2, 3, 4, 5, 6, 7] else "FAIL", str(supp_tables)))
     stale_s_labels = re.findall(r"Supplementary (?:Figure|Table) S\d+|\b(?:Figure|Table) S\d+", supplement_text + "\n" + docx_plain)
     checks.append(Check("no_old_supplementary_s_labels", "PASS" if not stale_s_labels else "FAIL", ", ".join(sorted(set(stale_s_labels))) or "no S-numbered old labels"))

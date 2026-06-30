@@ -8,13 +8,13 @@ Scope: final Communications AI & Computing PGAA submission package in `COMMUNICA
 
 PASS after remediation.
 
-Main Figure 1-5, main Table 1-3, Supplementary Figure 1-6, and Supplementary Table 1-7 are now cited in first-appearance order in the source manuscript, final upload DOCX text extraction, and manuscript PDF text extraction. The supplementary PDF contains Supplementary Figure 1-6 and Supplementary Table 1-7 in numeric order.
+Main Figure 1-5, main Table 1-3, Supplementary Figure 1-7, and Supplementary Table 1-7 are now cited in first-appearance order in the source manuscript, final upload DOCX text extraction, and manuscript PDF text extraction. The supplementary PDF contains Supplementary Figure 1-7 and Supplementary Table 1-7 in numeric order.
 
 ## Corrections made
 
 | Area | Previous issue | Correction |
 |---|---|---|
-| Supplementary figures | First citation order was Supplementary Figure 5, 1, 4, 3, 2, 6. | Renumbered and reordered supplementary figures by first main-text citation: BHLHE40 details, ELANE histogram, calibration QQ, simulation, CLL complementarity, workflow. |
+| Supplementary figures | First citation order was Supplementary Figure 5, 1, 4, 3, 2, 6, 7. | Renumbered and reordered supplementary figures by first main-text citation: BHLHE40 details, ELANE histogram, calibration QQ, simulation, CLL complementarity, PGAA workflow, external marker-recovery stress checks. |
 | Supplementary tables | First citation order was Supplementary Table 6, 4, 5, 1, 2, 3, 7. | Renumbered and reordered supplementary tables by first main-text citation: Adamson UPR marker set, Adamson per-perturbation benchmark, Norman multi-perturbation benchmark, Norman CEBPE target details, PGAA-H bin sensitivity, marker-recovery datasets, implementation/reproducibility status. |
 | Figure 2 caption | Caption still pointed panel d values to old Supplementary Table 6. | Updated the DOCX and PDF build scripts so Figure 2 points to Supplementary Table 2. |
 | Supplementary Methods | BHLHE40 figure-rebuild note still pointed to old Supplementary Figure 5. | Updated to Supplementary Figure 1. |
@@ -26,7 +26,7 @@ Main Figure 1-5, main Table 1-3, Supplementary Figure 1-6, and Supplementary Tab
 |---|---|---|---|
 | Main figures | 1, 2, 3, 4, 5 | 1, 2, 3, 4, 5 | 1, 2, 3, 4, 5 |
 | Main tables | 1, 2, 3 | 1, 2, 3 | 1, 2, 3 |
-| Supplementary figures | 1, 2, 3, 4, 5, 6 | 1, 2, 3, 4, 5, 6 | 1, 2, 3, 4, 5, 6 |
+| Supplementary figures | 1, 2, 3, 4, 5, 6, 7 | 1, 2, 3, 4, 5, 6, 7 | 1, 2, 3, 4, 5, 6, 7 |
 | Supplementary tables | 1, 2, 3, 4, 5, 6, 7 | 1, 2, 3, 4, 5, 6, 7 | 1, 2, 3, 4, 5, 6, 7 |
 
 ## Final mapping
@@ -51,6 +51,7 @@ Main Figure 1-5, main Table 1-3, Supplementary Figure 1-6, and Supplementary Tab
 | Supplementary Figure 4 | Simulation ablation | `figures_png/figure_5.png` |
 | Supplementary Figure 5 | CLL complementarity analysis | `figures_png/figure_4.png` |
 | Supplementary Figure 6 | PGAA workflow | `figures_png/figure_pgaa_workflow.png` |
+| Supplementary Figure 7 | External marker-recovery stress checks | `figures_png/figure_1.png` |
 
 ### Main tables
 
@@ -78,7 +79,7 @@ Main Figure 1-5, main Table 1-3, Supplementary Figure 1-6, and Supplementary Tab
 |---|---|
 | `python3 build_caic_docx.py` | passed |
 | `python3 build_caic_pdf.py` | passed |
-| `python3 build_caic_supplementary_pdf.py` | passed; reported Supplementary figures 1-6 and Supplementary tables 1-7 |
+| `python3 build_caic_supplementary_pdf.py` | passed; reported Supplementary figures 1-7 and Supplementary tables 1-7 |
 | `python3 build_caic_supplementary_zip.py` | passed |
 | `python3 build_caic_journal_upload_packet.py` | passed |
 | DOCX text extraction with `pandoc` | passed |

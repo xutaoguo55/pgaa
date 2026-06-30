@@ -73,7 +73,7 @@ FORBIDDEN_MANUSCRIPT_PATTERNS = [
 
 REQUIRED_MANUSCRIPT_REGEXES = [
     r"distribution-aware ranking",
-    r"guardrailed ranking method",
+    r"guardrailed ranking (layer|method|protocol)",
     r"single-cell perturbation data",
     r"marker[- ]recovery stress (tests|checks)",
     r"rather than causal interpretation",

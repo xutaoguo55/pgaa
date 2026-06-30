@@ -1,0 +1,12 @@
+Item,Detail
+Source code,"https://github.com/xutaoguo55/pgaa"
+Version,v0.1.0
+License,MIT
+Python package,pgaa (pgaa/core/)
+R package,pgaa_r (pgaa_r/R/)
+Environment,environment.yml (Conda) / Dockerfile
+Example data,See §2.9 Datasets; GEO GSE133344 GSE111014 GSE167363 GSE159117 GSE116222 GSE90546
+Benchmark scripts,scripts/rebuild_adamson_full_results.py; scripts/table_sceptre_vs_pgaa.py; scripts/figure_bhlhe40_details.py; scripts/figure_simulation.py; source-data CSVs for Norman summaries
+Reproducibility,"All random seeds fixed (random_state=42); Python and R output validated (error < 1e-6)"
+Expected runtime,"~5 min for 2,000 genes × 2,000 permutations (S1); ~2 min for 2,000 genes × 500 permutations (S2) on single CPU"
+Archive,Zenodo DOI https://doi.org/10.5281/zenodo.20681141; Software Heritage snapshot swh:1:snp:5b1b2cc9ce32298968e00f69e1af5ff8aed8889f

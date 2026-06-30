@@ -17,7 +17,7 @@ Overall status: PASS
 | crossref_exact_doi_metadata_match | PASS | all DOI-bearing references match exact Crossref DOI metadata |
 | doi_resolution | PASS | 29 DOI-bearing references resolve |
 | main_figure_sequence | PASS | [1, 2, 3, 4, 5] |
-| supplementary_figure_sequence | PASS | [1, 2, 3, 4, 5, 6] |
+| supplementary_figure_sequence | PASS | [1, 2, 3, 4, 5, 6, 7] |
 | supplementary_table_sequence | PASS | [1, 2, 3, 4, 5, 6, 7] |
 | supplementary_labels_nature_style | PASS | no Supplementary Figure/Table S# labels |
 | main_figure_files_present | PASS | all mapped main figure files present |

@@ -9,7 +9,7 @@ header-includes:
 
 # Supplementary Information
 
-**Manuscript title:** PGAA: distribution-aware ranking of heterogeneous single-cell perturbation responses
+**Manuscript title:** PGAA: distribution-aware ranking of heterogeneous \mbox{single-cell} perturbation responses
 
 **Authors:** Xiaolei Wei, Haiqing Zheng, Junwei Huang, Qi Wei, Yongqiang Wei, Ru Feng, Xutao Guo
 
@@ -62,13 +62,11 @@ header-includes:
 \end{center}
 
 \clearpage
-
 \begin{center}
 \includegraphics[width=1.0\textwidth]{figures_png/figure_1.png}
 
 \textbf{Supplementary Figure 7.} External marker-recovery stress checks across five observational single-cell datasets. a, Recovery of known marker sets compared with housekeeping negative controls in the top-100 PGAA-W ranking. b, Positive-to-negative enrichment ratios, with 1x as the random expectation and 2x as a practical enrichment threshold. c, CLL comparator analysis showing that PGAA-W produced coherent BCR-axis rankings but was not uniformly superior to all conventional ranking baselines. These analyses assess marker recovery rather than causal perturbation effects. All panels use source data from \texttt{figure\_source\_data/fig2\_multidataset.csv}.
 \end{center}
-
 \clearpage
 
 ## Supplementary Table 1. Adamson 2016 UPR marker set
@@ -238,7 +236,7 @@ Reproducibility boundary & Raw GEO-to-final-figure rerun & Partial & Adamson raw
 
 ## CLI Input/Output Schema
 
-The PGAA command-line interface (\texttt{pgaa-run}) accepts the following inputs and produces the following outputs.
+The PGAA command-line interface (\texttt{pgaa-run}) accepts a normalized cell-by-gene expression matrix and a metadata file, and writes PGAA-W and PGAA-H output. The CLI is a lightweight front-end that computes observed scores and, for PGAA-W, permutation p-values. It does not compute PGAA-H permutation p-values or Storey calibration diagnostics; calibrated PGAA-H analyses reported in the manuscript use the dedicated benchmark scripts and source-data tables.
 
 \subsection*{Input (required)}
 
@@ -247,10 +245,10 @@ The PGAA command-line interface (\texttt{pgaa-run}) accepts the following inputs
 \hline
 Field & Type & Description \\
 \hline
-\texttt{-\/-expression} & CSV/TSV path & Normalized expression matrix (cells × genes, or genes × cells with \texttt{-\/-transpose}) \\
-\texttt{-\/-metadata} & CSV/TSV path & Cell-level metadata; must contain columns for perturbation label and cell identifier \\
-\texttt{-\/-target} & string & Target perturbation identifier (e.g., gene name or sgRNA label) \\
-\texttt{-\/-out-prefix} & string & Output file prefix (writes \texttt{<prefix>.pgaw.csv} and \texttt{<prefix>.pgah.csv}) \\
+\texttt{-\/-expression} & CSV/TSV path & Normalized cell-by-gene expression matrix (rows = cells, columns = genes) \\
+\texttt{-\/-metadata} & CSV/TSV path & Cell-level metadata; must contain a column with perturbation/group labels \\
+\texttt{-\/-target} & string & Target gene identifier (must match a column name in the expression file) \\
+\texttt{-\/-out-prefix} & string & Output file prefix (writes \texttt{<prefix>.s1.csv} and \texttt{<prefix>.s2.csv}) \\
 \hline
 \end{tabular}
 \end{center}
@@ -258,25 +256,27 @@ Field & Type & Description \\
 \subsection*{Input (optional)}
 
 \begin{center}
-\begin{tabular}{ll>{\raggedright\arraybackslash}p{0.55\linewidth}}
+\begin{tabular}{lll>{\raggedright\arraybackslash}p{0.40\linewidth}}
 \hline
 Field & Type & Default & Description \\
 \hline
-\texttt{-\/-group-column} & string & \texttt{group} & Column name for perturbation/control group labels \\
+\texttt{-\/-group-column} & string & \texttt{group} & Column name in metadata for perturbation/control labels \\
 \texttt{-\/-perturbed-value} & string & \texttt{perturbed} & Value in group column marking perturbed cells \\
 \texttt{-\/-control-value} & string & \texttt{control} & Value in group column marking control cells \\
-\texttt{-\/-cell-type-column} & string & (none) & Column name for cell-type or cluster labels for within-cluster permutation \\
-\texttt{-\/-library-size-column} & string & (none) & Column name for library size (for residualization) \\
+\texttt{-\/-cell-type-column} & string & (none) & Column name for cluster/cell-type labels (for within-cluster permutation) \\
+\texttt{-\/-library-size-column} & string & (none) & Column name for per-cell library size (for residualization) \\
 \texttt{-\/-n-perms} & int & 2000 & Number of within-cluster permutations for PGAA-W \\
-\texttt{-\/-n-perms-s2} & int & 500 & Number of within-cluster permutations for PGAA-H \\
 \texttt{-\/-n-bins} & int & 20 & Number of histogram bins for PGAA-H \\
-\texttt{-\/-top-n} & int & 2000 & Number of top-ranked genes to output \\
-\texttt{-\/-seed} & int & 42 & Random seed for permutation reproducibility \\
+\texttt{-\/-skip-s1} & flag & off & Skip PGAA-W output \\
+\texttt{-\/-skip-s2} & flag & off & Skip PGAA-H output \\
+\texttt{-\/-random-state} & int & 42 & Random seed for permutation reproducibility \\
 \hline
 \end{tabular}
 \end{center}
 
 \subsection*{Output}
+
+\subsubsection*{PGAA-W (\texttt{.s1.csv})}
 
 \begin{center}
 \begin{tabular}{ll>{\raggedright\arraybackslash}p{0.55\linewidth}}
@@ -284,16 +284,31 @@ Field & Type & Default & Description \\
 Column & Type & Description \\
 \hline
 \texttt{gene} & string & Gene identifier \\
-\texttt{PGAA-W score} & float & Quantile-grid Wasserstein distance (observed) \\
-\texttt{PGAA-W p\_value\_perm} & float & Within-cluster permutation p-value (plus-one estimator) \\
-\texttt{PGAA-W rank} & int & Rank by PGAA-W score (1 = highest) \\
-\texttt{PGAA-H score} & float & RMS distance between top-3 peak-prominence vectors \\
-\texttt{PGAA-H p\_value\_perm} & float & Within-cluster permutation p-value \\
-\texttt{PGAA-H rank} & int & Rank by PGAA-H score \\
-\texttt{storey\_upper\_tail\_ratio} & float & Uncapped Storey calibration diagnostic (R\_lambda; lambda=0.5) \\
+\texttt{W\_observed} & float & 99-point quantile-grid Wasserstein distance \\
+\texttt{W\_std\_observed} & float & Standardized Wasserstein (scaled by sqrt(min(n\_pert, n\_ctrl))) \\
+\texttt{W\_null\_mean} & float & Mean of permutation null statistics \\
+\texttt{W\_null\_std} & float & SD of permutation null statistics \\
+\texttt{z\_score} & float & (W\_std\_observed \(-\) W\_null\_mean) / W\_null\_std \\
+\texttt{p\_value\_perm} & float & Within-cluster permutation p-value (plus-one estimator) \\
 \hline
 \end{tabular}
 \end{center}
+
+\subsubsection*{PGAA-H (\texttt{.s2.csv})}
+
+\begin{center}
+\begin{tabular}{ll>{\raggedright\arraybackslash}p{0.55\linewidth}}
+\hline
+Column & Type & Description \\
+\hline
+\texttt{gene} & string & Gene identifier \\
+\texttt{S2} & float & RMS distance between top-3 peak-prominence vectors (density-normalized histograms) \\
+\texttt{n\_peaks\_on} & int & Number of peaks detected in the perturbed-condition histogram \\
+\hline
+\end{tabular}
+\end{center}
+
+The lightweight CLI reports PGAA-H scores without permutation calibration; the calibrated PGAA-H p-values, ranks, and Storey upper-tail diagnostics reported in the manuscript are computed by the benchmark scripts (\texttt{scripts/benchmark\_norman2019.py}, \texttt{scripts/benchmark\_prt\_s2.py}, \texttt{scripts/benchmark\_prt\_s2\_calibrated.py}) and are provided in the source-data tables.
 
 \subsection*{Example}
 
@@ -312,7 +327,7 @@ pgaa-run \
   --out-prefix results/CEBPE
 \end{verbatim}
 
-Writes \texttt{results/CEBPE.pgaw.csv} and \texttt{results/CEBPE.pgah.csv}.
+Writes \texttt{results/CEBPE.s1.csv} and \texttt{results/CEBPE.s2.csv}. The suffixes \texttt{s1} and \texttt{s2} are retained for backward compatibility; \texttt{s1} corresponds to PGAA-W and \texttt{s2} corresponds to PGAA-H.
 
 \newpage
 

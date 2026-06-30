@@ -341,7 +341,7 @@ def check_figures_tables() -> list[Check]:
     supp_figures = sorted(set(int(x) for x in re.findall(r"Supplementary Figure (\d+)", combined)))
     supp_tables = sorted(set(int(x) for x in re.findall(r"Supplementary Table (\d+)|Table (\d+)", combined) for x in x if x))
     checks.append(Check("main_figure_sequence", "PASS" if main_figures == [1, 2, 3, 4, 5] else "FAIL", str(main_figures)))
-    checks.append(Check("supplementary_figure_sequence", "PASS" if supp_figures == [1, 2, 3, 4, 5, 6] else "FAIL", str(supp_figures)))
+    checks.append(Check("supplementary_figure_sequence", "PASS" if supp_figures == [1, 2, 3, 4, 5, 6, 7] else "FAIL", str(supp_figures)))
     checks.append(Check("supplementary_table_sequence", "PASS" if supp_tables == list(range(1, 8)) else "FAIL", str(supp_tables)))
     checks.append(Check("supplementary_labels_nature_style", "PASS" if not old_s_labels else "FAIL", ", ".join(sorted(set(old_s_labels))) or "no Supplementary Figure/Table S# labels"))
     required_images = [

@@ -28,10 +28,10 @@ Overall status: PASS
 | reference_number_sequence_final_docx | PASS | [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35] |
 | docx_no_empty_value_patterns | PASS | no empty parentheses or missing numeric-value patterns |
 | docx_title_heading_styles_black | PASS | Title and heading styles are black |
-| manuscript_pdf_pages | PASS | 19 pages |
-| supplementary_pdf_pages | PASS | 15 pages |
+| manuscript_pdf_pages | PASS | 20 pages |
+| supplementary_pdf_pages | PASS | 20 pages |
 | manuscript_pdf_contains_new_figure1_text | PASS | Figure 1 citation and legend present |
-| supplementary_figure_sequence_pdf | PASS | [1, 2, 3, 4, 5, 6] |
+| supplementary_figure_sequence_pdf | PASS | [1, 2, 3, 4, 5, 6, 7] |
 | supplementary_table_sequence_pdf | PASS | [1, 2, 3, 4, 5, 6, 7] |
 | no_old_supplementary_s_labels | PASS | no S-numbered old labels |
 | dataset_accessions_present_final_files | PASS | GSE111014, GSE167363, GSE159117, GSE116222, GSE133344, GSE90546, 10x Genomics |
