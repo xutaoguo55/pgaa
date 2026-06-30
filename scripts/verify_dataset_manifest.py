@@ -11,6 +11,8 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "DATASET_MANIFEST.tsv"
 TEXT_SOURCES = [
+    ROOT / "communications_ai_computing" / "MANUSCRIPT_CAIC.md",
+    ROOT / "communications_ai_computing" / "SUPPLEMENTARY_CAIC.md",
     ROOT / "communications_medicine" / "MANUSCRIPT_CM.md",
     ROOT / "communications_medicine" / "SUPPLEMENTARY_CM.md",
     ROOT / "README.md",

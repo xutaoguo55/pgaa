@@ -68,7 +68,7 @@ python3 -m pgaa.cli \
   --library-size-column library_size
 ```
 
-The expression CSV should have cells as rows, genes as columns, and the first column as cell IDs. The metadata CSV must contain `cell_id` and a group column. The command writes `results/MYC.s1.csv` and `results/MYC.s2.csv`.
+The expression CSV should have cells as rows, genes as columns, and the first column as cell IDs. The metadata CSV must contain `cell_id` and a group column. The command writes `results/MYC.s1.csv` (PGAA-W: scores + permutation p-values) and `results/MYC.s2.csv` (PGAA-H: histogram-shape scores only; no permutation p-values). The lightweight CLI does not compute PGAA-H permutation p-values or Storey calibration diagnostics. Calibrated PGAA-H analyses are provided by the dedicated benchmark scripts and source-data tables. Historical output suffixes (`s1`, `s2`) are retained for backward compatibility; `s1` corresponds to PGAA-W and `s2` to PGAA-H.
 
 Naming note: historical code outputs and filenames use `s1` and `s2` for backward compatibility. In the manuscript terminology, `s1` corresponds to PGAA-W and `s2` corresponds to PGAA-H.
 
