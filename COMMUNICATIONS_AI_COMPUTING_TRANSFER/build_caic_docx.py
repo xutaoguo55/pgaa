@@ -60,10 +60,6 @@ FIGURES = {
         "figures_png/figure_3.png",
         "Perturbation-specific calibration defines guardrails for PGAA-H histogram-shape ranking. a, Number of nominally significant genes and uncapped Storey upper-tail ratio across six Norman perturbations. b, CEBPE-target p-values across perturbation contexts. c, Leakage of CEBPE-target significance across non-CEBPE perturbations. PGAA-H denotes the histogram-shape diagnostic.",
     ),
-    "5": (
-        "figures_png/figure_1.png",
-        "External marker-recovery stress checks across five observational single-cell datasets. a, Recovery of known marker sets compared with housekeeping negative controls in the top-100 Wasserstein ranking. b, Positive-to-negative enrichment ratios, with 1x as the random expectation and 2x as a practical enrichment threshold. c, CLL comparator analysis showing that Wasserstein produced coherent BCR-axis rankings but was not uniformly superior to all conventional ranking baselines. These analyses assess marker recovery rather than causal perturbation effects.",
-    ),
 }
 
 

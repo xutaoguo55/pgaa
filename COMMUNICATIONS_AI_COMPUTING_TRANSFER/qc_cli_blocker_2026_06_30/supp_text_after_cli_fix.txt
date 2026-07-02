@@ -1,0 +1,1002 @@
+Supplementary Information
+Manuscript title: PGAA: distribution-aware ranking of heterogeneous
+single-cell perturbation responses
+Authors: Xiaolei Wei, Haiqing Zheng, Junwei Huang, Qi Wei, Yongqiang Wei,
+Ru Feng, Xutao Guo
+
+Supplementary Figures
+
+Supplementary Figure 1. Adamson 2016 BHLHE40 perturbation details.
+a, Gene-level PGAA-W Wasserstein versus PGAA-H histogram-shape statistic
+scores with UPR markers highlighted. b, Control and BHLHE40-perturbed
+expression distributions for representative UPR genes.
+
+1
+
+Supplementary Figure 2. ELANE heterogeneous expression pattern in
+Norman 2019 CEBPE CRISPRa. a, ELANE expression distribution across
+control and CEBPE-perturbed cells using 20 histogram bins. b, Histogram
+profiles used for the PGAA-H histogram-shape statistic comparison.
+
+2
+
+Supplementary Figure 3. PGAA-H calibration for the pre-specified
+Norman 2019 CEBPE n-bins = 20 analysis. a, QQ plot of observed versus
+expected -log10(p) values. b, Histogram of permutation p-values.
+
+3
+
+Supplementary Figure 4. Simulation ablation across mean-shift,
+heterogeneous-response, and mixed-response regimes. a, Mean-shift regime. b,
+Bimodality-shift regime. c, Mixed mean-plus-bimodality regime. These
+simulations are operating-regime diagnostics rather than a full generative
+model of scRNA-seq counts.
+
+4
+
+Supplementary Figure 5. CLL 20k exploratory complementarity analysis
+comparing Wasserstein and PGAA-H rankings. a, BCR and TCR marker
+ranks by method. b, Top genes by the combined PGAA-W+PGAA-H mean-z
+ranking. c, BCR and TCR marker recovery under alternative ranking
+summaries. This observational pseudo-perturbation analysis is used for
+marker-program ranking only.
+
+5
+
+Supplementary Figure 6. PGAA distribution-aware Perturb-seq ranking
+workflow. The schematic summarizes the input data, preprocessing, PGAA-W
+Wasserstein statistic, PGAA-H histogram-shape statistic, permutation
+calibration, and outputs.
+
+6
+
+Supplementary Figure 7. External marker-recovery stress checks across
+five observational single-cell datasets. a, Recovery of known marker sets
+compared with housekeeping negative controls in the top-100 PGAA-W
+ranking. b, Positive-to-negative enrichment ratios, with 1x as the random
+expectation and 2x as a practical enrichment threshold. c, CLL comparator
+analysis showing that PGAA-W produced coherent BCR-axis rankings but
+was not uniformly superior to all conventional ranking baselines. These
+analyses assess marker recovery rather than causal perturbation effects. All
+panels use source data from figure_source_data/fig2_multidataset.csv.
+
+7
+
+Supplementary Table 1. Adamson 2016 UPR marker set
+The Adamson benchmark uses a curated UPR marker set covering IRE1, PERK,
+ATF6, ERAD, and chaperone branches. Thirteen markers were retained in the
+2,000-HVG benchmark universe used for AUROC/AUPRC calculation.
+Branch
+
+Genes considered
+
+IRE1
+PERK
+ATF6
+ERAD
+Chaperones
+
+ERN1, XBP1, HSPA5, DNAJB9, DNAJC3, SEC61A1
+EIF2AK3, ATF4, DDIT3, PPP1R15A, TRIB3, CHAC1
+ATF6, MBTPS1, MBTPS2, CALR, PDIA4, HYOU1
+EDEM1, SYVN1, SEL1L, HERPUD1, DERL1
+HSPA5, HSP90B1, CALR, PDIA3, PDIA6, ERP29
+
+8
+
+Supplementary Table 2.
+benchmark
+
+Adamson 2016 UPR CRISPRi per-perturbation
+
+Random AUPRC baseline = 0.0065.
+
+Perturbation
+SPI1_pDS255
+ZNF326_pDS262
+BHLHE40_pDS258
+CREB1_pDS269
+DDIT3_pDS263
+
+n
+686
+555
+542
+499
+468
+
+PGAA-W AUROC
+0.806
+0.767
+0.788
+0.772
+0.799
+
+PGAA-W AUPRC
+0.0223
+0.0160
+0.0178
+0.0208
+0.0184
+
+PGAA-H AUROC
+0.658
+0.700
+0.833
+0.781
+0.769
+
+PGAA-H AUPRC
+0.0110
+0.0144
+0.0594
+0.0202
+0.0213
+
+Wilcoxon AUROC
+0.687
+0.526
+0.466
+0.498
+0.468
+
+t-test AUROC
+0.650
+0.531
+0.475
+0.482
+0.476
+
+M
+
+9
+
+Supplementary Table 3. Norman 2019 multi-perturbation CRISPRa targetpanel benchmark
+The main text summarizes the Norman multi-perturbation extension. PGAA-W is supported as the default ranking statistic.
+The benchmark uses processed Norman h5ad input, 2,000 HVGs plus forced inclusion of target-panel genes, and non-targeting
+controls sampled at up to a 3:1 control-to-perturbed ratio. For CEBPA, comparator AUROCs below 0.5 are reported descriptively and do not establish a signed biological inversion; the limited conclusion is that PGAA-W ranked this curated target
+panel more favorably than the tested comparators under the same preprocessing and panel definition.
+
+10
+
+Target
+KLF1
+KLF1
+KLF1
+KLF1
+CEBPE
+CEBPE
+CEBPE
+CEBPE
+CEBPA
+CEBPA
+CEBPA
+CEBPA
+
+Method
+PGAA-W Wasserstein
+KS statistic
+Welch t
+Wilcoxon
+PGAA-W Wasserstein
+KS statistic
+Welch t
+Wilcoxon
+PGAA-W Wasserstein
+KS statistic
+Welch t
+Wilcoxon
+
+AUROC
+0.684
+0.537
+0.424
+0.496
+0.644
+0.497
+0.570
+0.484
+0.665
+0.249
+0.381
+0.262
+
+AUPRC
+0.0252
+0.0153
+0.0073
+0.0173
+0.0154
+0.0054
+0.0054
+0.0054
+0.1244
+0.0032
+0.0038
+0.0034
+
+Random AUPRC baseline
+0.0079
+0.0079
+0.0079
+0.0079
+0.0045
+0.0045
+0.0045
+0.0045
+0.0045
+0.0045
+0.0045
+0.0045
+
+Top-100 positive hits
+1
+1
+0
+1
+2
+0
+0
+0
+2
+0
+0
+0
+
+Positive genes / ranked genes
+16/2016
+16/2016
+16/2016
+16/2016
+9/2009
+9/2009
+9/2009
+9/2009
+9/2009
+9/2009
+9/2009
+9/2009
+
+Supplementary Table 4. Norman 2019 CEBPE target-level details
+The main Norman CEBPE result is summarized in Table 3. This table gives target-level ranks and p-values for the curated
+nine-gene CEBPE target set in the pre-specified n-bins = 20 PGAA-H analysis. The p-values are interpreted as ranking
+evidence because 500 permutations cannot support genome-wide FDR-controlled discovery.
+
+11
+
+Target
+ELANE
+AZU1
+MPO
+LYZ
+CTSG
+GFI1
+PRTN3
+DEFA1
+RNASE2
+
+PGAA-W rank
+1452
+500
+1752
+1372
+1911
+1178
+1364
+1109
+1316
+
+PGAA-W p
+0.223
+0.001
+0.529
+0.172
+0.759
+0.078
+0.163
+0.058
+0.141
+
+PGAA-H rank
+57
+856
+1727
+928
+1727
+1506
+97
+1185
+1105
+
+PGAA-H p
+0.040
+0.597
+1.000
+0.643
+1.000
+0.950
+0.068
+0.872
+0.776
+
+PGAA-H score
+0.004125
+0.001582
+0.000000
+0.001415
+0.000000
+0.000707
+0.004245
+0.000707
+0.001415
+
+Note
+Main PGAA-H signal
+PGAA-W only
+Not recovered
+Not recovered
+Not recovered
+Not recovered
+Secondary PGAA-H signal
+Not recovered
+Not recovered
+
+Supplementary Table 5. PGAA-H histogram-bin sensitivity
+Norman 2019 CEBPE sensitivity sweep. These runs use 200 permutations for
+speed and are used to evaluate bin-count sensitivity, not to claim genome-wide
+significance.
+
+n-bins
+
+ELANE
+rank
+
+20
+30
+50
+75
+100
+150
+
+32
+1807
+489
+460
+468
+446
+
+ELANE p
+
+n-sig at
+p<0.05
+
+Storey
+upper-tail
+ratio
+
+Known
+hits
+
+0.0249
+0.6716
+0.0050
+0.0050
+0.0050
+0.0050
+
+66
+387
+1063
+1087
+1087
+1073
+
+1.321
+0.407
+0.246
+0.227
+0.226
+0.225
+
+1/9
+0/9
+3/9
+4/9
+5/9
+4/9
+
+Supplementary Table 6. Marker-recovery datasets
+The five observational datasets are used for marker recovery rather than causal
+or clinical inference. The top-100 enrichment compares known marker recovery
+against background ranking. The CLL AUROC is computed against the 13gene BCR marker set; AUROC values for other datasets are not reported here
+because the submitted archive does not bundle the full raw data needed for
+independent recomputation and the primary metric is enrichment ratio.
+Top-100
+enrichment
+
+AUROC (where
+available)
+
+PGAA-W
+Wasserstein
+
+4.0x
+
+0.958
+
+PGAA-W
+Wasserstein
+PGAA-W
+Wasserstein
+
+2.1x
+
+—
+
+2.5x
+
+—
+
+PGAA-W
+Wasserstein
+
+2.9x
+
+—
+
+Dataset
+
+Statistic
+
+CLL 20k
+
+Sepsis 20k
+RA 10k
+
+PBMC 3k
+
+12
+
+Key known
+targets hit
+CD79A,
+CD79B,
+MS4A1
+TCR
+pathway
+PBMC/monocyteassociated
+cytokine
+pathway
+Multilineage
+markers
+
+Dataset
+
+Statistic
+
+IBD 10k
+
+PGAA-W
+Wasserstein
+
+Top-100
+enrichment
+
+AUROC (where
+available)
+
+Key known
+targets hit
+
+5.8x
+
+—
+
+Gut
+epithelial
+diseaseassociated
+markers
+
+13
+
+Supplementary Table 7. Implementation, reproducibility, and comparator status
+
+14
+
+Category
+Preprocessing
+Preprocessing
+
+Item
+Normalization
+Feature set
+
+Status or value
+CPM target sum 10,000 followed by log1p
+2,000 HVGs with target inclusion
+
+Residualization
+Residualization
+PGAA-W setting
+
+Cell-state proxy
+Library-size covariate
+Quantile grid
+
+K-means clusters, k = 5
+Standardized library-size covariate
+0.01 to 0.99, 99 points
+
+PGAA-W setting
+
+Permutations
+
+2,000
+
+PGAA-H setting
+
+Histogram bins
+
+n-bins = 20 manuscript starting setting
+
+PGAA-H setting
+
+Permutations
+
+500
+
+Software
+Software
+Software
+
+Python implementation
+R implementation
+License and archive
+
+Reproducibility
+
+Automated checks
+
+Reproducibility
+
+Runtime guidance
+
+Comparator
+
+SCEPTRE [Barry et al.,
+2021]
+Wilcoxon, t-test, MAST
+MMD-PSM
+
+Included under pgaa/
+Included under pgaa_r/
+MIT; GitHub release v0.1.0-code; Zenodo DOI
+https://doi.org/10.5281/zenodo.20681141
+Python toy example, package tests, pytest suite,
+and R smoke tests
+PGAA-W about 5 min for 2,000 genes/2,000
+permutations; PGAA-H under 2 min for 2,000
+genes/500 permutations on one CPU core
+Direct Norman CEBPE benchmark
+
+Comparator
+Comparator
+
+Direct Adamson UPR benchmark
+Processed-source-data Norman CEBPE
+distribution-aware baseline
+
+Rationale or caution
+Standard scRNA-seq scale used across analyses
+Keeps benchmark universe fixed; target
+inclusion is reported to avoid leakage concerns
+Fixed coarse proxy, not optimized per dataset
+Controls broad depth effects
+Same statistic used for observed and permuted
+data
+Adequate for ranking and moderate p-values,
+not extreme genome-wide thresholds
+Pre-specify a small pilot grid such as 10, 20, 30
+and 50; choose the setting using a
+negative-control, null, or unrelated perturbation,
+not by tuning the target-gene rank
+Ranking evidence only; not FDR-controlled
+genome-wide discovery
+Install with pip install -e .
+Smoke/regression tests included
+Software Heritage identifier is provided in
+manuscript metadata
+Included in the supplementary software archive
+Approximate workflow timings, not
+hardware-independent benchmarks
+ELANE rank 1761/2012; p = 0.92
+Mean AUROCs 0.529, 0.523, and 0.406
+AUROC 0.499; 0/9 nominal CEBPE target hits;
+included as a distributional comparator, not a
+full benchmark suite. Clean-archive
+recomputation was verified when the processed
+Norman 2019 h5ad input was supplied via
+NORMAN2019_H5AD.
+
+Category
+Comparator
+
+Item
+KS statistic
+
+Status or value
+Norman KLF1/CEBPE/CEBPA
+multi-perturbation extension
+
+Reproducibility
+
+Norman
+multi-perturbation
+extension
+
+scripts/benchmark_norman_multi_perturbation.py
+plus summary, gene-score, panel-audit, and
+metadata CSV files
+
+Comparator
+
+Robust SCEPTRE,
+pertpy, Mixscape,
+scMAGeCK, DESeq2,
+SCDE,
+perturbation-response
+scoring, Augur, scPerturb
+Figure 1
+
+Discussed only
+
+Figure-source
+mapping
+
+15
+
+Generated from
+figures_png/figure_caic_entry.png by the CAIC
+build scripts
+Rebuilt from Adamson benchmark CSV source
+data
+Rebuilt from processed Norman CEBPE CSV
+summaries
+
+Figure-source
+mapping
+Figure-source
+mapping
+
+Figure 2
+
+Figure-source
+mapping
+
+Figure 4
+
+Rebuilt from six-perturbation PGAA-H
+calibration CSV summaries
+
+Figure-source
+mapping
+Reproducibility
+boundary
+
+Supp. Fig. 7
+
+Rebuilt from cross-dataset marker-recovery and
+CLL comparator CSV summaries
+Partial
+
+Figure 3
+
+Raw GEO-to-final-figure
+rerun
+
+Rationale or caution
+Included as a distribution-aware two-sample
+baseline; PGAA-W Wasserstein had higher
+AUROC in all three curated target-panel
+contrasts
+Clean-archive recomputation was verified with
+NORMAN2019_H5AD; target-panel genes are
+force-included because the processed HVG mask
+excludes all positive-panel genes
+Related methods and ecosystem context; PGAA
+is positioned as gene-level distributional ranking,
+not as a replacement for formal association
+testing, perturbation-quality modeling,
+single-cell response-strength scoring, cell-type
+prioritization, or large benchmark resources
+Conceptual schematic; no numeric source table
+required
+Source-data reproducibility plus raw
+GSE90546/GSM2406675 sanity rerun script
+Processed-source-data reproducibility; full
+recomputation requires NORMAN2019_H5AD and has
+been verified from a clean archive when that
+input is supplied
+Processed-source-data reproducibility; full
+recomputation requires NORMAN2019_H5AD and has
+been verified for the Norman multi-perturbation
+and MMD-PSM scripts when that input is
+supplied
+Source-data reproducibility from included CSV
+files
+Adamson raw sanity rerun is included; Norman
+and observational final figures rely on processed
+source-data CSV files in the review archive. Full
+Norman/MMD-PSM recomputation requires
+NORMAN2019_H5AD; clean-archive reruns were
+verified when that processed input was available.
+
+CLI Input/Output Schema
+The PGAA command-line interface (pgaa-run) accepts a normalized cell-bygene expression matrix and a metadata file, and writes PGAA-W and PGAA-H
+output. The CLI is a lightweight front-end that computes observed scores and,
+for PGAA-W, permutation p-values. It does not compute PGAA-H permutation
+p-values or Storey calibration diagnostics; calibrated PGAA-H analyses reported
+in the manuscript use the dedicated benchmark scripts and source-data tables.
+
+Input (required)
+Field
+--expression
+
+Type
+CSV/TSV path
+
+--metadata
+
+CSV/TSV path
+
+--target
+
+string
+
+--out-prefix
+
+string
+
+Description
+Normalized cell-by-gene expression matrix
+(rows = cells, columns = genes)
+Cell-level metadata; must contain a column
+with perturbation/group labels
+Target gene identifier (must match a
+column name in the expression file)
+Output file prefix (writes
+<prefix>.s1.csv and <prefix>.s2.csv)
+
+Input (optional)
+Field
+--group-column
+
+Type
+string
+
+Default
+group
+
+--perturbed-value
+
+string
+
+perturbed
+
+--control-value
+
+string
+
+control
+
+--cell-type-column
+
+string
+
+(none)
+
+--library-size-column
+
+string
+
+(none)
+
+--n-perms
+
+int
+
+2000
+
+--n-bins
+
+int
+
+20
+
+--skip-s1
+--skip-s2
+--random-state
+
+flag
+flag
+int
+
+off
+off
+42
+
+16
+
+Description
+Column name in metadata for
+perturbation/control labels
+Value in group column marking
+perturbed cells
+Value in group column marking
+control cells
+Column name for
+cluster/cell-type labels (for
+within-cluster permutation)
+Column name for per-cell
+library size (for residualization)
+Number of within-cluster
+permutations for PGAA-W
+Number of histogram bins for
+PGAA-H
+Skip PGAA-W output
+Skip PGAA-H output
+Random seed for permutation
+reproducibility
+
+Output
+PGAA-W (.s1.csv)
+Column
+gene
+W_observed
+W_std_observed
+
+Type
+string
+float
+float
+
+W_null_mean
+W_null_std
+z_score
+
+float
+float
+float
+
+p_value_perm
+
+float
+
+Description
+Gene identifier
+99-point quantile-grid Wasserstein distance
+Standardized Wasserstein (scaled by
+sqrt(min(n_pert, n_ctrl)))
+Mean of permutation null statistics
+SD of permutation null statistics
+(W_std_observed − W_null_mean) /
+W_null_std
+Within-cluster permutation p-value
+(plus-one estimator)
+
+PGAA-H (.s2.csv)
+Column
+gene
+S2
+
+Type
+string
+float
+
+n_peaks_on
+
+int
+
+Description
+Gene identifier
+RMS distance between top-3
+peak-prominence vectors
+(density-normalized histograms)
+Number of peaks detected in the
+perturbed-condition histogram
+
+The lightweight CLI reports PGAA-H scores without permutation calibration;
+the calibrated PGAA-H p-values, ranks, and Storey upper-tail diagnostics reported in the manuscript are computed by the benchmark scripts
+(scripts/benchmark_norman2019.py,
+scripts/benchmark_prt_s2.py,
+scripts/benchmark_prt_s2_calibrated.py) and are provided in the
+source-data tables.
+
+Example
+pgaa-run \
+--expression expression.csv \
+--metadata metadata.csv \
+--target CEBPE \
+--group-column group \
+--perturbed-value CEBPE_sgRNA \
+--control-value NT_sgRNA \
+--cell-type-column cluster \
+--library-size-column library_size \
+17
+
+--n-perms 2000 \
+--n-bins 20 \
+--out-prefix results/CEBPE
+expression.csv
+–metadata metadata.csv
+–target CEBPE
+–group-column group
+–perturbed-value CEBPE_sgRNA
+–control-value NT_sgRNA
+–cell-type-column cluster
+–library-size-column library_size
+–n-perms 2000
+–n-bins 20
+–out-prefix results/CEBPE \end{verbatim}
+Writes results/CEBPE.s1.csv and results/CEBPE.s2.csv. The suﬀixes s1
+and s2 are retained for backward compatibility; s1 corresponds to PGAA-W
+and s2 corresponds to PGAA-H.
+
+18
+
+Supplementary Methods
+Additional modules
+The Python and R packages include conditional mutual information and Fisher
+negative-binomial modules as exploratory extensions. These modules are not
+benchmarked as primary manuscript contributions. They are provided so users
+can explore perturbation effects on dependency structure or count-model dispersion, but the manuscript’s claims are restricted to PGAA-W Wasserstein
+and the PGAA-H histogram-shape statistic.
+Permutation calibration
+For PGAA-W and PGAA-H, perturbation labels are permuted within K-means
+clusters where cluster labels are available. This preserves coarse cell-state composition while disrupting the association between perturbation and expression.
+The observed statistic and each permuted statistic are computed using the same
+numerical definition. For PGAA-W this is the 99-quantile Wasserstein approximation. For PGAA-H this is the RMS distance between top-3 one-dimensional
+histogram peak-prominence values with the specified histogram bin count.
+CLL rank-score analysis
+The CLL TCL1A analysis is an observational marker-recovery experiment, not
+an experimental perturbation. To avoid over-interpreting formal p-values in
+this setting, we use rank-based inverse-normal scores to compare gene orderings among PGAA-W, PGAA-H, and the combined score. The analysis supports complementarity between BCR-oriented PGAA-W hits and TCR-oriented
+PGAA-H hits, but it is not used as causal evidence.
+Simulation and zero-inflation controls
+The simulation evaluates three response types across seven effect sizes and three
+replicates: pure mean shift, partial heterogeneous response, and mean-plusbimodality. The simulation is designed to map operating regimes, not to exhaustively model all Perturb-seq count distributions. A negative-binomial null
+with 30% dropout was used as an additional control for zero-inflation; PGAA-H
+did not show systematic bimodality inflation in this null setting (mean PGAA-H
+= 0.031).
+
+Reproducibility Notes
+All analyses use public data and fixed random seeds (random_state=42 or the
+R equivalent). The public code-only repository contains the PGAA Python/R
+19
+
+package, installation files, tests, and toy smoke-test scripts. The submitted
+supplementary archive contains manuscript-specific benchmark scripts and
+CSV source-data files for table and figure rebuilds. The Norman 2019 CEBPE
+summaries are provided as processed source-data CSV files because the
+full rerun requires the processed Norman h5ad input used in this study.
+scripts/rebuild_adamson_full_results.py regenerates the Adamson 2016
+benchmark table from figure_source_data/fig6_adamson_results.csv;
+scripts/figure_bhlhe40_details.py rebuilds Supplementary Figure
+1
+from
+figure_source_data/adamson_gene_level_scores.csv
+and
+figure_source_data/adamson_bhlhe40_distribution.csv; scripts/benchmark_adamson2016.py
+additionally performs a raw GSE90546/GSM2406675 10X001 sanity rerun for
+the five selected perturbations. scripts/benchmark_mmd_psm.py documents
+the processed-source-data MMD-PSM comparator, and full recomputation requires setting NORMAN2019_H5AD to the processed Norman h5ad input.
+scripts/benchmark_norman_multi_perturbation.py documents the Norman
+KLF1/CEBPE/CEBPA multi-perturbation extension and writes summary,
+gene-score, panel-audit, and metadata CSV files; full recomputation also
+requires NORMAN2019_H5AD. Clean-archive reruns of both scripts were verified
+with the processed Norman h5ad input available. This is source-data reproducibility plus processed-data Norman reruns and a raw Adamson sanity rerun,
+not a fully unified raw GEO-to-final-figure workflow.
+
+20
+
+

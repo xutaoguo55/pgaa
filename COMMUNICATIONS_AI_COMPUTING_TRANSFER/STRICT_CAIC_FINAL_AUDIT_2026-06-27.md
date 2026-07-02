@@ -16,7 +16,7 @@ Overall status: PASS
 | first_appearance_order | PASS | first sequence=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35] |
 | crossref_exact_doi_metadata_match | PASS | all DOI-bearing references match exact Crossref DOI metadata |
 | doi_resolution | PASS | 29 DOI-bearing references resolve |
-| main_figure_sequence | PASS | [1, 2, 3, 4, 5] |
+| main_figure_sequence | PASS | [1, 2, 3, 4] |
 | supplementary_figure_sequence | PASS | [1, 2, 3, 4, 5, 6, 7] |
 | supplementary_table_sequence | PASS | [1, 2, 3, 4, 5, 6, 7] |
 | supplementary_labels_nature_style | PASS | no Supplementary Figure/Table S# labels |
@@ -31,7 +31,7 @@ Overall status: PASS
 | docx_section_Supplementary information | PASS | Supplementary information |
 | docx_section_References | PASS | References |
 | docx_heading_styles_black | PASS | Heading/Title styles are 000000 |
-| docx_embedded_main_figures | PASS | 5 embedded media files |
+| docx_embedded_main_figures | PASS | 4 embedded media files |
 | clean_upload_exact_file_set | PASS | COVER_LETTER_COMMUNICATIONS_AI_COMPUTING.pdf, MANUSCRIPT.docx, PGAA_supplementary_code.zip, SUPPLEMENTARY.pdf |
 | journal_zip_integrity | PASS | None |
 | journal_zip_exact_file_set | PASS | COVER_LETTER_COMMUNICATIONS_AI_COMPUTING.pdf, MANUSCRIPT.docx, PGAA_supplementary_code.zip, SUPPLEMENTARY.pdf |

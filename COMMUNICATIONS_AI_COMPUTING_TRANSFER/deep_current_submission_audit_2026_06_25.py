@@ -84,8 +84,8 @@ def audit_docx(results: list[str]) -> None:
         styles = zf.read("word/styles.xml").decode("utf-8")
         rels = zf.read("word/_rels/document.xml.rels").decode("utf-8")
     media = [n for n in names if n.startswith("word/media/")]
-    if len(media) != 5:
-        fail(f"expected 5 embedded media files, found {len(media)}")
+    if len(media) != 4:
+        fail(f"expected 4 embedded media files, found {len(media)}")
     if xml.count("<w:tbl>") != 3:
         fail(f"expected 3 main DOCX tables, found {xml.count('<w:tbl>')}")
     if "w:pageBreakBefore" in xml or re.search(r"<w:br[^>]+w:type=\"page\"", xml):
@@ -127,7 +127,7 @@ def audit_docx(results: list[str]) -> None:
         )
         if not has_header_rule:
             fail(f"table {index} lacks header bottom rule")
-    results.append("DOCX has 5 figures, 3 three-line main tables, no explicit page breaks, no comments/tracked-change markup, black headings, and non-splitting table rows.")
+    results.append("DOCX has 4 figures, 3 three-line main tables, no explicit page breaks, no comments/tracked-change markup, black headings, and non-splitting table rows.")
 
 
 def audit_main_markdown(results: list[str]) -> None:
@@ -148,15 +148,15 @@ def audit_main_markdown(results: list[str]) -> None:
         if term in text:
             fail(f"forbidden/stale manuscript text remains: {term}")
 
-    placeholders = [int(x) for x in re.findall(r"\*\*\[Figure ([1-5])\]\*\*", text)]
-    if placeholders != [1, 2, 3, 4, 5]:
+    placeholders = [int(x) for x in re.findall(r"\*\*\[Figure ([1-4])\]\*\*", text)]
+    if placeholders != [1, 2, 3, 4]:
         fail(f"main figure placeholders out of order: {placeholders}")
 
     table_captions = [int(x) for x in re.findall(r"^Table ([1-3])\.", text, re.M)]
     if table_captions != [1, 2, 3]:
         fail(f"main table captions out of order: {table_captions}")
 
-    for fig in range(1, 6):
+    for fig in range(1, 5):
         marker = f"**[Figure {fig}]**"
         pre = text[: text.index(marker)]
         if f"Figure {fig}" not in pre:

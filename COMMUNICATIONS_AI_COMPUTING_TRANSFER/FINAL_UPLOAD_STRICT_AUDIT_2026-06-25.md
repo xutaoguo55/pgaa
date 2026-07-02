@@ -17,12 +17,12 @@ Overall status: PASS
 | journal_zip_exact_file_set | PASS | COVER_LETTER_COMMUNICATIONS_AI_COMPUTING.pdf, MANUSCRIPT.docx, PGAA_supplementary_code.zip, SUPPLEMENTARY.pdf |
 | journal_zip_matches_upload_dir | PASS | all ZIP payload hashes match upload dir |
 | docx_zip_integrity | PASS | None |
-| docx_embedded_media_count | PASS | 5 media files: word/media/rId30.png, word/media/rId24.png, word/media/rId15.png, word/media/rId10.png, word/media/rId20.png |
+| docx_embedded_media_count | PASS | 4 media files: word/media/rId24.png, word/media/rId15.png, word/media/rId10.png, word/media/rId20.png |
 | docx_no_comments_or_tracked_changes | PASS | no comments or tracked-change markup |
 | figure1_embedded_png_hash_match | PASS | word/media/rId10.png |
 | docx_required_text_present | PASS | 14 required phrases present |
 | docx_no_forbidden_text | PASS | no stale placeholders or wrong-journal residue |
-| main_figure_caption_sequence | PASS | [1, 2, 3, 4, 5] |
+| main_figure_caption_sequence | PASS | [1, 2, 3, 4] |
 | main_table_caption_sequence | PASS | [1, 2, 3] |
 | reference_count_final_docx | PASS | 35 references |
 | reference_number_sequence_final_docx | PASS | [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35] |

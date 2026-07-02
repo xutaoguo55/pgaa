@@ -1,0 +1,19 @@
+name: pgaa
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - numpy>=1.21
+  - scipy>=1.7
+  - pandas>=1.3
+  - scanpy>=1.9
+  - anndata>=0.8
+  - scikit-learn>=1.0
+  - statsmodels>=0.13
+  - matplotlib>=3.5
+  - seaborn>=0.11
+  - joblib>=1.0
+  - r-base>=4.0
+  - r-mass
+  - r-testthat

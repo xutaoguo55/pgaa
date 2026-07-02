@@ -224,7 +224,7 @@ Figure-source mapping & Figure 1 & Generated from \texttt{figures\_png/figure\_c
 Figure-source mapping & Figure 2 & Rebuilt from Adamson benchmark CSV source data & Source-data reproducibility plus raw GSE90546/GSM2406675 sanity rerun script \\
 Figure-source mapping & Figure 3 & Rebuilt from processed Norman CEBPE CSV summaries & Processed-source-data reproducibility; full recomputation requires \texttt{NORMAN2019\_H5AD} and has been verified from a clean archive when that input is supplied \\
 Figure-source mapping & Figure 4 & Rebuilt from six-perturbation PGAA-H calibration CSV summaries & Processed-source-data reproducibility; full recomputation requires \texttt{NORMAN2019\_H5AD} and has been verified for the Norman multi-perturbation and MMD-PSM scripts when that input is supplied \\
-Figure-source mapping & Figure 5 & Rebuilt from cross-dataset marker-recovery and CLL comparator CSV summaries & Source-data reproducibility from included CSV files \\
+Figure-source mapping & Supp. Fig. 7 & Rebuilt from cross-dataset marker-recovery and CLL comparator CSV summaries & Source-data reproducibility from included CSV files \\
 Reproducibility boundary & Raw GEO-to-final-figure rerun & Partial & Adamson raw sanity rerun is included; Norman and observational final figures rely on processed source-data CSV files in the review archive. Full Norman/MMD-PSM recomputation requires \texttt{NORMAN2019\_H5AD}; clean-archive reruns were verified when that processed input was available. \\
 \hline
 \end{longtable}
@@ -312,20 +312,20 @@ The lightweight CLI reports PGAA-H scores without permutation calibration; the c
 
 \subsection*{Example}
 
-\begin{verbatim}
-pgaa-run \
-  --expression expression.csv \
-  --metadata metadata.csv \
-  --target CEBPE \
-  --group-column group \
-  --perturbed-value CEBPE_sgRNA \
-  --control-value NT_sgRNA \
-  --cell-type-column cluster \
-  --library-size-column library_size \
-  --n-perms 2000 \
-  --n-bins 20 \
-  --out-prefix results/CEBPE
-\end{verbatim}
+\begin{quote}
+\texttt{pgaa-run \textbackslash}\\
+\texttt{\ \ --expression expression.csv \textbackslash}\\
+\texttt{\ \ --metadata metadata.csv \textbackslash}\\
+\texttt{\ \ --target CEBPE \textbackslash}\\
+\texttt{\ \ --group-column group \textbackslash}\\
+\texttt{\ \ --perturbed-value CEBPE\_sgRNA \textbackslash}\\
+\texttt{\ \ --control-value NT\_sgRNA \textbackslash}\\
+\texttt{\ \ --cell-type-column cluster \textbackslash}\\
+\texttt{\ \ --library-size-column library\_size \textbackslash}\\
+\texttt{\ \ --n-perms 2000 \textbackslash}\\
+\texttt{\ \ --n-bins 20 \textbackslash}\\
+\texttt{\ \ --out-prefix results/CEBPE}
+\end{quote}
 
 Writes \texttt{results/CEBPE.s1.csv} and \texttt{results/CEBPE.s2.csv}. The suffixes \texttt{s1} and \texttt{s2} are retained for backward compatibility; \texttt{s1} corresponds to PGAA-W and \texttt{s2} corresponds to PGAA-H.
 

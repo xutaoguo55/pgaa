@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "If you use PGAA, please cite this software repository."
+title: "PGAA: distribution-aware single-cell perturbation analysis software"
+type: software
+version: 0.1.0
+date-released: 2026-06-09
+license: MIT
+url: "https://github.com/xutaoguo55/pgaa"
+repository-code: "https://github.com/xutaoguo55/pgaa"
+abstract: "PGAA provides Python and R implementations of distribution-aware ranking statistics for single-cell perturbation screens, including PGAA-W Wasserstein for distributional shifts and PGAA-H histogram-shape for heterogeneous expression-shape responses."
+keywords:
+  - Perturb-seq
+  - single-cell RNA-seq
+  - Wasserstein distance
+  - histogram-shape statistic
+  - CRISPR screening
+authors:
+  - family-names: Wei
+    given-names: Xiaolei
+  - family-names: Zheng
+    given-names: Haiqing
+  - family-names: Huang
+    given-names: Junwei
+  - family-names: Wei
+    given-names: Qi
+  - family-names: Wei
+    given-names: Yongqiang
+  - family-names: Feng
+    given-names: Ru
+  - family-names: Guo
+    given-names: Xutao
+    email: guoxutao@smu.edu.cn

@@ -168,7 +168,7 @@ def check_docx_and_text() -> tuple[list[Check], str]:
         document_xml = zf.read("word/document.xml").decode("utf-8")
         rels_xml = zf.read("word/_rels/document.xml.rels").decode("utf-8")
     checks.append(Check("docx_zip_integrity", "PASS" if bad_docx is None else "FAIL", str(bad_docx)))
-    checks.append(Check("docx_embedded_media_count", "PASS" if len(media) == 5 else "FAIL", f"{len(media)} media files: {', '.join(media)}"))
+    checks.append(Check("docx_embedded_media_count", "PASS" if len(media) == 4 else "FAIL", f"{len(media)} media files: {', '.join(media)}"))
     docx_markup_risks = []
     if any(name.endswith("comments.xml") for name in names) or "relationships/comments" in rels_xml:
         docx_markup_risks.append("comments part/relationship")
@@ -191,7 +191,7 @@ def check_docx_and_text() -> tuple[list[Check], str]:
     checks.append(Check("docx_no_forbidden_text", "PASS" if not forbidden_hits else "FAIL", "; ".join(forbidden_hits) or "no stale placeholders or wrong-journal residue"))
 
     figure_captions = sorted(set(int(n) for n in re.findall(r"\[Figure (\d+)\.", plain)))
-    checks.append(Check("main_figure_caption_sequence", "PASS" if figure_captions == [1, 2, 3, 4, 5] else "FAIL", str(figure_captions)))
+    checks.append(Check("main_figure_caption_sequence", "PASS" if figure_captions == [1, 2, 3, 4] else "FAIL", str(figure_captions)))
     table_caption_patterns = [
         (1, r"^Table\s+1\.\s+Evidence levels across PGAA evaluations\."),
         (2, r"^Table\s+2\.\s+Adamson 2016 UPR CRISPRi benchmark summary\."),

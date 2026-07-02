@@ -1,0 +1,7 @@
+Perturbation,R_lambda,n_sig,type
+KLF1,1.15,54,well-calibrated
+CBL,0.72,173,acceptable
+SLC4A1,0.67,222,mild
+DUSP9,0.68,460,over-sensitive
+CEBPE,0.25,1063,severely over-sensitive
+BAK1,0.1,1789,over-sensitive

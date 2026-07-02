@@ -1,0 +1,7 @@
+Dataset,Accession,Tissue/Cells,Type,Perturbation,Cells,Gold standard,Source
+CLL,GSE111014,Human PBMC,Observational,TCL1A high/low,"36,601→20,000",13 BCR markers,GSE111014
+Sepsis,GSE167363,Human PBMC,Observational,TCR activation,"64,244→20,000",TCR pathway,GSE167363
+RA,GSE159117,Human PBMC/monocyte dataset,Observational,Cytokine pathway,"10,499",Cytokine markers,GSE159117
+PBMC,10x demo,Human PBMC,Observational,Multi-lineage,"2,700",Lineage markers,10x Genomics
+IBD,GSE116222,Human gut epithelial dataset,Observational,Gut disease marker recovery,"11,175",Gut epithelial disease-associated markers,GSE116222
+Norman 2019,GSE133344,K562 cells,CRISPRa Perturb-seq,"CEBPE, KLF1, etc.","111,668",9 neutrophil granule proteins,Norman et al. 2019

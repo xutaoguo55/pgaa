@@ -11,12 +11,15 @@ Final journal upload zip: `PGAA_COMMUNICATIONS_AI_COMPUTING_JOURNAL_UPLOAD.zip`
 | File | Change |
 |---|---|
 | `MANUSCRIPT_CAIC.md` | Reduced defensive self-description, clarified PGAA-W/PGAA-H naming, softened PGAA-H bin-sensitivity mechanism language, normalized p-value formatting, and kept limitations explicit. |
-| `SUPPLEMENTARY_CAIC.md` | Fixed CLI output suffixes from `.pgaw/.pgah` to `.s1/.s2`; stabilized Supplement title line break; retained Figures 1-7, Tables 1-7, CLI schema, and Supplementary Methods. |
+| `MANUSCRIPT_CAIC.md` | Moved the external marker-recovery stress-check summary out of the main figure sequence and now points the CLL complementarity analysis to Supplementary Figure 5 and the five-dataset stress checks to Supplementary Figure 7. |
+| `SUPPLEMENTARY_CAIC.md` | Fixed CLI output suffixes from `.pgaw/.pgah` to `.s1/.s2`; aligned the CLI schema with the actual lightweight CLI; removed fragile raw `verbatim` formatting from the CLI example; retained Figures 1-7, Tables 1-7, CLI schema, and Supplementary Methods. |
 | `COVER_LETTER_COMMUNICATIONS_AI_COMPUTING.md` | Rewritten as a direct first-submission cover letter with positive method framing and without "revised/reframed" or "not a new metric" language. |
-| `build_caic_docx.py` | Updated Figure 1 caption text to use PGAA-W as the primary starting score. |
+| `build_caic_docx.py` | Updated Figure 1 caption text to use PGAA-W as the primary starting score and reduced the main manuscript to four figures after moving observational stress checks to the Supplementary Information. |
+| `../README.md` | Corrected the actual CLI output contract: PGAA-W `.s1.csv` includes permutation p-values; PGAA-H `.s2.csv` includes scores and `n_peaks_on` only. |
+| `../pgaa_r/README.md` | Clarified that the R wrapper includes a PGAA-H permutation helper whereas the lightweight Python CLI reports PGAA-H scores only. |
 | `../scripts/table_sceptre_vs_pgaa.py` | Added direct AUPRC output so the Norman CEBPE PGAA-H AUPRC 0.0076 is traceable in the source CSV. |
 | `../scripts/verify_dataset_manifest.py` | Included the Communications AI & Computing manuscript/supplement sources in manifest checking. |
-| `verify_caic_transfer_ready.py`, `final_upload_strict_audit_2026_06_25.py` | Updated audit expectations to match the current PGAA-W/PGAA-H terminology and complete Supplementary Figure 1-7 set. |
+| `verify_caic_transfer_ready.py`, `deep_current_submission_audit_2026_06_25.py`, `strict_caic_final_audit.py`, `final_upload_strict_audit_2026_06_25.py` | Updated audit expectations to match the current PGAA-W/PGAA-H terminology, four main figures, and complete Supplementary Figure 1-7 set. |
 | `FINAL_NUMERIC_AND_SOURCE_TRACE_AUDIT_2026-06-29.md` | Updated the prior CEBPE AUPRC trace issue from NEEDS REVIEW to PASS. |
 
 ## Build outputs refreshed
@@ -46,6 +49,9 @@ Final journal upload zip: `PGAA_COMMUNICATIONS_AI_COMPUTING_JOURNAL_UPLOAD.zip`
 | `unzip -t FILES_TO_UPLOAD_COMMUNICATIONS_AI_COMPUTING/MANUSCRIPT.docx` | passed | DOCX archive integrity OK. | none |
 | `unzip -t FILES_TO_UPLOAD_COMMUNICATIONS_AI_COMPUTING/PGAA_supplementary_code.zip` | passed | Code archive integrity OK. | none |
 | `unzip -t PGAA_COMMUNICATIONS_AI_COMPUTING_JOURNAL_UPLOAD.zip` | passed | Final journal zip integrity OK. | none |
+| Supplementary PDF CLI-format scan | passed | No visible raw LaTeX verbatim residue and no stale unsupported CLI options from the earlier schema. | none |
+| Final code-zip CLI documentation check | passed | Extracted README documents actual `.s1.csv` and `.s2.csv` columns and explicitly states that the lightweight CLI does not compute PGAA-H permutation p-values, ranks, or Storey diagnostics. | none |
+| Final code-zip CLI smoke test | passed | `python3 -m pgaa.cli --help` exposes only implemented options; synthetic run produced `.s1.csv` columns `gene`, `W_observed`, `W_std_observed`, `W_null_mean`, `W_null_std`, `z_score`, `p_value_perm` and `.s2.csv` columns `gene`, `S2`, `n_peaks_on`. | none |
 | DOCX/PDF text bad-pattern scan | passed | No empty parentheses, stale `.pgaw/.pgah`, broken p-value fragments, placeholder tokens, or "S2 persistence" labels found. | none |
 | Supplementary PDF content scan | passed | Supplementary Figure 7, Supplementary Table 7, CLI schema, and Supplementary Methods all present in extracted text. | none |
 | `python3 -m pip install -e .` in clean extracted code archive | passed | Editable install completed. | none |
@@ -60,7 +66,7 @@ Final journal upload zip: `PGAA_COMMUNICATIONS_AI_COMPUTING_JOURNAL_UPLOAD.zip`
 | LibreOffice DOCX-to-PDF conversion of final upload `MANUSCRIPT.docx` | passed | Converted to `qc_visual_2026_06_30/docx_pdf/MANUSCRIPT.pdf`; 20 pages, letter size, no PDF syntax warnings. | none |
 | Rendered-page visual QC for manuscript, supplement, cover letter, and DOCX-converted manuscript | passed | Rendered 61 PNG pages and generated contact sheets in `qc_visual_2026_06_30/`; low-content pages were inspected individually and correspond to natural sparse page breaks, figure-only pages, or table/CLI continuation pages, not blank pages or clipping. | none |
 | DOCX-converted PDF and Supplementary PDF strict text scan | passed | No empty parentheses, broken Methods math fragments, missing variable phrases, placeholders, "S2 persistence", "not a new metric", or "computational contribution collapses" strings found. | none |
-| Figure/table citation order scan from source manuscript | passed | Main Figures 1-5, Main Tables 1-3, Supplementary Figures 1-6, and Supplementary Tables 1-7 are all cited; first unique citation order is sequential for main figures, main tables, supplementary figures, and supplementary tables. | none |
+| Figure/table citation order scan from source manuscript | passed | Main Figures 1-4, Main Tables 1-3, Supplementary Figures 1-7, and Supplementary Tables 1-7 are all cited; first unique citation order is sequential for main figures, main tables, supplementary figures, and supplementary tables. | none |
 | Final upload zip listing and integrity check | passed | Final zip contains exactly four upload files and `unzip -t` reports no compressed-data errors. | none |
 
 ## Final risk register

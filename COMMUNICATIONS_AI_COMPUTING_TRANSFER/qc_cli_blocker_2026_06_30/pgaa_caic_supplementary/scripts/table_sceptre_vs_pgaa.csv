@@ -1,0 +1,5 @@
+method,elane_rank,elane_p,n_sig,auroc,auprc,known_hits
+SCEPTRE,1761,0.92,30,0.469,,0/9
+PGAA-W Wasserstein,1452,0.2234,1083,0.337,0.0035,1/9
+PGAA-H histogram-shape (n_bins=20),57,0.0399,66,0.476,0.0076,1/9
+PGAA-W+PGAA-H combined z,427,0.0378,473,0.424,0.0044,3/9

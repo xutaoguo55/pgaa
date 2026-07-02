@@ -1,0 +1,4 @@
+Method,ELANE_rank,ELANE_p,n_sig_p<0.05,calibration_or_AUROC,Known_hits,Time_s
+PGAA-W Wasserstein,1452,0.2234,1083,0.337,1/9,709.2
+PGAA-H histogram-shape (n_bins=20),57,0.0399,66,R_lambda=1.32,1/9,114.7
+PGAA-W+PGAA-H combined z,427,0.0378,473,0.424,3/9,0.0
