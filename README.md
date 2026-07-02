@@ -110,12 +110,12 @@ docker run --rm -v $(pwd):/data pgaa \
 
 ## Expected Output
 
-The CLI writes two ranked gene tables:
+The CLI writes two gene tables:
 
-- `<prefix>.s1.csv`: PGAA-W (Wasserstein) scores — `gene`, `W_observed`, `p_value_perm`, rank
-- `<prefix>.s2.csv`: PGAA-H (histogram-shape) scores — `gene`, `S2`, `p_value_perm`, rank
+- `<prefix>.s1.csv`: PGAA-W (Wasserstein) output with `gene`, `W_observed`, `W_std_observed`, `W_null_mean`, `W_null_std`, `z_score`, and `p_value_perm`
+- `<prefix>.s2.csv`: PGAA-H (histogram-shape) output with `gene`, `S2`, and `n_peaks_on`
 
-Columns: gene identifier, observed score, permutation p-value (plus-one estimator), null mean, null SD, z-score. Supplementary Table 7 (submission supplement) and the supplement CLI schema provide full input/output documentation.
+The lightweight CLI computes permutation p-values for PGAA-W only. It reports PGAA-H histogram-shape scores without PGAA-H permutation calibration, ranks, or Storey upper-tail diagnostics. The calibrated PGAA-H analyses reported in the manuscript are reproduced by the dedicated benchmark scripts and source-data tables. Supplementary Table 7 and the supplement CLI schema provide full input/output documentation.
 
 ## Troubleshooting
 

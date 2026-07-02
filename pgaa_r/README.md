@@ -63,11 +63,13 @@ p_combined <- combined_z_test(res_s1$p_value_perm, res_s2$p_value_perm)
 
 ## Differences from Python pgaa
 
-The R and Python implementations produce statistically equivalent
-results (within Monte Carlo noise for permutation tests). Key differences:
+The R package mirrors the core PGAA-W/PGAA-H scoring definitions, but its
+convenience wrappers are not identical to the lightweight Python CLI. Key
+differences:
 - R uses `graphics::hist()` instead of `numpy.histogram()` for PGAA-H
 - Default `n_bins = 20` in both packages
-- Default `n_perms = 2000` (PGAA-W), `500` (PGAA-H) in both
+- R `prt_s2_test()` includes a PGAA-H permutation helper by default
+  (`n_perms = 500`); the lightweight Python CLI reports PGAA-H scores only
 - `MASS::ginv()` for pseudoinverse in residualization (Python uses `np.linalg.pinv`)
 
 ## Citation
