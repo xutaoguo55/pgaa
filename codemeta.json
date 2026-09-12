@@ -2,7 +2,7 @@
   "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
   "name": "PGAA",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Distribution-aware ranking for single-cell perturbation screens using PGAA-W Wasserstein and PGAA-H histogram-shape statistics.",
   "codeRepository": "https://github.com/xutaoguo55/pgaa",
   "url": "https://github.com/xutaoguo55/pgaa",

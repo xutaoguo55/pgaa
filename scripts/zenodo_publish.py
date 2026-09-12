@@ -23,8 +23,18 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 API = "https://zenodo.org/api"
 CONCEPT_RECID = 20681140
-LATEST_RECID = 20681141
-ARCHIVE = ROOT / "ZENODO_CODE_ONLY_RELEASE" / "PGAA_v0.2.0_code_only_for_Zenodo.zip"
+# The deposition `actions/newversion` is called on: the newest published version,
+# which has to be bumped by hand each time a new version is minted.
+LATEST_RECID = 22720271
+
+
+def version() -> str:
+    text = (ROOT / "pyproject.toml").read_text()
+    return re.search(r'^version\s*=\s*"([^"]+)"', text, re.MULTILINE).group(1)
+
+
+# The archive filename carries the version, so keep it derived rather than typed.
+ARCHIVE = ROOT / "ZENODO_CODE_ONLY_RELEASE" / f"PGAA_v{version()}_code_only_for_Zenodo.zip"
 
 
 def token() -> str:
