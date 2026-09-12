@@ -1,6 +1,11 @@
 #!/usr/bin/env python3
 """Validate the realdata Y~D+covariates approach on CLL."""
 
+# These inputs live outside the repository; point at them with PGAA_RAW_DATA.
+import os
+from pathlib import Path
+RAW = Path(os.environ.get('PGAA_RAW_DATA', Path(__file__).resolve().parents[2]))
+
 import time
 import numpy as np
 import pandas as pd
@@ -22,10 +27,10 @@ BCR_MARKERS = ["CD79A", "CD79B", "BANK1", "LYN", "BLNK", "SYK", "BTK",
 
 
 def load_cll(n_cells_max=5000):
-    counts = sparse.csr_matrix(mmread("/Users/guoxutao/.openclaw/workspace/cll_counts.mtx").T)
-    genes = pd.read_csv("/Users/guoxutao/.openclaw/workspace/cll_genes.txt", header=None)[0].values
-    barcodes = pd.read_csv("/Users/guoxutao/.openclaw/workspace/cll_barcodes.txt", header=None)[0].values
-    meta = pd.read_csv("/Users/guoxutao/.openclaw/workspace/cll_meta.csv", index_col=0)
+    counts = sparse.csr_matrix(mmread(f"{RAW}/cll_counts.mtx").T)
+    genes = pd.read_csv(f"{RAW}/cll_genes.txt", header=None)[0].values
+    barcodes = pd.read_csv(f"{RAW}/cll_barcodes.txt", header=None)[0].values
+    meta = pd.read_csv(f"{RAW}/cll_meta.csv", index_col=0)
     adata = sc.AnnData(X=counts, obs=meta, var=pd.DataFrame(index=genes))
     adata.obs_names = barcodes
     sc.pp.filter_cells(adata, min_counts=500)

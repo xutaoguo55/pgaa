@@ -6,6 +6,11 @@
   (B) ELANE rank comparison: PGAA-W vs PGAA-H vs combined z
   (C) Method summary: AUROC + ELANE p + n_sig
 """
+
+# These inputs live outside the repository; point at them with PGAA_RAW_DATA.
+import os
+from pathlib import Path
+RAW = Path(os.environ.get('PGAA_RAW_DATA', Path(__file__).resolve().parents[2]))
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -27,7 +32,7 @@ from sklearn.metrics import roc_auc_score
 
 np.random.seed(42)
 adata = sc.read_h5ad(
-    "/Users/guoxutao/.openclaw/workspace/norman2019/norman2019_full_log.h5ad"
+    f"{RAW}/norman2019/norman2019_full_log.h5ad"
 )
 labels = adata.obs["perturbation"].astype(str)
 cebpe_pert = np.where(labels.str.contains(r"^CEBPE_NegCtrl\d+__", regex=True))[0]
@@ -142,7 +147,7 @@ for i in range(1, 4):
 ax.set_title("(C) Summary: Norman 2019 CEBPE", pad=20)
 
 plt.tight_layout()
-out_path = ("/Users/guoxutao/.openclaw/workspace/PGAA_method_paper/"
+out_path = (f"{RAW}/PGAA_method_paper/"
             "scripts/figure_norman_prt.tif")
 plt.savefig(out_path, format='tiff', dpi=300, bbox_inches='tight')
 print(f"Figure saved: {out_path}")

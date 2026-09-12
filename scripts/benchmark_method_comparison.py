@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
 """B: Method comparison. PRT-S₁ vs SCEPTRE/t-test/Wilcoxon on CLL."""
+
+# These inputs live outside the repository; point at them with PGAA_RAW_DATA.
+import os
+from pathlib import Path
+RAW = Path(os.environ.get('PGAA_RAW_DATA', Path(__file__).resolve().parents[2]))
 import sys, time, numpy as np, pandas as pd, scanpy as sc
 from scipy.io import mmread; from scipy import sparse
 from scipy.stats import mannwhitneyu, ttest_ind, spearmanr
@@ -11,10 +16,10 @@ from sklearn.metrics import roc_auc_score
 np.random.seed(42)
 
 # Load
-counts = sparse.csr_matrix(mmread("/Users/guoxutao/.openclaw/workspace/cll_counts.mtx").T)
-genes = pd.read_csv("/Users/guoxutao/.openclaw/workspace/cll_genes.txt", header=None)[0].values
-barcodes = pd.read_csv("/Users/guoxutao/.openclaw/workspace/cll_barcodes.txt", header=None)[0].values
-meta = pd.read_csv("/Users/guoxutao/.openclaw/workspace/cll_meta.csv", index_col=0)
+counts = sparse.csr_matrix(mmread(f"{RAW}/cll_counts.mtx").T)
+genes = pd.read_csv(f"{RAW}/cll_genes.txt", header=None)[0].values
+barcodes = pd.read_csv(f"{RAW}/cll_barcodes.txt", header=None)[0].values
+meta = pd.read_csv(f"{RAW}/cll_meta.csv", index_col=0)
 adata = sc.AnnData(X=counts, obs=meta, var=pd.DataFrame(index=genes)); adata.obs_names = barcodes
 sc.pp.filter_cells(adata, min_counts=500); sc.pp.filter_genes(adata, min_cells=50)
 adata.var["mt"] = adata.var_names.str.startswith("MT-")

@@ -17,6 +17,11 @@ S₂ CALIBRATION EVIDENCE for Norman 2019.
       - CEBPE target for comparison
 """
 
+# These inputs live outside the repository; point at them with PGAA_RAW_DATA.
+import os
+from pathlib import Path
+RAW = Path(os.environ.get('PGAA_RAW_DATA', Path(__file__).resolve().parents[2]))
+
 import numpy as np
 import pandas as pd
 import matplotlib
@@ -105,7 +110,7 @@ ax.spines['top'].set_visible(False); ax.spines['right'].set_visible(False)
 
 plt.suptitle("S₂ calibration evidence on Norman 2019", fontsize=13, y=1.02)
 plt.tight_layout()
-out = ("/Users/guoxutao/.openclaw/workspace/PGAA_method_paper/"
+out = (f"{RAW}/PGAA_method_paper/"
        "scripts/figure_s2_calibration.tif")
 plt.savefig(out, format='tiff', dpi=300, bbox_inches='tight')
 print(f"Saved: {out}")

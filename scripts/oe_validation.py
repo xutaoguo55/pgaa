@@ -15,6 +15,11 @@ OE 论文 v7 关键声明：
 重新评估这些声明是否在大样本下仍然成立。
 """
 
+# These inputs live outside the repository; point at them with PGAA_RAW_DATA.
+import os
+from pathlib import Path
+RAW = Path(os.environ.get('PGAA_RAW_DATA', Path(__file__).resolve().parents[2]))
+
 import time
 import numpy as np
 import pandas as pd
@@ -39,10 +44,10 @@ BCR_MARKERS = ["CD79A", "CD79B", "BANK1", "LYN", "BLNK", "SYK", "BTK",
 
 def load_cll(n_cells_max=None):
     print("Loading CLL data ...")
-    counts = sparse.csr_matrix(mmread("/Users/guoxutao/.openclaw/workspace/cll_counts.mtx").T)
-    genes = pd.read_csv("/Users/guoxutao/.openclaw/workspace/cll_genes.txt", header=None)[0].values
-    barcodes = pd.read_csv("/Users/guoxutao/.openclaw/workspace/cll_barcodes.txt", header=None)[0].values
-    meta = pd.read_csv("/Users/guoxutao/.openclaw/workspace/cll_meta.csv", index_col=0)
+    counts = sparse.csr_matrix(mmread(f"{RAW}/cll_counts.mtx").T)
+    genes = pd.read_csv(f"{RAW}/cll_genes.txt", header=None)[0].values
+    barcodes = pd.read_csv(f"{RAW}/cll_barcodes.txt", header=None)[0].values
+    meta = pd.read_csv(f"{RAW}/cll_meta.csv", index_col=0)
     adata = sc.AnnData(X=counts, obs=meta, var=pd.DataFrame(index=genes))
     adata.obs_names = barcodes
     sc.pp.filter_cells(adata, min_counts=500)
@@ -134,9 +139,9 @@ def main():
 
     # Part 3: Norman 2019 13k
     print("\n## Part 3: Norman 2019 Perturb-seq (CEBPE as positive control)")
-    adata_n = sc.read_h5ad("/Users/guoxutao/.openclaw/workspace/norman2019/norman2019_with_symbols.h5ad")
+    adata_n = sc.read_h5ad(f"{RAW}/norman2019/norman2019_with_symbols.h5ad")
     import pickle
-    with open("/Users/guoxutao/.openclaw/workspace/norman2019/ensembl2symbol.pkl", "rb") as f:
+    with open(f"{RAW}/norman2019/ensembl2symbol.pkl", "rb") as f:
         mapping = pickle.load(f)
     keep = [i for i, e in enumerate(adata_n.var_names) if mapping.get(e, e) != e]
     adata_n = adata_n[:, keep].copy()

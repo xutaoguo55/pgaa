@@ -1,6 +1,11 @@
 #!/usr/bin/env python3
 """PGAA validation on real Perturb-seq: Norman 2019."""
 
+# These inputs live outside the repository; point at them with PGAA_RAW_DATA.
+import os
+from pathlib import Path
+RAW = Path(os.environ.get('PGAA_RAW_DATA', Path(__file__).resolve().parents[2]))
+
 import time
 import numpy as np
 import pandas as pd
@@ -19,7 +24,7 @@ HK_GENES = ["ACTB", "GAPDH", "B2M", "RPLP0", "RPS18", "GUSB", "HPRT1", "TUBB",
 
 
 def load():
-    adata = sc.read_h5ad("/Users/guoxutao/.openclaw/workspace/norman2019/norman2019_with_symbols.h5ad")
+    adata = sc.read_h5ad(f"{RAW}/norman2019/norman2019_with_symbols.h5ad")
     # Switch index from Ensembl ID to gene symbol (with deduplication)
     import pandas as pd
     symbols = adata.var["gene_symbol"].values

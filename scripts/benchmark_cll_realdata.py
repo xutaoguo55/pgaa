@@ -12,6 +12,11 @@ Pearson residuals are designed to remove mean-variance dependence, which
 should reduce expression-magnitude-driven false positives (ribosome hits).
 """
 
+# These inputs live outside the repository; point at them with PGAA_RAW_DATA.
+import os
+from pathlib import Path
+RAW = Path(os.environ.get('PGAA_RAW_DATA', Path(__file__).resolve().parents[2]))
+
 import time
 import numpy as np
 import pandas as pd
@@ -37,10 +42,10 @@ BCR_MARKERS = ["CD79A", "CD79B", "BANK1", "LYN", "BLNK", "SYK", "BTK",
 
 def load_cll():
     print("Loading CLL data ...")
-    counts = sparse.csr_matrix(mmread("/Users/guoxutao/.openclaw/workspace/cll_counts.mtx").T)
-    genes = pd.read_csv("/Users/guoxutao/.openclaw/workspace/cll_genes.txt", header=None)[0].values
-    barcodes = pd.read_csv("/Users/guoxutao/.openclaw/workspace/cll_barcodes.txt", header=None)[0].values
-    meta = pd.read_csv("/Users/guoxutao/.openclaw/workspace/cll_meta.csv", index_col=0)
+    counts = sparse.csr_matrix(mmread(f"{RAW}/cll_counts.mtx").T)
+    genes = pd.read_csv(f"{RAW}/cll_genes.txt", header=None)[0].values
+    barcodes = pd.read_csv(f"{RAW}/cll_barcodes.txt", header=None)[0].values
+    meta = pd.read_csv(f"{RAW}/cll_meta.csv", index_col=0)
     adata = sc.AnnData(X=counts, obs=meta, var=pd.DataFrame(index=genes))
     adata.obs_names = barcodes
     print(f"Loaded: {adata.n_obs} cells × {adata.n_vars} genes")

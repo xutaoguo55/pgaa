@@ -56,6 +56,30 @@ assert the *structural* property that frozen manifests record external storage
 and never repo-local paths. The exact mount point is deliberately not
 asserted — it is an environment fact, not a property of the code.
 
+## Two roots: `PGAA_DATA_ROOT` and `PGAA_RAW_DATA`
+
+The scripts under `scripts/` read from two different trees, and it matters which
+is which:
+
+| Variable | Default | Holds | Resolved by |
+|---|---|---|---|
+| `PGAA_DATA_ROOT` | `/Volumes/MOVESPEED` | the frozen external platform registries and expansion sources | `pgaa.core.data_root.data_root()` |
+| `PGAA_RAW_DATA` | the repository's **parent** directory | the local workspace the benchmark scripts were developed against (`norman2019/`, `cll_counts.mtx`, `cll_genes.txt`, `cll_barcodes.txt`, `cll_meta.csv`) | the `RAW = ...` line at the top of each script |
+
+`PGAA_RAW_DATA` is deliberately *not* routed through `pgaa/core/data_root.py`:
+that module exists so the frozen registries can be relocated, whereas these
+scripts only need one line and should not fail if the package is not importable.
+The line is self-contained:
+
+```python
+RAW = Path(os.environ.get('PGAA_RAW_DATA', Path(__file__).resolve().parents[2]))
+```
+
+Everything the scripts read or write under the workspace now goes through
+`RAW`. No script under `scripts/` embeds a `/Users/...` literal any more, so a
+reader who obtains the inputs can point the whole family at them with one
+`export PGAA_RAW_DATA=/path/to/copy`.
+
 ## Scope: which scripts are covered by `PGAA_DATA_ROOT`
 
 `pgaa/core/data_root.py` is honoured by the scripts on the submission's
@@ -64,33 +88,48 @@ reviewer-facing reproduction paths. Everything a reader is told to run in
 through `PGAA_DATA_ROOT`, so the external tree can be relocated without editing
 code.
 
-The remaining **30 scripts under `scripts/`** still embed a literal
-`/Volumes/MOVESPEED` (or `/Users/guoxutao`) path. They are **not** named in the
-README reproduction commands or in any `DATASET_MANIFEST.tsv` rebuild command,
-and they are retained in the archive only as a record of how the frozen
-registries and expansion layers were originally built. They are **outside the
-supported reproduction range**: running one of them on a machine without the
-original external volume will fail at the first file open. They are listed here
-so a reader can tell at a glance which scripts are expected to work from the
-archive alone.
+Three scripts under `scripts/` still embed a literal `/Volumes/MOVESPEED` path:
+`audit_expansion_v2_sources.py`, `download_expansion_v2_sources.py`, and
+`download_expansion_v3_sources.py` (they need the external mount to enumerate
+what to fetch). They are **not** named in the README reproduction commands or in
+any `DATASET_MANIFEST.tsv` rebuild command.
+
+A larger family of benchmark and figure scripts is retained in the archive only
+as a record of how the frozen registries and expansion layers were originally
+built. They are **outside the supported reproduction range** — but for a
+different reason than before: their paths are now relocatable via
+`PGAA_RAW_DATA`, and what remains missing is the *input data* (the processed
+Norman `h5ad` is ~1.2 GB and the CLL matrices are ~1.1 GB, neither bundled).
+They are listed here so a reader can tell at a glance which scripts are expected
+to work from the archive alone.
 
 ```
-scripts/audit_expansion_v2_sources.py        scripts/figure_cll_combination.py
-scripts/benchmark_cll_realdata.py            scripts/figure_norman_nbins20.py
-scripts/benchmark_cpt.py                     scripts/figure_norman_prt.py
-scripts/benchmark_cpt_cr.py                  scripts/figure_s2_calibration.py
-scripts/benchmark_method_comparison.py       scripts/final_4method_full_data.py
-scripts/benchmark_norman2019.py              scripts/oe_validation.py
-scripts/benchmark_norman_v2.py               scripts/sensitivity_s2_bins.py
-scripts/benchmark_prt_s1.py                  scripts/download_expansion_v2_sources.py
-scripts/benchmark_prt_s2.py                  scripts/download_expansion_v3_sources.py
-scripts/benchmark_prt_s2_calibrated.py       scripts/cll20k_4method.py
-scripts/benchmark_prt_s2_gapdh_neg.py        scripts/compare_combinations.py
-scripts/benchmark_prt_s2_nbins20.py          scripts/diagnose_cll.py
-scripts/benchmark_prt_s2_zscore.py           scripts/benchmark_reald.py
-scripts/benchmark_prt_s3.py                  scripts/benchmark_s2_klf1_neg.py
-scripts/benchmark_prt_s3_fast.py             scripts/benchmark_sceptre_pgaa.py
+scripts/benchmark_cll_realdata.py            scripts/figure_cll_combination.py
+scripts/benchmark_cpt.py                     scripts/figure_norman_nbins20.py
+scripts/benchmark_cpt_cr.py                  scripts/figure_norman_prt.py
+scripts/benchmark_method_comparison.py       scripts/figure_s2_calibration.py
+scripts/benchmark_norman2019.py              scripts/final_4method_full_data.py
+scripts/benchmark_norman_v2.py               scripts/oe_validation.py
+scripts/benchmark_prt_s1.py                  scripts/sensitivity_s2_bins.py
+scripts/benchmark_prt_s2.py                  scripts/cll20k_4method.py
+scripts/benchmark_prt_s2_calibrated.py       scripts/compare_combinations.py
+scripts/benchmark_prt_s2_gapdh_neg.py        scripts/diagnose_cll.py
+scripts/benchmark_prt_s2_nbins20.py          scripts/benchmark_reald.py
+scripts/benchmark_prt_s2_zscore.py           scripts/benchmark_s2_klf1_neg.py
+scripts/benchmark_prt_s3.py                  scripts/benchmark_sceptre_pgaa.py
+scripts/benchmark_prt_s3_fast.py
 ```
+
+## Workspace literals that remain, and why they stay
+
+`evidence/expansion_v2_resources.json` and `evidence/expansion_v3_resources.json`
+each carry a `"path": "/Users/guoxutao/.openclaw/workspace/PGAA_method_paper"`
+entry, and `docs/GSE335846_PHOSPHOPROTEOMICS_CORROBORATION.md` names a workspace
+path for a source workbook. These are **frozen build-time records**: the JSON
+files are registries whose other fields were measured against that tree, and
+rewriting the recorded path would silently break the provenance they exist to
+preserve. Treat them the same way as the `resolved_source_path` columns
+described in the next section — historical pointer, not an instruction.
 
 ## Absolute paths recorded inside `evidence/`
 

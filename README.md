@@ -1,18 +1,16 @@
 # PGAA: claim-state compilation for perturbation transcriptomics
 
-PGAA is a Python and R software package for compiling perturbation-transcriptomic analysis outputs into bounded manuscript claim states. The Bioinformatics-first manuscript positions PGAA as an executable claim-state compiler that combines score outputs, stability checks, external evidence, source-data provenance, and promotion gates to control unsupported claim promotion. PGAA-W Wasserstein and PGAA-H histogram-shape statistics remain available as upstream scoring modules for heterogeneous single-cell transcriptional responses. The Communications AI & Computing manuscript-support materials are included under `communications_ai_computing/` when this archive is unpacked.
+PGAA is a Python and R software package for compiling perturbation-transcriptomic analysis outputs into bounded manuscript claim states. The Bioinformatics-first manuscript positions PGAA as an executable claim-state compiler that combines score outputs, stability checks, external evidence, source-data provenance, and promotion gates to control unsupported claim promotion. PGAA-W Wasserstein and PGAA-H histogram-shape statistics remain available as upstream scoring modules for heterogeneous single-cell transcriptional responses. The manuscript, its figures, and the frozen submission packages are deliberately not hosted in this repository: it carries the software, its tests, the reproduction scripts, and the dataset and evidence metadata only. The reviewer-facing archive that contains the article is assembled separately by `scripts/build_submission_zip.py`.
 
 ## Archive Contents
 
 - `pgaa/`: Python implementation and command-line interface.
 - `pgaa_r/`: R implementation.
 - `scripts/`: reproducibility scripts, toy example, source-data table rebuilds, and figure-generation helpers.
-- `figure_source_data/`: CSV files used to rebuild manuscript figure panels and benchmark summaries.
-- `figures_png/`: final figure images used by the manuscript and supplementary PDF.
-- `communications_ai_computing/MANUSCRIPT_CAIC.pdf`: submitted manuscript PDF.
-- `communications_ai_computing/SUPPLEMENTARY_CAIC.pdf`: submitted supplementary PDF.
-- `communications_ai_computing/MANUSCRIPT_CAIC.md` and `SUPPLEMENTARY_CAIC.md`: manuscript sources.
-- `communications_ai_computing/build_caic_pdf.py`: PDF builder for the main manuscript.
+- `evidence/`, `docs/`: machine-readable evidence artifacts and the claim-state decision records behind them.
+- `ZENODO_CODE_ONLY_RELEASE/`: the code-only archives deposited on Zenodo, built by `scripts/build_zenodo_code_only.py`.
+
+Deliberately absent: the manuscript (`MANUSCRIPT.md`, `MANUSCRIPT.docx`, `SUPPLEMENTARY.md`), the figure images under `figures_png/`, the figure source-data tables under `figure_source_data/`, and the frozen `COMMUNICATIONS_*_TRANSFER/` packages from earlier submissions. They stay in the working copy, so `scripts/build_pdf.py` and `scripts/build_submission_zip.py` still build the reviewer archive from a checkout that has them.
 - `DATASET_MANIFEST.tsv`: public dataset accessions, analysis roles, and reproduction status.
 - `CITATION.cff`, `codemeta.json`, `.zenodo.json`: software citation and archive metadata.
 
@@ -215,14 +213,8 @@ The Bioinformatics-first method upgrade reframes the submission as an Original P
 
 ### Submission-Facing Support Assets
 
-- `figures_png/gse193258_target_specificity_map.png`: support figure for Supplementary Figure S4
-- `figures_png/gse193258_target_specificity_map.pdf`: vector support figure for Supplementary Figure S4
-- `figures_png/gse335846_dynamic_corroboration_scorecard.png`: support figure for Supplementary Figure S5
-- `figures_png/gse335846_dynamic_corroboration_scorecard.pdf`: vector support figure for Supplementary Figure S5
-- `figures_png/gse150949_pc9_evolution_scorecard.png`: support figure for Supplementary Figure S6
-- `figures_png/gse150949_pc9_evolution_scorecard.pdf`: vector support figure for Supplementary Figure S6
-- `figures_png/gse335846_phosphoproteomics_corroboration_scorecard.png`: support figure for Supplementary Figure S7
-- `figures_png/gse335846_phosphoproteomics_corroboration_scorecard.pdf`: vector support figure for Supplementary Figure S7
+The PNG/PDF support figures for Supplementary Figures S4-S7 are rendered into `figures_png/`, which is not hosted in this repository; the scripts that render them and the caption text that accompanies them are listed below.
+
 - `docs/GSE193258_TARGET_SPECIFICITY_SUPPORT_TEXT.md`: caption and Results text for the support figure
 - `docs/SUBMISSION_PACKAGE_INDEX.md`: navigation layer for the submission-facing package
 - `docs/GSE150949_PC9_EVOLUTION_SUPPORT_TEXT.md`: caption and Results text for the third-system support figure

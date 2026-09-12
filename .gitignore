@@ -56,8 +56,20 @@ data/
 sources/
 # Internal claim-artifact audit: never upload or publish.
 AUDIT_*/
-# Frozen packages for earlier journal submissions; not part of this submission.
-COMMUNICATIONS_MEDICINE_TRANSFER/
-COMMUNICATIONS_AI_COMPUTING_TRANSFER/
 # Build artifact of the editable install.
 pgaa.egg-info/
+# Harness-side resource index; unrelated to the software release.
+.claude_resources.json
+
+# --- article content: kept on disk, never pushed (2026-09-12) ---
+# The manuscript, its figures and their source-data tables, and the frozen
+# submission packages for earlier journals. The availability statement promises
+# code and build scripts from this repository; the article itself is not hosted
+# here. Removing these from the index does not delete them locally -- the PDF
+# build and the submission archive still read them from the working tree.
+MANUSCRIPT.md
+SUPPLEMENTARY.md
+figures_png/
+figure_source_data/
+COMMUNICATIONS_MEDICINE_TRANSFER/
+COMMUNICATIONS_AI_COMPUTING_TRANSFER/

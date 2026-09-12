@@ -26,6 +26,11 @@ We implement:
 This is computationally intensive but correct.
 """
 
+# These inputs live outside the repository; point at them with PGAA_RAW_DATA.
+import os
+from pathlib import Path
+RAW = Path(os.environ.get('PGAA_RAW_DATA', Path(__file__).resolve().parents[2]))
+
 import time
 import numpy as np
 import pandas as pd
@@ -214,7 +219,7 @@ def sceptre_test(X, genes, target, perturbed_idx, control_idx,
 
 
 def main():
-    adata = sc.read_h5ad("/Users/guoxutao/.openclaw/workspace/norman2019/norman2019_full_log.h5ad")
+    adata = sc.read_h5ad(f"{RAW}/norman2019/norman2019_full_log.h5ad")
     labels = adata.obs["perturbation"].astype(str)
     print(f"Full data: {adata.shape}")
     print(f"Perturbation top 5: {adata.obs['perturbation'].value_counts().head(5).to_dict()}")

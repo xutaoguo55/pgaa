@@ -17,6 +17,11 @@ Model:  Y_g = alpha_g * UMI_count + beta * cell_type + gamma * library_size + ep
   - Permutation test: shuffle UMI_count across cells, re-fit, get null
 """
 
+# These inputs live outside the repository; point at them with PGAA_RAW_DATA.
+import os
+from pathlib import Path
+RAW = Path(os.environ.get('PGAA_RAW_DATA', Path(__file__).resolve().parents[2]))
+
 import time
 import numpy as np
 import pandas as pd
@@ -36,12 +41,12 @@ np.random.seed(42)
 
 
 def main():
-    adata = sc.read_h5ad("/Users/guoxutao/.openclaw/workspace/norman2019/norman2019_full_log.h5ad")
+    adata = sc.read_h5ad(f"{RAW}/norman2019/norman2019_full_log.h5ad")
     labels = adata.obs["perturbation"].astype(str)
     print(f"Full: {adata.shape}")
 
     # Load UMI_count from cell identity file
-    with gzip.open("/Users/guoxutao/.openclaw/workspace/norman2019/GSE133344_filtered_cell_identities.csv.gz", "rt") as f:
+    with gzip.open(f"{RAW}/norman2019/GSE133344_filtered_cell_identities.csv.gz", "rt") as f:
         ci = pd.read_csv(f)
     ci_dict = dict(zip(ci["cell_barcode"], ci["UMI_count"]))
     obs = adata.obs.copy()

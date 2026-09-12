@@ -6,6 +6,11 @@
   (B) Top 30 by S₁+S₂ mean z (annotated with BCR/TCR flags)
   (C) Method summary: BCR≤100, TCR≤100, n_sig
 """
+
+# These inputs live outside the repository; point at them with PGAA_RAW_DATA.
+import os
+from pathlib import Path
+RAW = Path(os.environ.get('PGAA_RAW_DATA', Path(__file__).resolve().parents[2]))
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -156,7 +161,7 @@ ax.legend(frameon=False, fontsize=8, loc='upper left')
 ax.spines['top'].set_visible(False); ax.spines['right'].set_visible(False)
 
 plt.tight_layout()
-out = ("/Users/guoxutao/.openclaw/workspace/PGAA_method_paper/"
+out = (f"{RAW}/PGAA_method_paper/"
        "scripts/figure_cll_combination.tif")
 plt.savefig(out, format='tiff', dpi=300, bbox_inches='tight')
 print(f"Saved: {out}")

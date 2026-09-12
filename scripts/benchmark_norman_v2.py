@@ -7,6 +7,11 @@ Uses k-means clustering to assign cell types (since Norman 2019 doesn't
 provide fine-grained cell type labels for all 87k cells).
 """
 
+# These inputs live outside the repository; point at them with PGAA_RAW_DATA.
+import os
+from pathlib import Path
+RAW = Path(os.environ.get('PGAA_RAW_DATA', Path(__file__).resolve().parents[2]))
+
 import time
 import pickle
 import numpy as np
@@ -111,8 +116,8 @@ def virtual_oe_v2(
 
 def load_norman_with_celltypes():
     print("Loading Norman 2019 with cell type annotation ...")
-    adata = sc.read_h5ad("/Users/guoxutao/.openclaw/workspace/norman2019/norman2019_with_symbols.h5ad")
-    with open("/Users/guoxutao/.openclaw/workspace/norman2019/ensembl2symbol.pkl", "rb") as f:
+    adata = sc.read_h5ad(f"{RAW}/norman2019/norman2019_with_symbols.h5ad")
+    with open(f"{RAW}/norman2019/ensembl2symbol.pkl", "rb") as f:
         mapping = pickle.load(f)
     keep = [i for i, e in enumerate(adata.var_names) if mapping.get(e, e) != e and mapping.get(e, e) != ""]
     adata = adata[:, keep].copy()

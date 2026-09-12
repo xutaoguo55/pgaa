@@ -16,6 +16,11 @@ If this works, we expect:
   - AUROC improves (or at least ELANE rank improves)
 """
 
+# These inputs live outside the repository; point at them with PGAA_RAW_DATA.
+import os
+from pathlib import Path
+RAW = Path(os.environ.get('PGAA_RAW_DATA', Path(__file__).resolve().parents[2]))
+
 import time
 import numpy as np
 import pandas as pd
@@ -65,7 +70,7 @@ def s2_test_fast(Y_on, Y_off, n_bins=50):
 
 def main():
     adata = sc.read_h5ad(
-        "/Users/guoxutao/.openclaw/workspace/norman2019/norman2019_full_log.h5ad"
+        f"{RAW}/norman2019/norman2019_full_log.h5ad"
     )
     labels = adata.obs["perturbation"].astype(str)
     cebpe_pert = np.where(

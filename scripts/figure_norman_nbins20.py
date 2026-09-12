@@ -9,6 +9,11 @@ Key result: ELANE rank 1452 (PGAA-W) to 57 (PGAA-H), upper-tail ratio = 1.32.
   (B) ELANE rank comparison: SCEPTRE (1761) vs PGAA-W (1452) vs PGAA-H (57)
   (C) Summary table with calibration metrics
 """
+
+# These inputs live outside the repository; point at them with PGAA_RAW_DATA.
+import os
+from pathlib import Path
+RAW = Path(os.environ.get('PGAA_RAW_DATA', Path(__file__).resolve().parents[2]))
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -129,7 +134,7 @@ for j in range(5):
 ax.set_title("(C) Method comparison on ELANE", pad=20)
 
 plt.tight_layout()
-out = ("/Users/guoxutao/.openclaw/workspace/PGAA_method_paper/"
+out = (f"{RAW}/PGAA_method_paper/"
        "scripts/figure_norman_nbins20.tif")
 plt.savefig(out, format='tiff', dpi=300, bbox_inches='tight')
 print(f"Saved: {out}")

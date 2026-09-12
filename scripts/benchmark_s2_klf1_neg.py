@@ -13,6 +13,11 @@ should DROP in KLF1 ranking (they're neutrophil granule proteins,
 not KLF1 targets).
 """
 
+# These inputs live outside the repository; point at them with PGAA_RAW_DATA.
+import os
+from pathlib import Path
+RAW = Path(os.environ.get('PGAA_RAW_DATA', Path(__file__).resolve().parents[2]))
+
 import time
 import numpy as np
 import pandas as pd
@@ -121,7 +126,7 @@ def run_s2_for_target(adata, target_gene, n_perms=200, seed=42):
 
 def main():
     adata = sc.read_h5ad(
-        "/Users/guoxutao/.openclaw/workspace/norman2019/norman2019_full_log.h5ad"
+        f"{RAW}/norman2019/norman2019_full_log.h5ad"
     )
 
     targets = ["CEBPE", "KLF1", "SLC4A1", "BAK1", "DUSP9", "CBL"]
