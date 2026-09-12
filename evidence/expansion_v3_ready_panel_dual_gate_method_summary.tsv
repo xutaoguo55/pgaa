@@ -1,0 +1,9 @@
+dataset_id	platform	split_strength	method	n_units	median_observed_overlap	median_pseudo_overlap	median_specificity_margin	n_units_positive_margin	wilcoxon_one_sided_p	holm_adjusted_p
+frangieh2021_melanoma_crispr	Human melanoma CRISPR perturb-seq	recorded_moi_holdout_20_levels	absolute_mean_shift	16	0.06	0.06	-0.009999999999999995	5	0.6123276593919587	1.0
+frangieh2021_melanoma_crispr	Human melanoma CRISPR perturb-seq	recorded_moi_holdout_20_levels	pgaa_h	16	0.03	0.02	0.0	4	0.6212673523528819	1.0
+frangieh2021_melanoma_crispr	Human melanoma CRISPR perturb-seq	recorded_moi_holdout_20_levels	pgaa_w	16	0.08499999999999999	0.08	-0.0049999999999999975	5	0.4443019747611895	1.0
+frangieh2021_melanoma_crispr	Human melanoma CRISPR perturb-seq	recorded_moi_holdout_20_levels	welch_abs_t	16	0.025	0.02	0.004999999999999999	8	0.16246581897973272	0.6498632759189309
+papalexi2021_thp1_crispr	Human THP-1 ECCITE-seq CRISPR screen	recorded_hash_tag_holdout_5_levels	absolute_mean_shift	16	0.41	0.07	0.335	14	0.0002899169921875	0.00115966796875
+papalexi2021_thp1_crispr	Human THP-1 ECCITE-seq CRISPR screen	recorded_hash_tag_holdout_5_levels	pgaa_h	16	0.02	0.03	0.0	5	0.5361431927336014	0.5361431927336014
+papalexi2021_thp1_crispr	Human THP-1 ECCITE-seq CRISPR screen	recorded_hash_tag_holdout_5_levels	pgaa_w	16	0.435	0.11	0.33	12	0.001678466796875	0.0038383882049019286
+papalexi2021_thp1_crispr	Human THP-1 ECCITE-seq CRISPR screen	recorded_hash_tag_holdout_5_levels	welch_abs_t	16	0.295	0.02	0.285	13	0.0012794627349673095	0.0038383882049019286

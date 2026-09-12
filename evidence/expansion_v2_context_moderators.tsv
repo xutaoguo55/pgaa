@@ -1,0 +1,11 @@
+candidate_id	genetic_perturbation	primary_or_in_vivo	mouse_system	split_independence_tier	annotation_basis
+cui2023_lymph_node_cytokine	0	1	0	2	primary human lymph-node cells; biological replicate split
+lara2023_bone_marrow_crispr	1	1	1	1	mouse bone-marrow transplant CRISPR; recorded timepoint split
+liang2023_liver_organoid_crispr	1	1	1	2	mouse organoid CRISPR; independently handled sample split
+mcfarland2020_cancer_mixseq_drug	0	0	0	1	human cancer cell-line drug screen; treatment-time split
+santinha2023_brain_aav_crispr	1	1	1	0	mouse in-vivo brain CRISPR; sequencing-lane split
+schiebinger2019_mesc_cytokine	0	0	1	2	mouse embryonic stem-cell transition; biological replicate split
+shifrut2018_primary_t_crispr	1	1	0	2	primary human T-cell CRISPR; donor split
+sunshine2023_calu3_crispri	1	0	0	0	human Calu-3 CRISPRi; GEM-group split
+tian2021_ipsc_neuron_crispra	1	0	0	1	human iPSC-derived neuron CRISPRa; experimental-batch split
+wessels2023_myeloid_cas13	1	0	0	2	human myeloid CRISPR-Cas13; independently tagged sample split

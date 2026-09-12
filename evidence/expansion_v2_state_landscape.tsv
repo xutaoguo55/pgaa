@@ -1,0 +1,17 @@
+method	dual_gate_state	n_platforms	state_count	state_fraction	clopper_pearson_95_low	clopper_pearson_95_high	mechanism_classes	cell_context_classes	minimum_leave_one_study_out_count
+absolute_mean_shift	stable_and_specific	10	4	0.4	0.12155225811982719	0.737621923393055	4	4	3
+absolute_mean_shift	stable_but_not_specific	10	0	0.0	0.0	0.30849710781876083	0	0	0
+absolute_mean_shift	specific_but_not_stable	10	4	0.4	0.12155225811982719	0.737621923393055	3	4	3
+absolute_mean_shift	neither_stable_nor_specific	10	2	0.2	0.02521072632683336	0.5560954623076415	2	2	1
+pgaa_h	stable_and_specific	10	0	0.0	0.0	0.30849710781876083	0	0	0
+pgaa_h	stable_but_not_specific	10	0	0.0	0.0	0.30849710781876083	0	0	0
+pgaa_h	specific_but_not_stable	10	1	0.1	0.0025285785444617848	0.4450161170281953	1	1	0
+pgaa_h	neither_stable_nor_specific	10	9	0.9	0.5549838829718047	0.9974714214555382	9	9	8
+pgaa_w	stable_and_specific	10	6	0.6	0.26237807660694507	0.8784477418801728	6	6	5
+pgaa_w	stable_but_not_specific	10	0	0.0	0.0	0.30849710781876083	0	0	0
+pgaa_w	specific_but_not_stable	10	1	0.1	0.0025285785444617848	0.4450161170281953	1	1	0
+pgaa_w	neither_stable_nor_specific	10	3	0.3	0.06673951117773447	0.6524528500599973	3	3	2
+welch_abs_t	stable_and_specific	10	2	0.2	0.02521072632683336	0.5560954623076415	2	2	1
+welch_abs_t	stable_but_not_specific	10	0	0.0	0.0	0.30849710781876083	0	0	0
+welch_abs_t	specific_but_not_stable	10	5	0.5	0.18708602844739855	0.8129139715526015	4	5	4
+welch_abs_t	neither_stable_nor_specific	10	3	0.3	0.06673951117773447	0.6524528500599973	3	3	2

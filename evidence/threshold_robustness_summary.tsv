@@ -1,0 +1,4 @@
+threshold_scenario	candidate_count	tier_A_count	tier_B_count	tier_C_count	tier_D_count	default_AB_retained	default_AB_lost	scenario_AB_new	full_ladder_panel_tier_A_count	full_ladder_panel_tier_B_count
+default	5830	225	1813	0	3792	2038	0	0	20	0
+strict_exact_only	5830	65	521	0	5244	586	1452	0	20	0
+decoy_guarded	5830	0	0	0	5830	0	2038	0	0	0

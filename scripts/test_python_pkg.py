@@ -56,7 +56,9 @@ res_s1 = prt_s1_test(X, genes, 'gene_0001',
                       library_size=np.ones(500)*10000)
 p_g2 = float(res_s1[res_s1.gene == 'gene_0002']['p_value_perm'].iloc[0])
 assert p_g2 < 0.1, f'T7 expected gene_0002 sig, got p={p_g2:.4f}'
-assert len(res_s1) == 29, f'T7 expected 29 genes, got {len(res_s1)}'
+# S1 scores every gene in the panel, the perturbed target included, so that the
+# target's own shift can be read off the same ranking as the rest of the panel.
+assert set(res_s1.gene) == set(genes), f'T7 expected the full gene panel, got {len(res_s1)}'
 print(f'✅ T7 prt_s1_test: {len(res_s1)} genes, gene_0002 p={p_g2:.4f}')
 
 # T8: s2_test with bimodal signal
@@ -67,7 +69,7 @@ X_bimodal[50:80, 3] -= 2.0  # half low
 res_s2 = s2_test(X_bimodal, genes20, 'gene_0001',
                  np.arange(80), np.arange(80, 300),
                  n_bins=20)
-assert len(res_s2) == 19, f'T8 expected 19 genes, got {len(res_s2)}'
+assert set(res_s2.gene) == set(genes20), f'T8 expected the full gene panel, got {len(res_s2)}'
 s2_g3 = float(res_s2[res_s2.gene == 'gene_0003']['S2'].iloc[0])
 assert s2_g3 > 0, f'T8 expected PGAA-H/S2>0 for gene_0003'
 print(f'✅ T8 PGAA-H test: {len(res_s2)} genes, gene_0003 S2={s2_g3:.4f}')
@@ -93,6 +95,7 @@ print(f'\n{"="*50}')
 if errors:
     print(f'❌ {len(errors)} tests FAILED:')
     for e in errors: print(f'  {e}')
-else:
-    print('✅ All 9 core tests PASSED')
+    print(f'{"="*50}')
+    sys.exit(1)
+print('✅ All 10 core tests PASSED')
 print(f'{"="*50}')

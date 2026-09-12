@@ -1,0 +1,5 @@
+method	replication_overlap	observed_overlap	pseudo_overlap	specificity_margin	holm_adjusted_p	minimum_stable_overlap	specificity_alpha	stability_gate_pass	specificity_gate_pass	dual_gate_state	result_claim_state	manuscript_allowed_claim
+absolute_mean_shift	0.725	0.675	0.575	0.08	0.0184799056491497	0.2	0.05	True	True	stable_and_specific	comparative_support	Bounded response-stability claim allowed within this benchmark.
+pgaa_h	0.03	0.03	0.015	0.015	0.0093167253985772	0.2	0.05	False	True	specific_but_not_stable	restricted_use	Report as a specificity diagnostic, not a usable stable ranking.
+pgaa_w	0.8200000000000001	0.82	0.81	0.0149999999999999	0.1398769752539879	0.2	0.05	True	False	stable_but_not_specific	failure_or_guardrail	Report reproducibility only; reject response-specific superiority.
+welch_abs_t	0.1149999999999999	0.07	0.01	0.065	0.0019574130506341	0.2	0.05	False	True	specific_but_not_stable	restricted_use	Report as a specificity diagnostic, not a usable stable ranking.

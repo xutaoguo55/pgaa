@@ -1,0 +1,7 @@
+variable	data_type	allowed_values	pre_outcome_definition
+genetic_perturbation	binary	0|1	1 for direct genetic or transcript-targeting perturbation; 0 for drug, cytokine, or state-transition exposure
+primary_or_in_vivo	binary	0|1	1 when the assayed cells are primary tissue, donor-derived cells, organoids, or sampled in vivo; 0 for established cell lines and in-vitro differentiated model systems
+mouse_system	binary	0|1	1 for Mus musculus; 0 for Homo sapiens
+split_independence_tier	ordinal	0|1|2	0 technical partition such as lane or GEM group; 1 experimental batch or time partition; 2 donor, biological replicate, or independently handled sample
+log2_recorded_split_levels	continuous	>=1	base-2 logarithm of the number of eligible recorded split levels in the frozen metadata contract
+minimum_equal_group_fraction	continuous	0_to_1	minimum equalized cells per perturbation-control group divided by the frozen maximum equalized group size

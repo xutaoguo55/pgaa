@@ -1,0 +1,15 @@
+figure_id	panel_key	result_claim_state	severity	n_rows
+Figure 1	decision_benchmark	comparative_support	low	9
+Figure 1	decision_benchmark	descriptive_only	moderate	11
+Figure 1	decision_benchmark	failure_or_guardrail	high	17
+Figure 2	calibration_guardrail	calibration_support	low	2
+Figure 2	calibration_guardrail	failure_or_guardrail	critical	1
+Figure 2	calibration_guardrail	failure_or_guardrail	high	1
+Figure 2	calibration_guardrail	restricted_use	moderate	1
+Figure 2	calibration_guardrail	restricted_use	very_high	1
+Figure 2	parameter_guardrail	calibration_support	low	1
+Figure 2	parameter_guardrail	failure_or_guardrail	high	1
+Figure 2	parameter_guardrail	failure_or_guardrail	very_high	4
+Figure 2	response_specificity_guardrail	comparative_support	low	1
+Figure 2	response_specificity_guardrail	failure_or_guardrail	high	1
+Figure 2	response_specificity_guardrail	restricted_use	moderate	2

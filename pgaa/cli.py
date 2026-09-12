@@ -74,6 +74,14 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--n-bins", type=int, default=20)
     parser.add_argument("--skip-s1", action="store_true", help="Skip PGAA-W / legacy s1 output")
     parser.add_argument("--skip-s2", action="store_true", help="Skip PGAA-H / legacy s2 output")
+    parser.add_argument(
+        "--target-only-permutation-p",
+        action="store_true",
+        help=(
+            "Compute full-gene observed PGAA-W scores but restrict permutation p-value "
+            "estimation to the perturbation target gene."
+        ),
+    )
     parser.add_argument("--random-state", type=int, default=42)
     return parser
 
@@ -121,6 +129,7 @@ def run(args: argparse.Namespace) -> tuple[Path | None, Path | None]:
             cell_type=cell_type,
             library_size=library_size,
             random_state=args.random_state,
+            target_only_permutation_p=args.target_only_permutation_p,
         )
         s1_path = args.out_prefix.with_suffix(".s1.csv")
         res_s1.to_csv(s1_path, index=False)

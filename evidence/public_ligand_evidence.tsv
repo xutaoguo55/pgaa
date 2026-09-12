@@ -1,0 +1,547 @@
+peptide_sequence	hla_allele	source_id	database	disease_or_context	reference_id	reference_url	validation_level	match_notes
+AEHSLQVAY	HLA-B44*03	TSNADB2_000001	TSNAdb_v2.0	Melanoma	PMID:27312342	https://doi.org/10.1158/2326-6066.CIR-15-0215	tier1	experimentally_presented_mutant_pHLA
+AMFWSVPTV	HLA-A02*01	TSNADB2_000002	TSNAdb_v2.0	Melanoma	PMID:25837513	https://doi.org/10.1126/Science.aaa3828	tier1	experimentally_presented_mutant_pHLA
+ARIGAIYSL	HLA-C07*02	TSNADB2_000004	TSNAdb_v2.0	Melanoma	PMID:33303615	http://Science.Sciencemag.org/content/370/6522/1328	tier1	experimentally_presented_mutant_pHLA
+AYLEAIHKF	HLA-A24*02	TSNADB2_000005	TSNAdb_v2.0	Colorectal Cancer	PMID:33537174	https://doi.org/10.1080/2162402X.2020.1870062	tier1	experimentally_presented_mutant_pHLA
+CLNEYHLFL	HLA-A02*01	TSNADB2_000007	TSNAdb_v2.0	Melanoma	PMID:25837513	https://doi.org/10.1126/Science.aaa3828	tier1	experimentally_presented_mutant_pHLA
+DANSFLQSV	HLA-B51*01	TSNADB2_000008	TSNAdb_v2.0	Melanoma	PMID:26819371	https://doi.org/10.18632/Oncotarget.6960	tier1	experimentally_presented_mutant_pHLA
+EPRSGFHGVL	HLA-B07*02	TSNADB2_000009	TSNAdb_v2.0	Melanoma	PMID:33303615	http://Science.Sciencemag.org/content/370/6522/1328	tier1	experimentally_presented_mutant_pHLA
+ETECEYFNRY	HLA-A01*01	TSNADB2_000010	TSNAdb_v2.0	Melanoma	PMID:33303615	http://Science.Sciencemag.org/content/370/6522/1328	tier1	experimentally_presented_mutant_pHLA
+EVLPFFLFF	HLA-A29*02	TSNADB2_000011	TSNAdb_v2.0	Melanoma	PMID:27312342	https://doi.org/10.1158/2326-6066.CIR-15-0215	tier1	experimentally_presented_mutant_pHLA
+FFYLLDFTF	HLA-A29*02	TSNADB2_000012	TSNAdb_v2.0	Melanoma	PMID:27312342	https://doi.org/10.1158/2326-6066.CIR-15-0215	tier1	experimentally_presented_mutant_pHLA
+FLIYLDVSV	HLA-A02*01	TSNADB2_000013	TSNAdb_v2.0	Melanoma	PMID:33303615	http://Science.Sciencemag.org/content/370/6522/1328	tier1	experimentally_presented_mutant_pHLA
+FLYNLLTRV	HLA-A02*01	TSNADB2_000014	TSNAdb_v2.0	Melanoma	PMID:25837513	https://doi.org/10.1126/Science.aaa3828	tier1	experimentally_presented_mutant_pHLA
+GLDDIKNLKV	HLA-A02*01	TSNADB2_000015	TSNAdb_v2.0	Melanoma	PMID:33303615	http://Science.Sciencemag.org/content/370/6522/1328	tier1	experimentally_presented_mutant_pHLA
+GLFGDIYLA	HLA-A02*01	TSNADB2_000016	TSNAdb_v2.0	Melanoma	PMID:23644516	https://doi.org/10.1038/nm.3161	tier1	experimentally_presented_mutant_pHLA
+GRIAFFLKY	HLA-B27*05	TSNADB2_000017	TSNAdb_v2.0	Melanoma	PMID:27869121	https://doi.org/10.1038/ncomms13404	tier1	experimentally_presented_mutant_pHLA
+HLYASLSRA	HLA-A02*01	TSNADB2_000018	TSNAdb_v2.0	Melanoma	PMID:25837513	https://doi.org/10.1126/Science.aaa3828	tier1	experimentally_presented_mutant_pHLA
+HMTEVVRHC	HLA-A02*01	TSNADB2_000019	TSNAdb_v2.0		PMID:33649166	https://doi.org/10.1126/Science.abc8697	tier1	experimentally_presented_mutant_pHLA
+IILVAVPHV	HLA-A02*01	TSNADB2_000020	TSNAdb_v2.0	Melanoma	PMID:25837513	https://doi.org/10.1126/Science.aaa3828	tier1	experimentally_presented_mutant_pHLA
+ILDTAGKEEY	HLA-A01*01	TSNADB2_000021	TSNAdb_v2.0	Melanoma	PMID:33303615	http://Science.Sciencemag.org/content/370/6522/1328	tier1	experimentally_presented_mutant_pHLA
+IMQTLAGELY	HLA-A29*02	TSNADB2_000022	TSNAdb_v2.0	Melanoma	PMID:27312342	https://doi.org/10.1158/2326-6066.CIR-15-0215	tier1	experimentally_presented_mutant_pHLA
+KINKNPKYK	HLA-A03*01	TSNADB2_000023	TSNAdb_v2.0	Melanoma	PMID:10064075	https://doi.org/10.1002/(sici)1521-4141(199902)29:02%3C592::aid-immu592%3E3.0.co;2-2	tier1	experimentally_presented_mutant_pHLA
+KLILWRGLK	HLA-A03*01	TSNADB2_000024	TSNAdb_v2.0	Melanoma	PMID:27869121	https://doi.org/10.1038/ncomms13404	tier1	experimentally_presented_mutant_pHLA
+KLKLPIIMK	HLA-A03*01	TSNADB2_000025	TSNAdb_v2.0	Melanoma	PMID:27869121	https://doi.org/10.1038/ncomms13404	tier1	experimentally_presented_mutant_pHLA
+KLMNIQQKL	HLA-A02*01	TSNADB2_000026	TSNAdb_v2.0	Melanoma	PMID:25837513	https://doi.org/10.1126/Science.aaa3828	tier1	experimentally_presented_mutant_pHLA
+KMIGNHLWV	HLA-A02*01	TSNADB2_000027	TSNAdb_v2.0	Melanoma	PMID:25837513	https://doi.org/10.1126/Science.aaa3828	tier1	experimentally_presented_mutant_pHLA
+KTLTSVFQK	HLA-A11*01	TSNADB2_000028	TSNAdb_v2.0	Melanoma	PMID:23644516	https://doi.org/10.1038/nm.3161	tier1	experimentally_presented_mutant_pHLA
+MLGEQLFPL	HLA-A02*01	TSNADB2_000029	TSNAdb_v2.0	Melanoma	PMID:25837513	https://doi.org/10.1126/Science.aaa3828	tier1	experimentally_presented_mutant_pHLA
+QLSCISTYV	HLA-A02*01	TSNADB2_000030	TSNAdb_v2.0	Melanoma	PMID:25837513	https://doi.org/10.1126/Science.aaa3828	tier1	experimentally_presented_mutant_pHLA
+QTNPVTLQY	HLA-A29*02	TSNADB2_000032	TSNAdb_v2.0	Melanoma	PMID:27312342	https://doi.org/10.1158/2326-6066.CIR-15-0215	tier1	experimentally_presented_mutant_pHLA
+RVADKASKK	HLA-A03*01	TSNADB2_000033	TSNAdb_v2.0	Melanoma	PMID:33303615	http://Science.Sciencemag.org/content/370/6522/1328	tier1	experimentally_presented_mutant_pHLA
+RVCGPCSTY	HLA-A29*02	TSNADB2_000034	TSNAdb_v2.0	Melanoma	PMID:27312342	https://doi.org/10.1158/2326-6066.CIR-15-0215	tier1	experimentally_presented_mutant_pHLA
+RVSTLRVSL	HLA-B07*02	TSNADB2_000035	TSNAdb_v2.0	Melanoma	PMID:33303615	http://Science.Sciencemag.org/content/370/6522/1328	tier1	experimentally_presented_mutant_pHLA
+SPGPVKLEL	HLA-B07*02	TSNADB2_000037	TSNAdb_v2.0	Melanoma	PMID:27869121	https://doi.org/10.1038/ncomms13404	tier1	experimentally_presented_mutant_pHLA
+TEDEHFEFY	HLA-B44*03	TSNADB2_000039	TSNAdb_v2.0	Melanoma	PMID:27312342	https://doi.org/10.1158/2326-6066.CIR-15-0215	tier1	experimentally_presented_mutant_pHLA
+TENGLTLEGW	HLA-B44*03	TSNADB2_000040	TSNAdb_v2.0	Melanoma	PMID:33303615	http://Science.Sciencemag.org/content/370/6522/1328	tier1	experimentally_presented_mutant_pHLA
+TLPEEFHEF	HLA-A24*02	TSNADB2_000041	TSNAdb_v2.0	Colorectal Cancer	PMID:33537174	https://doi.org/10.1080/2162402X.2020.1870062	tier1	experimentally_presented_mutant_pHLA
+TLWCSPIKV	HLA-A02*01	TSNADB2_000042	TSNAdb_v2.0	Melanoma	PMID:27312342	https://doi.org/10.1158/2326-6066.CIR-15-0215	tier1	experimentally_presented_mutant_pHLA
+TLWCSPIKV	HLA-A02*01	TSNADB2_000043	TSNAdb_v2.0	Melanoma	PMID:33303615	http://Science.Sciencemag.org/content/370/6522/1328	tier1	experimentally_presented_mutant_pHLA
+TLYSLTLLY	HLA-A29*02	TSNADB2_000044	TSNAdb_v2.0	Melanoma	PMID:27312342	https://doi.org/10.1158/2326-6066.CIR-15-0215	tier1	experimentally_presented_mutant_pHLA
+VVPCEPPEV	HLA-A02*01	TSNADB2_000046	TSNAdb_v2.0	Colorectal Cancer	PMID:30714987	https://doi.org/10.1172/JCI123791	tier1	experimentally_presented_mutant_pHLA
+YFLEFDQQY	HLA-C07*02	TSNADB2_000047	TSNAdb_v2.0	Melanoma	PMID:33303615	http://Science.Sciencemag.org/content/370/6522/1328	tier1	experimentally_presented_mutant_pHLA
+GWVKPIIIGH	HLA-B58*01	TSNADB2_000048	TSNAdb_v2.0	Glioblastoma	PMID:30733620	https://doi.org/10.1038/s41586-019-0959-z	tier1	experimentally_presented_mutant_pHLA
+HPGSLPLHL	HLA-B53*01	TSNADB2_000049	TSNAdb_v2.0	Glioblastoma	PMID:30733620	https://doi.org/10.1038/s41586-019-0959-z	tier1	experimentally_presented_mutant_pHLA
+ITDMVEGAKK	HLA-A03*01	TSNADB2_000050	TSNAdb_v2.0	Glioblastoma	PMID:30733620	https://doi.org/10.1038/s41586-019-0959-z	tier1	experimentally_presented_mutant_pHLA
+KQNDISAEF	HLA-B15*01	TSNADB2_000051	TSNAdb_v2.0	Glioblastoma	PMID:30733620	https://doi.org/10.1038/s41586-019-0959-z	tier1	experimentally_presented_mutant_pHLA
+LLHGFSFYL	HLA-A02*01	TSNADB2_000052	TSNAdb_v2.0	Melanoma	PMID:31685621	https://doi.org/10.1073/pnas.1906026116	tier1	experimentally_presented_mutant_pHLA
+LVPPSKRKMWV	HLA-A68*02	TSNADB2_000053	TSNAdb_v2.0	Glioblastoma	PMID:30733620	https://doi.org/10.1038/s41586-019-0959-z	tier1	experimentally_presented_mutant_pHLA
+NNTPGTYLLSV	HLA-A02*01	TSNADB2_000054	TSNAdb_v2.0	Glioblastoma	PMID:30733620	https://doi.org/10.1038/s41586-019-0959-z	tier1	experimentally_presented_mutant_pHLA
+RLRMREHMMK	HLA-A03*01	TSNADB2_000055	TSNAdb_v2.0	Glioblastoma	PMID:30733620	https://doi.org/10.1038/s41586-019-0959-z	tier1	experimentally_presented_mutant_pHLA
+RLSDFSEQL	HLA-A02*01	TSNADB2_000056	TSNAdb_v2.0	Ovarian Cancer	PMID:31685621	https://doi.org/10.1073/pnas.1906026116	tier1	experimentally_presented_mutant_pHLA
+SAWLFRMWYI	HLA-A02*01	TSNADB2_000057	TSNAdb_v2.0	Glioblastoma	PMID:30733620	https://doi.org/10.1038/s41586-019-0959-z	tier1	experimentally_presented_mutant_pHLA
+YLLAPLREAL	HLA-A02*01	TSNADB2_000058	TSNAdb_v2.0	Glioblastoma	PMID:30733620	https://doi.org/10.1038/s41586-019-0959-z	tier1	experimentally_presented_mutant_pHLA
+YMQTASTSYY	HLA-A01*01	TSNADB2_000059	TSNAdb_v2.0	Glioblastoma	PMID:30733620	https://doi.org/10.1038/s41586-019-0959-z	tier1	experimentally_presented_mutant_pHLA
+YTERQRWDF	HLA-A01*01	TSNADB2_000060	TSNAdb_v2.0	Glioblastoma	PMID:30733620	https://doi.org/10.1038/s41586-019-0959-z	tier1	experimentally_presented_mutant_pHLA
+AAAASYPAL	HLA-C17*01	TSNADB2_001258	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844524	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+AAEYGAEAL	HLA-C08*01	TSNADB2_001259	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844499	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+AAFRERASL	HLA-B07*02	TSNADB2_001260	TSNAdb_v2.0	Gr Lymphoblastoid Cell Line	PMID:32561536	https://cancerimmunolres.aacrjournals.org/content/8/8/1018	tier3	experimentally_presented_mutant_pHLA
+AAIAASRSV	HLA-C12*03	TSNADB2_001261	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+AAKAALEDF	HLA-C16*01	TSNADB2_001262	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+AASRSVVM	HLA-C12*03	TSNADB2_001263	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+ADLTRVETF	HLA-B37*01	TSNADB2_001264	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844423	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+AEAERLDVKAI	HLA-B44*03	TSNADB2_001265	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+AEAPHLVQV	HLA-B37*01	TSNADB2_001267	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844424	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+AEAPHLVQV	HLA-B40*02	TSNADB2_001268	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844429	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+AEAPHLVQV	HLA-B45*01	TSNADB2_001269	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844441	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+AEAPHLVQV	HLA-B49*01	TSNADB2_001270	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844447	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+AEAPHLVQVDA	HLA-B45*01	TSNADB2_001271	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844445	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+AEETPPFSNY	HLA-B44*03	TSNADB2_001272	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+AEIATRLA	HLA-B49*01	TSNADB2_001273	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844446	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+AERLDVKAI	HLA-B44*03	TSNADB2_001274	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+AETYETTLEK	HLA-A11*01	TSNADB2_001275	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+AEWRNGSTSSL	HLA-A68*01	TSNADB2_001276	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+AILLPQPLK	HLA-A11*01	TSNADB2_001278	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844327	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+AKVGTRLVF	HLA-B15*03	TSNADB2_001279	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844408	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+AKYPAPERL	HLA-B15*03	TSNADB2_001280	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844409	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+ALIQNKVL	HLA-B08*01	TSNADB2_001281	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844401	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+ALSELSDLHA	HLA-A02*02	TSNADB2_001283	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844297	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+ALSPTLLQSL	HLA-A02*01	TSNADB2_001285	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+ALWDRVVDL	HLA-A02*01	TSNADB2_001286	TSNAdb_v2.0	Melanoma	PMID:31921104	https://doi.org/10.3389/fimmu.2019.02766	tier3	experimentally_presented_mutant_pHLA
+AMAPERTGW	HLA-A32*01	TSNADB2_001287	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844349	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+AMAPERTGW	HLA-B13*01	TSNADB2_001288	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844402	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+ANALAHRY	HLA-C02*02	TSNADB2_001289	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844475	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+APAAAGAAL	HLA-B07*02	TSNADB2_001290	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844395	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+APAAAGAAL	HLA-B07*04	TSNADB2_001291	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844398	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+APAAAGAAL	HLA-B42*01	TSNADB2_001292	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844437	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+APFPLGDSAL	HLA-A68*01	TSNADB2_001293	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+APGGTGIVSA	HLA-B07*02	TSNADB2_001294	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844396	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+APKKPTGVDL	HLA-B07*02	TSNADB2_001295	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844397	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+APKKPTGVDL	HLA-B07*04	TSNADB2_001296	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844399	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+APKKPTGVDL	HLA-B42*01	TSNADB2_001297	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844440	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+AQFAGKDQTY	HLA-A32*01	TSNADB2_001298	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+ARTSGGYVKL	HLA-A03*01	TSNADB2_001299	TSNAdb_v2.0	Gr Lymphoblastoid Cell Line	PMID:32561536	https://cancerimmunolres.aacrjournals.org/content/8/8/1018	tier3	experimentally_presented_mutant_pHLA
+ASADGTVKLW	HLA-B57*01	TSNADB2_001300	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+ASGNHHVW	HLA-C16*01	TSNADB2_001301	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+ASLDKFLANV	HLA-A02*06	TSNADB2_001302	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844317	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+ASLDKFLANV	HLA-A02*07	TSNADB2_001303	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844323	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+ASLDKFLANV	HLA-A68*02	TSNADB2_001304	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844385	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+ASLDKFLANV	HLA-C15*02	TSNADB2_001305	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844517	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+ASLTVMVL	HLA-C07*04	TSNADB2_001306	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844498	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+ASPAVLEL	HLA-B51*01	TSNADB2_001307	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844451	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+ASPAVLEL	HLA-B52*01	TSNADB2_001308	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844454	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+ASWVVPIDIK	HLA-A03*01	TSNADB2_001309	TSNAdb_v2.0	Melanoma	PMID:27869121	https://doi.org/10.1038/ncomms13404	tier3	experimentally_presented_mutant_pHLA
+ASWVVPIDIK	HLA-A03*01	TSNADB2_001310	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+ATAAKQVAAKP	HLA-A02*05	TSNADB2_001311	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844315	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+ATIVPELNEI	HLA-A68*01	TSNADB2_001312	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+ATPSLHTSV	HLA-A68*02	TSNADB2_001313	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+AVSKPGLDYEL	HLA-A68*02	TSNADB2_001315	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+AVTSVKVSQF	HLA-A03*01	TSNADB2_001316	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+DEERIPVL	HLA-B18*01	TSNADB2_001317	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+DENITTIQF	HLA-B18*01	TSNADB2_001318	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+DFATPSLHTSV	HLA-A68*02	TSNADB2_001319	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+DFILKPEL	HLA-B08*01	TSNADB2_001320	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+DFLTEGGGV	HLA-A32*01	TSNADB2_001321	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844350	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+DGVGKSAL	HLA-B08*01	TSNADB2_001322	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+DHFETIIKY	HLA-B18*01	TSNADB2_001323	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+DIFQVVKAI	HLA-A68*02	TSNADB2_001324	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+DIKSEAQEEV	HLA-A02*01	TSNADB2_001325	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+DISEYRVEHL	HLA-A68*02	TSNADB2_001326	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+DITEVPDFSK	HLA-A03*01	TSNADB2_001327	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+DLAGGTFDV	HLA-B27*05	TSNADB2_001328	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+DLAGGTFDVS	HLA-A32*01	TSNADB2_001329	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+DMAAQITQR	HLA-A33*01	TSNADB2_001330	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844354	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+DMAAQITQR	HLA-A34*01	TSNADB2_001331	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844361	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+DMNQVLHAY	HLA-C07*01	TSNADB2_001332	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+DPEEVLVTV	HLA-B51*01	TSNADB2_001333	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+DRIINTLSI	HLA-B15*01	TSNADB2_001334	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844405	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+DSPDGSNGL	HLA-C01*02	TSNADB2_001335	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+DTSPVAVAL	HLA-A26*01	TSNADB2_001336	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+DTVEYPYTSF	HLA-A26*01	TSNADB2_001337	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+DVKAIGPLV	HLA-A26*01	TSNADB2_001338	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+DVSVQVER	HLA-A68*01	TSNADB2_001339	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+EAARVAEQLRA	HLA-B54*01	TSNADB2_001341	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844467	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+EAAYIGSMR	HLA-A33*03	TSNADB2_001342	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844357	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+EAAYIGSMR	HLA-A34*01	TSNADB2_001343	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844362	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+EAAYIGSMR	HLA-A34*02	TSNADB2_001344	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844367	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+EAAYIGSMR	HLA-A66*01	TSNADB2_001345	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844372	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+EAAYIGSMR	HLA-A68*01	TSNADB2_001346	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844379	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+EAGNNSRVPR	HLA-A68*01	TSNADB2_001347	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+EAGPGRALV	HLA-B49*01	TSNADB2_001348	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844448	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+EEADFLLAY	HLA-B18*01	TSNADB2_001349	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+EEATAAWAV	HLA-B18*01	TSNADB2_001350	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+EEEAFGILP	HLA-B45*01	TSNADB2_001351	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844442	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+EEEKFYLEP	HLA-B45*01	TSNADB2_001352	TSNAdb_v2.0	Hct 116 Cell Line	PMID:25576301	https://doi.org/10.1074/mcp.m114.042812	tier3	experimentally_presented_mutant_pHLA
+EEEYPGVTA	HLA-B45*01	TSNADB2_001353	TSNAdb_v2.0	Hct 116 Cell Line	PMID:25576301	https://doi.org/10.1074/mcp.m114.042812	tier3	experimentally_presented_mutant_pHLA
+EERVIDEEY	HLA-B18*01	TSNADB2_001355	TSNAdb_v2.0	Hct 116 Cell Line	PMID:25576301	https://doi.org/10.1074/mcp.m114.042812	tier3	experimentally_presented_mutant_pHLA
+EESVMLLTV	HLA-B49*01	TSNADB2_001356	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+EETPPFSNY	HLA-B44*03	TSNADB2_001357	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+EEVTPILAI	HLA-B44*03	TSNADB2_001358	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+EGSLGISHTR	HLA-A68*01	TSNADB2_001359	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+EHIPESAGF	HLA-B38*01	TSNADB2_001360	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+ELDPDIQLEY	HLA-A01*01	TSNADB2_001361	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+ELNARRCSF	HLA-B08*01	TSNADB2_001362	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+ELPDEVVVPL	HLA-A02*01	TSNADB2_001363	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+EMDMHLSDY	HLA-A01*01	TSNADB2_001364	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+ENITTIQFY	HLA-A26*01	TSNADB2_001365	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+EQNFVSTSDIK	HLA-A68*01	TSNADB2_001366	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+ESLIACKA	HLA-C01*02	TSNADB2_001367	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844474	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+ESLIACKA	HLA-C03*03	TSNADB2_001368	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844480	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+ESLIACKA	HLA-C04*01	TSNADB2_001369	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844490	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+ESLIACKA	HLA-C05*01	TSNADB2_001370	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844494	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+ESLIACKA	HLA-C07*01	TSNADB2_001371	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844495	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+ESLIACKA	HLA-C12*03	TSNADB2_001372	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844507	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+ESLIACKA	HLA-C17*01	TSNADB2_001373	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844523	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+ESSPSIVHR	HLA-A33*03	TSNADB2_001374	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844358	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+ESSPSIVHR	HLA-A66*01	TSNADB2_001375	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844373	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+ETLKPGTCVKR	HLA-A68*01	TSNADB2_001376	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+ETPPFSNYNTL	HLA-A26*01	TSNADB2_001377	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+ETSKQVTRW	HLA-A25*01	TSNADB2_001378	TSNAdb_v2.0	Melanoma	PMID:27869121	https://doi.org/10.1038/ncomms13404	tier3	experimentally_presented_mutant_pHLA
+ETSKQVTRW	HLA-A25*01	TSNADB2_001379	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+ETTEEMKYVL	HLA-A68*02	TSNADB2_001380	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+ETYETTLEK	HLA-A11*01	TSNADB2_001381	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+EVADAATLTM	HLA-A26*01	TSNADB2_001382	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+EVLGSGMHHY	HLA-A26*01	TSNADB2_001383	TSNAdb_v2.0	Melanoma	PMID:27600516	https://doi.org/10.1007/s00262-016-1897-3	tier3	experimentally_presented_mutant_pHLA
+EVPPPGPAR	HLA-A34*01	TSNADB2_001384	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844363	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+EVRPVETLR	HLA-A33*01	TSNADB2_001385	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844355	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+EVRPVETLR	HLA-A33*03	TSNADB2_001386	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844359	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+EVRWFQSQF	HLA-A26*01	TSNADB2_001387	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844338	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+EVTPILAIR	HLA-A26*01	TSNADB2_001388	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+FADPIAANL	HLA-A02*07	TSNADB2_001389	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844318	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+FADPIAANL	HLA-C03*03	TSNADB2_001390	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844482	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+FADPIAANL	HLA-C04*01	TSNADB2_001391	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844491	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+FADPIAANL	HLA-C08*01	TSNADB2_001392	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844500	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+FADPIAANL	HLA-C08*02	TSNADB2_001393	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844504	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+FAFDAVSKPGL	HLA-A68*02	TSNADB2_001394	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+FAFQEYDSF	HLA-B35*01	TSNADB2_001395	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:28832583	https://doi.org/10.1371/journal.pcbi.1005725	tier3	experimentally_presented_mutant_pHLA
+FAPKMSEIIL	HLA-C03*04	TSNADB2_001396	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844489	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+FATPSLHTSV	HLA-A68*02	TSNADB2_001397	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+FAVTEYPTL	HLA-A02*07	TSNADB2_001398	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844319	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+FAVTEYPTL	HLA-A68*02	TSNADB2_001399	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844382	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+FAVTEYPTLKF	HLA-A02*07	TSNADB2_001400	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844324	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+FAVTEYPTLKF	HLA-A29*02	TSNADB2_001401	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844342	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+FAVTEYPTLKF	HLA-B35*01	TSNADB2_001402	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844416	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+FFLSLHGHKL	HLA-A24*02	TSNADB2_001403	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+FHATNPLNL	HLA-B38*01	TSNADB2_001404	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+FKLLSHSL	HLA-C07*02	TSNADB2_001405	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844497	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+FLANVSTVL	HLA-A02*01	TSNADB2_001406	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844292	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+FLANVSTVL	HLA-A02*03	TSNADB2_001407	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844303	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+FLANVSTVL	HLA-A02*04	TSNADB2_001408	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844307	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+FLANVSTVL	HLA-A02*07	TSNADB2_001409	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844320	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+FLANVSTVL	HLA-A68*02	TSNADB2_001410	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844383	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+FLANVSTVL	HLA-C03*02	TSNADB2_001411	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844477	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+FLANVSTVL	HLA-C03*03	TSNADB2_001412	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844483	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+FLANVSTVL	HLA-C03*04	TSNADB2_001413	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844487	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+FLANVSTVL	HLA-C12*03	TSNADB2_001414	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844508	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+FLANVSTVL	HLA-C17*01	TSNADB2_001415	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844525	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+FLLDSCTKL	HLA-A02*01	TSNADB2_001419	TSNAdb_v2.0	Melanoma	PMID:31921104	https://doi.org/10.3389/fimmu.2019.02766	tier3	experimentally_presented_mutant_pHLA
+FLNDIFERI	HLA-A02*01	TSNADB2_001420	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844293	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+FLNDIFERI	HLA-A02*07	TSNADB2_001421	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844321	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+FLSLHGHK	HLA-A03*01	TSNADB2_001422	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+FPSPSKTSLTL	HLA-B07*02	TSNADB2_001423	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+FPVHGFPT	HLA-B54*01	TSNADB2_001424	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844463	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+FPVHGFPTL	HLA-A68*02	TSNADB2_001425	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844384	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+FPVHGFPTL	HLA-B54*01	TSNADB2_001426	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844464	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+FPVVNSHSL	HLA-C03*04	TSNADB2_001427	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+FPYPGMTNQ	HLA-B51*01	TSNADB2_001428	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+FQNALIVRY	HLA-A29*02	TSNADB2_001429	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844340	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+FVPPTAISHF	HLA-B35*03	TSNADB2_001431	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+FVSTSDIKSM	HLA-C03*04	TSNADB2_001432	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+GDFLTEGGGV	HLA-A32*01	TSNADB2_001433	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844351	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+GEAGPGRAL	HLA-B40*01	TSNADB2_001434	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844427	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+GEELDPPWL	HLA-B18*01	TSNADB2_001435	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+GEVRPVETL	HLA-B40*02	TSNADB2_001436	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844430	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+GEYIIRCSEI	HLA-B49*01	TSNADB2_001437	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844449	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+GIAVSEEDTL	HLA-A02*01	TSNADB2_001438	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+GLLDEAKRLLY	HLA-A03*01	TSNADB2_001439	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+GLNVPVQSNK	HLA-A03*01	TSNADB2_001440	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+GLRPTVDAL	HLA-B07*02	TSNADB2_001441	TSNAdb_v2.0	Gr Lymphoblastoid Cell Line	PMID:32561536	https://cancerimmunolres.aacrjournals.org/content/8/8/1018	tier3	experimentally_presented_mutant_pHLA
+GLSALILRY	HLA-A29*02	TSNADB2_001442	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844341	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+GLVGIVVGTV	HLA-A02*03	TSNADB2_001443	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844305	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+GPEELGLPM	HLA-B35*01	TSNADB2_001444	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:28832583	https://doi.org/10.1371/journal.pcbi.1005725	tier3	experimentally_presented_mutant_pHLA
+GPSIHPGFLPW	HLA-B53*01	TSNADB2_001445	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844461	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+GPYPFVQAV	HLA-B49*01	TSNADB2_001446	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+GRIAFFLKY	HLA-B27*05	TSNADB2_001447	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+GRSSTFISH	HLA-B27*05	TSNADB2_001448	TSNAdb_v2.0	Gr Lymphoblastoid Cell Line	PMID:32561536	https://cancerimmunolres.aacrjournals.org/content/8/8/1018	tier3	experimentally_presented_mutant_pHLA
+GRTGAGKSFL	HLA-B27*05	TSNADB2_001449	TSNAdb_v2.0	Melanoma	PMID:27869121	https://doi.org/10.1038/ncomms13404	tier3	experimentally_presented_mutant_pHLA
+GRTGAGKSFL	HLA-B27*05	TSNADB2_001450	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+GRTPLMISK	HLA-B27*05	TSNADB2_001451	TSNAdb_v2.0	Gr Lymphoblastoid Cell Line	PMID:32561536	https://cancerimmunolres.aacrjournals.org/content/8/8/1018	tier3	experimentally_presented_mutant_pHLA
+GSLQLPPPR	HLA-A11*01	TSNADB2_001453	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844328	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+GSLQLPPPR	HLA-A11*02	TSNADB2_001454	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844331	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+GTIFIIKGVR	HLA-A66*01	TSNADB2_001455	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844376	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+GTIFIIKGVRK	HLA-A11*01	TSNADB2_001456	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844330	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+GTIFIIKGVRK	HLA-A11*02	TSNADB2_001457	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844333	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+GTKKDVDVLK	HLA-A03*01	TSNADB2_001458	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+GTSAPRKKK	HLA-A11*01	TSNADB2_001459	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:28832583	https://doi.org/10.1371/journal.pcbi.1005725	tier3	experimentally_presented_mutant_pHLA
+GTTLILSKV	HLA-A02*01	TSNADB2_001460	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+GVANALAHRY	HLA-A30*02	TSNADB2_001461	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844347	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+GVSKIIGGNPK	HLA-A68*01	TSNADB2_001462	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+HAAEYGAEAL	HLA-B35*03	TSNADB2_001463	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844417	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+HAAEYGAEAL	HLA-C03*03	TSNADB2_001464	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844486	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+HAAEYGAEAL	HLA-C08*01	TSNADB2_001465	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844502	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+HDHFGIVEGL	HLA-B54*01	TSNADB2_001466	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844466	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+HEDVKEAI	HLA-B49*01	TSNADB2_001467	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+HHARLIFVF	HLA-B38*02	TSNADB2_001468	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844425	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+HIKIEPVAI	HLA-B08*01	TSNADB2_001469	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+HIYGSGGYAL	HLA-A02*01	TSNADB2_001470	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+HPVSDHEATL	HLA-B35*03	TSNADB2_001471	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844418	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+HPVSDHEATL	HLA-B53*01	TSNADB2_001472	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844459	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+HRSYIDYLL	HLA-B27*05	TSNADB2_001473	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+HSKPEDTDAW	HLA-B57*01	TSNADB2_001474	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+HSPFTATSL	HLA-C01*02	TSNADB2_001475	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+HSYSELCTW	HLA-B57*01	TSNADB2_001476	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+IAASRSVVM	HLA-C12*03	TSNADB2_001477	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+IAVSEEDTL	HLA-B51*01	TSNADB2_001478	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+IEEDSAEKI	HLA-B49*01	TSNADB2_001479	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+IEHNIRNAKY	HLA-B44*03	TSNADB2_001480	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+IEVEVNEI	HLA-B18*01	TSNADB2_001481	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+IFDLAGGTF	HLA-C02*02	TSNADB2_001482	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+IFDLAGGTFDV	HLA-C02*02	TSNADB2_001483	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+IINTDTLA	HLA-B50*01	TSNADB2_001484	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844450	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+IKREYEQTLK	HLA-A03*01	TSNADB2_001485	TSNAdb_v2.0	Gr Lymphoblastoid Cell Line	PMID:32561536	https://cancerimmunolres.aacrjournals.org/content/8/8/1018	tier3	experimentally_presented_mutant_pHLA
+ILKSTVAVI	HLA-B08*01	TSNADB2_001486	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+ILRDTSEDLGL	HLA-A02*02	TSNADB2_001487	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844299	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+ILWESASLL	HLA-A02*04	TSNADB2_001488	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844308	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+IPASVSAPK	HLA-A68*01	TSNADB2_001489	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+IPTEEKPYKW	HLA-B53*01	TSNADB2_001490	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844460	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+IQDQIQNCI	HLA-B38*01	TSNADB2_001491	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+IQERLQKI	HLA-B37*01	TSNADB2_001493	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844422	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+ISTFRQCAL	HLA-C16*01	TSNADB2_001494	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+ITIPFDFDY	HLA-A01*01	TSNADB2_001495	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+ITSELRAVEI	HLA-A02*01	TSNADB2_001496	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+IVFIATSEF	HLA-B15*03	TSNADB2_001497	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+IYTSSGQLQLF	HLA-A24*02	TSNADB2_001498	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+KFLANVSTV	HLA-C14*03	TSNADB2_001499	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844514	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+KIFTTSGNLK	HLA-A03*01	TSNADB2_001501	TSNAdb_v2.0	Gr Lymphoblastoid Cell Line	PMID:32561536	https://cancerimmunolres.aacrjournals.org/content/8/8/1018	tier3	experimentally_presented_mutant_pHLA
+KIREAEQQRVK	HLA-A03*01	TSNADB2_001502	TSNAdb_v2.0	Gr Lymphoblastoid Cell Line	PMID:32561536	https://cancerimmunolres.aacrjournals.org/content/8/8/1018	tier3	experimentally_presented_mutant_pHLA
+KIRGIVSEK	HLA-A03*01	TSNADB2_001503	TSNAdb_v2.0	Gr Lymphoblastoid Cell Line	PMID:32561536	https://cancerimmunolres.aacrjournals.org/content/8/8/1018	tier3	experimentally_presented_mutant_pHLA
+KKFQSFQEH	HLA-B15*03	TSNADB2_001505	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844410	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+KLFEDRVGTIK	HLA-A03*01	TSNADB2_001507	TSNAdb_v2.0	Melanoma	PMID:26819371	https://doi.org/10.18632/oncotarget.6960	tier3	experimentally_presented_mutant_pHLA
+KLFHDMNVSY	HLA-A29*02	TSNADB2_001508	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+KLILWRGLK	HLA-A03*01	TSNADB2_001509	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+KLKAERQRGI	HLA-A02*01	TSNADB2_001510	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+KLKLPIIMK	HLA-A03*01	TSNADB2_001511	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+KLLSHSLLVTL	HLA-A02*01	TSNADB2_001512	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844296	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+KLLSHSLLVTL	HLA-A02*04	TSNADB2_001513	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844311	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+KLLSHSLLVTL	HLA-A02*11	TSNADB2_001514	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844326	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+KTPEEIHKTF	HLA-B57*03	TSNADB2_001515	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844471	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+KVFKLGNKV	HLA-A68*02	TSNADB2_001517	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+KVVLPSDVTSY	HLA-A32*01	TSNADB2_001518	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+KVVTGVANA	HLA-A02*05	TSNADB2_001519	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844314	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+KYINKTIRV	HLA-A24*02	TSNADB2_001520	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+KYINKTIRVKF	HLA-A24*02	TSNADB2_001521	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+LAETYETTLEK	HLA-A11*01	TSNADB2_001522	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+LAGGTFDV	HLA-C02*02	TSNADB2_001523	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+LAGKVLAL	HLA-C03*03	TSNADB2_001524	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844481	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+LAGKVLAL	HLA-C16*01	TSNADB2_001525	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844518	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+LALATQRISRP	HLA-A03*01	TSNADB2_001526	TSNAdb_v2.0	Gr Lymphoblastoid Cell Line	PMID:32561536	https://cancerimmunolres.aacrjournals.org/content/8/8/1018	tier3	experimentally_presented_mutant_pHLA
+LAMVPSHAV	HLA-B54*01	TSNADB2_001527	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844465	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+LAMVPSHAVVA	HLA-B54*01	TSNADB2_001528	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844468	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+LELDELNRH	HLA-B07*02	TSNADB2_001529	TSNAdb_v2.0	Gr Lymphoblastoid Cell Line	PMID:32561536	https://cancerimmunolres.aacrjournals.org/content/8/8/1018	tier3	experimentally_presented_mutant_pHLA
+LELKAVHAY	HLA-B18*01	TSNADB2_001530	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+LFHDMNVSY	HLA-A29*02	TSNADB2_001531	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+LFLPVHRSYI	HLA-A24*02	TSNADB2_001532	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+LFQQGKDLQQY	HLA-A29*02	TSNADB2_001533	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+LFVVFQTVY	HLA-A29*02	TSNADB2_001534	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+LIERSQSPV	HLA-A02*01	TSNADB2_001535	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+LIERSQSPVHL	HLA-A02*01	TSNADB2_001536	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+LIFDLAGGTF	HLA-C02*02	TSNADB2_001537	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+LIKQIFEGV	HLA-A02*01	TSNADB2_001538	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+LLFLPVHRSY	HLA-A03*01	TSNADB2_001539	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+LLGRGQEAHL	HLA-B13*01	TSNADB2_001540	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844403	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+LLSHSLLVTL	HLA-A02*01	TSNADB2_001541	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844294	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+LLSHSLLVTL	HLA-A02*02	TSNADB2_001542	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844298	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+LLSHSLLVTLA	HLA-A02*02	TSNADB2_001543	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844300	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+LLSHSLLVTLA	HLA-A02*05	TSNADB2_001544	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844316	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+LLSYPRLL	HLA-B58*02	TSNADB2_001545	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844473	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+LPALRSLGL	HLA-B07*02	TSNADB2_001546	TSNAdb_v2.0	Gr Lymphoblastoid Cell Line	PMID:32561536	https://cancerimmunolres.aacrjournals.org/content/8/8/1018	tier3	experimentally_presented_mutant_pHLA
+LPDEVVVPL	HLA-B51*01	TSNADB2_001547	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+LPIQYEPV	HLA-B35*03	TSNADB2_001548	TSNAdb_v2.0	Melanoma	PMID:27869121	https://doi.org/10.1038/ncomms13404	tier3	experimentally_presented_mutant_pHLA
+LPIQYEPVL	HLA-B35*03	TSNADB2_001549	TSNAdb_v2.0	Melanoma	PMID:27869121	https://doi.org/10.1038/ncomms13404	tier3	experimentally_presented_mutant_pHLA
+LPIQYEPVL	HLA-B35*03	TSNADB2_001550	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+LPSDDRGSL	HLA-B27*05	TSNADB2_001551	TSNAdb_v2.0	Gr Lymphoblastoid Cell Line	PMID:32561536	https://cancerimmunolres.aacrjournals.org/content/8/8/1018	tier3	experimentally_presented_mutant_pHLA
+LQARIAHQI	HLA-A02*03	TSNADB2_001552	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844304	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+LQLNVKNGSF	HLA-B37*01	TSNADB2_001553	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+LRLTALLLR	HLA-B15*17	TSNADB2_001555	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844411	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+LSAPLPLL	HLA-B52*01	TSNADB2_001556	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844455	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+LSDPSIPGR	HLA-A34*01	TSNADB2_001557	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844364	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+LSHSLLVTL	HLA-B15*17	TSNADB2_001558	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844412	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+LSHSLLVTL	HLA-C03*02	TSNADB2_001559	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844478	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+LSHSLLVTL	HLA-C03*03	TSNADB2_001560	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844484	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+LSHSLLVTL	HLA-C03*04	TSNADB2_001561	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844488	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+LSHSLLVTL	HLA-C08*01	TSNADB2_001562	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844501	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+LSHSLLVTL	HLA-C12*03	TSNADB2_001563	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844509	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+LSHSLLVTL	HLA-C15*02	TSNADB2_001564	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844515	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+LSVMEEVLI	HLA-C04*03	TSNADB2_001565	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844492	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+LTEKVSLLK	HLA-A01*01	TSNADB2_001566	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+LVEPEGIEK	HLA-C16*01	TSNADB2_001567	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844520	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+LVGPAQLSHW	HLA-B57*01	TSNADB2_001568	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+LVVVGASGVGK	HLA-A68*01	TSNADB2_001569	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+LVYDVSHNIAK	HLA-A03*01	TSNADB2_001570	TSNAdb_v2.0	Gr Lymphoblastoid Cell Line	PMID:32561536	https://cancerimmunolres.aacrjournals.org/content/8/8/1018	tier3	experimentally_presented_mutant_pHLA
+LVYGPLGAGK	HLA-A03*01	TSNADB2_001571	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+LYEETGEFL	HLA-A24*02	TSNADB2_001572	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+LYEETGEFLPI	HLA-A24*02	TSNADB2_001573	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+MAIEAQQKF	HLA-B35*07	TSNADB2_001574	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844419	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+MAIEAQQKF	HLA-B53*01	TSNADB2_001575	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844458	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+MAIEAQQKF	HLA-B58*01	TSNADB2_001576	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844472	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+MAIEAQQKF	HLA-C12*02	TSNADB2_001577	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844505	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+MELKVESF	HLA-B18*01	TSNADB2_001578	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+MIVRPSQPR	HLA-A34*01	TSNADB2_001579	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844365	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+MIVRPSQPR	HLA-A66*01	TSNADB2_001580	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844374	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+MLMKNISTK	HLA-A03*01	TSNADB2_001581	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+MMPPLPGI	HLA-B51*01	TSNADB2_001582	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+MNQVLHAY	HLA-C07*01	TSNADB2_001583	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+MTFGLTDRPQL	HLA-A68*02	TSNADB2_001584	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844387	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+NEKGKALIY	HLA-C07*01	TSNADB2_001585	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+NEQSKLLKV	HLA-B49*01	TSNADB2_001586	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+NETPVAVLTI	HLA-B44*03	TSNADB2_001587	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+NFKLLSHSL	HLA-A24*07	TSNADB2_001588	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844336	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+NIALSPTLL	HLA-A02*01	TSNADB2_001589	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+NIREVGFEY	HLA-B15*02	TSNADB2_001590	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844407	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+NSKRKAETL	HLA-B08*01	TSNADB2_001591	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+NVDMRTISF	HLA-B08*01	TSNADB2_001592	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+NVKNGSFVAK	HLA-A11*01	TSNADB2_001593	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+NVLIFDLA	HLA-A32*01	TSNADB2_001594	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+NYGTNVPVEF	HLA-A24*02	TSNADB2_001595	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+PRAPGPQGF	HLA-B07*02	TSNADB2_001597	TSNAdb_v2.0	Gr Lymphoblastoid Cell Line	PMID:32561536	https://cancerimmunolres.aacrjournals.org/content/8/8/1018	tier3	experimentally_presented_mutant_pHLA
+PRGPAPAAL	HLA-B07*02	TSNADB2_001598	TSNAdb_v2.0	Gr Lymphoblastoid Cell Line	PMID:32561536	https://cancerimmunolres.aacrjournals.org/content/8/8/1018	tier3	experimentally_presented_mutant_pHLA
+PTDTNVLRY	HLA-A01*01	TSNADB2_001599	TSNAdb_v2.0	Gr Lymphoblastoid Cell Line	PMID:32561536	https://cancerimmunolres.aacrjournals.org/content/8/8/1018	tier3	experimentally_presented_mutant_pHLA
+QAQTDRVSL	HLA-B42*01	TSNADB2_001600	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844438	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+QAQTDRVSL	HLA-C16*01	TSNADB2_001601	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844521	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+QASGNHHVW	HLA-B44*03	TSNADB2_001602	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+QAVAAVQKL	HLA-C12*03	TSNADB2_001603	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+QDVSVQVER	HLA-A68*01	TSNADB2_001604	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+QEFAPLGTV	HLA-B49*01	TSNADB2_001605	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+QEFAPLGTVG	HLA-B49*01	TSNADB2_001606	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+QEPVLGPV	HLA-A02*01	TSNADB2_001607	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844290	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+QEPVLGPV	HLA-A02*05	TSNADB2_001608	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844312	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+QEPVLGPV	HLA-A68*02	TSNADB2_001609	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844380	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+QEVRNTLLNV	HLA-B49*01	TSNADB2_001610	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+QIFEGVYYL	HLA-A02*01	TSNADB2_001611	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+QIIPTEEKPYK	HLA-A30*01	TSNADB2_001612	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844345	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+QLNVKNGSFV	HLA-A02*01	TSNADB2_001613	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+QLPEPLPGL	HLA-A02*07	TSNADB2_001614	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844322	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+QLYEETGEF	HLA-A03*01	TSNADB2_001615	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+QMKNPILEL	HLA-B08*01	TSNADB2_001616	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+QPSGVPTSL	HLA-A68*01	TSNADB2_001617	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+QQLDPDEKIAY	HLA-B15*01	TSNADB2_001618	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844406	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+QSYLDSGIHY	HLA-A01*01	TSNADB2_001619	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+QTAAAVGVLK	HLA-A03*01	TSNADB2_001620	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+QTDQMVFNTY	HLA-A01*01	TSNADB2_001621	TSNAdb_v2.0	Hct 116 Cell Line	PMID:25576301	https://doi.org/10.1074/mcp.m114.042812	tier3	experimentally_presented_mutant_pHLA
+QTKPASLLY	HLA-A26*01	TSNADB2_001622	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+QTYAVPLI	HLA-B52*01	TSNADB2_001623	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844456	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+QVIVGVLQK	HLA-A03*01	TSNADB2_001624	TSNAdb_v2.0	Gr Lymphoblastoid Cell Line	PMID:32561536	https://cancerimmunolres.aacrjournals.org/content/8/8/1018	tier3	experimentally_presented_mutant_pHLA
+QYMDSSLVKI	HLA-A23*01	TSNADB2_001625	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+RATIVPEL	HLA-C03*04	TSNADB2_001626	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+RAVEIQIQEL	HLA-A02*01	TSNADB2_001627	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+RDRDHERRL	HLA-A02*01	TSNADB2_001628	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+RFKDLGEEHF	HLA-A23*01	TSNADB2_001630	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844335	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+RIKQTARK	HLA-A03*01	TSNADB2_001631	TSNAdb_v2.0	Melanoma	PMID:27869121	https://doi.org/10.1038/ncomms13404	tier3	experimentally_presented_mutant_pHLA
+RIKQTARK	HLA-A03*01	TSNADB2_001632	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+RILNPLVSK	HLA-A03*01	TSNADB2_001633	TSNAdb_v2.0	Gr Lymphoblastoid Cell Line	PMID:32561536	https://cancerimmunolres.aacrjournals.org/content/8/8/1018	tier3	experimentally_presented_mutant_pHLA
+RIREGQTLR	HLA-A03*01	TSNADB2_001634	TSNAdb_v2.0	Gr Lymphoblastoid Cell Line	PMID:32561536	https://cancerimmunolres.aacrjournals.org/content/8/8/1018	tier3	experimentally_presented_mutant_pHLA
+RIRRENQVL	HLA-B07*02	TSNADB2_001635	TSNAdb_v2.0	Gr Lymphoblastoid Cell Line	PMID:32561536	https://cancerimmunolres.aacrjournals.org/content/8/8/1018	tier3	experimentally_presented_mutant_pHLA
+RLAETYETTL	HLA-A02*01	TSNADB2_001636	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+RLFGFQVGR	HLA-A11*01	TSNADB2_001637	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+RLIERSQSPV	HLA-B37*01	TSNADB2_001640	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+RLIKQIFEGV	HLA-A02*01	TSNADB2_001641	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+RLLGNVLVVV	HLA-A02*01	TSNADB2_001643	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844295	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+RLLSAVTAR	HLA-A74*01	TSNADB2_001644	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844392	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+RLVTVLEHRL	HLA-A02*01	TSNADB2_001645	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+RPRAPGPAP	HLA-B07*02	TSNADB2_001646	TSNAdb_v2.0	Gr Lymphoblastoid Cell Line	PMID:32561536	https://cancerimmunolres.aacrjournals.org/content/8/8/1018	tier3	experimentally_presented_mutant_pHLA
+RQAQTDRVSL	HLA-B13*01	TSNADB2_001647	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844404	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+RRFLAARAL	HLA-B27*05	TSNADB2_001648	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844415	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+RSMRTVYGLF	HLA-A24*02	TSNADB2_001650	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:28832583	https://doi.org/10.1371/journal.pcbi.1005725	tier3	experimentally_presented_mutant_pHLA
+RTQDVSVQVER	HLA-A68*01	TSNADB2_001651	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+RVATKGAATPK	HLA-A11*01	TSNADB2_001652	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+RVDGRMLQY	HLA-A36*01	TSNADB2_001653	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844370	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+RVLIGEGVLTK	HLA-A03*01	TSNADB2_001654	TSNAdb_v2.0	Gr Lymphoblastoid Cell Line	PMID:32561536	https://cancerimmunolres.aacrjournals.org/content/8/8/1018	tier3	experimentally_presented_mutant_pHLA
+RVYVHPFHL	HLA-C07*01	TSNADB2_001655	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844496	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+RYLVRAIL	HLA-C14*03	TSNADB2_001656	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844512	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+RYVLHVVAA	HLA-A68*01	TSNADB2_001657	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+SARIIGVSH	HLA-C12*02	TSNADB2_001667	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844506	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+SASLHPATV	HLA-C12*03	TSNADB2_001668	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+SAVPVNHTQVM	HLA-C08*01	TSNADB2_001669	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844503	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+SDESLIACKA	HLA-C12*03	TSNADB2_001670	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844511	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+SDMSLTACKV	HLA-A66*01	TSNADB2_001671	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844377	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+SDMSLTACKV	HLA-A74*01	TSNADB2_001672	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844393	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+SELQKIHKA	HLA-B40*02	TSNADB2_001674	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844431	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+SELQKIHKA	HLA-B40*06	TSNADB2_001675	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844434	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+SELQKIHKA	HLA-B45*01	TSNADB2_001676	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844443	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+SELSDLHAH	HLA-B18*01	TSNADB2_001677	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844414	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+SELSDLHAHKL	HLA-B40*02	TSNADB2_001678	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844433	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+SELTVHQRI	HLA-B49*01	TSNADB2_001679	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+SENVYVNTA	HLA-B40*06	TSNADB2_001680	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844435	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+SENVYVNTA	HLA-B45*01	TSNADB2_001681	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844444	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+SFGGSYGGSF	HLA-A36*01	TSNADB2_001682	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844371	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+SFGGSYGGSF	HLA-A68*02	TSNADB2_001683	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844386	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+SIKDGEAVWV	HLA-A02*01	TSNADB2_001684	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+SITSELRAV	HLA-A02*01	TSNADB2_001685	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+SMAARVPI	HLA-C16*01	TSNADB2_001686	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844519	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+SMRYFYTAV	HLA-C15*02	TSNADB2_001687	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844516	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+SPALASRVA	HLA-B55*01	TSNADB2_001688	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844469	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+SPFTATSL	HLA-B08*01	TSNADB2_001689	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+SPGPVKLEL	HLA-B07*02	TSNADB2_001690	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+SPHTPRRTSL	HLA-B07*04	TSNADB2_001691	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844400	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+SPLQKALLA	HLA-B55*02	TSNADB2_001692	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844470	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+SPSKTSLTL	HLA-B07*02	TSNADB2_001693	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+SPVLGLRGL	HLA-B07*02	TSNADB2_001694	TSNAdb_v2.0	Gr Lymphoblastoid Cell Line	PMID:32561536	https://cancerimmunolres.aacrjournals.org/content/8/8/1018	tier3	experimentally_presented_mutant_pHLA
+SRFLKSDIF	HLA-C07*02	TSNADB2_001695	TSNAdb_v2.0	Gr Lymphoblastoid Cell Line	PMID:32561536	https://cancerimmunolres.aacrjournals.org/content/8/8/1018	tier3	experimentally_presented_mutant_pHLA
+SRFLSQLDK	HLA-B27*05	TSNADB2_001696	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+SRKEFEPIL	HLA-C07*02	TSNADB2_001697	TSNAdb_v2.0	Gr Lymphoblastoid Cell Line	PMID:32561536	https://cancerimmunolres.aacrjournals.org/content/8/8/1018	tier3	experimentally_presented_mutant_pHLA
+SSAAAPFPL	HLA-C03*04	TSNADB2_001698	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+SSTSNRSSTW	HLA-B57*01	TSNADB2_001699	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+SVAGGLFVGK	HLA-A11*01	TSNADB2_001700	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844329	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+SVAGGLFVGK	HLA-A11*02	TSNADB2_001701	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844332	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+SVKPHLCSL	HLA-A68*02	TSNADB2_001702	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+SVLLPENYITK	HLA-A03*01	TSNADB2_001703	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+SVRENRSLF	HLA-A66*01	TSNADB2_001704	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844375	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+SVSDISEYR	HLA-A68*02	TSNADB2_001705	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+SVSDISEYRV	HLA-A68*02	TSNADB2_001706	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+SVTNEFCLK	HLA-A11*01	TSNADB2_001707	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:28832583	https://doi.org/10.1371/journal.pcbi.1005725	tier3	experimentally_presented_mutant_pHLA
+SYIDYLLLTF	HLA-A24*02	TSNADB2_001708	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+TEEDVKIKF	HLA-B49*01	TSNADB2_001709	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+TEILLRKL	HLA-B18*01	TSNADB2_001711	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844413	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+TEILLRKL	HLA-B40*02	TSNADB2_001712	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844428	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+TEQKQTSVL	HLA-B40*02	TSNADB2_001713	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844432	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+TERIVAVSF	HLA-B18*01	TSNADB2_001714	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+TEYKLVVVGAV	HLA-B49*01	TSNADB2_001715	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+THHQQDPAF	HLA-B38*02	TSNADB2_001716	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844426	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+TLNQIDSVKV	HLA-A02*04	TSNADB2_001717	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844310	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+TLTKNIVEL	HLA-A02*04	TSNADB2_001718	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844309	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+TPLATLKST	HLA-A34*02	TSNADB2_001719	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844368	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+TPLTKDVTL	HLA-B08*01	TSNADB2_001720	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+TPSAAVKLI	HLA-B51*01	TSNADB2_001721	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+TRISNIFVI	HLA-C07*02	TSNADB2_001722	TSNAdb_v2.0	Gr Lymphoblastoid Cell Line	PMID:32561536	https://cancerimmunolres.aacrjournals.org/content/8/8/1018	tier3	experimentally_presented_mutant_pHLA
+TSIVVSQTL	HLA-B08*01	TSNADB2_001726	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+TVAVIIFPV	HLA-A02*01	TSNADB2_001727	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+TYITERIVAV	HLA-A24*02	TSNADB2_001728	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+VAKGFISRM	HLA-C12*03	TSNADB2_001729	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+VALVVPVSI	HLA-B51*01	TSNADB2_001730	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844452	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+VANALAHRY	HLA-A30*02	TSNADB2_001731	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844346	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+VANALAHRY	HLA-C02*02	TSNADB2_001732	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844476	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+VDNIIIQSI	HLA-B49*01	TSNADB2_001733	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+VEIEQLTY	HLA-B18*01	TSNADB2_001734	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+VEMLGLISC	HLA-B49*01	TSNADB2_001735	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+VENQKHSL	HLA-B08*01	TSNADB2_001736	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+VEYPYTSF	HLA-B18*01	TSNADB2_001737	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+VFKDLSVTL	HLA-B38*01	TSNADB2_001738	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+VGADGVGKSAL	HLA-C01*02	TSNADB2_001739	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+VGEVTSTSKYC	HLA-C04*03	TSNADB2_001740	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844493	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+VGVGKSAL	HLA-C17*01	TSNADB2_001741	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+VIMLNGTKK	HLA-A03*01	TSNADB2_001742	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+VKNGSFVAKI	HLA-A02*01	TSNADB2_001743	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+VLLLRLAET	HLA-A02*01	TSNADB2_001745	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+VLYHGQVL	HLA-A02*01	TSNADB2_001746	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+VPDQKSKQL	HLA-B08*01	TSNADB2_001748	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+VPILNPVVY	HLA-B35*07	TSNADB2_001749	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844420	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+VPLPGPPGPPG	HLA-B53*01	TSNADB2_001750	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844462	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+VPPFLQPE	HLA-A02*01	TSNADB2_001751	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844291	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+VPPFLQPE	HLA-A02*05	TSNADB2_001752	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844313	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+VPPFLQPE	HLA-A68*02	TSNADB2_001753	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844381	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+VPVNHTQVM	HLA-B35*07	TSNADB2_001754	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844421	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+VPVNHTQVM	HLA-B42*01	TSNADB2_001755	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844439	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+VQVALSRV	HLA-B52*01	TSNADB2_001756	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844457	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+VSKIIGGNPK	HLA-A68*01	TSNADB2_001757	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+VSKPGLDYEL	HLA-A68*02	TSNADB2_001758	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+VTLDVILER	HLA-B57*01	TSNADB2_001759	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+VTNHAPLSW	HLA-A32*01	TSNADB2_001760	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+VVGACGVGK	HLA-A03*01	TSNADB2_001761	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+VVLPSDVTSY	HLA-A32*01	TSNADB2_001762	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+VVSHPHLVYW	HLA-A68*02	TSNADB2_001763	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+VVVGACGVGK	HLA-A03*01	TSNADB2_001764	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+VYVNTAHL	HLA-C14*03	TSNADB2_001765	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844513	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+WILKSTVAV	HLA-A02*01	TSNADB2_001766	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+WILKSTVAVI	HLA-A02*01	TSNADB2_001767	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+WVVSHPHLV	HLA-A68*02	TSNADB2_001768	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+YAQLHSFTL	HLA-C03*02	TSNADB2_001769	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844479	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+YAQLHSFTL	HLA-C03*03	TSNADB2_001770	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844485	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+YAQLHSFTL	HLA-C12*03	TSNADB2_001771	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844510	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+YAQLHSFTL	HLA-C16*01	TSNADB2_001772	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844522	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA
+YEAAYVGAY	HLA-B44*02	TSNADB2_001774	TSNAdb_v2.0	Hepatocellular Carcinoma	PMID:31039795	https://doi.org/10.1186/s13073-019-0636-8	tier3	experimentally_presented_mutant_pHLA
+YEHEDVKEA	HLA-B49*01	TSNADB2_001776	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+YEHEDVKEAI	HLA-B49*01	TSNADB2_001777	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+YHGDPMPCL	HLA-B38*01	TSNADB2_001778	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+YIDERFERY	HLA-A01*01	TSNADB2_001779	TSNAdb_v2.0	Melanoma	PMID:27869121	https://doi.org/10.1038/ncomms13404	tier3	experimentally_presented_mutant_pHLA
+YLSELLQTV	HLA-A02*01	TSNADB2_001780	TSNAdb_v2.0	Melanoma	PMID:31921104	https://doi.org/10.3389/fimmu.2019.02766	tier3	experimentally_presented_mutant_pHLA
+YNTDDIEFY	HLA-A29*02	TSNADB2_001781	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+YPAPQPPVL	HLA-B08*01	TSNADB2_001782	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+YSDNSNDSF	HLA-A01*01	TSNADB2_001783	TSNAdb_v2.0	Hct 116 Cell Line	PMID:25576301	https://doi.org/10.1074/mcp.m114.042812	tier3	experimentally_presented_mutant_pHLA
+YSNYYCGLRY	HLA-B15*01	TSNADB2_001784	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:28832583	https://doi.org/10.1371/journal.pcbi.1005725	tier3	experimentally_presented_mutant_pHLA
+YTAVHYAASY	HLA-A01*01	TSNADB2_001785	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+YTFEIQGV	HLA-A68*02	TSNADB2_001786	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+YTFEIQGVNGV	HLA-A68*02	TSNADB2_001787	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+YTTVRALTL	HLA-B08*01	TSNADB2_001788	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+YVSEKDVISAK	HLA-A68*01	TSNADB2_001790	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+YVSEVPVSV	HLA-C17*01	TSNADB2_001791	TSNAdb_v2.0	Non-Small Cell Lung Cancer	PMID:30556813	https://doi.org/10.1038/nbt.4313	tier3	experimentally_presented_mutant_pHLA
+YYSAVDPTK	HLA-A23*01	TSNADB2_001792	TSNAdb_v2.0	B721.221 Cell Line	PMID:31844334	https://doi.org/10.1038/s41587-019-0322-9	tier3	experimentally_presented_mutant_pHLA

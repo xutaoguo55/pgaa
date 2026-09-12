@@ -1,0 +1,6 @@
+ablation_id	removed_component	expected_failure	primary_metric	manuscript_consequence
+remove_stability_gate	stability evidence	unstable internal units can be promoted as reproducible	increase in false promotion or reduction in exact permission	justifies keeping leave-one-method and cross-dataset stability as formal gates
+remove_external_gate	external evidence state	same-context replication claims cannot be distinguished from internal-only support	replication sensitivity collapse or under-promotion	shows why internal signal is not enough for replication language
+remove_source_gate	source-data provenance	figure-level or missing-source evidence can be promoted beyond traceable numerical support	source-ceiling violations	supports the GSE335846 source-table boundary
+remove_branch_promotion_gate	branch-vulnerability promotion gate	ATM and HDAC can be promoted to the same claim level despite unequal evidence	candidate hierarchy violation	preserves ATM as primary and HDAC as secondary
+score_only_reporting	claim-state compiler	ranked outputs become manuscript claims without evidence-state permissions	false-promotion rate	establishes the central Bioinformatics novelty

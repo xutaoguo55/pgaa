@@ -144,6 +144,7 @@ def s2_test(
     n_bins: int = 100,
     cell_type: np.ndarray = None,
     library_size: np.ndarray = None,
+    verbose: bool = True,
 ) -> pd.DataFrame:
     """
     PGAA-H / legacy PRT-S2: histogram-shape ranking diagnostic.
@@ -165,9 +166,9 @@ def s2_test(
         raise ValueError("control_idx is empty — need at least one control cell")
 
     genes = list(genes)  # ensure list for .index()
-    tidx = genes.index(target)
-    other_idx = [i for i in range(len(genes)) if i != tidx]
-    other_genes = [genes[i] for i in other_idx]
+    if target not in genes:
+        raise ValueError(f"Target gene '{target}' is not in genes list")
+    gene_idx = list(range(len(genes)))
 
     n_pert = len(perturbed_idx)
     D = np.zeros(N_sub, dtype=bool)
@@ -189,19 +190,19 @@ def s2_test(
     else:
         Y_sub = X_sub
 
-    Y = Y_sub[:, other_idx]
+    Y = Y_sub[:, gene_idx]
     Y_on = Y[D]
     Y_off = Y[~D]
 
-    s2_values = np.zeros(len(other_idx))
-    n_peaks_on = np.zeros(len(other_idx), dtype=int)
+    s2_values = np.zeros(len(gene_idx))
+    n_peaks_on = np.zeros(len(gene_idx), dtype=int)
     import time
     t0 = time.time()
-    for g in range(len(other_idx)):
-        if g % 200 == 0 and g > 0:
+    for g in range(len(gene_idx)):
+        if verbose and g % 200 == 0 and g > 0:
             elapsed = time.time() - t0
-            eta = elapsed / g * (len(other_idx) - g)
-            print(f"  PGAA-H: {g}/{len(other_idx)}, {int(elapsed)}s, ~{int(eta)}s left")
+            eta = elapsed / g * (len(gene_idx) - g)
+            print(f"  PGAA-H: {g}/{len(gene_idx)}, {int(elapsed)}s, ~{int(eta)}s left")
 
         g_min = min(float(np.min(Y_on[:, g])), float(np.min(Y_off[:, g])))
         g_max = max(float(np.max(Y_on[:, g])), float(np.max(Y_off[:, g])))
@@ -219,7 +220,7 @@ def s2_test(
         n_peaks_on[g] = len(pd_on)
 
     res = pd.DataFrame({
-        "gene": other_genes,
+        "gene": genes,
         "S2": s2_values,
         "n_peaks_on": n_peaks_on,
     }).sort_values("S2", ascending=False)

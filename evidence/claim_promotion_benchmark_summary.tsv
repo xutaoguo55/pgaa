@@ -1,0 +1,17 @@
+method	scope	n_scenarios	n_false_promotions	false_promotion_rate	n_under_promotions	under_promotion_rate	exact_permission_rate	replication_false_positive_rate	replication_sensitivity	n_replication_ineligible	n_replication_eligible
+claim_state_compiler	all_scenarios	960	0	0.0	0	0.0	1.0	0.0	1.0	952	8
+claim_state_compiler	observed_state	8	0	0.0	0	0.0	1.0	0.0	1.0	4	4
+claim_state_compiler	single_factor_mutation	96	0	0.0	0	0.0	1.0	0.0		96	0
+claim_state_compiler	multi_factor_mutation	856	0	0.0	0	0.0	1.0	0.0	1.0	852	4
+state_blind_frozen_baseline	all_scenarios	960	676	0.7041666666666667	121	0.12604166666666666	0.16979166666666667	0.5	0.5	952	8
+state_blind_frozen_baseline	observed_state	8	0	0.0	0	0.0	1.0	0.0	1.0	4	4
+state_blind_frozen_baseline	single_factor_mutation	96	58	0.6041666666666666	6	0.0625	0.3333333333333333	0.5		96	0
+state_blind_frozen_baseline	multi_factor_mutation	856	618	0.7219626168224299	115	0.13434579439252337	0.14369158878504673	0.5023474178403756	0.0	852	4
+decision_only_baseline	all_scenarios	960	0	0.0	8	0.008333333333333333	0.9916666666666667	0.0	0.0	952	8
+decision_only_baseline	observed_state	8	0	0.0	4	0.5	0.5	0.0	0.0	4	4
+decision_only_baseline	single_factor_mutation	96	0	0.0	0	0.0	1.0	0.0		96	0
+decision_only_baseline	multi_factor_mutation	856	0	0.0	4	0.004672897196261682	0.9953271028037384	0.0	0.0	852	4
+external_only_baseline	all_scenarios	960	184	0.19166666666666668	0	0.0	0.8083333333333333	0.19327731092436976	1.0	952	8
+external_only_baseline	observed_state	8	0	0.0	0	0.0	1.0	0.0	1.0	4	4
+external_only_baseline	single_factor_mutation	96	36	0.375	0	0.0	0.625	0.375		96	0
+external_only_baseline	multi_factor_mutation	856	148	0.17289719626168223	0	0.0	0.8271028037383178	0.17370892018779344	1.0	852	4

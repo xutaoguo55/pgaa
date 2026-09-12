@@ -1,0 +1,4 @@
+target_control_gate	singlecell_import_status	claim_use	preferred_for_pgaa	n_files
+passed	not_singlecell_matrix	import_planning_not_replication	False	1
+passed	secondary_singlecell_option	import_planning_not_replication	False	1
+passed	download_allowed_with_scratch_margin	import_planning_not_replication	True	1

@@ -1,0 +1,6 @@
+stage	t790m_state	evolution_path	n_replicates	egfr_cpm_mean	egfr_cpm_min	egfr_cpm_max	egfr_log1p_cpm_mean
+parental	negative_or_not_selected	precursor_or_parental	2	606.27	554.23	658.31	6.405288137960571
+gefitinib_tolerant	negative_or_not_selected	precursor_or_parental	2	1266.83	1135.95	1397.71	7.139705089832731
+wz4002_tolerant	negative_or_not_selected	precursor_or_parental	2	1370.94	1198.66	1543.22	7.216033834888663
+early_t790m_gr2	positive	pre_existing_early	2	1203.585	1129.62	1277.55	7.092001668051802
+late_t790m_gr3	positive	drug_tolerant_evolved_late	2	887.81	764.14	1011.48	6.780108434659004

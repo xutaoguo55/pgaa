@@ -51,7 +51,7 @@ p_table = {
 }
 
 # ── Figure: 3 panels ──────────────────────────────────────
-ROOT = Path("/Users/guoxutao/.openclaw/workspace/PGAA_method_paper")
+ROOT = Path(__file__).resolve().parents[1]
 CM_FIG_DIR = ROOT / "COMMUNICATIONS_MEDICINE_TRANSFER" / "figures_png"
 CAIC_FIG_DIR = ROOT / "COMMUNICATIONS_AI_COMPUTING_TRANSFER" / "figures_png"
 

@@ -1,0 +1,9 @@
+source	native	name	p_value	term_size	query_size	intersection_size	effective_domain_size	intersection
+REAC	REAC:R-HSA-5619060	Defective CP causes aceruloplasminemia (ACERULOP)	0.0005992248452648784	2	50	2	15922	
+REAC	REAC:R-HSA-5619049	Defective SLC40A1 causes hemochromatosis 4 (HFE4) (macrophages)	0.0005992248452648784	2	50	2	15922	
+REAC	REAC:R-HSA-3296197	Hydroxycarboxylic acid-binding receptors	0.0005992248452648784	2	50	2	15922	
+REAC	REAC:R-HSA-1475029	Reversible hydration of carbon dioxide	0.009343358237921259	7	50	2	15922	
+REAC	REAC:R-HSA-917937	Iron uptake and transport	0.020301154645609238	51	50	3	15922	
+WP	WP:WP2877	Vitamin D receptor pathway	0.031766334054338964	134	50	4	15922	
+WP	WP:WP5172	Iron metabolism disorders	0.031766334054338964	14	50	2	15922	
+KEGG	KEGG:00910	Nitrogen metabolism	0.04646145277729159	11	50	2	15922	

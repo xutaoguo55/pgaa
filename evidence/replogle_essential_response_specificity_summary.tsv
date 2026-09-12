@@ -1,0 +1,5 @@
+method	n_complete_targets	median_observed_top_k_overlap_fraction	median_pseudo_top_k_overlap_fraction	median_specificity_margin	n_targets_positive_margin	wilcoxon_one_sided_p	holm_adjusted_p
+pgaa_w	16	0.82	0.81	0.014999999999999902	9	0.13987697525398796	0.13987697525398796
+pgaa_h	16	0.03	0.015	0.015	11	0.003105575132859084	0.009316725398577252
+absolute_mean_shift	16	0.675	0.575	0.08000000000000002	10	0.00923995282457486	0.01847990564914972
+welch_abs_t	16	0.07	0.01	0.065	14	0.0004893532626585275	0.00195741305063411

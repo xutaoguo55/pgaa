@@ -1,0 +1,5 @@
+method,auroc,ci_low,ci_high,hm_ci_low,hm_ci_high,excludes_chance,n_pos,above_median,binomial_p,note
+SCEPTRE,0.469,,,,,,,,,per-gene SCEPTRE output not in this archive; no interval
+PGAA-W Wasserstein,0.3372,0.208,0.477,0.181,0.493,True,9,1,1.0,
+PGAA-H histogram-shape (n_bins=20),0.4763,0.257,0.716,0.29,0.662,False,9,4,1.0,
+PGAA-W+PGAA-H combined z,0.4244,0.227,0.647,0.248,0.601,False,9,3,1.0,

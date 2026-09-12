@@ -1,0 +1,15 @@
+axis	term	standardized_log_odds_coefficient
+stability	genetic_perturbation	-0.02935052130793998
+stability	primary_or_in_vivo	-0.28417183354760994
+stability	mouse_system	-0.05096966026882451
+stability	split_independence_tier	0.23127971793047442
+stability	log2_recorded_split_levels	-0.11093811421864652
+stability	minimum_equal_group_fraction	-0.18001485905327186
+stability	intercept	0.021023899316106143
+specificity	genetic_perturbation	0.04679300737786405
+specificity	primary_or_in_vivo	-0.13682534383086647
+specificity	mouse_system	0.1451131042288847
+specificity	split_independence_tier	0.20564252723173157
+specificity	log2_recorded_split_levels	-0.24704148540191864
+specificity	minimum_equal_group_fraction	-0.18966074495707932
+specificity	intercept	0.03642945977817761

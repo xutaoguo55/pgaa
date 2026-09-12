@@ -21,7 +21,7 @@ neg_means = [1.0, 2.4, 2.8, 1.4, 0.0]
 ratios = [4.0, 2.1, 2.5, 2.9, 5.8]
 cells = ['36k', '20k', '10k', '2.7k', '10k']
 
-ROOT = Path("/Users/guoxutao/.openclaw/workspace/PGAA_method_paper")
+ROOT = Path(__file__).resolve().parents[1]
 CM_FIG_DIR = ROOT / "COMMUNICATIONS_MEDICINE_TRANSFER" / "figures_png"
 CAIC_FIG_DIR = ROOT / "COMMUNICATIONS_AI_COMPUTING_TRANSFER" / "figures_png"
 
@@ -68,9 +68,18 @@ x2 = np.arange(len(methods))
 w2 = 0.3
 ax2 = ax.twinx()
 bars_a = ax.bar(x2 - w2/2, [p/n for p,n in zip(pos_bcr, neg_bcr)],
-                w2, label='POS/NEG ratio', color='#2196F3', edgecolor='black', linewidth=0.5)
+                w2, label='ratio', color='#2196F3', edgecolor='black', linewidth=0.5)
 bars_b = ax2.bar(x2 + w2/2, aurocs, w2, label='AUROC', color='#9C27B0',
                   edgecolor='black', linewidth=0.5, alpha=0.7)
+# Expression controls: the CLL AUROC is largely recovered by expression alone, so the
+# figure carries the same two reference levels the text quotes.
+conf = pd.read_csv(ROOT / 'scripts' / 'cll_expression_confound.csv').iloc[0]
+ax2.axhline(float(conf['auroc_expression_only']), color='#009E73', linestyle='--',
+            linewidth=1.2,
+            label=f"expr only {float(conf['auroc_expression_only']):.3f}")
+ax2.axhline(float(conf['matched_null_mean_auroc']), color='#D55E00', linestyle=':',
+            linewidth=1.2,
+            label=f"expr null {float(conf['matched_null_mean_auroc']):.3f}")
 ax.set_ylabel('Ratio')
 ax2.set_ylabel('AUROC')
 ax.set_xticks(x2); ax.set_xticklabels(methods, fontsize=7)
@@ -84,11 +93,14 @@ ax.legend(
     lines1 + lines2,
     labels1 + labels2,
     frameon=False,
-    fontsize=7,
+    fontsize=6.5,
     loc='upper center',
-    bbox_to_anchor=(0.5, 0.98),
-    ncol=2,
+    bbox_to_anchor=(0.5, 0.99),
+    ncol=4,
     borderaxespad=0.2,
+    handlelength=1.0,
+    handletextpad=0.4,
+    columnspacing=0.8,
 )
 ax.spines['top'].set_visible(False)
 
@@ -127,7 +139,7 @@ ax.spines['top'].set_visible(False); ax.spines['right'].set_visible(False)
 ax.set_xlim(1000, 40000)
 
 plt.tight_layout()
-plt.savefig('/Users/guoxutao/.openclaw/workspace/PGAA_method_paper/scripts/figure_stability.tif',
+plt.savefig(ROOT / 'scripts' / 'figure_stability.tif',
             format='tiff', dpi=300, bbox_inches='tight')
 print("Figure 2 saved: figure_stability.tif")
 

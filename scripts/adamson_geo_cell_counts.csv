@@ -1,0 +1,11 @@
+quantity,recomputed,manuscript
+qc_passing_cells,5680,5680
+non_targeting_controls,1759,1759
+total_perturbed_cells,2750,2750
+min_cells_per_perturbation,468,468
+max_cells_per_perturbation,686,686
+cells_SPI1,686,
+cells_ZNF326,555,
+cells_BHLHE40,542,
+cells_CREB1,499,
+cells_DDIT3,468,

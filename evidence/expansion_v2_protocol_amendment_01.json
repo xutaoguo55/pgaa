@@ -1,0 +1,27 @@
+{
+  "amendment_id": "pgaa-dual-gate-expansion-v2-amendment-01",
+  "parent_protocol_id": "pgaa-dual-gate-expansion-v2",
+  "frozen_at": "2026-07-20T23:50:00+08:00",
+  "outcome_blinding_status": "frozen_before_any_expansion_v2_expression_outcome",
+  "reason": "metadata-only audit showed that no single McFarland cell line contains eight eligible drug units, while the source study is explicitly a multi-lineage pooled drug-response platform",
+  "rule": {
+    "multi_context_source_platform_allowed": true,
+    "source_study_counting": "one_source_study_counts_as_one_platform",
+    "analysis_unit": "cell_line_by_drug_by_dose",
+    "eligible_recorded_time_values": [
+      "6",
+      "24"
+    ],
+    "control_matching": "same_cell_line_and_same_analysis_split",
+    "unit_selection": "descending_minimum_equal_group_size_then_unit_id",
+    "maximum_selected_units": 16,
+    "cell_context_class_for_claim_counting": "multi_lineage_cancer_cell_line_panel"
+  },
+  "unchanged": [
+    "all_primary_and_secondary_methods",
+    "all_stability_and_specificity_thresholds",
+    "all_multiplicity_rules",
+    "all_random_seeds",
+    "all_cross_context_claim_thresholds"
+  ]
+}

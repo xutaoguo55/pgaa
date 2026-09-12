@@ -1,0 +1,9 @@
+criterion_id	criterion	locked_requirement	nadig2024_status	evidence
+C01	independent_biological_context	different_cell_line_from_existing_non_replogle_platforms	pass	HepG2 versus K562 Jurkat and A549
+C02	experimental_split	at_least_4_recorded_batches	pass	56 recorded batches; deterministic 28 versus 28 holdout
+C03	matrix_scale	raw_counts_verified_without_response_scoring	pass	integer values and sampled row sums equal obs ncounts
+C04	control_support	at_least_140_controls_per_split	pass	2557 discovery and 2419 validation controls
+C05	perturbation_support	at_least_16_single_perturbations_with_20_cells_per_split	pass	1237 eligible perturbations
+C06	direct_target_exclusion	perturbed_gene_identifiable_in_expression_features	pass	obs perturbation stores gene symbols; matching feature excluded
+C07	selection_rule	count_ranked_top_16_before_expression_scoring	locked	descending minimum equal group size then unit identifier
+C08	analysis_contract	shared_dual_gate_without_dataset_specific_result_tuning	locked	70 cells per group; 5000 features; top 100; 5 repeats; Holm correction

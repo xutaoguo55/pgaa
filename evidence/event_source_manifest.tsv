@@ -1,0 +1,6 @@
+source_id	path	source_family	expected_use
+norman_multi_perturbation_gene_scores	scripts/norman_multi_perturbation_gene_scores.csv	Perturb-seq PGAA gene scores	Gene-level benchmark source only; not event-peptide input.
+adamson_gene_level_scores	figure_source_data/adamson_gene_level_scores.csv	Perturb-seq PGAA gene scores	Gene-level benchmark source only; not event-peptide input.
+cebpe_real_results	scripts/cebpe_real_results.csv	Perturb-seq PGAA gene scores	Gene-level benchmark source only; not event-peptide input.
+event_sequence_context_template	evidence/event_sequence_contexts_template.tsv	Event compiler template	Template only; not manuscript evidence.
+tsnadb_v2_validated_events	evidence/event_sequence_contexts.tsv	TSNAdb v2 validated neoantigen domain-transfer events	Real public altered-sequence event input for bounded event-peptide-HLA benchmarking; not matched PGAA-ranked or newly generated wet-lab evidence.

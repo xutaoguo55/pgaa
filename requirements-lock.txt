@@ -1,0 +1,21 @@
+# Exact environment that produced the current simulation artifacts
+# (scripts/simulation_powers.csv, figure_source_data/fig7_simulation.csv,
+#  figures_png/figure_5.png, figures_png/figure_simulation_powers.png).
+#
+# Recorded 2026-09-11. The floating requirements.txt does not pin versions, and
+# the simulation outputs are sensitive to them: re-running the same seeded script
+# under a different dependency set changes p-value tie structure and therefore
+# AUROC_S1 in all 63 conditions (TPR changes in 27/189 cells). Use this file when
+# an exact reproduction of those artifacts is required.
+#
+# python 3.9.6
+numpy==1.26.4
+scipy==1.13.1
+pandas==2.3.3
+scanpy==1.10.3
+anndata==0.10.8
+scikit-learn==1.6.1
+statsmodels==0.14.6
+matplotlib==3.9.4
+seaborn==0.13.2
+joblib==1.5.3

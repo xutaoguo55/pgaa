@@ -1,0 +1,4 @@
+cell_cycle_phase	day0_replicates	day28_replicates	pc9_signature_overlap	h4006_signature_overlap	day28_branch_induction
+G1	2	2	190	188	2.0284682033794255
+S	2	1	190	188	0.9821778253766571
+G2	1	1	190	188	1.1905517007926238

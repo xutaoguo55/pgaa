@@ -1,0 +1,12 @@
+figure_panel	result_claim_state	n_rows
+calibration_guardrail	calibration_support	2
+calibration_guardrail	failure_or_guardrail	2
+calibration_guardrail	restricted_use	2
+decision_benchmark	comparative_support	9
+decision_benchmark	descriptive_only	11
+decision_benchmark	failure_or_guardrail	17
+parameter_guardrail	calibration_support	1
+parameter_guardrail	failure_or_guardrail	5
+response_specificity_guardrail	comparative_support	1
+response_specificity_guardrail	failure_or_guardrail	1
+response_specificity_guardrail	restricted_use	2

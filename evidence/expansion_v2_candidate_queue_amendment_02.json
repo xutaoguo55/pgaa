@@ -1,0 +1,14 @@
+{
+  "amendment_id": "pgaa-dual-gate-expansion-v2-candidate-queue-amendment-02",
+  "parent_protocol_id": "pgaa-dual-gate-expansion-v2",
+  "frozen_at": "2026-07-21T00:02:00+08:00",
+  "outcome_blinding_status": "candidate_order_frozen_before_expression_outcomes_for_all_listed_candidates",
+  "trigger": "the original frozen queue did not yield ten metadata-eligible independent laboratory and cell-context platforms",
+  "selection_rule": "evaluate candidates in ascending priority and stop after the ten-platform confirmatory cohort is complete",
+  "queue_file": "evidence/expansion_v2_candidate_queue_amendment_02.tsv",
+  "prohibited": [
+    "candidate_reordering_using_expression_scores",
+    "skipping_an_eligible_higher_priority_candidate",
+    "counting_more_than_one_source_study_as_one_platform"
+  ]
+}

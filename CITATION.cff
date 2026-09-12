@@ -2,8 +2,8 @@ cff-version: 1.2.0
 message: "If you use PGAA, please cite this software repository."
 title: "PGAA: distribution-aware single-cell perturbation analysis software"
 type: software
-version: 0.1.0
-date-released: 2026-06-09
+version: 0.2.0
+date-released: 2026-09-12
 license: MIT
 url: "https://github.com/xutaoguo55/pgaa"
 repository-code: "https://github.com/xutaoguo55/pgaa"
@@ -30,3 +30,8 @@ authors:
   - family-names: Guo
     given-names: Xutao
     email: guoxutao@smu.edu.cn
+
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.22720271"
+    description: "Archived software release"

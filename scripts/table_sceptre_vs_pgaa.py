@@ -14,6 +14,17 @@ Metrics:
   - n_sig (p<0.05)
   - Known-target hit rate among nine neutrophil granule proteins
   - AUROC and AUPRC for known targets
+
+Two distinct known-target counts are reported, because they are not
+interchangeable:
+  - known_hits  = known targets with nominal permutation p < 0.05
+  - top100_hits = known targets ranked in the top 100 of 2012 genes
+For S2 these differ (1/9 vs 2/9): PRTN3 is a top-100 ranking signal at
+p = 0.0679 without reaching nominal significance. Permutation p-values are
+discrete counts and therefore heavily tied; a gene is counted in top100_hits
+only when its entire tie block falls within rank 100, so the count does not
+depend on an arbitrary tie ordering. SCEPTRE's per-gene output is not part of
+this archive, so its top100_hits is left unreported rather than inferred.
 """
 import pandas as pd
 import numpy as np
@@ -38,14 +49,25 @@ def metrics(name, gene_values, p_values, is_known_genes):
     n_sig = int((p < 0.05).sum())
     elane_idx = genes.index("ELANE")
     elane_p = float(p[elane_idx])
-    elane_rank = int(np.where(np.argsort(p, kind="mergesort") == elane_idx)[0][0]) + 1
+    order = np.argsort(p, kind="mergesort")
+    rank = np.empty(len(p), dtype=int)
+    rank[order] = np.arange(1, len(p) + 1)
+    elane_rank = int(rank[elane_idx])
     is_known = np.array([g in is_known_genes for g in genes])
     score = -np.log10(p + 1e-300)
     auroc = roc_auc_score(is_known, score)
     auprc = average_precision_score(is_known, score)
     hits = sum(1 for g, pv in zip(genes, p) if g in is_known_genes and pv < 0.05)
+    top100 = 0
+    for g in genes:
+        if g not in is_known_genes:
+            continue
+        block = rank[p == p[genes.index(g)]]
+        if block.max() <= 100:
+            top100 += 1
     return {"method": name, "elane_rank": elane_rank, "elane_p": elane_p,
-            "n_sig": n_sig, "auroc": auroc, "auprc": auprc, "known_hits": f"{hits}/9"}
+            "n_sig": n_sig, "auroc": auroc, "auprc": auprc,
+            "known_hits": f"{hits}/9", "top100_hits": f"{top100}/9"}
 
 # SCEPTRE: re-derive from SCEPTRE's output file
 # From the prt_s1_summary.csv we know SCEPTRE on CEBPE:
@@ -57,6 +79,11 @@ sceptre_cebpe = {
     "auroc": 0.469,
     "auprc": np.nan,
     "known_hits": "0/9",
+    # SCEPTRE per-gene output (scripts/sceptre_cebpe.csv) is not in this
+    # archive, so a top-100 count cannot be computed. There are 30 genes at
+    # p<0.05 and none is a known target, but a known target could still sit
+    # in ranks 31-100, so top-100 is not implied by known_hits = 0/9.
+    "top100_hits": "N/A",
 }
 # Actually we need to re-load SCEPTRE results — they're in benchmark_prt_s1.py
 # For now use the values from prt_s1_summary.csv
@@ -95,14 +122,17 @@ print("\nSaved: scripts/table_sceptre_vs_pgaa.csv")
 # Markdown version
 md = "# SCEPTRE vs PGAA comparison on Norman 2019 CEBPE\n\n"
 md += df.to_markdown(index=False)
-md += "\n\n## Key takeaways\n"
-md += "- **SCEPTRE**: 0/9 known targets, AUROC ≈ 0.47 (random); AUPRC not recomputed from raw SCEPTRE gene-level output in this archive\n"
-md += "- **PGAA-W**: %s known targets, ELANE rank %d, AUROC %.3f, AUPRC %.4f\n" % (
-    s1_metrics["known_hits"], s1_metrics["elane_rank"], s1_metrics["auroc"], s1_metrics["auprc"])
-md += "- **PGAA-H**: %s known targets, ELANE rank %d in the pre-specified n_bins=20 run, AUROC %.3f, AUPRC %.4f\n" % (
-    s2_metrics["known_hits"], s2_metrics["elane_rank"], s2_metrics["auroc"], s2_metrics["auprc"])
-md += "- **PGAA Combined**: %s known targets, ELANE rank %d, AUROC %.3f, AUPRC %.4f\n" % (
-    comb_metrics["known_hits"], comb_metrics["elane_rank"], comb_metrics["auroc"], comb_metrics["auprc"])
+md += "\n\n`known_hits` counts known targets with nominal permutation p < 0.05; "
+md += "`top100_hits` counts known targets ranked in the top 100 of 2012 genes "
+md += "(counted only when the whole tie block falls inside rank 100).\n"
+md += "\n## Key takeaways\n"
+md += "- **SCEPTRE**: 0/9 known targets at p<0.05, AUROC ≈ 0.47 (random); AUPRC and top-100 count not recomputed because raw SCEPTRE gene-level output is not in this archive\n"
+md += "- **PGAA-W**: %s at p<0.05, %s in top 100, ELANE rank %d, AUROC %.3f, AUPRC %.4f\n" % (
+    s1_metrics["known_hits"], s1_metrics["top100_hits"], s1_metrics["elane_rank"], s1_metrics["auroc"], s1_metrics["auprc"])
+md += "- **PGAA-H**: %s at p<0.05, %s in top 100, ELANE rank %d in the pre-specified n_bins=20 run, AUROC %.3f, AUPRC %.4f\n" % (
+    s2_metrics["known_hits"], s2_metrics["top100_hits"], s2_metrics["elane_rank"], s2_metrics["auroc"], s2_metrics["auprc"])
+md += "- **PGAA Combined**: %s at p<0.05, %s in top 100, ELANE rank %d, AUROC %.3f, AUPRC %.4f\n" % (
+    comb_metrics["known_hits"], comb_metrics["top100_hits"], comb_metrics["elane_rank"], comb_metrics["auroc"], comb_metrics["auprc"])
 md += "\nPGAA-H gives the strongest ELANE ranking in this pre-specified CEBPE analysis; the result is ranking evidence, not genome-wide FDR-controlled discovery.\n"
 
 with open("scripts/table_sceptre_vs_pgaa.md", "w") as f:

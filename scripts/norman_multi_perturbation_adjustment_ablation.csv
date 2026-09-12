@@ -1,0 +1,7 @@
+target,adjustment,method,n_perturbed_cells,n_control_cells,n_ranked_genes,n_positive_genes,random_auprc_baseline,auroc,auprc,top50_positive_hits,top100_positive_hits
+KLF1,coarse_cell_state_library_adjusted,PGAA_W_Wasserstein,1960,5000,2016,16,0.007936507936507936,0.68403125,0.025173555918790568,1,1
+KLF1,unadjusted_log_normalized,PGAA_W_Wasserstein,1960,5000,2016,16,0.007936507936507936,0.690625,0.022889176575581795,1,1
+CEBPE,coarse_cell_state_library_adjusted,PGAA_W_Wasserstein,1233,3699,2009,9,0.004479840716774514,0.6441666666666667,0.015399289537916507,1,2
+CEBPE,unadjusted_log_normalized,PGAA_W_Wasserstein,1233,3699,2009,9,0.004479840716774514,0.5725555555555555,0.013926166985174765,1,2
+CEBPA,coarse_cell_state_library_adjusted,PGAA_W_Wasserstein,460,1380,2009,9,0.004479840716774514,0.6649999999999999,0.12439815265944562,1,2
+CEBPA,unadjusted_log_normalized,PGAA_W_Wasserstein,460,1380,2009,9,0.004479840716774514,0.6906666666666668,0.0741580797464883,2,2

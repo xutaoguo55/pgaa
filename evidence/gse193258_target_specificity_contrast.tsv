@@ -1,0 +1,2 @@
+contrast	lead_target_class	lead_drug	lead_rho	lead_exact_p	runner_up_target_classes	runner_up_rho	rho_margin	positive_target_count	exact_significant_positive_count	total_target_classes
+ATM_vs_runner_up_positive_tier	ATM	AZD0156	1.0	0.0416666666666666	ALK, HDAC	0.7999999999999999	0.20000000000000007	7	1	19

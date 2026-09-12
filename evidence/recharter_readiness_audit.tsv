@@ -1,0 +1,10 @@
+check_id	artifact	status	row_count	requirement	detail
+real_event_contexts	evidence/event_sequence_contexts.tsv	ready	1271	Real altered sequence contexts exist for event-to-peptide compilation.	artifact exists, required columns present, no smoke/template tokens detected
+real_candidate_peptides	evidence/candidate_event_peptides.tsv	ready	5830	Compiled non-smoke event-peptide-HLA candidates exist.	artifact exists, required columns present, no smoke/template tokens detected
+real_ligand_evidence	evidence/public_ligand_evidence.tsv	ready	546	Public ligand/immunopeptidome evidence query output exists.	artifact exists, required columns present, no smoke/template tokens detected
+real_tcell_evidence	evidence/public_tcell_evidence.tsv	ready	779	Public T-cell evidence query output exists.	artifact exists, required columns present, no smoke/template tokens detected
+real_decoys	evidence/decoy_peptides.tsv	ready	853	Matched decoy peptide table exists.	artifact exists, required columns present, no smoke/template tokens detected
+real_tier_table	evidence/immune_evidence_tiers.tsv	ready	5830	Real immune-evidence tier table exists.	artifact exists, required columns present, no smoke/template tokens detected
+real_claim_audit	docs/IMMUNO_EVIDENCE_CLAIM_AUDIT.md	ready	1	Claim audit exists for real candidate evidence.	artifact exists
+real_panel_summary	evidence/followup_panel_summary.tsv	ready	4	Decision-impact panel summary exists for real tiers.	artifact exists, required columns present, no smoke/template tokens detected
+real_threshold_summary	evidence/threshold_robustness_summary.tsv	ready	3	Threshold robustness summary exists for real tiers.	artifact exists, required columns present, no smoke/template tokens detected

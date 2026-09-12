@@ -1,0 +1,3 @@
+day	samples	mean_source_axis_contrast	min_source_axis_contrast	max_source_axis_contrast	spearman_rho_day_vs_contrast	spearman_pvalue_day_vs_contrast
+0	5	-1.970861	-2.174606	-1.660731	0.866025	0.002536
+28	4	-0.393118	-1.211743	0.354557	0.866025	0.002536

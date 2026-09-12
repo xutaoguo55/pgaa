@@ -1,0 +1,5 @@
+group	hit_count	total_count	match_rate	wilson_ci_low	wilson_ci_high	odds_ratio_vs_candidate	fisher_p_value	decoy_gate
+candidate	5830	5830	1.0	0.9993415215603974	1.0	1.0	1.0	reference_candidate_group
+composition_matched_shuffle	0	5830	0.0	0.0	0.0006584784396027578	inf	0.0	passed_candidate_above_decoy
+cross_event_length_class_matched	398	5827	0.06830272867684915	0.0621059078484233	0.0750683687065878	inf	0.0	passed_candidate_above_decoy
+same_context_non_event_window	853	853	1.0	0.9955167215811648	1.0		1.0	failed_candidate_not_above_decoy

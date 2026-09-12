@@ -1,0 +1,2 @@
+readiness_gate_status	contract_status	claim_use	n_targets
+ready_for_external_claim_state_rerun	ready_for_pgaa_input_extraction	execution_contract_not_replication	4

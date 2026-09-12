@@ -1,0 +1,60 @@
+{
+  "protocol_id": "pgaa-dual-gate-expansion-v2",
+  "frozen_at": "2026-07-20T22:15:00+08:00",
+  "status": "frozen_before_new_expression_outcomes",
+  "scope": {
+    "existing_exploratory_platforms": 5,
+    "new_confirmatory_platforms_required": 10,
+    "one_platform_per_source_study": true,
+    "distinct_new_cell_contexts_required": true,
+    "minimum_perturbation_mechanism_classes": 3,
+    "minimum_independent_laboratory_groups": 10
+  },
+  "eligibility": {
+    "single_cell_rna_readout_required": true,
+    "recorded_independent_experimental_split_required": true,
+    "minimum_split_levels": 2,
+    "matched_controls_required_in_each_split": true,
+    "minimum_cells_per_group_per_split": 20,
+    "minimum_analyzable_units_per_platform": 8,
+    "direct_target_feature_excluded_for_genetic_perturbations": true,
+    "result_blind_unit_selection": "descending_minimum_equal_group_size_then_unit_id",
+    "logical_duplicate_matrices_count_once": true
+  },
+  "analysis": {
+    "primary_method": "pgaa_w",
+    "secondary_methods": [
+      "pgaa_h",
+      "absolute_mean_shift",
+      "welch_abs_t"
+    ],
+    "maximum_units_per_platform": 16,
+    "maximum_cells_per_group": 70,
+    "maximum_features": 5000,
+    "top_k": 100,
+    "matched_resampling_repeats": 5,
+    "stability_threshold": 0.2,
+    "specificity_test": "one_sided_wilcoxon_unit_level_median_margin_greater_than_zero",
+    "multiplicity_correction": "holm_within_platform_across_four_methods",
+    "specificity_alpha": 0.05,
+    "split_seed": "pgaa-cross-platform-dual-gate-v2",
+    "sampling_seed": "pgaa-cross-platform-matched-controls-v2"
+  },
+  "primary_estimand": {
+    "cohort": "ten_new_confirmatory_platforms_only",
+    "event": "pgaa_w_stable_but_not_specific",
+    "summary": "event_count_event_fraction_and_clopper_pearson_95_percent_interval"
+  },
+  "claim_rules": {
+    "not_confirmed": "fewer_than_4_of_10_new_platforms_or_fewer_than_3_mechanism_classes_or_fewer_than_4_cell_context_classes",
+    "cross_context_recurrence": "at_least_4_of_10_new_platforms_spanning_at_least_3_mechanism_classes_and_4_cell_context_classes",
+    "platform_robust_recurrence": "cross_context_recurrence_and_at_least_3_events_remain_after_every_leave_one_study_out_deletion",
+    "universal_law_prohibited": true
+  },
+  "failure_policy": {
+    "metadata_or_qc_failure_before_outcome": "retain_audit_row_and_advance_to_next_frozen_priority_candidate",
+    "runtime_failure": "retain_failure_and_attempt_repair_without_candidate_substitution",
+    "unfavorable_outcome": "retain_platform_in_primary_analysis",
+    "post_outcome_exclusion": "prohibited_except_proven_file_corruption_or_logical_duplication"
+  }
+}

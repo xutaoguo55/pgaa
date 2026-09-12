@@ -1,0 +1,2 @@
+source_event_id	source_event_type	source_gene	event_coordinate	altered_sequence_context	event_index	hla_allele	hla_class	pgaa_rank	pgaa_score	cohort_or_dataset	disease_or_context	notes
+SMOKE_EVENT_1	mutation	SMOKE1	p.K10M	ACDEFGHIKLMNPQRSTVWY	9	HLA-A*02:01	I	1	0.95	smoke_dataset	smoke_context	template row; event_index is zero-based and must point to the altered residue or junction anchor

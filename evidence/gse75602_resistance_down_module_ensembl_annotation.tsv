@@ -1,0 +1,201 @@
+gene_id	display_name	description	source
+ENSG00000118849	RARRES1	retinoic acid receptor responder 1 [Source:HGNC Symbol;Acc:HGNC:9867]	Ensembl_REST_lookup_id
+ENSG00000047457	CP	ceruloplasmin [Source:HGNC Symbol;Acc:HGNC:2295]	Ensembl_REST_lookup_id
+ENSG00000107159	CA9	carbonic anhydrase 9 [Source:HGNC Symbol;Acc:HGNC:1383]	Ensembl_REST_lookup_id
+ENSG00000064787	BCAS1	brain enriched myelin associated protein 1 [Source:HGNC Symbol;Acc:HGNC:974]	Ensembl_REST_lookup_id
+ENSG00000099260	PALMD	palmdelphin [Source:HGNC Symbol;Acc:HGNC:15846]	Ensembl_REST_lookup_id
+ENSG00000213931	HBE1	hemoglobin subunit epsilon 1 [Source:HGNC Symbol;Acc:HGNC:4830]	Ensembl_REST_lookup_id
+ENSG00000168878	SFTPB	surfactant protein B [Source:HGNC Symbol;Acc:HGNC:10801]	Ensembl_REST_lookup_id
+ENSG00000164741	DLC1	DLC1 Rho GTPase activating protein [Source:HGNC Symbol;Acc:HGNC:2897]	Ensembl_REST_lookup_id
+ENSG00000105141	CASP14	caspase 14 [Source:HGNC Symbol;Acc:HGNC:1502]	Ensembl_REST_lookup_id
+ENSG00000138449	SLC40A1	solute carrier family 40 member 1 [Source:HGNC Symbol;Acc:HGNC:10909]	Ensembl_REST_lookup_id
+ENSG00000133135	RNF128	ring finger protein 128 [Source:HGNC Symbol;Acc:HGNC:21153]	Ensembl_REST_lookup_id
+ENSG00000074410	CA12	carbonic anhydrase 12 [Source:HGNC Symbol;Acc:HGNC:1371]	Ensembl_REST_lookup_id
+ENSG00000159167	STC1	stanniocalcin 1 [Source:HGNC Symbol;Acc:HGNC:11373]	Ensembl_REST_lookup_id
+ENSG00000182782	HCAR2	hydroxycarboxylic acid receptor 2 [Source:HGNC Symbol;Acc:HGNC:24827]	Ensembl_REST_lookup_id
+ENSG00000167653	PSCA	prostate stem cell antigen [Source:HGNC Symbol;Acc:HGNC:9500]	Ensembl_REST_lookup_id
+ENSG00000143546	S100A8	S100 calcium binding protein A8 [Source:HGNC Symbol;Acc:HGNC:10498]	Ensembl_REST_lookup_id
+ENSG00000165821	SALL2	spalt like transcription factor 2 [Source:HGNC Symbol;Acc:HGNC:10526]	Ensembl_REST_lookup_id
+ENSG00000167183	PRR15L	proline rich 15 like [Source:HGNC Symbol;Acc:HGNC:28149]	Ensembl_REST_lookup_id
+ENSG00000134258	VTCN1	V-set domain containing T cell activation inhibitor 1 [Source:HGNC Symbol;Acc:HGNC:28873]	Ensembl_REST_lookup_id
+ENSG00000173175	ADCY5	adenylate cyclase 5 [Source:HGNC Symbol;Acc:HGNC:236]	Ensembl_REST_lookup_id
+ENSG00000179023	KLHDC7A	kelch domain containing 7A [Source:HGNC Symbol;Acc:HGNC:26791]	Ensembl_REST_lookup_id
+ENSG00000163701	IL17RE	interleukin 17 receptor E [Source:HGNC Symbol;Acc:HGNC:18439]	Ensembl_REST_lookup_id
+ENSG00000204616	TRIM31	tripartite motif containing 31 [Source:HGNC Symbol;Acc:HGNC:16289]	Ensembl_REST_lookup_id
+ENSG00000176945	MUC20	mucin 20, cell surface associated [Source:HGNC Symbol;Acc:HGNC:23282]	Ensembl_REST_lookup_id
+ENSG00000226051	ZNF503-AS1	ZNF503 antisense RNA 1 [Source:HGNC Symbol;Acc:HGNC:27370]	Ensembl_REST_lookup_id
+ENSG00000167355	OR51B5	olfactory receptor family 51 subfamily B member 5 [Source:HGNC Symbol;Acc:HGNC:19599]	Ensembl_REST_lookup_id
+ENSG00000198133	TMEM229B	transmembrane protein 229B [Source:HGNC Symbol;Acc:HGNC:20130]	Ensembl_REST_lookup_id
+ENSG00000154928	EPHB1	EPH receptor B1 [Source:HGNC Symbol;Acc:HGNC:3392]	Ensembl_REST_lookup_id
+ENSG00000162949	CAPN13	calpain 13 [Source:HGNC Symbol;Acc:HGNC:16663]	Ensembl_REST_lookup_id
+ENSG00000115525	ST3GAL5	ST3 beta-galactoside alpha-2,3-sialyltransferase 5 [Source:HGNC Symbol;Acc:HGNC:10872]	Ensembl_REST_lookup_id
+ENSG00000231826	LINC01819	long intergenic non-protein coding RNA 1819 [Source:HGNC Symbol;Acc:HGNC:52624]	Ensembl_REST_lookup_id
+ENSG00000174514	SLC60A1	solute carrier family 60 member 1 [Source:HGNC Symbol;Acc:HGNC:25433]	Ensembl_REST_lookup_id
+ENSG00000118855	MFSD1	major facilitator superfamily domain containing 1 [Source:HGNC Symbol;Acc:HGNC:25874]	Ensembl_REST_lookup_id
+ENSG00000263563	UBBP4	ubiquitin B pseudogene 4 [Source:HGNC Symbol;Acc:HGNC:12467]	Ensembl_REST_lookup_id
+ENSG00000106366	SERPINE1	serpin family E member 1 [Source:HGNC Symbol;Acc:HGNC:8583]	Ensembl_REST_lookup_id
+ENSG00000127954	STEAP4	STEAP4 metalloreductase [Source:HGNC Symbol;Acc:HGNC:21923]	Ensembl_REST_lookup_id
+ENSG00000253525	CPP	ceruloplasmin pseudogene [Source:HGNC Symbol;Acc:HGNC:2322]	Ensembl_REST_lookup_id
+ENSG00000105519	CAPS	calcyphosine [Source:HGNC Symbol;Acc:HGNC:1487]	Ensembl_REST_lookup_id
+ENSG00000095596	CYP26A1	cytochrome P450 family 26 subfamily A member 1 [Source:HGNC Symbol;Acc:HGNC:2603]	Ensembl_REST_lookup_id
+ENSG00000072858	SIDT1	SID1 transmembrane family member 1 [Source:HGNC Symbol;Acc:HGNC:25967]	Ensembl_REST_lookup_id
+ENSG00000109107	ALDOC	aldolase, fructose-bisphosphate C [Source:HGNC Symbol;Acc:HGNC:418]	Ensembl_REST_lookup_id
+ENSG00000084110	HAL	histidine ammonia-lyase [Source:HGNC Symbol;Acc:HGNC:4806]	Ensembl_REST_lookup_id
+ENSG00000082684	SEMA5B	semaphorin 5B [Source:HGNC Symbol;Acc:HGNC:10737]	Ensembl_REST_lookup_id
+ENSG00000156966	B3GNT7	UDP-GlcNAc:betaGal beta-1,3-N-acetylglucosaminyltransferase 7 [Source:HGNC Symbol;Acc:HGNC:18811]	Ensembl_REST_lookup_id
+ENSG00000204950	LRRC10B	leucine rich repeat containing 10B [Source:HGNC Symbol;Acc:HGNC:37215]	Ensembl_REST_lookup_id
+ENSG00000111341	MGP	matrix Gla protein [Source:HGNC Symbol;Acc:HGNC:7060]	Ensembl_REST_lookup_id
+ENSG00000171476	HOPX	HOP homeobox [Source:HGNC Symbol;Acc:HGNC:24961]	Ensembl_REST_lookup_id
+ENSG00000132746	ALDH3B2	aldehyde dehydrogenase 3 family member B2 [Source:HGNC Symbol;Acc:HGNC:411]	Ensembl_REST_lookup_id
+ENSG00000172478	MAB21L4	mab-21 like 4 [Source:HGNC Symbol;Acc:HGNC:26216]	Ensembl_REST_lookup_id
+ENSG00000196917	HCAR1	hydroxycarboxylic acid receptor 1 [Source:HGNC Symbol;Acc:HGNC:4532]	Ensembl_REST_lookup_id
+ENSG00000169851	PCDH7	protocadherin 7 [Source:HGNC Symbol;Acc:HGNC:8659]	Ensembl_REST_lookup_id
+ENSG00000224940	PRRT4	proline rich transmembrane protein 4 [Source:HGNC Symbol;Acc:HGNC:37280]	Ensembl_REST_lookup_id
+ENSG00000007038	PRSS21	serine protease 21 [Source:HGNC Symbol;Acc:HGNC:9485]	Ensembl_REST_lookup_id
+ENSG00000135374	ELF5	E74 like ETS transcription factor 5 [Source:HGNC Symbol;Acc:HGNC:3320]	Ensembl_REST_lookup_id
+ENSG00000183570	PCBP3	poly(rC) binding protein 3 [Source:HGNC Symbol;Acc:HGNC:8651]	Ensembl_REST_lookup_id
+ENSG00000184956	MUC6	mucin 6, oligomeric mucus/gel-forming (gene/pseudogene) [Source:HGNC Symbol;Acc:HGNC:7517]	Ensembl_REST_lookup_id
+ENSG00000081923	ATP8B1	ATPase phospholipid transporting 8B1 [Source:HGNC Symbol;Acc:HGNC:3706]	Ensembl_REST_lookup_id
+ENSG00000152137	HSPB8	heat shock protein family B (small) member 8 [Source:HGNC Symbol;Acc:HGNC:30171]	Ensembl_REST_lookup_id
+ENSG00000196218	RYR1	ryanodine receptor 1 [Source:HGNC Symbol;Acc:HGNC:10483]	Ensembl_REST_lookup_id
+ENSG00000105143	SLC1A6	solute carrier family 1 member 6 [Source:HGNC Symbol;Acc:HGNC:10944]	Ensembl_REST_lookup_id
+ENSG00000169474	SPRR1A	small proline rich protein 1A [Source:HGNC Symbol;Acc:HGNC:11259]	Ensembl_REST_lookup_id
+ENSG00000240207		novel transcript, antisense to RARRES1	Ensembl_REST_lookup_id
+ENSG00000126016	AMOT	angiomotin [Source:HGNC Symbol;Acc:HGNC:17810]	Ensembl_REST_lookup_id
+ENSG00000143140			Ensembl_REST_lookup_id
+ENSG00000121797	CCRL2	C-C motif chemokine receptor like 2 [Source:HGNC Symbol;Acc:HGNC:1612]	Ensembl_REST_lookup_id
+ENSG00000169908	TM4SF1	transmembrane 4 L six family member 1 [Source:HGNC Symbol;Acc:HGNC:11853]	Ensembl_REST_lookup_id
+ENSG00000075651	PLD1	phospholipase D1 [Source:HGNC Symbol;Acc:HGNC:9067]	Ensembl_REST_lookup_id
+ENSG00000158786	PLA2G2F	phospholipase A2 group IIF [Source:HGNC Symbol;Acc:HGNC:30040]	Ensembl_REST_lookup_id
+ENSG00000165072	MAMDC2	MAM domain containing 2 [Source:HGNC Symbol;Acc:HGNC:23673]	Ensembl_REST_lookup_id
+ENSG00000141579	ZNF750	zinc finger protein 750 [Source:HGNC Symbol;Acc:HGNC:25843]	Ensembl_REST_lookup_id
+ENSG00000106066	CPVL	carboxypeptidase vitellogenic like [Source:HGNC Symbol;Acc:HGNC:14399]	Ensembl_REST_lookup_id
+ENSG00000196502	SULT1A1	sulfotransferase family 1A member 1 [Source:HGNC Symbol;Acc:HGNC:11453]	Ensembl_REST_lookup_id
+ENSG00000197580	BCO2	beta-carotene oxygenase 2 [Source:HGNC Symbol;Acc:HGNC:18503]	Ensembl_REST_lookup_id
+ENSG00000183251	OR51B4	olfactory receptor family 51 subfamily B member 4 [Source:HGNC Symbol;Acc:HGNC:14708]	Ensembl_REST_lookup_id
+ENSG00000196542	SPTSSB	serine palmitoyltransferase small subunit B [Source:HGNC Symbol;Acc:HGNC:24045]	Ensembl_REST_lookup_id
+ENSG00000022567	SLC45A4	solute carrier family 45 member 4 [Source:HGNC Symbol;Acc:HGNC:29196]	Ensembl_REST_lookup_id
+ENSG00000142173	COL6A2	collagen type VI alpha 2 chain [Source:HGNC Symbol;Acc:HGNC:2212]	Ensembl_REST_lookup_id
+ENSG00000171236	LRG1	leucine rich alpha-2-glycoprotein 1 [Source:HGNC Symbol;Acc:HGNC:29480]	Ensembl_REST_lookup_id
+ENSG00000177508	IRX3	iroquois homeobox 3 [Source:HGNC Symbol;Acc:HGNC:14360]	Ensembl_REST_lookup_id
+ENSG00000159784	FAM131B	family with sequence similarity 131 member B [Source:HGNC Symbol;Acc:HGNC:22202]	Ensembl_REST_lookup_id
+ENSG00000072274	TFRC	transferrin receptor [Source:HGNC Symbol;Acc:HGNC:11763]	Ensembl_REST_lookup_id
+ENSG00000170477	KRT4	keratin 4 [Source:HGNC Symbol;Acc:HGNC:6441]	Ensembl_REST_lookup_id
+ENSG00000196083	IL1RAP	interleukin 1 receptor accessory protein [Source:HGNC Symbol;Acc:HGNC:5995]	Ensembl_REST_lookup_id
+ENSG00000166415	WDR72	WD repeat domain 72 [Source:HGNC Symbol;Acc:HGNC:26790]	Ensembl_REST_lookup_id
+ENSG00000164120	HPGD	15-hydroxyprostaglandin dehydrogenase [Source:HGNC Symbol;Acc:HGNC:5154]	Ensembl_REST_lookup_id
+ENSG00000064042	LIMCH1	LIM and calponin homology domains 1 [Source:HGNC Symbol;Acc:HGNC:29191]	Ensembl_REST_lookup_id
+ENSG00000143412	ANXA9	annexin A9 [Source:HGNC Symbol;Acc:HGNC:547]	Ensembl_REST_lookup_id
+ENSG00000260912		novel transcript, overlapping ACER2	Ensembl_REST_lookup_id
+ENSG00000176641	RNF152	ring finger protein 152 [Source:HGNC Symbol;Acc:HGNC:26811]	Ensembl_REST_lookup_id
+ENSG00000115255	REEP6	receptor accessory protein 6 [Source:HGNC Symbol;Acc:HGNC:30078]	Ensembl_REST_lookup_id
+ENSG00000100100	PIK3IP1	phosphoinositide-3-kinase interacting protein 1 [Source:HGNC Symbol;Acc:HGNC:24942]	Ensembl_REST_lookup_id
+ENSG00000185630	PBX1	PBX homeobox 1 [Source:HGNC Symbol;Acc:HGNC:8632]	Ensembl_REST_lookup_id
+ENSG00000153294	ADGRF4	adhesion G protein-coupled receptor F4 [Source:HGNC Symbol;Acc:HGNC:19011]	Ensembl_REST_lookup_id
+ENSG00000149809	TM7SF2	transmembrane 7 superfamily member 2 [Source:HGNC Symbol;Acc:HGNC:11863]	Ensembl_REST_lookup_id
+ENSG00000114541	FRMD4B	FERM domain containing 4B [Source:HGNC Symbol;Acc:HGNC:24886]	Ensembl_REST_lookup_id
+ENSG00000197696	NMB	neuromedin B [Source:HGNC Symbol;Acc:HGNC:7842]	Ensembl_REST_lookup_id
+ENSG00000071909	MYO3B	myosin IIIB [Source:HGNC Symbol;Acc:HGNC:15576]	Ensembl_REST_lookup_id
+ENSG00000179981	TSHZ1	teashirt zinc finger homeobox 1 [Source:HGNC Symbol;Acc:HGNC:10669]	Ensembl_REST_lookup_id
+ENSG00000182489	XKRX	XK related X-linked [Source:HGNC Symbol;Acc:HGNC:29845]	Ensembl_REST_lookup_id
+ENSG00000110042	DTX4	deltex E3 ubiquitin ligase 4 [Source:HGNC Symbol;Acc:HGNC:29151]	Ensembl_REST_lookup_id
+ENSG00000171401	KRT13	keratin 13 [Source:HGNC Symbol;Acc:HGNC:6415]	Ensembl_REST_lookup_id
+ENSG00000179222	MAGED1	MAGE family member D1 [Source:HGNC Symbol;Acc:HGNC:6813]	Ensembl_REST_lookup_id
+ENSG00000130508	PXDN	peroxidasin [Source:HGNC Symbol;Acc:HGNC:14966]	Ensembl_REST_lookup_id
+ENSG00000163590	PPM1L	protein phosphatase, Mg2+/Mn2+ dependent 1L [Source:HGNC Symbol;Acc:HGNC:16381]	Ensembl_REST_lookup_id
+ENSG00000173237	C11orf86	chromosome 11 open reading frame 86 [Source:HGNC Symbol;Acc:HGNC:34442]	Ensembl_REST_lookup_id
+ENSG00000100302	RASD2	RASD family member 2 [Source:HGNC Symbol;Acc:HGNC:18229]	Ensembl_REST_lookup_id
+ENSG00000089127	OAS1	2'-5'-oligoadenylate synthetase 1 [Source:HGNC Symbol;Acc:HGNC:8086]	Ensembl_REST_lookup_id
+ENSG00000019186	CYP24A1	cytochrome P450 family 24 subfamily A member 1 [Source:HGNC Symbol;Acc:HGNC:2602]	Ensembl_REST_lookup_id
+ENSG00000106541	AGR2	anterior gradient 2, protein disulphide isomerase family member [Source:HGNC Symbol;Acc:HGNC:328]	Ensembl_REST_lookup_id
+ENSG00000204161	TMEM273	transmembrane protein 273 [Source:HGNC Symbol;Acc:HGNC:27274]	Ensembl_REST_lookup_id
+ENSG00000163220	S100A9	S100 calcium binding protein A9 [Source:HGNC Symbol;Acc:HGNC:10499]	Ensembl_REST_lookup_id
+ENSG00000010704	HFE	homeostatic iron regulator [Source:HGNC Symbol;Acc:HGNC:4886]	Ensembl_REST_lookup_id
+ENSG00000121858	TNFSF10	TNF superfamily member 10 [Source:HGNC Symbol;Acc:HGNC:11925]	Ensembl_REST_lookup_id
+ENSG00000188603	CLN3	CLN3 lysosomal/endosomal transmembrane protein, battenin [Source:HGNC Symbol;Acc:HGNC:2074]	Ensembl_REST_lookup_id
+ENSG00000130234	ACE2	angiotensin converting enzyme 2 [Source:HGNC Symbol;Acc:HGNC:13557]	Ensembl_REST_lookup_id
+ENSG00000079215	SLC1A3	solute carrier family 1 member 3 [Source:HGNC Symbol;Acc:HGNC:10941]	Ensembl_REST_lookup_id
+ENSG00000224769	MUC20P1	mucin 20, cell surface associated pseudogene 1 [Source:HGNC Symbol;Acc:HGNC:51921]	Ensembl_REST_lookup_id
+ENSG00000104267	CA2	carbonic anhydrase 2 [Source:HGNC Symbol;Acc:HGNC:1373]	Ensembl_REST_lookup_id
+ENSG00000116133	DHCR24	24-dehydrocholesterol reductase [Source:HGNC Symbol;Acc:HGNC:2859]	Ensembl_REST_lookup_id
+ENSG00000164683	HEY1	hes related family bHLH transcription factor with YRPW motif 1 [Source:HGNC Symbol;Acc:HGNC:4880]	Ensembl_REST_lookup_id
+ENSG00000101938	CHRDL1	chordin like 1 [Source:HGNC Symbol;Acc:HGNC:29861]	Ensembl_REST_lookup_id
+ENSG00000171766	GATM	glycine amidinotransferase [Source:HGNC Symbol;Acc:HGNC:4175]	Ensembl_REST_lookup_id
+ENSG00000116774	OLFML3	olfactomedin like 3 [Source:HGNC Symbol;Acc:HGNC:24956]	Ensembl_REST_lookup_id
+ENSG00000183098	GPC6	glypican 6 [Source:HGNC Symbol;Acc:HGNC:4454]	Ensembl_REST_lookup_id
+ENSG00000131981	LGALS3	galectin 3 [Source:HGNC Symbol;Acc:HGNC:6563]	Ensembl_REST_lookup_id
+ENSG00000083857	FAT1	FAT atypical cadherin 1 [Source:HGNC Symbol;Acc:HGNC:3595]	Ensembl_REST_lookup_id
+ENSG00000121236	TRIM6	tripartite motif containing 6 [Source:HGNC Symbol;Acc:HGNC:16277]	Ensembl_REST_lookup_id
+ENSG00000119943	PYROXD2	pyridine nucleotide-disulphide oxidoreductase domain 2 [Source:HGNC Symbol;Acc:HGNC:23517]	Ensembl_REST_lookup_id
+ENSG00000013619	MAMLD1	mastermind like domain containing 1 [Source:HGNC Symbol;Acc:HGNC:2568]	Ensembl_REST_lookup_id
+ENSG00000135917	SLC19A3	solute carrier family 19 member 3 [Source:HGNC Symbol;Acc:HGNC:16266]	Ensembl_REST_lookup_id
+ENSG00000106976	DNM1	dynamin 1 [Source:HGNC Symbol;Acc:HGNC:2972]	Ensembl_REST_lookup_id
+ENSG00000112972	HMGCS1	3-hydroxy-3-methylglutaryl-CoA synthase 1 [Source:HGNC Symbol;Acc:HGNC:5007]	Ensembl_REST_lookup_id
+ENSG00000108244	KRT23	keratin 23 [Source:HGNC Symbol;Acc:HGNC:6438]	Ensembl_REST_lookup_id
+ENSG00000104140	RHOV	ras homolog family member V [Source:HGNC Symbol;Acc:HGNC:18313]	Ensembl_REST_lookup_id
+ENSG00000106605	BLVRA	biliverdin reductase A [Source:HGNC Symbol;Acc:HGNC:1062]	Ensembl_REST_lookup_id
+ENSG00000143217	NECTIN4	nectin cell adhesion molecule 4 [Source:HGNC Symbol;Acc:HGNC:19688]	Ensembl_REST_lookup_id
+ENSG00000203837	PNLIPRP3	pancreatic lipase related protein 3 [Source:HGNC Symbol;Acc:HGNC:23492]	Ensembl_REST_lookup_id
+ENSG00000153982	GDPD1	glycerophosphodiester phosphodiesterase domain containing 1 [Source:HGNC Symbol;Acc:HGNC:20883]	Ensembl_REST_lookup_id
+ENSG00000163703	CRELD1	CRELD disulfide isomerase 1 [Source:HGNC Symbol;Acc:HGNC:14630]	Ensembl_REST_lookup_id
+ENSG00000088386	SLC15A1	solute carrier family 15 member 1 [Source:HGNC Symbol;Acc:HGNC:10920]	Ensembl_REST_lookup_id
+ENSG00000099377	HSD3B7	hydroxy-delta-5-steroid dehydrogenase, 3 beta- and steroid delta-isomerase 7 [Source:HGNC Symbol;Acc:HGNC:18324]	Ensembl_REST_lookup_id
+ENSG00000177076	ACER2	alkaline ceramidase 2 [Source:HGNC Symbol;Acc:HGNC:23675]	Ensembl_REST_lookup_id
+ENSG00000105650	PDE4C	phosphodiesterase 4C [Source:HGNC Symbol;Acc:HGNC:8782]	Ensembl_REST_lookup_id
+ENSG00000211829	TRDC	T cell receptor delta constant [Source:HGNC Symbol;Acc:HGNC:12253]	Ensembl_REST_lookup_id
+ENSG00000185442	FAM174B	family with sequence similarity 174 member B [Source:HGNC Symbol;Acc:HGNC:34339]	Ensembl_REST_lookup_id
+ENSG00000183049	CAMK1D	calcium/calmodulin dependent protein kinase ID [Source:HGNC Symbol;Acc:HGNC:19341]	Ensembl_REST_lookup_id
+ENSG00000141232	TOB1	transducer of ERBB2, 1 [Source:HGNC Symbol;Acc:HGNC:11979]	Ensembl_REST_lookup_id
+ENSG00000154511	DIPK1A	divergent protein kinase domain 1A [Source:HGNC Symbol;Acc:HGNC:32213]	Ensembl_REST_lookup_id
+ENSG00000183018	SPNS2	SPNS lysolipid transporter 2, sphingosine-1-phosphate [Source:HGNC Symbol;Acc:HGNC:26992]	Ensembl_REST_lookup_id
+ENSG00000213085	CFAP45	cilia and flagella associated protein 45 [Source:HGNC Symbol;Acc:HGNC:17229]	Ensembl_REST_lookup_id
+ENSG00000137501	SYTL2	synaptotagmin like 2 [Source:HGNC Symbol;Acc:HGNC:15585]	Ensembl_REST_lookup_id
+ENSG00000154229	PRKCA	protein kinase C alpha [Source:HGNC Symbol;Acc:HGNC:9393]	Ensembl_REST_lookup_id
+ENSG00000143512	HHIPL2	HHIP like 2 [Source:HGNC Symbol;Acc:HGNC:25842]	Ensembl_REST_lookup_id
+ENSG00000152785	BMP3	bone morphogenetic protein 3 [Source:HGNC Symbol;Acc:HGNC:1070]	Ensembl_REST_lookup_id
+ENSG00000143320	CRABP2	cellular retinoic acid binding protein 2 [Source:HGNC Symbol;Acc:HGNC:2339]	Ensembl_REST_lookup_id
+ENSG00000160223	ICOSLG	inducible T cell costimulator ligand [Source:HGNC Symbol;Acc:HGNC:17087]	Ensembl_REST_lookup_id
+ENSG00000131187	F12	coagulation factor XII [Source:HGNC Symbol;Acc:HGNC:3530]	Ensembl_REST_lookup_id
+ENSG00000167771	RCOR2	REST corepressor 2 [Source:HGNC Symbol;Acc:HGNC:27455]	Ensembl_REST_lookup_id
+ENSG00000196353	CPNE4	copine 4 [Source:HGNC Symbol;Acc:HGNC:2317]	Ensembl_REST_lookup_id
+ENSG00000061656	SPAG4	sperm associated antigen 4 [Source:HGNC Symbol;Acc:HGNC:11214]	Ensembl_REST_lookup_id
+ENSG00000138798	EGF	epidermal growth factor [Source:HGNC Symbol;Acc:HGNC:3229]	Ensembl_REST_lookup_id
+ENSG00000105289	TJP3	tight junction protein 3 [Source:HGNC Symbol;Acc:HGNC:11829]	Ensembl_REST_lookup_id
+ENSG00000168032	ENTPD3	ectonucleoside triphosphate diphosphohydrolase 3 [Source:HGNC Symbol;Acc:HGNC:3365]	Ensembl_REST_lookup_id
+ENSG00000088002	SULT2B1	sulfotransferase family 2B member 1 [Source:HGNC Symbol;Acc:HGNC:11459]	Ensembl_REST_lookup_id
+ENSG00000104313	EYA1	EYA transcriptional coactivator and phosphatase 1 [Source:HGNC Symbol;Acc:HGNC:3519]	Ensembl_REST_lookup_id
+ENSG00000264920			Ensembl_REST_lookup_id
+ENSG00000187554	TLR5	toll like receptor 5 [Source:HGNC Symbol;Acc:HGNC:11851]	Ensembl_REST_lookup_id
+ENSG00000163803	PLB1	phospholipase B1 [Source:HGNC Symbol;Acc:HGNC:30041]	Ensembl_REST_lookup_id
+ENSG00000155265	GOLGA7B	golgin A7 family member B [Source:HGNC Symbol;Acc:HGNC:31668]	Ensembl_REST_lookup_id
+ENSG00000170367	CST5	cystatin D [Source:HGNC Symbol;Acc:HGNC:2477]	Ensembl_REST_lookup_id
+ENSG00000129422	MTUS1	microtubule associated scaffold protein 1 [Source:HGNC Symbol;Acc:HGNC:29789]	Ensembl_REST_lookup_id
+ENSG00000106025	TSPAN12	tetraspanin 12 [Source:HGNC Symbol;Acc:HGNC:21641]	Ensembl_REST_lookup_id
+ENSG00000168306	ACOX2	acyl-CoA oxidase 2 [Source:HGNC Symbol;Acc:HGNC:120]	Ensembl_REST_lookup_id
+ENSG00000196420	S100A5	S100 calcium binding protein A5 [Source:HGNC Symbol;Acc:HGNC:10495]	Ensembl_REST_lookup_id
+ENSG00000076641	PAG1	phosphoprotein membrane anchor with glycosphingolipid microdomains 1 [Source:HGNC Symbol;Acc:HGNC:30043]	Ensembl_REST_lookup_id
+ENSG00000186212	SOWAHB	sosondowah ankyrin repeat domain family member B [Source:HGNC Symbol;Acc:HGNC:32958]	Ensembl_REST_lookup_id
+ENSG00000233725	NRAD1	non-coding RNA in the aldehyde dehydrogenase 1A pathway [Source:HGNC Symbol;Acc:HGNC:26981]	Ensembl_REST_lookup_id
+ENSG00000150281	CTF1	cardiotrophin 1 [Source:HGNC Symbol;Acc:HGNC:2499]	Ensembl_REST_lookup_id
+ENSG00000143891	GALM	galactose mutarotase [Source:HGNC Symbol;Acc:HGNC:24063]	Ensembl_REST_lookup_id
+ENSG00000159445	THEM4	thioesterase superfamily member 4 [Source:HGNC Symbol;Acc:HGNC:17947]	Ensembl_REST_lookup_id
+ENSG00000259038			Ensembl_REST_lookup_id
+ENSG00000109339	MAPK10	mitogen-activated protein kinase 10 [Source:HGNC Symbol;Acc:HGNC:6872]	Ensembl_REST_lookup_id
+ENSG00000160188	RSPH1	radial spoke head component 1 [Source:HGNC Symbol;Acc:HGNC:12371]	Ensembl_REST_lookup_id
+ENSG00000183421	RIPK4	receptor interacting serine/threonine kinase 4 [Source:HGNC Symbol;Acc:HGNC:496]	Ensembl_REST_lookup_id
+ENSG00000124731	TREM1	triggering receptor expressed on myeloid cells 1 [Source:HGNC Symbol;Acc:HGNC:17760]	Ensembl_REST_lookup_id
+ENSG00000115380	EFEMP1	EGF containing fibulin extracellular matrix protein 1 [Source:HGNC Symbol;Acc:HGNC:3218]	Ensembl_REST_lookup_id
+ENSG00000167614	TTYH1	tweety family member 1 [Source:HGNC Symbol;Acc:HGNC:13476]	Ensembl_REST_lookup_id
+ENSG00000106211	HSPB1	heat shock protein family B (small) member 1 [Source:HGNC Symbol;Acc:HGNC:5246]	Ensembl_REST_lookup_id
+ENSG00000197956	S100A6	S100 calcium binding protein A6 [Source:HGNC Symbol;Acc:HGNC:10496]	Ensembl_REST_lookup_id
+ENSG00000125827	TMX4	thioredoxin related transmembrane protein 4 [Source:HGNC Symbol;Acc:HGNC:25237]	Ensembl_REST_lookup_id
+ENSG00000080546	SESN1	sestrin 1 [Source:HGNC Symbol;Acc:HGNC:21595]	Ensembl_REST_lookup_id
+ENSG00000256894		novel transcript, antisense to SSPN	Ensembl_REST_lookup_id
+ENSG00000185664	PMEL	premelanosome protein [Source:HGNC Symbol;Acc:HGNC:10880]	Ensembl_REST_lookup_id
+ENSG00000105379	ETFB	electron transfer flavoprotein subunit beta [Source:HGNC Symbol;Acc:HGNC:3482]	Ensembl_REST_lookup_id
+ENSG00000259353		novel transcript, antisense to FAM63B	Ensembl_REST_lookup_id
+ENSG00000049283	EPN3	epsin 3 [Source:HGNC Symbol;Acc:HGNC:18235]	Ensembl_REST_lookup_id
+ENSG00000144711	IQSEC1	IQ motif and Sec7 domain ArfGEF 1 [Source:HGNC Symbol;Acc:HGNC:29112]	Ensembl_REST_lookup_id
+ENSG00000150556	LYPD6B	LY6/PLAUR domain containing 6B [Source:HGNC Symbol;Acc:HGNC:27018]	Ensembl_REST_lookup_id
+ENSG00000103489	XYLT1	xylosyltransferase 1 [Source:HGNC Symbol;Acc:HGNC:15516]	Ensembl_REST_lookup_id
+ENSG00000182472	CAPN12	calpain 12 [Source:HGNC Symbol;Acc:HGNC:13249]	Ensembl_REST_lookup_id

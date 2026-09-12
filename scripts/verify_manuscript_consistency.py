@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """Focused consistency checks for the PGAA manuscript package."""
-from pathlib import Path
+import ast
+import re
 import zipfile
+from pathlib import Path
 
 import pandas as pd
 
@@ -26,6 +28,8 @@ FORBIDDEN = [
 TEXT_FILES = [
     ROOT / "MANUSCRIPT.md",
     ROOT / "SUPPLEMENTARY.md",
+    ROOT / "docs" / "GSE335846_PHOSPHOPROTEOMICS_CORROBORATION.md",
+    ROOT / "docs" / "GSE335846_PHOSPHOPROTEOMICS_CORROBORATION_SUPPORT_TEXT.md",
     ROOT / "build_pdf.py",
     ROOT / "scripts" / "figure_norman_nbins20.py",
     ROOT / "scripts" / "table_sceptre_vs_pgaa.py",
@@ -37,7 +41,9 @@ TEXT_FILES = [
     ROOT / "scripts" / "table1_datasets_summary.csv",
     ROOT / "scripts" / "run_toy_example.py",
     ROOT / "scripts" / "build_submission_zip.py",
+    ROOT / "scripts" / "audit_gse335846_phosphoproteomics_corroboration.py",
     ROOT / "pgaa" / "cli.py",
+    ROOT / "pgaa" / "core" / "gse335846_phosphoproteomics_corroboration.py",
     ROOT / "pyproject.toml",
     ROOT / "CITATION.cff",
     ROOT / "codemeta.json",
@@ -131,10 +137,8 @@ def check_adamson_ci() -> list[str]:
         return errors
     df = pd.read_csv(ci)
     expected_methods = {
-        "S1 Wasserstein",
-        "S2 persistence",
-        "histogram-persistence",
-        "persistence-inspired histogram-shape statistic",
+        "PGAA-W Wasserstein",
+        "PGAA-H histogram-shape",
         "Wilcoxon rank-sum",
         "t-test",
         "MAST",
@@ -155,10 +159,26 @@ def check_assets() -> list[str]:
         "figures_png/figure_4.png",
         "figures_png/figure_adamson_benchmark.png",
         "figures_png/figure_5.png",
+        "figures_png/gse193258_target_specificity_map.png",
+        "figures_png/gse193258_target_specificity_map.pdf",
+        "figures_png/gse335846_dynamic_corroboration_scorecard.png",
+        "figures_png/gse335846_dynamic_corroboration_scorecard.pdf",
+        "figures_png/gse335846_phosphoproteomics_corroboration_scorecard.png",
+        "figures_png/gse335846_phosphoproteomics_corroboration_scorecard.pdf",
+        "figures_png/gse150949_pc9_evolution_scorecard.png",
+        "figures_png/gse150949_pc9_evolution_scorecard.pdf",
         "figures_png/figure_elane_histogram.png",
         "figures_png/figure_s2_calibration_qq.png",
         "figures_png/figure_s2_bhlhe40.png",
         "figures_png/figure_pgaa_workflow.png",
+        "docs/GSE335846_PHOSPHOPROTEOMICS_CORROBORATION.md",
+        "docs/GSE150949_PC9_EVOLUTION_AUDIT.md",
+        "docs/GSE193258_TARGET_SPECIFICITY_SUPPORT_TEXT.md",
+        "docs/GSE335846_EXTERNAL_DYNAMIC_CORROBORATION_SUPPORT_TEXT.md",
+        "docs/GSE150949_PC9_EVOLUTION_SUPPORT_TEXT.md",
+        "evidence/gse335846_phosphoproteomics_corroboration.tsv",
+        "evidence/gse335846_phosphoproteomics_selected_markers.tsv",
+        "evidence/gse335846_phosphoproteomics_boundary_scan.tsv",
     ]
     for rel in required:
         path = ROOT / rel
@@ -170,9 +190,25 @@ def check_assets() -> list[str]:
         "figures_png/figure_s2_calibration_qq.png",
         "figures_png/figure_s2_bhlhe40.png",
         "figures_png/figure_pgaa_workflow.png",
+        "figures_png/gse193258_target_specificity_map.png",
+        "figures_png/gse193258_target_specificity_map.pdf",
+        "figures_png/gse335846_dynamic_corroboration_scorecard.png",
+        "figures_png/gse335846_dynamic_corroboration_scorecard.pdf",
+        "figures_png/gse335846_phosphoproteomics_corroboration_scorecard.png",
+        "figures_png/gse335846_phosphoproteomics_corroboration_scorecard.pdf",
+        "figures_png/gse150949_pc9_evolution_scorecard.png",
+        "figures_png/gse150949_pc9_evolution_scorecard.pdf",
     ]:
         if rel not in supp_text:
             errors.append(f"SUPPLEMENTARY.md does not include supplementary figure asset: {rel}")
+    for rel in [
+        "docs/GSE193258_TARGET_SPECIFICITY_SUPPORT_TEXT.md",
+        "docs/GSE335846_EXTERNAL_DYNAMIC_CORROBORATION_SUPPORT_TEXT.md",
+        "docs/GSE335846_PHOSPHOPROTEOMICS_CORROBORATION_SUPPORT_TEXT.md",
+        "docs/GSE150949_PC9_EVOLUTION_SUPPORT_TEXT.md",
+    ]:
+        if rel not in supp_text:
+            errors.append(f"SUPPLEMENTARY.md does not include support text reference: {rel}")
     return errors
 
 
@@ -219,8 +255,12 @@ def check_zip_builder() -> list[str]:
 
     zpath = ROOT / "PGAA_supplementary_code.zip"
     if zpath.exists():
-        with zipfile.ZipFile(zpath) as zf:
-            names = zf.namelist()
+        try:
+            with zipfile.ZipFile(zpath) as zf:
+                names = zf.namelist()
+        except zipfile.BadZipFile:
+            errors.append(f"Bad zip archive: {zpath.relative_to(ROOT)}")
+            return errors
         for term in ZIP_FORBIDDEN_TERMS:
             hits = [name for name in names if term in name]
             if hits:
@@ -241,11 +281,19 @@ def check_release_metadata() -> list[str]:
             errors.append(f"Missing release metadata file: {path.relative_to(ROOT)}")
     citation = (ROOT / "CITATION.cff").read_text(errors="replace")
     codemeta = (ROOT / "codemeta.json").read_text(errors="replace")
+    # Read the version from pyproject.toml rather than hardcoding it: a literal
+    # here goes stale on every release and then silently passes or fails.
+    pyproject = (ROOT / "pyproject.toml").read_text(errors="replace")
+    match = re.search(r'^version\s*=\s*"([^"]+)"', pyproject, re.MULTILINE)
+    if match is None:
+        errors.append("pyproject.toml does not declare a version")
+        return errors
+    version = match.group(1)
     for text, rel in [(citation, "CITATION.cff"), (codemeta, "codemeta.json")]:
         if "https://github.com/xutaoguo55/pgaa" not in text:
             errors.append(f"{rel} does not contain the canonical repository URL")
-        if "0.1.0" not in text:
-            errors.append(f"{rel} does not contain package version 0.1.0")
+        if version not in text:
+            errors.append(f"{rel} does not contain package version {version}")
     readme = (ROOT / "README.md").read_text(errors="replace")
     if "CITATION.cff" not in readme or "codemeta.json" not in readme:
         errors.append("README.md does not mention release metadata files")
@@ -271,58 +319,61 @@ def check_upload_manifest_documented() -> list[str]:
     errors = []
     manifest = ROOT / "UPLOAD_FILE_MANIFEST.tsv"
     verifier = ROOT / "scripts" / "verify_upload_file_manifest.py"
-    builder = ROOT / "COMMUNICATIONS_MEDICINE_TRANSFER" / "build_cm_supplementary_zip.py"
-    journal_builder = ROOT / "COMMUNICATIONS_MEDICINE_TRANSFER" / "build_cm_journal_upload_packet.py"
+    packet_builder = ROOT / "scripts" / "build_bioinformatics_upload_packet.py"
+    zip_builder = ROOT / "scripts" / "build_submission_zip.py"
     readme_text = (ROOT / "README.md").read_text(errors="replace")
     checklist_text = (ROOT / "RELEASE_ARCHIVE_CHECKLIST.md").read_text(errors="replace")
     if not manifest.exists() or manifest.stat().st_size == 0:
         errors.append("Missing upload-file manifest: UPLOAD_FILE_MANIFEST.tsv")
     if not verifier.exists() or verifier.stat().st_size == 0:
         errors.append("Missing upload-file manifest verifier: scripts/verify_upload_file_manifest.py")
-    if not builder.exists() or builder.stat().st_size == 0:
-        errors.append("Missing Communications Medicine supplementary zip builder")
-    if not journal_builder.exists() or journal_builder.stat().st_size == 0:
-        errors.append("Missing Communications Medicine journal upload builder")
+    if not packet_builder.exists() or packet_builder.stat().st_size == 0:
+        errors.append("Missing Bioinformatics upload packet builder")
+    if not zip_builder.exists() or zip_builder.stat().st_size == 0:
+        errors.append("Missing supplementary software zip builder")
     for text, rel in [(checklist_text, "RELEASE_ARCHIVE_CHECKLIST.md")]:
         if "UPLOAD_FILE_MANIFEST.tsv" not in text:
             errors.append(f"{rel} does not mention UPLOAD_FILE_MANIFEST.tsv")
         if "python3 scripts/verify_upload_file_manifest.py" not in text:
             errors.append(f"{rel} does not document the upload-file manifest verifier")
-        if "python3 COMMUNICATIONS_MEDICINE_TRANSFER/build_cm_supplementary_zip.py" not in text:
-            errors.append(f"{rel} does not document the Communications Medicine supplementary zip builder")
-        if "python3 COMMUNICATIONS_MEDICINE_TRANSFER/build_cm_journal_upload_packet.py" not in text:
-            errors.append(f"{rel} does not document the Communications Medicine journal upload builder")
+        if "python3 scripts/build_bioinformatics_upload_packet.py" not in text:
+            errors.append(f"{rel} does not document the Bioinformatics upload packet builder")
+        if "python3 scripts/build_submission_zip.py" not in text:
+            errors.append(f"{rel} does not document the supplementary software zip builder")
     return errors
 
 
 def check_upload_gate_documented() -> list[str]:
     errors = []
-    gate = ROOT / "COMMUNICATIONS_MEDICINE_TRANSFER" / "verify_cm_transfer_ready.py"
+    gate = ROOT / "scripts" / "verify_bioinformatics_upload_ready.py"
     finalizer = ROOT / "scripts" / "finalize_archive_metadata.py"
     if not gate.exists() or gate.stat().st_size == 0:
-        errors.append("Missing final CM transfer gate: COMMUNICATIONS_MEDICINE_TRANSFER/verify_cm_transfer_ready.py")
+        errors.append(
+            "Missing final Bioinformatics upload gate: scripts/verify_bioinformatics_upload_ready.py"
+        )
     if not finalizer.exists() or finalizer.stat().st_size == 0:
         errors.append("Missing archive metadata finalizer: scripts/finalize_archive_metadata.py")
     readme_text = (ROOT / "README.md").read_text(errors="replace")
     checklist_text = (ROOT / "RELEASE_ARCHIVE_CHECKLIST.md").read_text(errors="replace")
-    if "python3 COMMUNICATIONS_MEDICINE_TRANSFER/verify_cm_transfer_ready.py" not in checklist_text:
+    if "python3 scripts/verify_bioinformatics_upload_ready.py" not in checklist_text:
         errors.append("RELEASE_ARCHIVE_CHECKLIST.md does not document the upload gate")
     gate_text = gate.read_text(errors="replace")
     required_gate_terms = [
-        "COVER_LETTER_COMMUNICATIONS_MEDICINE.md",
-        "PORTAL_INPUTS_COMMUNICATIONS_MEDICINE.md",
-        "[insert final archive DOI or persistent URL]",
-        "OPT OUT of publication of reviewer reports",
-        "pgaa_cm_supplementary/communications_medicine/MANUSCRIPT_CM.pdf",
+        "COVER_LETTER_BIOINFORMATICS.md",
+        "PORTAL_INPUTS.md",
+        "UPLOAD GATE NOT READY",
+        "UPLOAD GATE PASSED",
+        "allow-pending",
     ]
     for term in required_gate_terms:
         if term not in gate_text:
-            errors.append(f"Communications Medicine transfer gate does not cover: {term}")
+            errors.append(f"Bioinformatics upload gate does not cover: {term}")
     finalizer_text = finalizer.read_text(errors="replace")
     required_finalizer_terms = [
-        "COVER_LETTER_COMMUNICATIONS_MEDICINE.md",
-        "PORTAL_INPUTS_COMMUNICATIONS_MEDICINE.md",
-        "MANUSCRIPT_CM.md",
+        "MANUSCRIPT.md",
+        "SUPPLEMENTARY.md",
+        "PORTAL_INPUTS.md",
+        "COVER_LETTER_BIOINFORMATICS.md",
         "[insert archive DOI or persistent URL]",
         "[archive DOI or persistent URL]",
         "[repository URL]",
@@ -359,6 +410,168 @@ def check_status_documents_current() -> list[str]:
     return errors
 
 
+def _zip_builder_constants() -> dict[str, object]:
+    """Read the packager's own rules out of its source without importing it."""
+    builder = ROOT / "scripts" / "build_submission_zip.py"
+    constants: dict[str, object] = {}
+    for node in ast.parse(builder.read_text(errors="replace")).body:
+        if isinstance(node, ast.Assign) and isinstance(node.targets[0], ast.Name):
+            try:
+                constants[node.targets[0].id] = ast.literal_eval(node.value)
+            except ValueError:
+                continue
+    return constants
+
+
+# Repository paths named in prose, e.g. `scripts/run_toy_example.py`.
+DOC_PATH_PATTERN = re.compile(
+    r"(?<![\w/.-])("
+    + "|".join(
+        re.escape(prefix)
+        for prefix in (
+            "scripts/",
+            "pgaa/",
+            "pgaa_r/",
+            "tests/",
+            "docs/",
+            "evidence/",
+            "figures_png/",
+            "figure_source_data/",
+            "data/",
+            "sources/",
+        )
+    )
+    + r")[\w./+-]+"
+)
+
+
+def _documented_paths() -> set[str]:
+    """Collect repo-relative paths named by the documents that define the release."""
+    paths: set[str] = set()
+    for name in ("README.md", "DATASET_MANIFEST.tsv", "SUPPLEMENTARY.md"):
+        doc = ROOT / name
+        if not doc.exists():
+            continue
+        for match in DOC_PATH_PATTERN.finditer(doc.read_text(errors="replace")):
+            paths.add(match.group(0).rstrip(".,;:`)`"))
+    return paths
+
+
+def check_zip_is_self_contained() -> list[str]:
+    """Guard the zip against the three ways it can silently diverge from the docs.
+
+    Nothing that the packager's own rules say should ship may be missing, nothing
+    the documents name may be dropped by the packager's exclusion rules, and no
+    packaged module may import a module that the zip does not contain.
+    """
+    errors: list[str] = []
+    zpath = ROOT / "PGAA_supplementary_code.zip"
+    builder = ROOT / "scripts" / "build_submission_zip.py"
+    if not zpath.exists() or not builder.exists():
+        return errors
+
+    constants = _zip_builder_constants()
+    root_files = constants.get("ROOT_FILES")
+    root_dirs = constants.get("ROOT_DIRS")
+    script_suffixes = constants.get("SCRIPT_SUFFIXES")
+    forbidden = constants.get("FORBIDDEN_SUBSTRINGS")
+    if not all(isinstance(v, (list, set, tuple)) for v in (root_files, root_dirs, script_suffixes, forbidden)):
+        errors.append("Could not read the packager's include/exclude rules")
+        return errors
+
+    try:
+        with zipfile.ZipFile(zpath) as zf:
+            members = [name for name in zf.namelist() if not name.endswith("/")]
+            packaged = {name.split("pgaa_supplementary/", 1)[-1] for name in members}
+            blobs = {name.split("pgaa_supplementary/", 1)[-1]: zf.read(name) for name in members}
+            sources = {
+                rel: blob.decode("utf-8", "replace")
+                for rel, blob in blobs.items()
+                if rel.endswith(".py")
+            }
+    except zipfile.BadZipFile:
+        errors.append(f"Bad zip archive: {zpath.name}")
+        return errors
+
+    def excluded(rel: str) -> bool:
+        return any(term in rel for term in forbidden)
+
+    def allowed(rel: str) -> bool:
+        return not excluded(rel) and not rel.endswith((".pyc", ".DS_Store"))
+
+    # (a) Everything the packager's rules admit must actually be in the archive.
+    for rel_dir in root_dirs:
+        for path in (ROOT / rel_dir).rglob("*"):
+            if not path.is_file():
+                continue
+            rel = path.relative_to(ROOT).as_posix()
+            if allowed(rel) and rel not in packaged:
+                errors.append(f"Zip is missing a file its own rules admit: {rel}")
+
+    for rel in root_files:
+        if (ROOT / rel).exists() and rel not in packaged:
+            errors.append(f"Zip is missing a whitelisted root file: {rel}")
+
+    for path in (ROOT / "scripts").rglob("*"):
+        if not path.is_file() or path.suffix not in script_suffixes:
+            continue
+        rel = path.relative_to(ROOT).as_posix()
+        if allowed(rel) and rel not in packaged:
+            errors.append(f"Zip is missing a whitelisted script: {rel}")
+
+    # (b) The documents and the exclusion rules must not disagree.
+    for rel in sorted(_documented_paths()):
+        if not (ROOT / rel).exists() or not excluded(rel):
+            continue
+        in_scope = rel.split("/", 1)[0] in root_dirs or rel in root_files
+        if in_scope:
+            errors.append(
+                f"Documented path is dropped by the zip exclusion rules: {rel}"
+            )
+
+    # (d) The archive must not lag behind the working tree it was built from.
+    for rel, blob in sorted(blobs.items()):
+        path = ROOT / rel
+        if path.is_file() and path.read_bytes() != blob:
+            errors.append(f"Zip content is stale relative to the working tree: {rel}")
+
+    # (c) No packaged module may import something the archive does not carry.
+    modules = set()
+    for rel in packaged:
+        if not rel.endswith(".py"):
+            continue
+        modules.add(rel[:-3].replace("/", "."))
+        if rel.endswith("/__init__.py"):
+            modules.add(rel[: -len("/__init__.py")].replace("/", "."))
+
+    def resolvable(module: str) -> bool:
+        return module in modules or f"{module}.__init__" in modules
+
+    for rel in sorted(sources):
+        try:
+            tree = ast.parse(sources[rel])
+        except SyntaxError as exc:
+            errors.append(f"Packaged module does not parse: {rel} ({exc})")
+            continue
+        for node in ast.walk(tree):
+            targets: list[str] = []
+            if isinstance(node, ast.Import):
+                targets = [alias.name for alias in node.names]
+            elif isinstance(node, ast.ImportFrom):
+                if node.level:
+                    base = rel.rsplit("/", 1)[0].replace("/", ".")
+                    target = f"{base}.{node.module or ''}".strip(".")
+                    targets = [target]
+                elif node.module:
+                    targets = [node.module]
+            for target in targets:
+                if target.split(".", 1)[0] == "pgaa" and not resolvable(target):
+                    errors.append(
+                        f"Packaged module imports a file the zip excludes: {rel} -> {target}"
+                    )
+    return errors
+
+
 def main() -> None:
     errors = []
     errors.extend(check_forbidden())
@@ -368,6 +581,7 @@ def main() -> None:
     errors.extend(check_toy_example_documented())
     errors.extend(check_cli_documented())
     errors.extend(check_zip_builder())
+    errors.extend(check_zip_is_self_contained())
     errors.extend(check_release_metadata())
     errors.extend(check_dataset_manifest())
     errors.extend(check_upload_manifest_documented())

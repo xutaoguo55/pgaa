@@ -1,0 +1,4 @@
+candidate_dataset_id	file_role	file_name	download_url	size_bytes	matrix_level	preferred_for_pgaa	source_note
+replogle_2022_k562_gwps	raw_singlecell	K562_gwps_raw_singlecell_01.h5ad	https://ndownloader.figshare.com/files/35775507	65830941948	single_cell_h5ad	true	Preferred external PGAA distributional rerun input after target/control metadata verification.
+replogle_2022_k562_gwps	normalized_singlecell	K562_gwps_normalized_singlecell_01.h5ad	https://ndownloader.figshare.com/files/35774440	65830941948	single_cell_h5ad	false	Secondary option for sensitivity or preprocessing comparison; not the first import target.
+replogle_2022_k562_gwps	raw_pseudobulk	K562_gwps_raw_bulk_01.h5ad	https://ndownloader.figshare.com/files/35774443	374587922	pseudobulk_h5ad	false	Already used for target/control metadata coverage; not sufficient for PGAA distributional replication.

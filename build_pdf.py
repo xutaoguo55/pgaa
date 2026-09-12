@@ -30,25 +30,22 @@ if r'\usepackage{graphicx}' not in tex:
 
 # Step 4: Insert figures (use lambda to avoid \c escape in regex)
 fig_map = {
-    '1': ('figures_png/figure_1.png', 'Observational marker-recovery validation.'),
-    '2': ('figures_png/figure_2.png', 'Norman 2019 CEBPE CRISPRa.'),
-    '3': ('figures_png/figure_3.png', 'Calibration across six perturbations.'),
-    '4': ('figures_png/figure_4.png', 'CLL 20k: Wasserstein and persistence.'),
-    '5': ('figures_png/figure_adamson_benchmark.png', 'Independent validation on Adamson 2016 UPR CRISPRi benchmark. Exact per-perturbation values for panel D are provided in Supplementary Table S5.'),
-    '6': ('figures_png/figure_5.png', 'Simulation ablation.'),
+    '1': ('figures_png/figure1_recharter_decision_object.png', 'PGAA as an executable claim-state compiler.'),
+    '2': ('figures_png/figure2_claim_promotion_benchmark.png', 'False-promotion benchmark and reporting-baseline ablation.'),
+    '3': ('figures_png/figure_1.png', 'Empirical perturbation-transcriptomic anchors for upstream score modules.'),
+    '4': ('figures_png/atm_hdac_branch_vulnerability_map.png', 'EGFR-resistance branch-vulnerability demonstration with ATM as the primary bounded hypothesis.'),
+    '5': ('figures_png/figure5_reproducibility_source_audit.png', 'Reproducibility and source-data audit states supporting the claim-state compiler.'),
 }
 for num, (path, cap) in fig_map.items():
     placement = 'htbp'
     width = '0.85\\textwidth'
     prefix = ''
     suffix = ''
-    if num == '5':
+    if num in {'4', '5'}:
         placement = 'p'
         width = '1.0\\textwidth'
         prefix = '\\clearpage\n'
         suffix = '\n\\clearpage'
-    elif num == '6':
-        width = '1.0\\textwidth'
     fig_code = prefix + '\\begin{figure}[' + placement + ']\n\\centering\n\\includegraphics[width=' + width + ']{' + path + '}\n\\caption{' + cap + '}\n\\end{figure}' + suffix
     pattern = r'\\textbf\{\{\[\}Figure ' + num + r'[^\}]*\{\]\}\}'
     tex = re.sub(pattern, lambda m, fc=fig_code: fc, tex, flags=re.DOTALL)
@@ -59,14 +56,7 @@ tex = tex.replace(r'\subsection{4. Discussion}', r'\clearpage' + '\n' + r'\subse
 # Add clearpage before Data and Code Availability (title wraps, use regex)
 tex = re.sub(r'\\subsection\{Data and Code', r'\\clearpage\n\\subsection{Data and Code', tex)
 
-# Step 5: Insert ELANE histogram after Figure 2
-elane_code = r'\begin{figure}[H]\centering\includegraphics[width=0.95\textwidth]{figures_png/figure_elane_histogram.png}\caption{ELANE heterogeneous expression pattern in Norman 2019 CEBPE CRISPRa.}\end{figure}'
-pos = tex.find('figure_2.png')
-if pos > 0:
-    end = tex.find(r'\end{figure}', pos)
-    tex = tex[:end + len(r'\end{figure}')] + '\n' + elane_code + '\n' + tex[end + len(r'\end{figure}'):]
-
-# Step 6: Remove placeholder text. Supplementary figures and tables are built
+# Step 5: Remove placeholder text. Supplementary figures and tables are built
 # separately in SUPPLEMENTARY.pdf rather than inserted into the main manuscript.
 tex = tex.replace(r'\textbf{{[}Supplementary Table S1{]}}', '')
 
@@ -79,8 +69,8 @@ figs_n = tex.count('includegraphics')
 tabs_n = tex.count('begin{table}')
 print("Figures: {} Tables: {}".format(figs_n, tabs_n))
 
-if figs_n < 7:
-    print("WARNING: less than 7 main figures!")
+if figs_n < 5:
+    print("WARNING: less than 5 main figures!")
     sys.exit(1)
 
 # Step 9: Compile with xelatex (twice for TOC)

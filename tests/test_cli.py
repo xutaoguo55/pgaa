@@ -51,6 +51,7 @@ def test_cli_csv_runner_writes_s1_s2_outputs(tmp_path):
         n_bins=12,
         skip_s1=False,
         skip_s2=False,
+        target_only_permutation_p=False,
         random_state=42,
     )
     s1_path, s2_path = run(args)
@@ -61,5 +62,48 @@ def test_cli_csv_runner_writes_s1_s2_outputs(tmp_path):
         ["p_value_perm", "W_observed"], ascending=[True, False]
     )
     s2 = pd.read_csv(s2_path).sort_values("S2", ascending=False)
+    assert "TARGET" in set(s1["gene"])
+    assert "TARGET" in set(s2["gene"])
     assert "S1_SHIFT" in set(s1.head(3)["gene"])
     assert "S2_BIMODAL" in set(s2.head(3)["gene"])
+
+
+def test_cli_target_only_permutation_p_keeps_full_ranked_scores(tmp_path):
+    rng = np.random.default_rng(7)
+    genes = ["TARGET", "SHIFT", "NULL_GENE"]
+    cells = [f"cell_{i:03d}" for i in range(40)]
+    X = rng.normal(size=(40, 3))
+    X[:10, 0] += 1.5
+    expression = pd.DataFrame(X, index=cells, columns=genes)
+    metadata = pd.DataFrame({
+        "cell_id": cells,
+        "group": ["perturbed"] * 10 + ["control"] * 30,
+    })
+    expr_path = tmp_path / "expression.csv"
+    meta_path = tmp_path / "metadata.csv"
+    expression.to_csv(expr_path)
+    metadata.to_csv(meta_path, index=False)
+
+    args = Namespace(
+        expression=expr_path,
+        metadata=meta_path,
+        target="TARGET",
+        out_prefix=tmp_path / "pgaa_results",
+        group_column="group",
+        perturbed_value="perturbed",
+        control_value="control",
+        cell_type_column=None,
+        library_size_column=None,
+        n_perms=19,
+        n_bins=8,
+        skip_s1=False,
+        skip_s2=True,
+        target_only_permutation_p=True,
+        random_state=42,
+    )
+    s1_path, _ = run(args)
+
+    s1 = pd.read_csv(s1_path)
+    assert set(s1["gene"]) == set(genes)
+    assert s1.loc[s1["gene"].eq("TARGET"), "p_value_perm"].notna().all()
+    assert s1.loc[~s1["gene"].eq("TARGET"), "p_value_perm"].isna().all()

@@ -46,3 +46,18 @@ figures_png/figure_workflow.png
 # Large files
 cancer_treatment_response_validation/raw/
 COMMUNICATIONS_AI_COMPUTING_TRANSFER/figures_source/Figure_1_PGAA_framework_final.tiff
+.zenodo_token
+
+# --- public-repo exclusions (2026-09-12) ---
+# Raw downloaded deposits: large, re-downloadable from the GEO accessions in
+# DATASET_MANIFEST.tsv, and not the "source data" the availability statement promises.
+data/
+# Third-party material (a published preprint PDF) and working research notes.
+sources/
+# Internal claim-artifact audit: never upload or publish.
+AUDIT_*/
+# Frozen packages for earlier journal submissions; not part of this submission.
+COMMUNICATIONS_MEDICINE_TRANSFER/
+COMMUNICATIONS_AI_COMPUTING_TRANSFER/
+# Build artifact of the editable install.
+pgaa.egg-info/

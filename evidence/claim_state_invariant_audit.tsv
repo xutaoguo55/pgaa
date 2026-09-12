@@ -1,0 +1,13 @@
+invariant_id	description	n_checked	n_violations	status	violation_ids
+I01	Every claim row has a declared claim state.	53	0	pass	
+I02	Action-to-claim compilation is deterministic and mapping-faithful.	53	0	pass	
+I03	Failure rows cannot carry positive or replication permission.	25	0	pass	
+I04	Supported units require a PGAA comparative-support witness.	8	0	pass	
+I05	Provisional units require PGAA descriptive evidence and no comparative witness.	8	0	pass	
+I06	Responder aggregation preserves row-level support, descriptive, and failure counts.	8	0	pass	
+I07	Stable units preserve state under every leave-one-method perturbation.	4	0	pass	
+I08	PGAA-dependent units contain an observed PGAA-omission state change.	1	0	pass	
+I09	External concordance requires a supported and internally stable unit.	4	0	pass	
+I10	Typed external states map to their declared replication ceilings.	8	0	pass	
+I11	The computational compiler cannot emit biological-validation permission.	8	0	pass	
+I12	Blocked, unresolved, discordant, provisional, or unstable counterfactuals cannot gain replication permission.	5	0	pass	

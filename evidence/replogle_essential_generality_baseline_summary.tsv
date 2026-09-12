@@ -1,0 +1,7 @@
+metric	n_targets	n_locked_targets	fraction
+pgaa_w_top10pct	16	16	1.0
+pgaa_h_top10pct	10	16	0.625
+absolute_mean_shift_top10pct	16	16	1.0
+welch_abs_t_top10pct	16	16	1.0
+pgaa_w_beats_both_baselines	1	16	0.0625
+pgaa_h_beats_both_baselines	2	16	0.125

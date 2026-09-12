@@ -1,0 +1,5 @@
+evidence_layer	line_refs	support_statement	manuscript_role	claim_boundary
+pc9_dynamic_dtp_replication	40-47; 416-425; 1434-1442	PC9 keeps cycling under osimertinib, the DTP state is unexpectedly dynamic, and the time-course readouts document repeated EdU positivity and regrowth.	Independent dynamic corroboration	corroboration_only_not_source_table_upgrade
+atm_sensitivity	653-677; 1434-1442	Low-dose ATM inhibition with AZD1390 reduces cell number, replication, and return-to-growth behavior in the PC9 DTP system.	Reinforces the ATM lead	corroboration_only_not_source_table_upgrade
+atr_sensitivity	638-677; 1568-1570	Low-dose ATR inhibition with ceralasertib reduces DTP survival and shows the same DDR logic is not ATM-only.	Shows the DDR logic extends beyond ATM	corroboration_only_not_source_table_upgrade
+hcc4006_bridge	124-129; 433-433; 657-657; 1476-1477; 1577-1580	The same dynamic DTP logic is reproduced in HCC4006, which makes the preprint useful as a second EGFR-mutant bridge.	Secondary generalization bridge	corroboration_only_not_source_table_upgrade

@@ -1,0 +1,13 @@
+rule_id	source_layer	source_state	target_layer	target_state	transition_allowed	precondition_or_reason
+T01	recommended_action	mapped_action	row_claim	mapped_claim_state	True	action is present in the declared mapping
+T02	row_claim	comparative_support	decision	supported_responder_state	True	at least one PGAA comparative-support witness exists
+T03	row_claim	descriptive_only	decision	provisional_responder_state	True	PGAA descriptive evidence exists and no comparative witness exists
+T04	decision	supported_responder_state	stability	leave_one_method_stable	True	all leave-one-method perturbations preserve the decision state
+T05	stability	leave_one_method_stable	external	external_same_context_concordant	True	the internal unit is supported and the aligned external claim state is concordant
+T06	external	external_same_context_concordant	permission	bounded_computational_same_context_replication	True	supported and leave-one-method stable preconditions both hold
+T07	external	external_same_context_blocked	permission	bounded_computational_same_context_replication	False	missing external evidence cannot increase permission
+T08	external	external_same_context_unresolved	permission	bounded_computational_same_context_replication	False	unresolved evidence cannot increase permission
+T09	external	external_same_context_discordant	permission	bounded_computational_same_context_replication	False	discordant evidence blocks replication language
+T10	decision	provisional_responder_state	permission	bounded_computational_same_context_replication	False	descriptive internal evidence cannot be promoted by external status alone
+T11	stability	method_sensitive	permission	bounded_computational_same_context_replication	False	an unstable decision cannot receive the replication ceiling
+T12	permission	bounded_computational_same_context_replication	validation	direct_biological_validation	False	computational concordance is not wet-lab evidence

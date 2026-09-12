@@ -1,0 +1,14 @@
+feature_symbol	probe_count	day0_mean	day28_mean	delta_day28_minus_day0	direction
+ATM	13	8.277	9.594	+1.316	up
+HDAC1	3	13.371	12.227	-1.144	down
+EGFR	7	12.184	13.667	+1.483	up
+MKI67	1	13.581	11.371	-2.210	down
+MCM2	6	10.571	7.675	-2.896	down
+MCM5	4	11.293	8.612	-2.681	down
+PCNA	1	15.269	13.332	-1.937	down
+RAD51	7	9.586	8.002	-1.584	down
+RPA2	4	10.913	9.592	-1.322	down
+CCND1	2	11.549	10.830	-0.719	down
+CDKN1A	1	8.080	8.237	+0.157	up
+CDK1	2	13.423	11.159	-2.265	down
+E2F1	1	11.049	10.097	-0.953	down

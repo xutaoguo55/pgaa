@@ -1,0 +1,3 @@
+peptide_sequence	hla_allele	source_id	database	disease_or_tissue	match_notes
+SLYNTVATL	HLA-A*02:01	example_ligand_exact	public_ligand_resource	REPLACE_WITH_CONTEXT	example exact ligand row; replace before analysis
+XXGILGFVFTLXX	HLA-A*02	example_ligand_overlap	public_ligand_resource	REPLACE_WITH_CONTEXT	example overlap row; replace before analysis

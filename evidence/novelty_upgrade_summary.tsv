@@ -1,0 +1,17 @@
+pillar_id	pillar_name	elevation_type	manuscript_role	current_status	priority_tier	n_upgrade_points
+P01	Claim-state compiler	from score output to evidence-to-claim translation	central framing	implemented_in_executable_recharter_chain	tier1_core_thesis	10
+P02	Failure-preserving benchmark engine	from winner-take-all benchmark to failure-aware benchmark governance	methods contribution	partially_implemented_in_current_recharter	tier1_core_thesis	10
+P03	Responder-state decision units	from gene hit to context-level decision object	results unit definition	partially_implemented_in_current_recharter	tier1_core_thesis	10
+P04	Typed replication state	from binary replication to concordant, discordant, unresolved, or blocked state	external validation framing	implemented_in_executable_recharter_chain	tier1_core_thesis	10
+P05	Computational-wet-lab firewall	from missing wet-lab validation to explicit cross-layer claim control	claim safety boundary	implemented_as_claim_boundary_but_not_as_main_thesis	tier1_core_thesis	5
+P07	Executable manuscript boundary	from written claims to tested manuscript invariants	submission hardening	partially_implemented_in_current_recharter	tier1_core_thesis	5
+P08	Decision-object figure system	from workflow schematic to auditable decision object	main figure strategy	implemented_in_executable_recharter_chain	tier1_core_thesis	5
+P09	Claim-state stability theory	from stable score to stable allowed interpretation	conceptual contribution	implemented_in_executable_recharter_chain	tier1_core_thesis	5
+P12	Epistemic inflation control	from better analysis to control of evidentiary inflation	highest-level thesis	implemented_in_executable_recharter_chain	tier1_core_thesis	10
+P05	Computational-wet-lab firewall	from missing wet-lab validation to explicit cross-layer claim control	claim safety boundary	implemented_as_claim_boundary_but_not_as_main_thesis	tier2_supporting_frame	5
+P06	Dual-mode PGAA evidence	from one statistic to distribution-shift and shape-state complementarity	method mechanics	strategy_defined_needs_manuscript_integration	tier2_supporting_frame	10
+P07	Executable manuscript boundary	from written claims to tested manuscript invariants	submission hardening	partially_implemented_in_current_recharter	tier2_supporting_frame	5
+P08	Decision-object figure system	from workflow schematic to auditable decision object	main figure strategy	implemented_in_executable_recharter_chain	tier2_supporting_frame	5
+P09	Claim-state stability theory	from stable score to stable allowed interpretation	conceptual contribution	implemented_in_executable_recharter_chain	tier2_supporting_frame	5
+P10	Generalizable claim-aware computational biology	from PGAA-specific rescue to reusable methodological class	discussion and positioning	strategy_defined_needs_manuscript_integration	tier2_supporting_frame	10
+P11	Reviewer-facing governance	from defensive limitations to predeclared governance	editorial risk reduction	strategy_defined_needs_manuscript_integration	tier2_supporting_frame	10

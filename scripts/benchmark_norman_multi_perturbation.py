@@ -127,7 +127,7 @@ def score_target(
     target: str,
     panel: list[str],
     args: argparse.Namespace,
-) -> tuple[pd.DataFrame, pd.DataFrame, dict]:
+) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame, dict]:
     rng = np.random.default_rng(args.random_state)
     pert_idx = np.where(single_perturbation_mask(labels, target))[0]
     ctrl_all = np.where(control_mask(labels))[0]
@@ -145,6 +145,7 @@ def score_target(
     target_pos = genes.index(target) if target in genes else None
     ranked = [i for i, gene in enumerate(genes) if gene != target]
     ranked_genes = [genes[i] for i in ranked]
+    X_ranked = X[:, ranked]
     Y_ranked = Y[:, ranked]
     pert = treatment
     ctrl = ~treatment
@@ -221,6 +222,36 @@ def score_target(
             }
         )
 
+    ablation_rows = []
+    for adjustment, matrix in [
+        ("coarse_cell_state_library_adjusted", Y_ranked),
+        ("unadjusted_log_normalized", X_ranked),
+    ]:
+        scores = np.array([wasserstein_1d(matrix[pert, j], matrix[ctrl, j]) for j in range(matrix.shape[1])])
+        if n_pos == 0 or n_pos == len(is_positive):
+            auroc = np.nan
+            auprc = np.nan
+        else:
+            auroc = roc_auc_score(is_positive.astype(int), scores)
+            auprc = average_precision_score(is_positive.astype(int), scores)
+        order = np.argsort(-scores)
+        ablation_rows.append(
+            {
+                "target": target,
+                "adjustment": adjustment,
+                "method": "PGAA_W_Wasserstein",
+                "n_perturbed_cells": len(pert_idx),
+                "n_control_cells": len(ctrl_idx),
+                "n_ranked_genes": len(ranked_genes),
+                "n_positive_genes": n_pos,
+                "random_auprc_baseline": n_pos / len(ranked_genes),
+                "auroc": auroc,
+                "auprc": auprc,
+                "top50_positive_hits": int(is_positive[order[:50]].sum()),
+                "top100_positive_hits": int(is_positive[order[:100]].sum()),
+            }
+        )
+
     panel_audit = pd.DataFrame(
         {
             "target": target,
@@ -237,7 +268,7 @@ def score_target(
         "target_gene_position": target_pos,
         "n_clusters_observed": int(len(np.unique(cell_type))),
     }
-    return pd.DataFrame(summary_rows), gene_scores, panel_audit, metadata
+    return pd.DataFrame(summary_rows), gene_scores, pd.DataFrame(ablation_rows), panel_audit, metadata
 
 
 def main() -> None:
@@ -265,6 +296,7 @@ def main() -> None:
 
     summaries = []
     all_scores = []
+    ablations = []
     audits = []
     metadata_rows = []
     for target in args.targets:
@@ -272,12 +304,15 @@ def main() -> None:
             raise ValueError(f"No curated panel configured for target {target}")
         print(f"\n=== {target} ===")
         t0 = time.time()
-        summary, scores, audit, metadata = score_target(adata, labels, target, TARGET_PANELS[target], args)
+        summary, scores, ablation, audit, metadata = score_target(adata, labels, target, TARGET_PANELS[target], args)
         elapsed = time.time() - t0
         print(summary.to_string(index=False))
+        print("\nAdjustment ablation:")
+        print(ablation.to_string(index=False))
         print(f"Elapsed: {elapsed:.1f}s")
         summaries.append(summary)
         all_scores.append(scores)
+        ablations.append(ablation)
         audits.append(audit)
         metadata_rows.append({"target": target, "elapsed_seconds": elapsed, **metadata})
 
@@ -285,20 +320,23 @@ def main() -> None:
     prefix.parent.mkdir(parents=True, exist_ok=True)
     summary_df = pd.concat(summaries, ignore_index=True)
     score_df = pd.concat(all_scores, ignore_index=True)
+    ablation_df = pd.concat(ablations, ignore_index=True)
     audit_df = pd.concat(audits, ignore_index=True)
     metadata_df = pd.DataFrame(metadata_rows)
 
     summary_path = prefix.with_name(prefix.name + "_summary.csv")
     score_path = prefix.with_name(prefix.name + "_gene_scores.csv")
+    ablation_path = prefix.with_name(prefix.name + "_adjustment_ablation.csv")
     audit_path = prefix.with_name(prefix.name + "_panel_audit.csv")
     metadata_path = prefix.with_name(prefix.name + "_metadata.csv")
     summary_df.to_csv(summary_path, index=False)
     score_df.to_csv(score_path, index=False)
+    ablation_df.to_csv(ablation_path, index=False)
     audit_df.to_csv(audit_path, index=False)
     metadata_df.to_csv(metadata_path, index=False)
 
     print("\nWrote:")
-    for path in [summary_path, score_path, audit_path, metadata_path]:
+    for path in [summary_path, score_path, ablation_path, audit_path, metadata_path]:
         print(f"  {path}")
 
 

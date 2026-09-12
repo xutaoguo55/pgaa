@@ -1,0 +1,5 @@
+cell_line	pc9_signature_overlap	h4006_signature_overlap	dtp_branch_score	assigned_branch	permutation_p	assignment_gate
+PC9	189	189	2.7142543360501072	adaptive_stress	0.0001999600079984003	pass
+HCC827	189	189	0.7580528110337137	adaptive_stress	0.0001999600079984003	pass
+H1975	189	189	1.2078843005890234	adaptive_stress	0.0001999600079984003	pass
+HCC2935	189	189	0.5351494186440378	adaptive_stress	0.0001999600079984003	pass

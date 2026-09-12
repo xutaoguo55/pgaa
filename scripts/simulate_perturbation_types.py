@@ -5,7 +5,9 @@ Perturbation-type simulation study for PRT.
 Compares S₁, S₂, and S₁+S₂ mean z power under 3 perturbation types:
   (a) Mean shift: all perturbed cells get the same log-FC
   (b) Heterogeneous shift: only a subset of perturbed cells get the log-FC
-  (c) Both: mean + heterogeneous shift
+  (c) Both: mean + heterogeneous shift. Every perturbed cell gets theta and the
+      bimodality_fraction subset gets a second theta, so the population mean
+      shifts by (1 + bimodality_fraction) * theta and two modes appear.
 
 Vary effect size θ ∈ {0.1, 0.2, 0.3, 0.4, 0.5, 0.7, 1.0}.
 Measure TPR @ FPR=0.05 (using known ground truth).
@@ -102,11 +104,16 @@ def simulate(
             # Only bimodality_fraction of perturbed cells get the shift
             if rng.random() > bimodality_fraction:
                 apply_shift = False
+        # Type C adds a mean component on top of the partial shift: every
+        # perturbed cell gets theta, and the bimodality_fraction subset gets a
+        # second theta. Types A and B keep mean_component = 0.
+        mean_component = 1.0 if perturbation_type == "C" else 0.0
         for d, th in zip(didx_list, thetas):
-            if apply_shift:
-                fc = np.exp(th)
-                new_mu = counts[cidx, d] * fc
-                counts[cidx, d] = rng.poisson(np.clip(new_mu, 0, 500))
+            if not apply_shift and mean_component == 0.0:
+                continue
+            fc = np.exp(th * (int(apply_shift) + mean_component))
+            new_mu = counts[cidx, d] * fc
+            counts[cidx, d] = rng.poisson(np.clip(new_mu, 0, 500))
 
     adata = sc.AnnData(
         X=counts,  # dense

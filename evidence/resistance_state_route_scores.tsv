@@ -1,0 +1,3 @@
+route	primary_module_size	primary_exact_p	primary_gene_direction_concordance	all_sizes_direction_supported	all_sizes_exact_p_le_0_05	median_gene_direction_concordance	route_gate	claim_ceiling
+shared_resistance_down_module	50	0.05	0.62	True	True	0.64	pass	development_stage_external_module_replication
+shared_resistance_up_module	50	0.05	0.58	False	False	0.56	fail	development_stage_external_module_replication

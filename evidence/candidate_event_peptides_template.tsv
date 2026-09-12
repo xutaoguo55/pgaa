@@ -1,0 +1,2 @@
+candidate_id	source_event_type	source_event_id	source_gene	event_coordinate	peptide_sequence	peptide_length	event_position_in_peptide	hla_allele	hla_class	pgaa_rank	pgaa_score	cohort_or_dataset	disease_or_context	negative_control_group	notes
+example_001	mutation_or_splice_or_fusion	REPLACE_WITH_EVENT_ID	REPLACE_WITH_GENE	REPLACE_WITH_COORDINATE	PEPTIDEX	8	REPLACE_WITH_INDEX	HLA-A*02:01	I	REPLACE_WITH_RANK	REPLACE_WITH_SCORE	REPLACE_WITH_COHORT	REPLACE_WITH_CONTEXT	none	template row contains X placeholder; replace before analysis

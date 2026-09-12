@@ -1,0 +1,4 @@
+metric_scope	model_brier	prevalence_brier	balanced_accuracy	roc_auc	exact_state_accuracy	paired_wilcoxon_one_sided_p	confirmation_rule_pass
+joint_primary	0.35504917836337097	0.2685950413223141			0.1	0.9755859375	False
+stability	0.3437005870175854	0.28595041322314046	0.5	0.29166666666666663			
+specificity	0.36639776970915655	0.2512396694214876	0.07142857142857142	0.0			

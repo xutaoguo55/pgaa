@@ -42,6 +42,22 @@ def wasserstein_1d(x: np.ndarray, y: np.ndarray) -> float:
     return float(np.mean(np.abs(x_q - y_q)))
 
 
+def wasserstein_1d_by_column(x: np.ndarray, y: np.ndarray) -> np.ndarray:
+    """Column-wise version of ``wasserstein_1d`` using the same quantile grid."""
+    x = np.asarray(x, dtype=np.float64)
+    y = np.asarray(y, dtype=np.float64)
+    if np.any(np.isnan(x)) or np.any(np.isnan(y)):
+        raise ValueError("Input contains NaN values")
+    if np.any(np.isinf(x)) or np.any(np.isinf(y)):
+        raise ValueError("Input contains Inf values")
+    if x.shape[0] == 0 or y.shape[0] == 0:
+        raise ValueError("Input arrays must not be empty")
+    q = np.linspace(0.01, 0.99, 99)
+    x_q = np.quantile(x, q, axis=0)
+    y_q = np.quantile(y, q, axis=0)
+    return np.mean(np.abs(x_q - y_q), axis=0)
+
+
 def prt_s1_test(
     X: np.ndarray,
     genes: list,
@@ -52,6 +68,7 @@ def prt_s1_test(
     cell_type: np.ndarray = None,
     library_size: np.ndarray = None,
     random_state: int = 42,
+    target_only_permutation_p: bool = False,
 ):
     """
     PRT S₁ ranking statistic for all genes given target perturbation.
@@ -82,9 +99,10 @@ def prt_s1_test(
     test_idx = np.concatenate([perturbed_idx, control_idx])
     X_sub = X[test_idx]
     N_sub = len(test_idx)
+    if target not in genes:
+        raise ValueError(f"Target gene '{target}' is not in genes list")
     tidx = genes.index(target)
-    other_idx = [i for i in range(len(genes)) if i != tidx]
-    other_genes = [genes[i] for i in other_idx]
+    gene_idx = list(range(len(genes)))
 
     # Optional: residualize for cell type + library size
     if cell_type is not None or library_size is not None:
@@ -109,17 +127,14 @@ def prt_s1_test(
     else:
         Y_sub = X_sub
 
-    Y_other = Y_sub[:, other_idx]
+    Y_other = Y_sub[:, gene_idx]
     n_pert = len(perturbed_idx)
     n_ctrl = len(control_idx)
     D = np.zeros(N_sub, dtype=bool)
     D[:n_pert] = True
 
     # Observed: Wasserstein distance per gene
-    obs_w = np.array([
-        wasserstein_1d(Y_other[D, g], Y_other[~D, g])
-        for g in range(len(other_idx))
-    ])
+    obs_w = wasserstein_1d_by_column(Y_other[D], Y_other[~D])
 
     # Permutation null - vectorized: for each perm, compute Wasserstein for ALL genes
     # CONDITIONAL permutation: shuffle D WITHIN each cell type cluster
@@ -127,7 +142,10 @@ def prt_s1_test(
     import time
     print(f"PGAA-W / legacy PRT-S1: {n_perms} permutations (within-cluster shuffle) ...")
     t0 = time.time()
-    null_w = np.zeros((n_perms, len(other_idx)))
+    if target_only_permutation_p:
+        null_w_target = np.zeros(n_perms)
+    else:
+        null_w = np.zeros((n_perms, len(gene_idx)))
 
     # If cell_type provided, do within-cluster shuffle; else global shuffle
     if cell_type is not None:
@@ -150,32 +168,43 @@ def prt_s1_test(
             D_perm = D_perm.astype(bool)
         else:
             D_perm = rng.permutation(D)
-        Y_pert_perm = Y_other[D_perm]
-        Y_ctrl_perm = Y_other[~D_perm]
-        null_w[b] = np.array([
-            wasserstein_1d(Y_pert_perm[:, g], Y_ctrl_perm[:, g])
-            for g in range(len(other_idx))
-        ])
-
-    p_perm = (null_w >= obs_w[None, :]).sum(axis=0) + 1
-    p_perm = p_perm / (n_perms + 1)
+        if target_only_permutation_p:
+            null_w_target[b] = wasserstein_1d(Y_sub[D_perm, tidx], Y_sub[~D_perm, tidx])
+        else:
+            Y_pert_perm = Y_other[D_perm]
+            Y_ctrl_perm = Y_other[~D_perm]
+            null_w[b] = wasserstein_1d_by_column(Y_pert_perm, Y_ctrl_perm)
 
     # Standardized Wasserstein: W_std = W * sqrt(min(n_pert, n_ctrl))
     scale = np.sqrt(min(n_pert, n_ctrl))
     obs_std = obs_w * scale
-    null_std = null_w * scale
 
     if n_perms > 0:
-        null_mean = null_std.mean(axis=0)
-        null_sd = null_std.std(axis=0)
-        z_score = (obs_std - null_mean) / (null_sd + 1e-15)
+        if target_only_permutation_p:
+            p_perm = np.full(len(gene_idx), np.nan)
+            null_mean = np.full(len(gene_idx), np.nan)
+            null_sd = np.full(len(gene_idx), np.nan)
+            z_score = np.full(len(gene_idx), np.nan)
+            null_std_target = null_w_target * scale
+            p_perm[tidx] = ((null_w_target >= obs_w[tidx]).sum() + 1) / (n_perms + 1)
+            null_mean[tidx] = null_std_target.mean()
+            null_sd[tidx] = null_std_target.std()
+            z_score[tidx] = (obs_std[tidx] - null_mean[tidx]) / (null_sd[tidx] + 1e-15)
+        else:
+            p_perm = (null_w >= obs_w[None, :]).sum(axis=0) + 1
+            p_perm = p_perm / (n_perms + 1)
+            null_std = null_w * scale
+            null_mean = null_std.mean(axis=0)
+            null_sd = null_std.std(axis=0)
+            z_score = (obs_std - null_mean) / (null_sd + 1e-15)
     else:
-        null_mean = np.zeros(len(other_idx))
-        null_sd = np.ones(len(other_idx))
-        z_score = np.zeros(len(other_idx))
+        p_perm = np.full(len(gene_idx), np.nan)
+        null_mean = np.zeros(len(gene_idx))
+        null_sd = np.ones(len(gene_idx))
+        z_score = np.zeros(len(gene_idx))
 
     res = pd.DataFrame({
-        "gene": other_genes,
+        "gene": genes,
         "W_observed": obs_w,
         "W_std_observed": obs_std,
         "W_null_mean": null_mean,

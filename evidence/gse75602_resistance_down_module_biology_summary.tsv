@@ -1,0 +1,6 @@
+theme	example_gene_or_term	evidence	p_value	interpretation
+iron_handling	CP; SLC40A1; HFE; TFRC; STEAP4	Iron uptake and transport / defective CP / HFE4 enrichment	0.020301	transferable iron-homeostasis program
+carbonic_anhydrase_and_pH	CA9; CA12; CA2	Reversible hydration of carbon dioxide	0.009343	pH-adaptation component
+vdr_axis	CYP24A1; vitamin D receptor pathway	Vitamin D receptor pathway	0.031766	differentiation/metabolic-control component
+epithelial_stress_state	RARRES1; STC1; PSCA; HOPX; ELF5; MUC6; KRT4; KRT13	annotated module membership	n/a	epithelial stress/differentiation signature
+redox_or_metabolic_state	BCAS1; SERPINE1; LRG1; CYP26A1	annotated module membership	n/a	redox/metabolic support signature

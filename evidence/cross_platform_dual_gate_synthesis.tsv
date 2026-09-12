@@ -1,0 +1,5 @@
+method	n_platforms	n_stability_pass	n_specificity_pass	n_stable_and_specific	n_stable_but_not_specific	n_specific_but_not_stable	n_neither	cross_platform_interpretation
+absolute_mean_shift	5	4	3	3	1	0	1	no_recurrent_decoupling_demonstrated
+pgaa_h	5	1	1	0	1	1	3	no_recurrent_decoupling_demonstrated
+pgaa_w	5	4	2	2	2	0	1	recurrent_stability_specificity_decoupling
+welch_abs_t	5	1	3	1	0	2	2	no_recurrent_decoupling_demonstrated

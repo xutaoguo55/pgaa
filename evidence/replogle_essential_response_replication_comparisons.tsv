@@ -1,0 +1,5 @@
+pgaa_method	baseline_method	n_paired_targets	median_overlap_fraction_difference	wilcoxon_one_sided_p	holm_adjusted_p
+pgaa_w	absolute_mean_shift	16	0.08500000000000008	1.52587890625e-05	6.103515625e-05
+pgaa_w	welch_abs_t	16	0.66	1.52587890625e-05	6.103515625e-05
+pgaa_h	absolute_mean_shift	16	-0.7	1.0	1.0
+pgaa_h	welch_abs_t	16	-0.095	0.9995092301237392	1.0

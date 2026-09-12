@@ -1,0 +1,4 @@
+figure_id	panel_id	source_kind	n_rows
+Figure 1	A_claim_state_distribution	claim_summary	14
+Figure 1	B_responder_state_units	responder_state_unit	8
+Figure 1	C_unit_stability	stability_summary	8

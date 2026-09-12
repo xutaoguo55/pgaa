@@ -18,7 +18,7 @@ type_names = {"A": "Mean shift", "B": "Bimodality shift", "C": "Both"}
 
 fig, axes = plt.subplots(1, 3, figsize=(15, 4.5), sharey=True)
 
-for ax, ptype in zip(axes, types):
+for i, (ax, ptype) in enumerate(zip(axes, types)):
     sub = df[df["type"] == ptype]
     s1_mean = [sub[sub["theta"] == t]["TPR_S1"].mean() for t in thetas]
     s2_mean = [sub[sub["theta"] == t]["TPR_S2"].mean() for t in thetas]
@@ -30,11 +30,11 @@ for ax, ptype in zip(axes, types):
     ax.errorbar(thetas, s1_mean, yerr=s1_se, marker='o', color='#FF9800',
                 linewidth=2, capsize=3, label='S₁ (Wasserstein)')
     ax.errorbar(thetas, s2_mean, yerr=s2_se, marker='s', color='#2196F3',
-                linewidth=2, capsize=3, label='S₂ histogram-shape')
+                linewidth=2, capsize=3, label='S₂ (TDA)')
     ax.errorbar(thetas, cb_mean, yerr=cb_se, marker='^', color='#4CAF50',
                 linewidth=2, capsize=3, label='S₁+S₂ mean z')
     ax.set_xlabel("Effect size θ (log-FC)")
-    ax.set_title(f"{ptype}: {type_names[ptype]}")
+    ax.set_title(f"({i + 1}) {ptype}: {type_names[ptype]}")
     ax.set_ylim(-0.05, 1.1)
     ax.spines['top'].set_visible(False); ax.spines['right'].set_visible(False)
     ax.grid(alpha=0.3)
@@ -45,6 +45,7 @@ for ax, ptype in zip(axes, types):
 plt.tight_layout()
 outputs = [
     ROOT / "figures_png" / "figure_simulation_powers.png",
+    ROOT / "figures_png" / "figure_5.png",
 ]
 for out in outputs:
     out.parent.mkdir(parents=True, exist_ok=True)

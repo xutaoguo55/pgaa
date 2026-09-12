@@ -6,11 +6,12 @@ Loads the complete 1GB mtx (~87k cells × 1000 genes), runs PGAA on
 multiple transcription factors, and compares predictions to Norman's
 published DEG lists.
 
-Run after:
-  /Users/guoxutao/.openclaw/workspace/norman2019/GSE133344_filtered_matrix.mtx.gz
-is fully downloaded.
+Run after the raw GSE133344 matrix set
+(GSE133344_filtered_barcodes/genes/matrix) has been downloaded; point
+NORMAN2019_RAW_DIR at that directory if it is not in the default location.
 """
 
+import os
 import time
 import gzip
 import numpy as np
@@ -26,7 +27,13 @@ from pgaa.tools.realdata import virtual_oe_reald
 
 np.random.seed(42)
 
-DATA_DIR = Path("/Users/guoxutao/.openclaw/workspace/norman2019")
+# Raw GSE133344 (Norman 2019) matrix directory. Not bundled in the submission
+# archive; override with NORMAN2019_RAW_DIR when it lives elsewhere.
+DATA_DIR = Path(
+    os.environ.get(
+        "NORMAN2019_RAW_DIR", Path.home() / ".openclaw/workspace/norman2019"
+    )
+)
 
 # Norman 2019 known DEG ranks for the well-studied targets
 # (top 100 significant DEGs from the original paper for each TF)

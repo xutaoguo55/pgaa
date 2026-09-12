@@ -148,6 +148,12 @@ def main() -> None:
             "the portal accepts only one value, use the archive DOI rather than "
             "the mutable GitHub URL.]"
         ): args.archive_url,
+        # Must precede the bare placeholder below, or that one fires first and
+        # leaves the instruction sentence ("...should be cited here...") in place.
+        (
+            "At final submission, the exact software release should be cited here "
+            "with its archive DOI or persistent URL: [insert archive DOI or persistent URL]."
+        ): f"The exact submitted software release is archived at {args.archive_url}.",
         "[archive DOI or persistent URL]": args.archive_url,
         "[repository URL]": args.repo_url,
         "[insert archive DOI or persistent URL]": args.archive_url,

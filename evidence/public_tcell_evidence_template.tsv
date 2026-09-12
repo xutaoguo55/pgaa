@@ -1,0 +1,2 @@
+peptide_sequence	hla_allele	source_id	database	response_type	disease_or_context	match_notes
+SLYNTVATL	HLA-A*02:01	example_tcell_exact	public_tcell_resource	REPLACE_WITH_RESPONSE	REPLACE_WITH_CONTEXT	example exact T-cell evidence row; replace before analysis

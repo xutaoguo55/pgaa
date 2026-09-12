@@ -1,0 +1,11 @@
+direction	requested_module_size	overlap_module_size	resistant_minus_parental_oriented_score	exact_one_sided_p	gene_direction_concordance	validation_direction_supported	primary_module_size
+up	10	10	-0.08098869886617699	0.65	0.5	False	False
+up	25	25	0.408490210542055	0.05	0.64	True	False
+up	50	50	0.25730745161607904	0.05	0.58	True	True
+up	100	100	0.18620796940511603	0.15	0.56	True	False
+up	200	200	0.13973778223749828	0.2	0.535	True	False
+down	10	10	0.6292469506978042	0.05	0.7	True	False
+down	25	25	0.5579605001269371	0.05	0.64	True	False
+down	50	50	0.4023941818637323	0.05	0.62	True	True
+down	100	100	0.4555787950754706	0.05	0.64	True	False
+down	200	200	0.4146442489278236	0.05	0.625	True	False

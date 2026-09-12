@@ -1,0 +1,5 @@
+comparison_method	top_n	selected_count	overlap_with_full_ladder	new_vs_full_ladder	missed_by_method_vs_full_ladder	jaccard_with_full_ladder	tier_A_count	tier_B_count	tier_C_count	tier_D_count
+full_ladder	1	1	1	0	0	1.0	1	0	0	0
+pgaa_rank	1	1	0	1	1	0.0	0	0	0	1
+binding_only	1	1	0	1	1	0.0	0	0	1	0
+ligand_only	1	1	1	0	0	1.0	1	0	0	0

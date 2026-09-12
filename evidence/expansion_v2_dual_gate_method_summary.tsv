@@ -1,0 +1,41 @@
+dataset_id	platform	split_strength	method	n_units	median_observed_overlap	median_pseudo_overlap	median_specificity_margin	n_units_positive_margin	wilcoxon_one_sided_p	holm_adjusted_p
+cui2023_lymph_node_cytokine	Primary lymph-node immune cells, cytokine stimulation	biological_replicate_holdout_7_vs_7	absolute_mean_shift	16	0.09	0.08	0.0099999999999999	10	0.00805210560606349	0.03220842242425396
+cui2023_lymph_node_cytokine	Primary lymph-node immune cells, cytokine stimulation	biological_replicate_holdout_7_vs_7	pgaa_h	16	0.03	0.03	0.0	3	0.6261349176879327	1.0
+cui2023_lymph_node_cytokine	Primary lymph-node immune cells, cytokine stimulation	biological_replicate_holdout_7_vs_7	pgaa_w	16	0.11	0.08	0.014999999999999899	9	0.02912161933707037	0.0873648580112111
+cui2023_lymph_node_cytokine	Primary lymph-node immune cells, cytokine stimulation	biological_replicate_holdout_7_vs_7	welch_abs_t	16	0.02	0.02	0.0	4	0.5206472221192128	1.0
+lara2023_bone_marrow_crispr	Mouse bone-marrow transplant CRISPR-Cas9	recorded_timepoint_holdout_1_vs_1	absolute_mean_shift	16	0.125	0.05	0.08	16	1.52587890625e-05	6.103515625e-05
+lara2023_bone_marrow_crispr	Mouse bone-marrow transplant CRISPR-Cas9	recorded_timepoint_holdout_1_vs_1	pgaa_h	16	0.04	0.04	0.005	8	0.14358229979186216	0.14358229979186216
+lara2023_bone_marrow_crispr	Mouse bone-marrow transplant CRISPR-Cas9	recorded_timepoint_holdout_1_vs_1	pgaa_w	16	0.14	0.06	0.08499999999999995	16	1.52587890625e-05	6.103515625e-05
+lara2023_bone_marrow_crispr	Mouse bone-marrow transplant CRISPR-Cas9	recorded_timepoint_holdout_1_vs_1	welch_abs_t	16	0.06	0.01	0.03999999999999995	15	4.57763671875e-05	9.1552734375e-05
+liang2023_liver_organoid_crispr	Mouse liver organoid CRISPR-Cas9	recorded_sample_holdout_4_vs_5	absolute_mean_shift	16	0.185	0.10500000000000001	0.06	15	7.62939453125e-05	0.00030517578125
+liang2023_liver_organoid_crispr	Mouse liver organoid CRISPR-Cas9	recorded_sample_holdout_4_vs_5	pgaa_h	16	0.035	0.03	0.00999999999999995	9	0.022191149357129947	0.022191149357129947
+liang2023_liver_organoid_crispr	Mouse liver organoid CRISPR-Cas9	recorded_sample_holdout_4_vs_5	pgaa_w	16	0.235	0.175	0.07500000000000001	13	0.000610806004725314	0.0018324180141759418
+liang2023_liver_organoid_crispr	Mouse liver organoid CRISPR-Cas9	recorded_sample_holdout_4_vs_5	welch_abs_t	16	0.03	0.02	0.014999999999999951	11	0.0016033688297201391	0.0032067376594402783
+mcfarland2020_cancer_mixseq_drug	Human multi-lineage cancer Mix-seq drug panel	treatment_time_holdout_1_vs_1	absolute_mean_shift	16	0.18	0.1	0.095	16	1.52587890625e-05	6.103515625e-05
+mcfarland2020_cancer_mixseq_drug	Human multi-lineage cancer Mix-seq drug panel	treatment_time_holdout_1_vs_1	pgaa_h	16	0.02	0.03	0.0	5	0.2752265063772464	0.2752265063772464
+mcfarland2020_cancer_mixseq_drug	Human multi-lineage cancer Mix-seq drug panel	treatment_time_holdout_1_vs_1	pgaa_w	16	0.21	0.14500000000000002	0.08999999999999994	13	0.0007348868449711744	0.0014697736899423489
+mcfarland2020_cancer_mixseq_drug	Human multi-lineage cancer Mix-seq drug panel	treatment_time_holdout_1_vs_1	welch_abs_t	16	0.11499999999999999	0.02	0.10500000000000001	15	0.0003258330403069556	0.0009774991209208668
+santinha2023_brain_aav_crispr	Mouse in vivo brain AAV CRISPR-Cas9	recorded_sequencing_lane_holdout_6_vs_6	absolute_mean_shift	16	0.12	0.11	0.02	9	0.022468003186137397	0.08987201274454959
+santinha2023_brain_aav_crispr	Mouse in vivo brain AAV CRISPR-Cas9	recorded_sequencing_lane_holdout_6_vs_6	pgaa_h	16	0.02	0.03	-0.0099999999999999	4	0.8981719923165343	0.8981719923165343
+santinha2023_brain_aav_crispr	Mouse in vivo brain AAV CRISPR-Cas9	recorded_sequencing_lane_holdout_6_vs_6	pgaa_w	16	0.16	0.15	0.014999999999999899	9	0.10402506131646255	0.31207518394938766
+santinha2023_brain_aav_crispr	Mouse in vivo brain AAV CRISPR-Cas9	recorded_sequencing_lane_holdout_6_vs_6	welch_abs_t	16	0.02	0.015	0.0	6	0.12764525259980752	0.31207518394938766
+schiebinger2019_mesc_cytokine	Mouse embryonic stem-cell state transition	biological_replicate_holdout_1_vs_1	absolute_mean_shift	16	0.63	0.11	0.51	16	1.52587890625e-05	6.103515625e-05
+schiebinger2019_mesc_cytokine	Mouse embryonic stem-cell state transition	biological_replicate_holdout_1_vs_1	pgaa_h	16	0.03	0.03	0.0	7	0.7665976389017799	0.7665976389017799
+schiebinger2019_mesc_cytokine	Mouse embryonic stem-cell state transition	biological_replicate_holdout_1_vs_1	pgaa_w	16	0.64	0.15	0.48	16	1.52587890625e-05	6.103515625e-05
+schiebinger2019_mesc_cytokine	Mouse embryonic stem-cell state transition	biological_replicate_holdout_1_vs_1	welch_abs_t	16	0.51	0.02	0.49	16	1.52587890625e-05	6.103515625e-05
+shifrut2018_primary_t_crispr	Primary human T-cell CRISPR-Cas9	donor_holdout_1_vs_1	absolute_mean_shift	16	0.375	0.055	0.31999999999999995	16	1.52587890625e-05	6.103515625e-05
+shifrut2018_primary_t_crispr	Primary human T-cell CRISPR-Cas9	donor_holdout_1_vs_1	pgaa_h	16	0.06	0.08	-0.00499999999999995	6	0.7262748610479246	0.7262748610479246
+shifrut2018_primary_t_crispr	Primary human T-cell CRISPR-Cas9	donor_holdout_1_vs_1	pgaa_w	16	0.38	0.06	0.32	16	1.52587890625e-05	6.103515625e-05
+shifrut2018_primary_t_crispr	Primary human T-cell CRISPR-Cas9	donor_holdout_1_vs_1	welch_abs_t	16	0.28500000000000003	0.02	0.245	16	1.52587890625e-05	6.103515625e-05
+sunshine2023_calu3_crispri	Human Calu-3 epithelial CRISPRi	recorded_gem_group_holdout_4_vs_4	absolute_mean_shift	16	0.315	0.11	0.18	16	1.52587890625e-05	6.103515625e-05
+sunshine2023_calu3_crispri	Human Calu-3 epithelial CRISPRi	recorded_gem_group_holdout_4_vs_4	pgaa_h	16	0.03	0.03	0.0	7	0.6132984228585744	0.6132984228585744
+sunshine2023_calu3_crispri	Human Calu-3 epithelial CRISPRi	recorded_gem_group_holdout_4_vs_4	pgaa_w	16	0.33	0.135	0.185	16	1.52587890625e-05	6.103515625e-05
+sunshine2023_calu3_crispri	Human Calu-3 epithelial CRISPRi	recorded_gem_group_holdout_4_vs_4	welch_abs_t	16	0.055	0.02	0.03	16	1.52587890625e-05	6.103515625e-05
+tian2021_ipsc_neuron_crispra	Human iPSC-derived neuron CRISPRa	experimental_batch_holdout_1_vs_1	absolute_mean_shift	16	0.045	0.04	0.01	11	0.027991498465371873	0.11196599386148749
+tian2021_ipsc_neuron_crispra	Human iPSC-derived neuron CRISPRa	experimental_batch_holdout_1_vs_1	pgaa_h	16	0.02	0.02	0.0	6	0.5784890118151376	0.7253151482375766
+tian2021_ipsc_neuron_crispra	Human iPSC-derived neuron CRISPRa	experimental_batch_holdout_1_vs_1	pgaa_w	16	0.05	0.04	0.00999999999999995	9	0.04299672307935258	0.12899016923805773
+tian2021_ipsc_neuron_crispra	Human iPSC-derived neuron CRISPRa	experimental_batch_holdout_1_vs_1	welch_abs_t	16	0.02	0.02	0.0	3	0.3626575741187883	0.7253151482375766
+wessels2023_myeloid_cas13	Human myeloid-cell CRISPR-Cas13	sample_tag_holdout_4_vs_4	absolute_mean_shift	16	0.225	0.05	0.18999999999999995	16	1.52587890625e-05	6.103515625e-05
+wessels2023_myeloid_cas13	Human myeloid-cell CRISPR-Cas13	sample_tag_holdout_4_vs_4	pgaa_h	16	0.05	0.04	0.0099999999999999	10	0.08147107866299896	0.08147107866299896
+wessels2023_myeloid_cas13	Human myeloid-cell CRISPR-Cas13	sample_tag_holdout_4_vs_4	pgaa_w	16	0.235	0.06	0.185	15	0.0003274791716928478	0.0009725778801923958
+wessels2023_myeloid_cas13	Human myeloid-cell CRISPR-Cas13	sample_tag_holdout_4_vs_4	welch_abs_t	16	0.14500000000000002	0.02	0.12	15	0.0003241926267307986	0.0009725778801923958

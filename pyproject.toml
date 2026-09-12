@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pgaa"
-version = "0.1.0"
+version = "0.2.0"
 description = "Distribution-aware testing for single-cell perturbation screens"
 readme = "README.md"
 requires-python = ">=3.9"
@@ -50,3 +50,13 @@ pgaa-run = "pgaa.cli:main"
 [tool.setuptools.packages.find]
 where = ["."]
 include = ["pgaa*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+norecursedirs = [
+    "COMMUNICATIONS_AI_COMPUTING_TRANSFER",
+    "COMMUNICATIONS_MEDICINE_TRANSFER",
+    "BIOINFORMATICS_UPLOAD_PACKET",
+    "ZENODO_CODE_ONLY_RELEASE",
+    "raw_geo_rerun_audit_2026-06-24",
+]

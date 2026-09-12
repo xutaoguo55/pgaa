@@ -1,0 +1,3 @@
+candidate_id	source_event_type	source_event_id	source_gene	event_coordinate	peptide_sequence	peptide_length	event_position_in_peptide	hla_allele	hla_class	pgaa_rank	pgaa_score	cohort_or_dataset	disease_or_context	negative_control_group	notes
+smoke_exact	mutation_or_splice_or_fusion	SMOKE_EVENT_1	SMOKE1	SMOKE_COORD_1	SLYNTVATL	9	4	HLA-A*02:01	I	1	10.0	smoke_dataset	smoke_context	none	smoke example only; not a PGAA manuscript candidate
+smoke_overlap	mutation_or_splice_or_fusion	SMOKE_EVENT_2	SMOKE2	SMOKE_COORD_2	GILGFVFTL	9	4	HLA-A*02:01	I	2	9.0	smoke_dataset	smoke_context	none	smoke example only; not a PGAA manuscript candidate

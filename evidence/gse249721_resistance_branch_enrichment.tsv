@@ -1,0 +1,92 @@
+branch	source	term_id	term_name	adjusted_p	intersection_size	query_size
+H4006_replication	REAC	REAC:R-HSA-176974	Unwinding of DNA	5.503711076900283e-13	9	200
+H4006_replication	REAC	REAC:R-HSA-69190	DNA strand elongation	1.5505099043481808e-09	10	200
+H4006_replication	GO:BP	GO:0000727	double-strand break repair via break-induced replication	4.001689223710867e-09	7	200
+H4006_replication	GO:BP	GO:0006259	DNA metabolic process	6.9360646161712924e-09	34	200
+H4006_replication	GO:BP	GO:0006270	DNA replication initiation	4.620791998836703e-08	9	200
+H4006_replication	REAC	REAC:R-HSA-69242	S Phase	7.327427539837192e-08	16	200
+H4006_replication	GO:BP	GO:1902975	mitotic DNA replication initiation	7.649214537621335e-08	5	200
+H4006_replication	GO:BP	GO:1902315	nuclear cell cycle DNA replication initiation	7.649214537621335e-08	5	200
+H4006_replication	GO:BP	GO:1902292	cell cycle DNA replication initiation	7.649214537621335e-08	5	200
+H4006_replication	GO:BP	GO:1902969	mitotic DNA replication	9.478873301068926e-08	7	200
+H4006_replication	GO:BP	GO:0006260	DNA replication	1.954772877868203e-07	18	200
+H4006_replication	REAC	REAC:R-HSA-453279	Mitotic G1 phase and G1/S transition	1.9576268513782213e-07	15	200
+H4006_replication	GO:BP	GO:0006261	DNA-templated DNA replication	2.1453753087180196e-07	14	200
+H4006_replication	REAC	REAC:R-HSA-69278	Cell Cycle, Mitotic	1.627219952340364e-06	26	200
+H4006_replication	GO:BP	GO:0033554	cellular response to stress	1.8153377138084683e-06	43	200
+H4006_replication	REAC	REAC:R-HSA-68962	Activation of the pre-replicative complex	2.3209689699605e-06	8	200
+H4006_replication	REAC	REAC:R-HSA-69206	G1/S Transition	3.901510451674372e-06	13	200
+H4006_replication	GO:BP	GO:0006281	DNA repair	6.585080285992221e-06	23	200
+H4006_replication	KEGG	KEGG:03030	DNA replication	1.179811560564437e-05	7	200
+H4006_replication	REAC	REAC:R-HSA-69239	Synthesis of DNA	1.5028893971380693e-05	12	200
+H4006_replication	KEGG	KEGG:04110	Cell cycle	1.8472330989133185e-05	12	200
+H4006_replication	GO:BP	GO:0006950	response to stress	2.5947922882836074e-05	66	200
+H4006_replication	REAC	REAC:R-HSA-1640170	Cell Cycle	3.234233473522908e-05	27	200
+H4006_replication	GO:BP	GO:0006302	double-strand break repair	3.275944404242126e-05	16	200
+H4006_replication	GO:BP	GO:0006974	DNA damage response	4.3934208545271604e-05	27	200
+H4006_replication	GO:BP	GO:0033260	nuclear DNA replication	9.220251103210054e-05	7	200
+H4006_replication	REAC	REAC:R-HSA-176187	Activation of ATR in response to replication stress	0.00013701909454197383	7	200
+H4006_replication	GO:BP	GO:0044786	cell cycle DNA replication	0.0001808372374380383	7	200
+H4006_replication	REAC	REAC:R-HSA-69306	DNA Replication	0.00026462277005030786	13	200
+H4006_replication	REAC	REAC:R-HSA-69205	G1/S-Specific Transcription	0.0003607768182090545	6	200
+H4006_replication	GO:BP	GO:0006310	DNA recombination	0.0005853051400674922	15	200
+H4006_replication	GO:BP	GO:0000724	double-strand break repair via homologous recombination	0.001137603225277843	11	200
+H4006_replication	GO:BP	GO:0000725	recombinational repair	0.0014774981912520893	11	200
+H4006_replication	REAC	REAC:R-HSA-8953854	Metabolism of RNA	0.003247806149328562	24	200
+H4006_replication	GO:BP	GO:0050896	response to stimulus	0.00459894319199999	108	200
+H4006_replication	GO:BP	GO:0006401	RNA catabolic process	0.006334047479721763	13	200
+H4006_replication	GO:BP	GO:0051716	cellular response to stimulus	0.006995670297427123	93	200
+H4006_replication	GO:BP	GO:1903047	mitotic cell cycle process	0.011439415979005205	20	200
+H4006_replication	GO:BP	GO:0006271	DNA strand elongation involved in DNA replication	0.011622604000227391	4	200
+H4006_replication	GO:BP	GO:0006275	regulation of DNA replication	0.013287553902640047	8	200
+H4006_replication	GO:BP	GO:0141188	nucleic acid catabolic process	0.013947817244177697	13	200
+H4006_replication	GO:BP	GO:0000278	mitotic cell cycle	0.014374523050375185	22	200
+H4006_replication	GO:BP	GO:0030174	regulation of DNA-templated DNA replication initiation	0.015393611844730187	4	200
+H4006_replication	GO:BP	GO:1902369	negative regulation of RNA catabolic process	0.028706444202870066	7	200
+H4006_replication	KEGG	KEGG:04218	Cellular senescence	0.035683983218184515	8	200
+H4006_replication	GO:BP	GO:0033993	response to lipid	0.03765969919387581	21	200
+H4006_replication	GO:BP	GO:0090329	regulation of DNA-templated DNA replication	0.04468264449788833	5	200
+PC9_adaptive_stress	GO:BP	GO:0032501	multicellular organismal process	2.2059745359147828e-09	108	200
+PC9_adaptive_stress	GO:BP	GO:0048856	anatomical structure development	5.832388093222857e-09	94	200
+PC9_adaptive_stress	GO:BP	GO:0032502	developmental process	1.1702528738784384e-08	99	200
+PC9_adaptive_stress	GO:BP	GO:0007275	multicellular organism development	2.1171163226432967e-08	80	200
+PC9_adaptive_stress	GO:BP	GO:0051239	regulation of multicellular organismal process	2.2022006799129968e-07	58	200
+PC9_adaptive_stress	GO:BP	GO:0048518	positive regulation of biological process	3.4087533557750853e-07	92	200
+PC9_adaptive_stress	GO:BP	GO:0048731	system development	1.173419767114545e-06	69	200
+PC9_adaptive_stress	GO:BP	GO:0048522	positive regulation of cellular process	2.336699507252271e-06	86	200
+PC9_adaptive_stress	GO:BP	GO:0071375	cellular response to peptide hormone stimulus	1.371636930820371e-05	17	200
+PC9_adaptive_stress	GO:BP	GO:0043434	response to peptide hormone	2.0836664223211703e-05	19	200
+PC9_adaptive_stress	GO:BP	GO:0050896	response to stimulus	3.699557190150748e-05	113	200
+PC9_adaptive_stress	GO:BP	GO:0023052	signaling	7.292247091959378e-05	90	200
+PC9_adaptive_stress	GO:BP	GO:0032870	cellular response to hormone stimulus	0.00011519863317472427	22	200
+PC9_adaptive_stress	GO:BP	GO:0065007	biological regulation	0.00013798384153471512	141	200
+PC9_adaptive_stress	GO:BP	GO:0030154	cell differentiation	0.00020160822473844436	68	200
+PC9_adaptive_stress	GO:BP	GO:0048869	cellular developmental process	0.0002034314860961021	68	200
+PC9_adaptive_stress	GO:BP	GO:0007154	cell communication	0.0002281346257221645	89	200
+PC9_adaptive_stress	GO:BP	GO:0051716	cellular response to stimulus	0.00036789805840155835	96	200
+PC9_adaptive_stress	GO:BP	GO:1901699	cellular response to nitrogen compound	0.0004939687670019888	21	200
+PC9_adaptive_stress	GO:BP	GO:0050793	regulation of developmental process	0.0011032022484255184	44	200
+PC9_adaptive_stress	GO:BP	GO:0009725	response to hormone	0.0011444399159759669	24	200
+PC9_adaptive_stress	GO:BP	GO:1901700	response to oxygen-containing compound	0.0012933838367796585	34	200
+PC9_adaptive_stress	GO:BP	GO:0006950	response to stress	0.0013329419329165468	61	200
+PC9_adaptive_stress	GO:BP	GO:0070887	cellular response to chemical stimulus	0.0013867723878367034	41	200
+PC9_adaptive_stress	GO:BP	GO:1901701	cellular response to oxygen-containing compound	0.0014799481379983727	28	200
+PC9_adaptive_stress	GO:BP	GO:0050789	regulation of biological process	0.001885783296291839	135	200
+PC9_adaptive_stress	GO:BP	GO:0007165	signal transduction	0.0023332204040744714	81	200
+PC9_adaptive_stress	REAC	REAC:R-HSA-381119	Unfolded Protein Response (UPR)	0.0031752451220714885	8	200
+PC9_adaptive_stress	REAC	REAC:R-HSA-381038	XBP1(S) activates chaperone genes	0.005016071168772787	6	200
+PC9_adaptive_stress	GO:BP	GO:0042221	response to chemical	0.005508141185312741	58	200
+PC9_adaptive_stress	REAC	REAC:R-HSA-381070	IRE1alpha activates chaperones	0.006416097018130828	6	200
+PC9_adaptive_stress	GO:BP	GO:0009653	anatomical structure morphogenesis	0.0075011224167899045	45	200
+PC9_adaptive_stress	GO:BP	GO:1901698	response to nitrogen compound	0.007980699999437514	23	200
+PC9_adaptive_stress	GO:BP	GO:2000026	regulation of multicellular organismal development	0.009648866520382812	29	200
+PC9_adaptive_stress	GO:BP	GO:0007166	cell surface receptor signaling pathway	0.011647444827032	46	200
+PC9_adaptive_stress	GO:BP	GO:0048513	animal organ development	0.011955143956502497	48	200
+PC9_adaptive_stress	GO:BP	GO:0050794	regulation of cellular process	0.014860394018543974	129	200
+PC9_adaptive_stress	GO:BP	GO:0007169	cell surface receptor protein tyrosine kinase signaling pathway	0.014880938524271414	18	200
+PC9_adaptive_stress	GO:BP	GO:0048583	regulation of response to stimulus	0.015833829650009436	58	200
+PC9_adaptive_stress	GO:BP	GO:0032868	response to insulin	0.02185036059830374	12	200
+PC9_adaptive_stress	GO:BP	GO:0051128	regulation of cellular component organization	0.039155618654422325	40	200
+PC9_adaptive_stress	GO:BP	GO:0070232	regulation of T cell apoptotic process	0.04608402475676812	5	200
+PC9_adaptive_stress	GO:BP	GO:0034097	response to cytokine	0.04782061266210621	22	200
+PC9_adaptive_stress	GO:BP	GO:0009888	tissue development	0.04842042627609889	35	200

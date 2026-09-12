@@ -1,0 +1,83 @@
+{
+  "protocol_id": "pgaa-context-moderated-expansion-v3",
+  "frozen_at": "2026-07-22T08:30:00+08:00",
+  "status": "frozen_before_v3_expression_outcomes",
+  "scientific_question": "Can pre-outcome platform context predict whether PGAA-W is stable, specific, both, or neither in a new perturbation platform?",
+  "cohort": {
+    "training_cohort": "ten_expression_scored_expansion_v2_platforms_only",
+    "prospective_test_cohort": "first_ten_metadata_eligible_v3_candidates_in_frozen_priority_order",
+    "target_test_platforms": 10,
+    "one_platform_per_source_study": true,
+    "one_platform_per_laboratory_group": true,
+    "distinct_cell_contexts_required": true,
+    "v1_or_v2_expression_scored_studies_excluded": true
+  },
+  "eligibility": {
+    "single_cell_rna_readout_required": true,
+    "recorded_independent_experimental_split_required": true,
+    "minimum_split_levels": 2,
+    "matched_controls_required_in_each_split": true,
+    "minimum_cells_per_group_per_split": 20,
+    "minimum_analyzable_units_per_platform": 8,
+    "maximum_analyzable_units_per_platform": 16,
+    "direct_target_feature_excluded_for_genetic_perturbations": true,
+    "result_blind_unit_selection": "descending_minimum_equal_group_size_then_unit_id"
+  },
+  "outcome_analysis": {
+    "primary_method": "pgaa_w",
+    "maximum_cells_per_group": 70,
+    "maximum_features": 5000,
+    "top_k": 100,
+    "matched_resampling_repeats": 5,
+    "stability_threshold": 0.2,
+    "specificity_test": "one_sided_wilcoxon_unit_level_median_margin_greater_than_zero",
+    "multiplicity_correction": "holm_within_platform_across_four_methods",
+    "specificity_alpha": 0.05,
+    "split_seed": "pgaa-context-moderated-expansion-v3",
+    "sampling_seed": "pgaa-cross-platform-matched-controls-v3"
+  },
+  "primary_endpoint": {
+    "event": "pgaa_w_stable_and_specific",
+    "summary": "event_count_event_fraction_and_clopper_pearson_95_percent_interval",
+    "recurrence_rule": "at_least_4_of_10_platforms_spanning_at_least_3_mechanism_classes_and_4_cell_context_classes",
+    "leave_one_platform_rule": "at_least_3_events_after_every_leave_one_platform_out_deletion"
+  },
+  "context_model": {
+    "estimand": "prospective_four_state_prediction",
+    "architecture": "two_axis_l2_logistic_regression_with_product_state_probabilities",
+    "feature_order": [
+      "genetic_perturbation",
+      "primary_or_in_vivo",
+      "mouse_system",
+      "split_independence_tier",
+      "log2_recorded_split_levels",
+      "minimum_equal_group_fraction"
+    ],
+    "c_value": 0.25,
+    "class_weight": "balanced",
+    "decision_threshold": 0.5,
+    "training_validation": "leave_one_platform_out_on_v2",
+    "primary_metric": "mean_of_stability_and_specificity_brier_scores",
+    "comparator": "training_fold_laplace_smoothed_axis_prevalence",
+    "confirmation_rule": "model_brier_below_comparator_and_exact_four_state_accuracy_at_least_0.60_and_one_sided_paired_exact_wilcoxon_p_below_0.05",
+    "secondary_metrics": [
+      "axis_balanced_accuracy",
+      "axis_roc_auc",
+      "exact_four_state_accuracy",
+      "four_state_confusion_matrix"
+    ]
+  },
+  "temporal_lock": {
+    "metadata_contract_before_prediction": true,
+    "prediction_file_and_sha256_before_expression_scoring": true,
+    "expression_values_prohibited_during_context_annotation": true,
+    "post_outcome_feature_changes_prohibited": true
+  },
+  "failure_policy": {
+    "metadata_ineligibility": "retain_audit_row_and_advance_in_frozen_priority_order",
+    "duplicate_cell_context": "retain_audit_row_and_advance_in_frozen_priority_order",
+    "runtime_failure": "retain_failure_and_repair_without_substitution",
+    "unfavorable_outcome": "retain_platform_in_primary_analysis",
+    "post_outcome_exclusion": "prohibited_except_proven_file_corruption_or_logical_duplication"
+  }
+}

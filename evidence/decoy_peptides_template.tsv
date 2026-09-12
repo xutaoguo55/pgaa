@@ -1,0 +1,3 @@
+candidate_id	peptide_sequence	hla_allele	decoy_type	source_gene	notes
+decoy_001	AAAAAAAAA	HLA-A*02:01	matched_length	REPLACE_WITH_GENE	example decoy row; replace before analysis
+decoy_002	GILGFVFTL	HLA-A*02:01	positive_smoke_overlap	REPLACE_WITH_GENE	smoke row intentionally overlaps example ligand evidence

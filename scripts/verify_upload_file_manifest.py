@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the Communications Medicine upload-file manifest."""
+"""Validate the Bioinformatics upload-file manifest."""
 from __future__ import annotations
 
 import csv
@@ -9,33 +9,36 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "UPLOAD_FILE_MANIFEST.tsv"
-CLEAN_ZIP = ROOT / "COMMUNICATIONS_MEDICINE_TRANSFER" / "PGAA_COMMUNICATIONS_MEDICINE_JOURNAL_UPLOAD.zip"
-SUPP_CODE = (
-    ROOT
-    / "COMMUNICATIONS_MEDICINE_TRANSFER"
-    / "JOURNAL_UPLOAD_COMMUNICATIONS_MEDICINE"
-    / "PGAA_supplementary_code.zip"
-)
+SUPP_CODE = ROOT / "PGAA_supplementary_code.zip"
 
 REQUIRED_UPLOAD_FILES = {
-    "COMMUNICATIONS_MEDICINE_TRANSFER/JOURNAL_UPLOAD_COMMUNICATIONS_MEDICINE/MANUSCRIPT.pdf",
-    "COMMUNICATIONS_MEDICINE_TRANSFER/JOURNAL_UPLOAD_COMMUNICATIONS_MEDICINE/SUPPLEMENTARY.pdf",
-    "COMMUNICATIONS_MEDICINE_TRANSFER/JOURNAL_UPLOAD_COMMUNICATIONS_MEDICINE/PGAA_supplementary_code.zip",
-    "COMMUNICATIONS_MEDICINE_TRANSFER/JOURNAL_UPLOAD_COMMUNICATIONS_MEDICINE/COVER_LETTER_COMMUNICATIONS_MEDICINE.md",
-    "COMMUNICATIONS_MEDICINE_TRANSFER/PGAA_COMMUNICATIONS_MEDICINE_JOURNAL_UPLOAD.zip",
+    "MANUSCRIPT.pdf",
+    "SUPPLEMENTARY.pdf",
+    "PGAA_supplementary_code.zip",
+    "COVER_LETTER_BIOINFORMATICS.md",
 }
 
 FORBIDDEN_ANYWHERE = [
-    "COVER_LETTER_BIOINFORMATICS",
-    "CURRENT_BIOINFORMATICS_REVIEW",
-    "SIMULATED_BIOINFORMATICS_REVIEW",
-    "POST_REVISION_BIOINFORMATICS_REVIEW",
-    "REFERENCE_AUDIT_BIOINFORMATICS",
-    "SUBMISSION_READINESS_AUDIT",
-    "SUBMISSION_CHECKLIST",
+    "COMMUNICATIONS_MEDICINE_TRANSFER",
+    "COMMUNICATIONS_AI_COMPUTING_TRANSFER",
+    "COVER_LETTER_COMMUNICATIONS_MEDICINE",
+    "COVER_LETTER_COMMUNICATIONS_AI_COMPUTING",
+    "MANUSCRIPT_CM",
+    "SUPPLEMENTARY_CM",
     "figure_workflow",
     "Figure 6:",
     "Figure 7:",
+]
+
+FORBIDDEN_ZIP_ENTRIES = [
+    "COMMUNICATIONS_MEDICINE_TRANSFER",
+    "COMMUNICATIONS_AI_COMPUTING_TRANSFER",
+    "MANUSCRIPT_CM",
+    "SUPPLEMENTARY_CM",
+    "build_cm_journal_upload_packet.py",
+    "build_cm_supplementary_zip.py",
+    "verify_cm_transfer_ready.py",
+    "figure_workflow",
 ]
 
 
@@ -73,35 +76,20 @@ def main() -> None:
     for rel in sorted(REQUIRED_UPLOAD_FILES):
         row = by_file.get(rel)
         if row is None:
-            errors.append(f"Required CM upload file missing from manifest: {rel}")
+            errors.append(f"Required Bioinformatics upload file missing from manifest: {rel}")
         elif row["upload"] != "yes":
-            errors.append(f"Required CM upload file not marked upload=yes: {rel}")
-
-    if not CLEAN_ZIP.exists():
-        errors.append("Missing PGAA_COMMUNICATIONS_MEDICINE_JOURNAL_UPLOAD.zip")
-    else:
-        with zipfile.ZipFile(CLEAN_ZIP) as zf:
-            names = {Path(name).name for name in zf.namelist() if not name.endswith("/")}
-        expected = {
-            "MANUSCRIPT.pdf",
-            "SUPPLEMENTARY.pdf",
-            "PGAA_supplementary_code.zip",
-            "COVER_LETTER_COMMUNICATIONS_MEDICINE.md",
-        }
-        if names != expected:
-            errors.append(f"Clean journal upload zip has unexpected files: {sorted(names)}")
+            errors.append(f"Required Bioinformatics upload file not marked upload=yes: {rel}")
 
     if not SUPP_CODE.exists():
-        errors.append("Missing clean supplementary software archive")
+        errors.append("Missing supplementary software archive: PGAA_supplementary_code.zip")
     else:
-        with zipfile.ZipFile(SUPP_CODE) as zf:
-            names = zf.namelist()
-        for term in [
-            "COVER_LETTER_BIOINFORMATICS",
-            "verify_cm_transfer_ready.py",
-            "build_cm_journal_upload_packet.py",
-            "build_cm_supplementary_zip.py",
-        ]:
+        try:
+            with zipfile.ZipFile(SUPP_CODE) as zf:
+                names = zf.namelist()
+        except zipfile.BadZipFile:
+            errors.append("Bad supplementary software zip: PGAA_supplementary_code.zip")
+            names = []
+        for term in FORBIDDEN_ZIP_ENTRIES:
             hits = [name for name in names if term in name]
             if hits:
                 errors.append(f"Supplementary software zip contains internal/stale entry: {hits[0]}")

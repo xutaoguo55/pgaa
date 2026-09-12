@@ -1,0 +1,5 @@
+basis,gene,rank,expression_matched_null_mean_rank,p_matched,matched_null_percentile_mean_rank,p_matched_percentile,log10_pool_n,pctile_pool_n,marker_percentile_in_log10_pool,expression_decile_percentile,n_in_decile
+raw S2,ELANE,92,1012.1,0.0515,1017.1,0.038,592,592,0.0,0.153,202
+raw S2,PRTN3,57,1016.3,0.012,985.0,0.0005,76,40,0.39,0.035,201
+permutation p,ELANE,57,979.1,0.022,987.1,0.022,592,592,0.0,0.079,202
+permutation p,PRTN3,97,1055.7,0.026,1100.3,0.0005,76,40,0.39,0.045,201

@@ -1,0 +1,257 @@
+dataset_id	platform	split_strength	analysis_unit	method	median_observed_overlap	median_pseudo_overlap	median_specificity_margin	n_repeats
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	BACH2|stimulated	absolute_mean_shift	0.07	0.07	0.0	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	BACH2|stimulated	pgaa_h	0.03	0.04	0.0099999999999999	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	BACH2|stimulated	pgaa_w	0.08	0.09	-0.0099999999999999	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	BACH2|stimulated	welch_abs_t	0.01	0.02	0.0	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	DOK2|stimulated	absolute_mean_shift	0.07	0.07	-0.0099999999999999	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	DOK2|stimulated	pgaa_h	0.02	0.02	0.0	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	DOK2|stimulated	pgaa_w	0.08	0.09	0.0	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	DOK2|stimulated	welch_abs_t	0.02	0.02	-0.0099999999999999	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	EGR1|stimulated	absolute_mean_shift	0.07	0.05	0.03	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	EGR1|stimulated	pgaa_h	0.01	0.03	-0.01	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	EGR1|stimulated	pgaa_w	0.07	0.07	0.0	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	EGR1|stimulated	welch_abs_t	0.02	0.02	0.0	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	FOS|stimulated	absolute_mean_shift	0.07	0.04	0.03	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	FOS|stimulated	pgaa_h	0.02	0.02	0.0	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	FOS|stimulated	pgaa_w	0.09	0.04	0.03	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	FOS|stimulated	welch_abs_t	0.01	0.01	0.0	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	JUNB|stimulated	absolute_mean_shift	0.06	0.06	0.0099999999999999	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	JUNB|stimulated	pgaa_h	0.02	0.02	0.0	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	JUNB|stimulated	pgaa_w	0.07	0.08	-0.0099999999999999	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	JUNB|stimulated	welch_abs_t	0.01	0.02	-0.01	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	JUND|stimulated	absolute_mean_shift	0.06	0.06	0.0	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	JUND|stimulated	pgaa_h	0.02	0.02	0.0	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	JUND|stimulated	pgaa_w	0.06	0.08	0.0099999999999999	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	JUND|stimulated	welch_abs_t	0.02	0.03	0.01	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	JUN|stimulated	absolute_mean_shift	0.05	0.06	-0.0099999999999999	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	JUN|stimulated	pgaa_h	0.02	0.02	0.0	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	JUN|stimulated	pgaa_w	0.06	0.07	0.0099999999999999	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	JUN|stimulated	welch_abs_t	0.02	0.02	0.0	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	NFATC1|stimulated	absolute_mean_shift	0.07	0.05	0.01	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	NFATC1|stimulated	pgaa_h	0.02	0.04	0.0199999999999999	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	NFATC1|stimulated	pgaa_w	0.08	0.06	0.03	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	NFATC1|stimulated	welch_abs_t	0.03	0.03	0.0	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	NFATC1|unstimulated	absolute_mean_shift	0.06	0.04	0.0199999999999999	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	NFATC1|unstimulated	pgaa_h	0.03	0.02	0.02	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	NFATC1|unstimulated	pgaa_w	0.08	0.04	0.03	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	NFATC1|unstimulated	welch_abs_t	0.03	0.02	0.01	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	NFATC3|stimulated	absolute_mean_shift	0.08	0.06	0.01	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	NFATC3|stimulated	pgaa_h	0.02	0.02	0.0	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	NFATC3|stimulated	pgaa_w	0.1	0.07	0.03	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	NFATC3|stimulated	welch_abs_t	0.02	0.02	0.0099999999999999	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	NFKB1|stimulated	absolute_mean_shift	0.07	0.06	0.01	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	NFKB1|stimulated	pgaa_h	0.02	0.02	-0.0099999999999999	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	NFKB1|stimulated	pgaa_w	0.09	0.09	0.0	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	NFKB1|stimulated	welch_abs_t	0.02	0.02	0.0	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	NR4A1|stimulated	absolute_mean_shift	0.05	0.04	0.0	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	NR4A1|stimulated	pgaa_h	0.02	0.03	-0.01	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	NR4A1|stimulated	pgaa_w	0.06	0.05	-0.02	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	NR4A1|stimulated	welch_abs_t	0.02	0.03	0.01	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	PTPN6|stimulated	absolute_mean_shift	0.06	0.05	0.0099999999999999	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	PTPN6|stimulated	pgaa_h	0.03	0.02	0.02	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	PTPN6|stimulated	pgaa_w	0.07	0.05	0.0199999999999999	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	PTPN6|stimulated	welch_abs_t	0.01	0.02	-0.01	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	RELB|stimulated	absolute_mean_shift	0.08	0.04	0.04	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	RELB|stimulated	pgaa_h	0.02	0.03	0.0	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	RELB|stimulated	pgaa_w	0.08	0.05	0.0499999999999999	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	RELB|stimulated	welch_abs_t	0.03	0.01	0.0199999999999999	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	REL|stimulated	absolute_mean_shift	0.05	0.06	-0.0199999999999999	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	REL|stimulated	pgaa_h	0.03	0.02	0.0	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	REL|stimulated	pgaa_w	0.05	0.09	-0.0399999999999999	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	REL|stimulated	welch_abs_t	0.02	0.02	0.0	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	RUNX2|stimulated	absolute_mean_shift	0.03	0.07	-0.03	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	RUNX2|stimulated	pgaa_h	0.04	0.03	0.0	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	RUNX2|stimulated	pgaa_w	0.07	0.08	-0.01	5
+datlinger2017_jurkat_crispr	Jurkat CRISPR with TCR stimulation	experimental_replicate_holdout_3_vs_3	RUNX2|stimulated	welch_abs_t	0.02	0.01	0.0199999999999999	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	ADAM10	absolute_mean_shift	0.25	0.08	0.1699999999999999	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	ADAM10	pgaa_h	0.05	0.03	0.03	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	ADAM10	pgaa_w	0.26	0.11	0.15	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	ADAM10	welch_abs_t	0.14	0.02	0.11	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	ANAPC15	absolute_mean_shift	0.06	0.04	0.0199999999999999	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	ANAPC15	pgaa_h	0.02	0.04	-0.02	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	ANAPC15	pgaa_w	0.09	0.08	0.0	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	ANAPC15	welch_abs_t	0.02	0.01	0.0	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	BCAR1	absolute_mean_shift	0.07	0.04	0.01	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	BCAR1	pgaa_h	0.04	0.03	0.0099999999999999	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	BCAR1	pgaa_w	0.09	0.06	0.03	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	BCAR1	welch_abs_t	0.02	0.02	0.0	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	BPTF	absolute_mean_shift	0.29	0.04	0.25	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	BPTF	pgaa_h	0.05	0.04	0.0	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	BPTF	pgaa_w	0.34	0.08	0.26	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	BPTF	welch_abs_t	0.17	0.02	0.15	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	BTF3	absolute_mean_shift	0.16	0.08	0.0999999999999999	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	BTF3	pgaa_h	0.03	0.02	0.01	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	BTF3	pgaa_w	0.2	0.09	0.12	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	BTF3	welch_abs_t	0.06	0.02	0.0499999999999999	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	C7orf26	absolute_mean_shift	0.34	0.05	0.31	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	C7orf26	pgaa_h	0.03	0.03	-0.01	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	C7orf26	pgaa_w	0.35	0.06	0.3	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	C7orf26	welch_abs_t	0.25	0.02	0.23	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	CCDC6	absolute_mean_shift	0.19	0.08	0.1	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	CCDC6	pgaa_h	0.06	0.04	0.01	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	CCDC6	pgaa_w	0.21	0.11	0.09	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	CCDC6	welch_abs_t	0.07	0.01	0.05	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	CCDC78	absolute_mean_shift	0.09	0.07	0.0199999999999999	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	CCDC78	pgaa_h	0.02	0.04	-0.02	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	CCDC78	pgaa_w	0.1	0.08	0.0099999999999999	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	CCDC78	welch_abs_t	0.02	0.02	0.0	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	CLOCK	absolute_mean_shift	0.25	0.04	0.21	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	CLOCK	pgaa_h	0.03	0.03	0.0	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	CLOCK	pgaa_w	0.28	0.11	0.17	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	CLOCK	welch_abs_t	0.22	0.01	0.22	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	CPSF3	absolute_mean_shift	0.48	0.04	0.44	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	CPSF3	pgaa_h	0.03	0.05	-0.0199999999999999	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	CPSF3	pgaa_w	0.49	0.06	0.43	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	CPSF3	welch_abs_t	0.36	0.02	0.35	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	CSE1L	absolute_mean_shift	0.62	0.06	0.55	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	CSE1L	pgaa_h	0.06	0.03	0.0	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	CSE1L	pgaa_w	0.62	0.09	0.53	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	CSE1L	welch_abs_t	0.51	0.01	0.5	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	CSTF1	absolute_mean_shift	0.39	0.05	0.3399999999999999	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	CSTF1	pgaa_h	0.04	0.04	0.01	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	CSTF1	pgaa_w	0.41	0.08	0.31	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	CSTF1	welch_abs_t	0.34	0.02	0.31	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	DDX19A	absolute_mean_shift	0.06	0.05	0.0	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	DDX19A	pgaa_h	0.04	0.03	0.01	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	DDX19A	pgaa_w	0.1	0.08	0.02	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	DDX19A	welch_abs_t	0.03	0.01	0.0099999999999999	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	DDX19B	absolute_mean_shift	0.07	0.07	0.0	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	DDX19B	pgaa_h	0.02	0.03	-0.0199999999999999	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	DDX19B	pgaa_w	0.08	0.09	0.0	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	DDX19B	welch_abs_t	0.03	0.02	0.01	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	DDX23	absolute_mean_shift	0.56	0.07	0.49	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	DDX23	pgaa_h	0.06	0.05	-0.01	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	DDX23	pgaa_w	0.55	0.11	0.48	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	DDX23	welch_abs_t	0.33	0.02	0.31	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	DDX46	absolute_mean_shift	0.24	0.05	0.19	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	DDX46	pgaa_h	0.04	0.02	0.0099999999999999	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	DDX46	pgaa_w	0.27	0.06	0.2	5
+nadig2024_hepg2_crispri	HepG2 CRISPRi Perturb-seq	experimental_batch_holdout_28_vs_28	DDX46	welch_abs_t	0.1	0.02	0.08	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	AHR	absolute_mean_shift	0.37	0.03	0.32	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	AHR	pgaa_h	0.05	0.05	-0.01	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	AHR	pgaa_w	0.39	0.06	0.31	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	AHR	welch_abs_t	0.29	0.02	0.2699999999999999	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	ARID1A	absolute_mean_shift	0.48	0.03	0.4599999999999999	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	ARID1A	pgaa_h	0.05	0.04	0.0	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	ARID1A	pgaa_w	0.46	0.05	0.42	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	ARID1A	welch_abs_t	0.37	0.02	0.36	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	ARRDC3	absolute_mean_shift	0.1	0.06	0.0499999999999999	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	ARRDC3	pgaa_h	0.05	0.03	0.02	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	ARRDC3	pgaa_w	0.13	0.06	0.07	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	ARRDC3	welch_abs_t	0.05	0.02	0.01	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	ATL1	absolute_mean_shift	0.45	0.05	0.3999999999999999	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	ATL1	pgaa_h	0.05	0.04	0.0	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	ATL1	pgaa_w	0.44	0.07	0.3899999999999999	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	ATL1	welch_abs_t	0.35	0.02	0.3299999999999999	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	BAK1	absolute_mean_shift	0.06	0.04	0.01	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	BAK1	pgaa_h	0.05	0.04	0.03	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	BAK1	pgaa_w	0.07	0.07	0.0099999999999999	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	BAK1	welch_abs_t	0.02	0.02	0.0099999999999999	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	BCL2L11	absolute_mean_shift	0.04	0.05	0.0	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	BCL2L11	pgaa_h	0.05	0.05	-0.03	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	BCL2L11	pgaa_w	0.06	0.07	-0.01	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	BCL2L11	welch_abs_t	0.02	0.01	0.0	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	BCORL1	absolute_mean_shift	0.08	0.05	0.05	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	BCORL1	pgaa_h	0.07	0.06	0.0099999999999999	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	BCORL1	pgaa_w	0.11	0.06	0.06	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	BCORL1	welch_abs_t	0.08	0.02	0.06	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	BPGM	absolute_mean_shift	0.26	0.03	0.24	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	BPGM	pgaa_h	0.04	0.05	-0.01	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	BPGM	pgaa_w	0.3	0.04	0.24	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	BPGM	welch_abs_t	0.24	0.02	0.22	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	C19orf26	absolute_mean_shift	0.19	0.05	0.14	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	C19orf26	pgaa_h	0.06	0.03	0.02	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	C19orf26	pgaa_w	0.2	0.06	0.1399999999999999	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	C19orf26	welch_abs_t	0.12	0.01	0.11	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	C3orf72	absolute_mean_shift	0.35	0.06	0.31	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	C3orf72	pgaa_h	0.03	0.04	0.01	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	C3orf72	pgaa_w	0.36	0.04	0.32	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	C3orf72	welch_abs_t	0.34	0.03	0.31	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	CBFA2T3	absolute_mean_shift	0.27	0.04	0.21	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	CBFA2T3	pgaa_h	0.04	0.04	0.0	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	CBFA2T3	pgaa_w	0.25	0.07	0.19	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	CBFA2T3	welch_abs_t	0.15	0.03	0.0999999999999999	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	CBL	absolute_mean_shift	0.24	0.05	0.19	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	CBL	pgaa_h	0.06	0.05	0.0199999999999999	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	CBL	pgaa_w	0.24	0.06	0.18	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	CBL	welch_abs_t	0.14	0.02	0.13	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	CDKN1A	absolute_mean_shift	0.4	0.04	0.35	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	CDKN1A	pgaa_h	0.05	0.04	0.0	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	CDKN1A	pgaa_w	0.42	0.05	0.34	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	CDKN1A	welch_abs_t	0.27	0.02	0.25	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	CDKN1B	absolute_mean_shift	0.33	0.02	0.3	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	CDKN1B	pgaa_h	0.05	0.05	-0.0099999999999999	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	CDKN1B	pgaa_w	0.36	0.04	0.31	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	CDKN1B	welch_abs_t	0.21	0.01	0.1999999999999999	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	CDKN1C	absolute_mean_shift	0.45	0.05	0.43	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	CDKN1C	pgaa_h	0.05	0.07	-0.02	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	CDKN1C	pgaa_w	0.47	0.06	0.3999999999999999	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	CDKN1C	welch_abs_t	0.29	0.02	0.2699999999999999	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	CEBPA	absolute_mean_shift	0.74	0.04	0.7	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	CEBPA	pgaa_h	0.05	0.05	0.0	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	CEBPA	pgaa_w	0.74	0.05	0.6799999999999999	5
+norman2019_k562_crispra	K562 CRISPRa Perturb-seq	technical_batch_holdout_4_vs_4	CEBPA	welch_abs_t	0.55	0.0	0.55	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	AICAR|dose=0.001	absolute_mean_shift	0.24	0.21	0.03	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	AICAR|dose=0.001	pgaa_h	0.2	0.22	-0.03	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	AICAR|dose=0.001	pgaa_w	0.27	0.27	0.0	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	AICAR|dose=0.001	welch_abs_t	0.07	0.06	0.0199999999999999	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	Altretamine|dose=0.001	absolute_mean_shift	0.25	0.21	0.0699999999999999	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	Altretamine|dose=0.001	pgaa_h	0.24	0.24	0.01	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	Altretamine|dose=0.001	pgaa_w	0.29	0.22	0.0399999999999999	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	Altretamine|dose=0.001	welch_abs_t	0.09	0.06	0.03	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	Altretamine|dose=0.01	absolute_mean_shift	0.22	0.23	-0.02	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	Altretamine|dose=0.01	pgaa_h	0.25	0.25	0.0	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	Altretamine|dose=0.01	pgaa_w	0.27	0.32	-0.04	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	Altretamine|dose=0.01	welch_abs_t	0.07	0.11	-0.03	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	Altretamine|dose=1.0	absolute_mean_shift	0.23	0.23	0.01	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	Altretamine|dose=1.0	pgaa_h	0.21	0.24	-0.0499999999999999	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	Altretamine|dose=1.0	pgaa_w	0.26	0.29	-0.0099999999999999	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	Altretamine|dose=1.0	welch_abs_t	0.06	0.08	-0.0099999999999999	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	Aminoglutethimide|dose=0.001	absolute_mean_shift	0.23	0.23	-0.0399999999999999	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	Aminoglutethimide|dose=0.001	pgaa_h	0.23	0.21	-0.0199999999999999	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	Aminoglutethimide|dose=0.001	pgaa_w	0.28	0.26	-0.0499999999999999	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	Aminoglutethimide|dose=0.001	welch_abs_t	0.09	0.09	-0.02	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	Aminoglutethimide|dose=0.1	absolute_mean_shift	0.25	0.22	0.01	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	Aminoglutethimide|dose=0.1	pgaa_h	0.26	0.21	0.05	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	Aminoglutethimide|dose=0.1	pgaa_w	0.28	0.25	0.01	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	Aminoglutethimide|dose=0.1	welch_abs_t	0.08	0.08	0.01	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	Andarine|dose=0.01	absolute_mean_shift	0.22	0.25	-0.01	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	Andarine|dose=0.01	pgaa_h	0.21	0.22	-0.01	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	Andarine|dose=0.01	pgaa_w	0.28	0.29	0.0	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	Andarine|dose=0.01	welch_abs_t	0.08	0.1	-0.03	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	Andarine|dose=1.0	absolute_mean_shift	0.25	0.25	0.0	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	Andarine|dose=1.0	pgaa_h	0.23	0.21	0.02	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	Andarine|dose=1.0	pgaa_w	0.28	0.29	-0.0299999999999999	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	Andarine|dose=1.0	welch_abs_t	0.08	0.09	-0.01	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	Carmofur|dose=0.01	absolute_mean_shift	0.25	0.22	-0.0099999999999999	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	Carmofur|dose=0.01	pgaa_h	0.24	0.21	0.0199999999999999	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	Carmofur|dose=0.01	pgaa_w	0.29	0.28	-0.03	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	Carmofur|dose=0.01	welch_abs_t	0.09	0.08	0.0099999999999999	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	Celecoxib|dose=0.1	absolute_mean_shift	0.23	0.24	0.0	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	Celecoxib|dose=0.1	pgaa_h	0.21	0.21	0.02	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	Celecoxib|dose=0.1	pgaa_w	0.27	0.28	0.0299999999999999	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	Celecoxib|dose=0.1	welch_abs_t	0.09	0.08	0.0099999999999999	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	Cimetidine|dose=0.001	absolute_mean_shift	0.22	0.24	-0.03	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	Cimetidine|dose=0.001	pgaa_h	0.23	0.23	-0.04	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	Cimetidine|dose=0.001	pgaa_w	0.28	0.25	0.02	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	Cimetidine|dose=0.001	welch_abs_t	0.07	0.07	0.0199999999999999	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	Droxinostat|dose=0.01	absolute_mean_shift	0.22	0.22	-0.0199999999999999	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	Droxinostat|dose=0.01	pgaa_h	0.19	0.21	-0.05	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	Droxinostat|dose=0.01	pgaa_w	0.25	0.25	0.0	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	Droxinostat|dose=0.01	welch_abs_t	0.09	0.09	0.02	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	Droxinostat|dose=0.1	absolute_mean_shift	0.25	0.22	0.03	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	Droxinostat|dose=0.1	pgaa_h	0.24	0.23	-0.0099999999999999	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	Droxinostat|dose=0.1	pgaa_w	0.29	0.26	0.02	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	Droxinostat|dose=0.1	welch_abs_t	0.07	0.11	-0.03	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	ENMD2076|dose=0.001	absolute_mean_shift	0.26	0.25	0.01	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	ENMD2076|dose=0.001	pgaa_h	0.24	0.24	-0.01	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	ENMD2076|dose=0.001	pgaa_w	0.29	0.3	-0.03	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	ENMD2076|dose=0.001	welch_abs_t	0.08	0.1	-0.0099999999999999	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	ENMD2076|dose=0.01	absolute_mean_shift	0.23	0.21	0.07	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	ENMD2076|dose=0.01	pgaa_h	0.3	0.24	0.0399999999999999	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	ENMD2076|dose=0.01	pgaa_w	0.27	0.24	0.05	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	ENMD2076|dose=0.01	welch_abs_t	0.06	0.09	-0.02	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	Enzastaurin|dose=1.0	absolute_mean_shift	0.4	0.23	0.16	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	Enzastaurin|dose=1.0	pgaa_h	0.21	0.25	-0.0399999999999999	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	Enzastaurin|dose=1.0	pgaa_w	0.43	0.26	0.18	5
+sciplex3_a549_drug	A549 multiplexed drug perturbation	biological_replicate_holdout_1_vs_1	Enzastaurin|dose=1.0	welch_abs_t	0.28	0.07	0.21	5

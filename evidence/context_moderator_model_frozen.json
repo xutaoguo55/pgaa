@@ -1,0 +1,97 @@
+{
+  "axes": {
+    "specificity": {
+      "coefficient": [
+        0.04679300737786405,
+        -0.13682534383086647,
+        0.1451131042288847,
+        0.20564252723173157,
+        -0.24704148540191864,
+        -0.18966074495707932
+      ],
+      "intercept": 0.03642945977817761,
+      "scaler_mean": [
+        0.7,
+        0.5,
+        0.4,
+        1.3,
+        2.214720492494223,
+        0.9328571428571429
+      ],
+      "scaler_scale": [
+        0.45825756949558394,
+        0.5,
+        0.48989794855663565,
+        0.7810249675906655,
+        1.1339563342040964,
+        0.2014285714285714
+      ]
+    },
+    "stability": {
+      "coefficient": [
+        -0.02935052130793998,
+        -0.28417183354760994,
+        -0.05096966026882451,
+        0.23127971793047442,
+        -0.11093811421864652,
+        -0.18001485905327186
+      ],
+      "intercept": 0.021023899316106143,
+      "scaler_mean": [
+        0.7,
+        0.5,
+        0.4,
+        1.3,
+        2.214720492494223,
+        0.9328571428571429
+      ],
+      "scaler_scale": [
+        0.45825756949558394,
+        0.5,
+        0.48989794855663565,
+        0.7810249675906655,
+        1.1339563342040964,
+        0.2014285714285714
+      ]
+    }
+  },
+  "c_value": 0.25,
+  "class_weight": "balanced",
+  "decision_threshold": 0.5,
+  "feature_order": [
+    "genetic_perturbation",
+    "primary_or_in_vivo",
+    "mouse_system",
+    "split_independence_tier",
+    "log2_recorded_split_levels",
+    "minimum_equal_group_fraction"
+  ],
+  "lopo_primary_metrics": {
+    "balanced_accuracy": NaN,
+    "confirmation_rule_pass": false,
+    "exact_state_accuracy": 0.1,
+    "metric_scope": "joint_primary",
+    "model_brier": 0.35504917836337097,
+    "paired_wilcoxon_one_sided_p": 0.9755859375,
+    "prevalence_brier": 0.2685950413223141,
+    "roc_auc": NaN
+  },
+  "model_family": "two_axis_l2_logistic_regression",
+  "n_training_platforms": 10,
+  "random_state": 73021,
+  "sklearn_version": "1.6.1",
+  "state_order": [
+    "stable_and_specific",
+    "stable_but_not_specific",
+    "specific_but_not_stable",
+    "neither_stable_nor_specific"
+  ],
+  "state_probability_rule": "product_of_axis_probabilities",
+  "status": "frozen_before_v3_expression_outcomes",
+  "training_cohort": "expansion_v2_only",
+  "training_inputs_sha256": {
+    "expansion_v2_context_moderators.tsv": "9fb0d5f4458d5baf3726908e99aa015aa0fd563ad828eb846eb352e659bb047a",
+    "expansion_v2_dual_gate_states.tsv": "7e39065c2731ac88a96c50578f1b2d2b0b3c82af1150c07f3e97af8a50a114a1",
+    "expansion_v2_platform_contract_status.tsv": "aebf44fadfaaae46419daf2e3c35491c22ad963c41ae711d2057b94d16dfc6ec"
+  }
+}

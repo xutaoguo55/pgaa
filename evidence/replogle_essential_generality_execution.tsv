@@ -1,0 +1,17 @@
+target_gene	execution_status	returncode	started_utc	finished_utc	log_path	denominator_rule
+DERL2	complete_existing	0	2026-07-20T07:51:08.058519+00:00	2026-07-20T07:51:08.060975+00:00	/Volumes/MOVESPEED/pgaa_replogle/essential_generality_v1/DERL2/pgaa_run.log	all_16_locked_targets_including_failures
+GMPS	complete	0	2026-07-20T07:51:08.062060+00:00	2026-07-20T07:51:13.894743+00:00	/Volumes/MOVESPEED/pgaa_replogle/essential_generality_v1/GMPS/pgaa_run.log	all_16_locked_targets_including_failures
+RPLP1	complete	0	2026-07-20T07:51:13.897484+00:00	2026-07-20T07:51:19.221895+00:00	/Volumes/MOVESPEED/pgaa_replogle/essential_generality_v1/RPLP1/pgaa_run.log	all_16_locked_targets_including_failures
+VMP1	complete	0	2026-07-20T07:51:19.223466+00:00	2026-07-20T07:51:24.544410+00:00	/Volumes/MOVESPEED/pgaa_replogle/essential_generality_v1/VMP1/pgaa_run.log	all_16_locked_targets_including_failures
+DICER1	complete	0	2026-07-20T07:51:24.546105+00:00	2026-07-20T07:51:30.144950+00:00	/Volumes/MOVESPEED/pgaa_replogle/essential_generality_v1/DICER1/pgaa_run.log	all_16_locked_targets_including_failures
+HECTD1	complete	0	2026-07-20T07:51:30.146507+00:00	2026-07-20T07:51:35.541585+00:00	/Volumes/MOVESPEED/pgaa_replogle/essential_generality_v1/HECTD1/pgaa_run.log	all_16_locked_targets_including_failures
+ILF3	complete	0	2026-07-20T07:51:35.543125+00:00	2026-07-20T07:51:40.971337+00:00	/Volumes/MOVESPEED/pgaa_replogle/essential_generality_v1/ILF3/pgaa_run.log	all_16_locked_targets_including_failures
+RPUSD3	complete	0	2026-07-20T07:51:40.972916+00:00	2026-07-20T07:51:46.656932+00:00	/Volumes/MOVESPEED/pgaa_replogle/essential_generality_v1/RPUSD3/pgaa_run.log	all_16_locked_targets_including_failures
+CWC15	complete	0	2026-07-20T07:51:46.658518+00:00	2026-07-20T07:51:52.480775+00:00	/Volumes/MOVESPEED/pgaa_replogle/essential_generality_v1/CWC15/pgaa_run.log	all_16_locked_targets_including_failures
+EIF3D	complete	0	2026-07-20T07:51:52.482373+00:00	2026-07-20T07:51:58.373347+00:00	/Volumes/MOVESPEED/pgaa_replogle/essential_generality_v1/EIF3D/pgaa_run.log	all_16_locked_targets_including_failures
+UBA2	complete	0	2026-07-20T07:51:58.375123+00:00	2026-07-20T07:52:04.074477+00:00	/Volumes/MOVESPEED/pgaa_replogle/essential_generality_v1/UBA2/pgaa_run.log	all_16_locked_targets_including_failures
+USP5	complete	0	2026-07-20T07:52:04.076080+00:00	2026-07-20T07:52:10.038768+00:00	/Volumes/MOVESPEED/pgaa_replogle/essential_generality_v1/USP5/pgaa_run.log	all_16_locked_targets_including_failures
+ABCF1	complete	0	2026-07-20T07:52:10.040619+00:00	2026-07-20T07:52:17.963503+00:00	/Volumes/MOVESPEED/pgaa_replogle/essential_generality_v1/ABCF1/pgaa_run.log	all_16_locked_targets_including_failures
+BCAS2	complete	0	2026-07-20T07:52:17.965444+00:00	2026-07-20T07:52:24.270552+00:00	/Volumes/MOVESPEED/pgaa_replogle/essential_generality_v1/BCAS2/pgaa_run.log	all_16_locked_targets_including_failures
+DNTTIP2	complete	0	2026-07-20T07:52:24.272167+00:00	2026-07-20T07:52:31.185577+00:00	/Volumes/MOVESPEED/pgaa_replogle/essential_generality_v1/DNTTIP2/pgaa_run.log	all_16_locked_targets_including_failures
+LSM2	complete	0	2026-07-20T07:52:31.187152+00:00	2026-07-20T07:52:39.598505+00:00	/Volumes/MOVESPEED/pgaa_replogle/essential_generality_v1/LSM2/pgaa_run.log	all_16_locked_targets_including_failures

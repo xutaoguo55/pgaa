@@ -1,0 +1,3 @@
+gene_symbol	protein_exact_hits	phosphosite_exact_hits	status
+ATM	0	0	no_exact_hit_in_quick_scan
+ATR	0	2	exact_hit_in_phosphoproteome
