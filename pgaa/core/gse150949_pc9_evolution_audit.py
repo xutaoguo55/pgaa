@@ -3,7 +3,6 @@ from __future__ import annotations
 
 import csv
 import gzip
-from datetime import date
 from pathlib import Path
 
 import matplotlib
@@ -11,6 +10,11 @@ import numpy as np
 import pandas as pd
 
 matplotlib.use("Agg")
+
+# Fixed so that rebuilding the reviewer archive is byte-identical: a build-time
+# date here would dirty this tracked file and make the archive depend on the day
+# it was built.
+AUDIT_DATE = "2026-09-12"
 
 import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap
@@ -228,6 +232,7 @@ def render_gse150949_pc9_evolution_audit(
     sample_summary: pd.DataFrame,
     group_summary: pd.DataFrame,
     missing_symbols: list[str],
+    date: str = AUDIT_DATE,
 ) -> str:
     """Render the manuscript-facing audit document."""
     timepoint_rows = []
@@ -277,7 +282,7 @@ def render_gse150949_pc9_evolution_audit(
     )
     return f"""# GSE150949 PC9 Evolution Audit
 
-Date: {date.today().isoformat()}
+Date: {date}
 
 ## Purpose
 

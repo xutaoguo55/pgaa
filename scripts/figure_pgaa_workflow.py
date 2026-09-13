@@ -83,7 +83,7 @@ def main():
     arrow(ax, (0.545, 0.28), (0.59, 0.45))
     arrow(ax, (0.75, 0.50), (0.79, 0.50))
 
-    ax.text(0.035, 0.91, "PGAA distribution-aware Perturb-seq ranking workflow",
+    ax.text(0.035, 0.91, "PGAA upstream scoring modules for Perturb-seq gene ranking",
             fontsize=12, fontweight="bold", ha="left", color="#15212c")
     ax.text(0.035, 0.085,
             "PGAA-H p-values from 500 permutations are used as ranking evidence unless permutation depth supports genome-wide error control.",

@@ -10,6 +10,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import time
 from pathlib import Path
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
@@ -104,17 +105,25 @@ def read_repo_url() -> str:
 
 
 def check_repo_reachable(repo_url: str) -> tuple[bool, str]:
+    # A single 10-second attempt made the gate's verdict depend on network luck:
+    # github.com serves this HEAD in ~1.5s when warm but can exceed 15s cold, and
+    # the same command has returned both "HTTP 200" and a handshake timeout within
+    # one session. HTTPError is a real answer from the host and is returned at
+    # once; URLError/timeout are transient and are retried.
     req = Request(repo_url, method="HEAD", headers={"User-Agent": "PGAA-upload-gate"})
-    try:
-        with urlopen(req, timeout=10) as response:
-            status = getattr(response, "status", 0)
-            return 200 <= status < 400, f"HTTP {status}"
-    except HTTPError as exc:
-        return False, f"HTTP {exc.code}"
-    except URLError as exc:
-        return False, f"URL error: {exc.reason}"
-    except TimeoutError:
-        return False, "timeout"
+    status_text = "no attempt made"
+    for attempt in range(3):
+        try:
+            with urlopen(req, timeout=30) as response:
+                status = getattr(response, "status", 0)
+                return 200 <= status < 400, f"HTTP {status}"
+        except HTTPError as exc:
+            return False, f"HTTP {exc.code}"
+        except (URLError, TimeoutError) as exc:
+            status_text = f"URL error: {getattr(exc, 'reason', exc)}"
+            if attempt < 2:
+                time.sleep(2)
+    return False, status_text
 
 
 def find_archive_identifier(texts: dict[str, str]) -> list[str]:
