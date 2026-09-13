@@ -25,7 +25,7 @@ API = "https://zenodo.org/api"
 CONCEPT_RECID = 20681140
 # The deposition `actions/newversion` is called on: the newest published version,
 # which has to be bumped by hand each time a new version is minted.
-LATEST_RECID = 22720271
+LATEST_RECID = 22730868
 
 
 def version() -> str:
@@ -74,7 +74,7 @@ def call(method: str, url: str, tok: str, payload: dict | None = None,
 
 def metadata() -> dict:
     meta = json.loads((ROOT / ".zenodo.json").read_text())
-    meta.setdefault("publication_date", "2026-09-12")
+    meta.setdefault("publication_date", "2026-09-13")
     return meta
 
 

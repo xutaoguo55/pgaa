@@ -41,6 +41,7 @@ PORTAL_INPUTS.md
 pgaa_r.Rcheck/
 pgaa_r/pgaa_r.Rcheck/
 *.log
+*.aux
 scripts/*_test_output.txt
 figures_png/figure_workflow.png
 # Large files

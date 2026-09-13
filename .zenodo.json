@@ -2,6 +2,7 @@
   "title": "PGAA: a claim-state compiler for perturbation-transcriptomic evidence",
   "upload_type": "software",
   "version": "0.2.1",
+  "publication_date": "2026-09-13",
   "description": "PGAA is an executable claim-state compiler for perturbation transcriptomics. It combines internal decision state, ranking stability, external evidence, source-data provenance, and branch-specific promotion gates to emit bounded manuscript claim states, so that an exploratory signal cannot be promoted to a biological or translational conclusion without the evidence a promotion rule requires. Distribution-aware statistics (a Wasserstein statistic for full expression-distribution shifts and a histogram-shape statistic for responder-associated expression-shape changes) are retained as upstream scoring modules that supply scores to the compiler; they are not claimed as the main methodological novelty. This archive is a code-only software release and excludes manuscript drafts, submission materials, figures, source-data tables, and review materials.",
   "creators": [
     {
@@ -43,8 +44,8 @@
       "scheme": "url"
     },
     {
-      "identifier": "10.5281/zenodo.22720271",
-      "relation": "isIdenticalTo",
+      "identifier": "10.5281/zenodo.20681140",
+      "relation": "isVersionOf",
       "scheme": "doi"
     }
   ]

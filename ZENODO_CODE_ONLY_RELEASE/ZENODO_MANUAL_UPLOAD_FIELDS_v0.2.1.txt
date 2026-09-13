@@ -1,10 +1,10 @@
 PGAA v0.2.1 code-only Zenodo release — upload fields
-Generated 2026-09-12. This file records the deposit fields and the archive
+Generated 2026-09-13. This file records the deposit fields and the archive
 digest. It is the manual fallback for scripts/zenodo_publish.py.
 
 Upload file:
 PGAA_v0.2.1_code_only_for_Zenodo.zip
-(338 entries, 669,805 bytes)
+(338 entries, 671,224 bytes)
 
 Upload type:
 Software
@@ -16,7 +16,7 @@ Version:
 0.2.1
 
 Publication date:
-2026-09-12
+2026-09-13
 
 Creators:
 Wei, Xiaolei
@@ -44,7 +44,7 @@ Concept DOI:
 10.5281/zenodo.20681140
 
 SHA256:
-4ca3b68d410a85ea2005066f0253cb4027a373e7568aa296ee948a6d14b368f3
+e5ac492eab7eea21938c55909fbfbc3d55a2bb6d1bed399c46da65076d59b0f6
 
 Content rule:
 Package code and release metadata only. Included: .zenodo.json, CITATION.cff, Dockerfile, LICENSE, README.md, codemeta.json, environment.yml, pyproject.toml, requirements.txt, requirements-lock.txt, pgaa/ (82 files), pgaa_r/ (11 files), tests/ (80 files), scripts/ (155 files).

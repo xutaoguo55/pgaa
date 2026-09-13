@@ -3,7 +3,7 @@
   "@type": "SoftwareSourceCode",
   "name": "PGAA",
   "version": "0.2.1",
-  "description": "Distribution-aware ranking for single-cell perturbation screens using PGAA-W Wasserstein and PGAA-H histogram-shape statistics.",
+  "description": "PGAA is an executable claim-state compiler for perturbation transcriptomics. It combines internal decision state, ranking stability, external evidence, source-data provenance, and branch-specific promotion gates to emit bounded manuscript claim states. Distribution-aware Wasserstein and histogram-shape statistics remain available as upstream scoring modules; they are not claimed as the main methodological novelty.",
   "codeRepository": "https://github.com/xutaoguo55/pgaa",
   "url": "https://github.com/xutaoguo55/pgaa",
   "license": "https://spdx.org/licenses/MIT",
@@ -16,10 +16,11 @@
     "R"
   ],
   "keywords": [
-    "Perturb-seq",
     "single-cell RNA-seq",
-    "Wasserstein distance",
-    "histogram-shape statistic",
+    "Perturb-seq",
+    "claim state",
+    "reproducibility",
+    "evidence gating",
     "CRISPR screening"
   ],
   "author": [
@@ -78,6 +79,6 @@
     "Linux"
   ],
   "developmentStatus": "active",
-  "dateModified": "2026-09-12",
-  "identifier": "https://doi.org/10.5281/zenodo.22720271"
+  "dateModified": "2026-09-13",
+  "identifier": "https://doi.org/10.5281/zenodo.22730868"
 }

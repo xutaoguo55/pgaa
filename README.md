@@ -10,7 +10,7 @@ PGAA is a Python and R software package for compiling perturbation-transcriptomi
 - `evidence/`, `docs/`: machine-readable evidence artifacts and the claim-state decision records behind them.
 - `ZENODO_CODE_ONLY_RELEASE/`: the code-only archives deposited on Zenodo, built by `scripts/build_zenodo_code_only.py`.
 
-Deliberately absent: the manuscript (`MANUSCRIPT.md`, `MANUSCRIPT.docx`, `SUPPLEMENTARY.md`), the figure images under `figures_png/`, the figure source-data tables under `figure_source_data/`, and the frozen `COMMUNICATIONS_*_TRANSFER/` packages from earlier submissions. They stay in the working copy, so `scripts/build_pdf.py` and `scripts/build_submission_zip.py` still build the reviewer archive from a checkout that has them.
+Deliberately absent: the manuscript (`MANUSCRIPT.md`, `MANUSCRIPT.docx`, `SUPPLEMENTARY.md`), the figure images under `figures_png/`, the figure source-data tables under `figure_source_data/`, and the frozen `COMMUNICATIONS_*_TRANSFER/` packages from earlier submissions. They stay in the working copy, so `build_pdf.py` and `scripts/build_submission_zip.py` still build the reviewer archive from a checkout that has them.
 - `DATASET_MANIFEST.tsv`: public dataset accessions, analysis roles, and reproduction status.
 - `CITATION.cff`, `codemeta.json`, `.zenodo.json`: software citation and archive metadata.
 
@@ -587,4 +587,4 @@ MIT.
 
 ## Citation and Archive Status
 
-Use `CITATION.cff` for software citation metadata. The public code-only repository is available at https://github.com/xutaoguo55/pgaa, the archived software release is available at https://doi.org/10.5281/zenodo.22720271.
+Use `CITATION.cff` for software citation metadata. The public code-only repository is available at https://github.com/xutaoguo55/pgaa, the archived software release is available at https://doi.org/10.5281/zenodo.22730868.

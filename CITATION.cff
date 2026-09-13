@@ -1,18 +1,19 @@
 cff-version: 1.2.0
 message: "If you use PGAA, please cite this software repository."
-title: "PGAA: distribution-aware single-cell perturbation analysis software"
+title: "PGAA: a claim-state compiler for perturbation-transcriptomic evidence"
 type: software
 version: 0.2.1
-date-released: 2026-09-12
+date-released: 2026-09-13
 license: MIT
 url: "https://github.com/xutaoguo55/pgaa"
 repository-code: "https://github.com/xutaoguo55/pgaa"
-abstract: "PGAA provides Python and R implementations of distribution-aware ranking statistics for single-cell perturbation screens, including PGAA-W Wasserstein for distributional shifts and PGAA-H histogram-shape for heterogeneous expression-shape responses."
+abstract: "PGAA is an executable claim-state compiler for perturbation transcriptomics, provided as a Python and R package. It combines internal decision state, ranking stability, external evidence, source-data provenance, and branch-specific promotion gates to emit bounded manuscript claim states, so that an exploratory signal cannot be promoted to a biological or translational conclusion without the evidence a promotion rule requires. Distribution-aware Wasserstein and histogram-shape statistics remain available as upstream scoring modules; they are not claimed as the main methodological novelty."
 keywords:
-  - Perturb-seq
   - single-cell RNA-seq
-  - Wasserstein distance
-  - histogram-shape statistic
+  - Perturb-seq
+  - claim state
+  - reproducibility
+  - evidence gating
   - CRISPR screening
 authors:
   - family-names: Wei
@@ -33,5 +34,5 @@ authors:
 
 identifiers:
   - type: doi
-    value: "10.5281/zenodo.22720271"
+    value: "10.5281/zenodo.22730868"
     description: "Archived software release"
